@@ -1,0 +1,6 @@
+   text	   data	    bss	    dec	    hex	filename
+  0x500	    0x0	    0xc	   1292	    50c	./obj/uengine_control.o
+  0x178	    0x0	    0x0	    376	    178	./obj/uengine_control_bank.o
+  0x498	    0x0	    0x0	   1176	    498	./obj/uengine_event_deal.o
+  0x738	    0xc	   0xfc	   2112	    840	./obj/uengine_main.o
+   0xd4	    0x0	    0x0	    212	     d4	./obj/uengine_message_deal.o

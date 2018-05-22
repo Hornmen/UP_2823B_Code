@@ -1,0 +1,51 @@
+//编写说明：
+//1）脚本文件 tts_flist.txt 必须是ANSI编码，每个词条包含2中语言语音文件，即[中文语音文件;英语语音文件]。
+//2）NULL表示该词条没有此种语言语音文件，[END]表示结尾，这两者不能删除。
+//3）支持英文分号;和中文分号；为语音文件分隔符。支持英文空格，制表符和中文空格为空白符号。
+NULL;           NULL
+NULL;             NULL
+NULL;    pairing_eng.mp3
+NULL;connected_eng.mp3
+NULL;   disconnected_eng.mp3
+NULL;             NULL
+NULL;             NULL
+NULL;   link_disconnected_eng.mp3
+NULL;             NULL
+NULL;             NULL
+NULL;	low_batt_eng.mp3
+NULL;             NULL
+NULL;             NULL
+NULL;        power_on_eng.mp3
+NULL;         power_off_eng.mp3
+NULL;     link_pairing_eng.mp3
+NULL;    link_connected_eng.mp3
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;           NULL
+NULL;             NULL
+NULL;          0_eng.mp3
+NULL;          1_eng.mp3
+NULL;           2_eng.mp3
+NULL;           3_eng.mp3
+NULL;           4_eng.mp3
+NULL;           5_eng.mp3
+NULL;           6_eng.mp3
+NULL;          7_eng.mp3
+NULL;          8_eng.mp3
+NULL;           9_eng.mp3
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+NULL;             NULL
+END

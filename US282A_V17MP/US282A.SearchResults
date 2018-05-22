@@ -1,0 +1,5 @@
+---- com_key_deal_volume_add Matches (4 in 1 files) ----
+Common_key_deal.c (case\ap\common\common_event):app_result_e com_key_deal_volume_add(void);
+Common_key_deal.c (case\ap\common\common_event): //   { { KEY_VADD, 0, KEY_TYPE_DOWN | KEY_TYPE_LONG | KEY_TYPE_HOLD, KEY_DEAL_FILTER_UP }, com_key_deal_volume_add },
+Common_key_deal.c (case\ap\common\common_event):  //  { { KEY_NEXT_VOLADD, 0, KEY_TYPE_LONG | KEY_TYPE_HOLD, KEY_DEAL_FILTER_UP }, com_key_deal_volume_add },
+Common_key_deal.c (case\ap\common\common_event):app_result_e com_key_deal_volume_add(void)
