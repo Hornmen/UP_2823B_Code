@@ -1,6 +1,6 @@
-make[1]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/cfg'
+make[1]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/cfg'
 make -j16 -C ./../../psp_rel/usermodule/enhanced/make_build
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/psp_rel/usermodule/enhanced/make_build'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/psp_rel/usermodule/enhanced/make_build'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_directory_func.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_directory_func.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_directory_next.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_directory_next.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_directory_prev.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_directory_prev.c
@@ -12,47 +12,43 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_interface.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_interface.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_shuffle.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_shuffle.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_fsel_sortlist_func.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_sortlist_func.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_globle_data.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_globle_data.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aa.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aa.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aac.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aac.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aax.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aax.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_ape.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_ape.c
 ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_dirlist_vram.c: In function `fsel_sortlsit_vram_read':
 ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_dirlist_vram.c:16: warning: unused variable `index_ptr'
 ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_fsel_dirlist_vram.c:17: warning: unused variable `dst_num'
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_globle_data.o ./../../../../psp_rel/usermodule/enhanced/fsel_simple/eh_globle_data.c
 
 
 
 
 
 
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aa.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aa.c
-
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aac.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aac.c
 
 
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_aax.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_aax.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_ape.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_ape.c
+
+
+
 
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_entry.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_entry.c
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_flac.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_flac.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_function.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_function.c
 
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_function_sub.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_function_sub.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_mp3_v1.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_mp3_v1.c
+
+
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_mp3_v2.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_mp3_v2.c
+
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_ogg.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_ogg.c
-
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_rdata.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_rdata.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_utf8_deal.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_utf8_deal.c
-
-
-
-
-
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_id3_wma.o ./../../../../psp_rel/usermodule/enhanced/id3/eh_id3_wma.c
-
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include  -I./../../../../psp_rel/usermodule/enhanced/fsel_simple -I./../../../../psp_rel/usermodule/enhanced/id3  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	eh_lyric_load.o ./../../../../psp_rel/usermodule/enhanced/lrc/eh_lyric_load.c
+
+
 
 
 ./../../../../psp_rel/usermodule/enhanced/lrc/eh_lyric_load.c: In function `open_lrc_file':
@@ -60,10 +56,14 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 
 
 
+
+
+
+
 cp eh_fsel_directory_func.o eh_fsel_directory_next.o eh_fsel_directory_prev.o eh_fsel_dirlist_func.o eh_fsel_dirlist_next.o eh_fsel_dirlist_prev.o eh_fsel_dirlist_vram.o eh_fsel_entry.o eh_fsel_interface.o eh_fsel_shuffle.o eh_fsel_sortlist_func.o eh_globle_data.o eh_id3_aa.o eh_id3_aac.o eh_id3_aax.o eh_id3_ape.o eh_id3_entry.o eh_id3_flac.o eh_id3_function.o eh_id3_function_sub.o eh_id3_mp3_v1.o eh_id3_mp3_v2.o eh_id3_ogg.o eh_id3_rdata.o eh_id3_utf8_deal.o eh_id3_wma.o eh_lyric_load.o     ./../../../../psp_rel/lib/lib_enhanced
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/psp_rel/usermodule/enhanced/make_build'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/psp_rel/usermodule/enhanced/make_build'
 make -j16 -C ./../drv/welcome
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/welcome'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/welcome'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/welcome  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -D __WELCOME__ -o	welcome.o welcome.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/welcome  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -D __WELCOME__ -o	welcome_ejtag.o welcome_ejtag.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/welcome  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -D __WELCOME__ -o	welcome_i2c_tk.o welcome_i2c_tk.c
@@ -75,9 +75,9 @@ welcome.c:511: warning: label `do_nothing' defined but not used
 sde-ld -L./../../../psp_rel/include -L./../../../psp_rel/lib -L./../../../psp_rel/lib -L./../../drv/rom_TWI_lib -G0 -T welcome.xn -EL -gc-section welcome.o welcome_ejtag.o welcome_i2c_tk.o     -o welcome.exe -Map welcome.map
 sde-objcopy -O binary welcome.exe -j .text welcome.bin
 cp -f welcome.bin ./../../fwpkg/drv
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/welcome'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/welcome'
 make -j16 -C ./../drv/Key_boombox
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/Key_boombox'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/Key_boombox'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	dae_print.o dae_print.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	dae_print1.o dae_print1.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_bankb0_init.o key_bankb0_init.c
@@ -85,39 +85,39 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_dae.o key_dae.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_math_exp_fixed.o key_math_exp_fixed.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_i2c_tk.o key_rcode_i2c_tk.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_irq_ir.o key_rcode_irq_ir.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_irq_tk.o key_rcode_irq_tk.c
 dae_print1.c: In function `dae_param_print1':
 dae_print1.c:78: warning: dereferencing type-punned pointer will break strict-aliasing rules
 key_bankb0_init.c: In function `__inittest':
 key_bankb0_init.c:351: warning: return from incompatible pointer type
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_op_entry.o key_rcode_op_entry.c
-key_bankb1_exit.c: In function `__exittest':
-key_bankb1_exit.c:39: warning: return from incompatible pointer type
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_scan.o key_rcode_scan.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_irq_ir.o key_rcode_irq_ir.c
 key_math_exp_fixed.c: In function `exp_fast':
 key_math_exp_fixed.c:22: warning: integer constant is too large for "long" type
+key_bankb1_exit.c: In function `__exittest':
+key_bankb1_exit.c:39: warning: return from incompatible pointer type
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_irq_tk.o key_rcode_irq_tk.c
+
 key_dae.c: In function `key_inner_set_effect_param':
 key_dae.c:223: warning: assignment makes pointer from integer without a cast
 key_dae.c:224: warning: assignment makes pointer from integer without a cast
 key_dae.c:437: warning: dereferencing type-punned pointer will break strict-aliasing rules
 key_dae.c:500: warning: implicit declaration of function `dae_param_print'
 key_dae.c:501: warning: implicit declaration of function `dae_param_print1'
+
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_op_entry.o key_rcode_op_entry.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_scan.o key_rcode_scan.c
+
+
+
+
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_rcode_uart_recordkey.o key_rcode_uart_recordkey.c
-
-
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_waves_dae.o key_waves_dae.c
-
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	uart_recordkey_init.o uart_recordkey_init.c
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	adjust_freq_comm.o ./../../drv/key_common/adjust_freq_comm.c
 
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_bat_charge_comm.o ./../../drv/key_common/key_bat_charge_comm.c
 
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_discrete_led_op.o ./../../drv/key_common/key_discrete_led_op.c
 
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_discrete_led_op.o ./../../drv/key_common/key_discrete_led_op.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	key_peripheral_detect.o ./../../drv/key_common/key_peripheral_detect.c
 key_waves_dae.c:13:81: warning: backslash and newline separated by space
 key_waves_dae.c: In function `read_waves_dae_para':
@@ -126,6 +126,9 @@ key_waves_dae.c: In function `key_inner_set_waves_effect_param':
 key_waves_dae.c:89: warning: initialization makes integer from pointer without a cast
 key_waves_dae.c:90: warning: initialization makes integer from pointer without a cast
 key_waves_dae.c:139: warning: implicit declaration of function `exp_fast'
+./../../drv/key_common/key_bat_charge_comm.c:19: warning: 'battery_samp_filter' declared `static' but never defined
+
+
 
 ./../../drv/key_common/key_peripheral_detect.c: In function `check_card_status':
 ./../../drv/key_common/key_peripheral_detect.c:79: warning: unused variable `temp_card'
@@ -136,13 +139,10 @@ key_waves_dae.c:139: warning: implicit declaration of function `exp_fast'
 ./../../drv/key_common/key_peripheral_detect.c:199: warning: unused variable `ret_val'
 ./../../drv/key_common/key_peripheral_detect.c:200: warning: unused variable `msg'
 
+
+
 ./../../drv/key_common/key_peripheral_detect.c: At top level:
 ./../../drv/key_common/key_peripheral_detect.c:546: warning: 'check_device_in_out' defined but not used
-
-
-
-
-./../../drv/key_common/key_bat_charge_comm.c:19: warning: 'battery_samp_filter' declared `static' but never defined
 
 
 
@@ -153,9 +153,9 @@ rom segment
 no kernel bank c!
 恭喜，成功！
 cp -f key.drv ./../../fwpkg/drv/
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/Key_boombox'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/Key_boombox'
 make -j16 -C ./../drv/LED_7SEG
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/LED_7SEG'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/LED_7SEG'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/LED_7SEG  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	bank_a_led_init.o bank_a_led_init.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/LED_7SEG  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	hdrv_hard_deal.o hdrv_hard_deal.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/LED_7SEG  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	hdrv_hard_init.o hdrv_hard_init.c
@@ -177,9 +177,9 @@ no kernel bank b!
 no kernel bank c!
 恭喜，成功！
 cp -f drv_led.drv ./../../fwpkg/drv	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/LED_7SEG'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/LED_7SEG'
 make -j16 -C ./../drv/fm_qn8035
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/fm_qn8035'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/fm_qn8035'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	bank_b_fm_get_deal.o bank_b_fm_get_deal.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	bank_b_fm_init_deal.o bank_b_fm_init_deal.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	rcode_fm_deal.o rcode_fm_deal.c
@@ -187,11 +187,11 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	rcode_fm_op_entry.o ./../../drv/fm_common/rcode_fm_op_entry.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	qndriver.o ./../../drv/fm_qn8035/QN/qndriver.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../drv/fm_common/inc -I./../../drv/fm_qn8035  -I./../../drv/fm_qn8035/QN   -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	qnio.o ./../../drv/fm_qn8035/QN/qnio.c
-./../../drv/fm_qn8035/QN/qndriver.c: In function `QN_ChipInitialization':
-./../../drv/fm_qn8035/QN/qndriver.c:220: warning: unused variable `rev'
 ./../../drv/fm_common/bank_a_fm_init.c: In function `__inittest':
 ./../../drv/fm_common/bank_a_fm_init.c:32: warning: return from incompatible pointer type
 
+./../../drv/fm_qn8035/QN/qndriver.c: In function `QN_ChipInitialization':
+./../../drv/fm_qn8035/QN/qndriver.c:220: warning: unused variable `rev'
 
 
 
@@ -204,17 +204,13 @@ rom segment
 no kernel bank c!
 恭喜，成功！
 cp -f drv_fm.drv ./../../fwpkg/drv	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/fm_qn8035'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/fm_qn8035'
 make -j16 -C ./../drv/ccd
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/ccd'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/ccd'
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	STA339BWS.o STA339BWS.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	ccd_banka0_init.o ccd_banka0_init.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	ccd_bankb0_pa_deal.o ccd_bankb0_pa_deal.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	ccd_op_entry.o ccd_op_entry.c
-STA339BWS.c: In function `PAinit':
-STA339BWS.c:14: warning: unused variable `flags'
-ccd_banka0_init.c: In function `__inittest':
-ccd_banka0_init.c:76: warning: return from incompatible pointer type
 ccd_bankb0_pa_deal.c: In function `pa_set_reg':
 ccd_bankb0_pa_deal.c:29: warning: passing arg 4 of `TWI_Trans_Bytes' discards qualifiers from pointer target type
 ccd_bankb0_pa_deal.c:30: warning: passing arg 4 of `TWI_Trans_Bytes' discards qualifiers from pointer target type
@@ -238,6 +234,10 @@ ccd_bankb0_pa_deal.c: In function `pa_op_set_volume':
 ccd_bankb0_pa_deal.c:166: warning: passing arg 2 of `pa_set_reg' from incompatible pointer type
 ccd_bankb0_pa_deal.c: At top level:
 ccd_bankb0_pa_deal.c:224: warning: 'enable_drc_function' defined but not used
+ccd_banka0_init.c: In function `__inittest':
+ccd_banka0_init.c:76: warning: return from incompatible pointer type
+STA339BWS.c: In function `PAinit':
+STA339BWS.c:14: warning: unused variable `flags'
 
 
 
@@ -250,11 +250,11 @@ no kernel bank a!
 no kernel bank c!
 恭喜，成功！
 cp -f ccd.drv ./../../fwpkg/drv
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/drv/ccd'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/drv/ccd'
 make -j16 -C ./../ap/common
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common'
 make -C ./../common/applib/
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/applib'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/applib'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	app_engine_config.o app_engine_config.c
 
@@ -301,9 +301,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs applib.a app_engine_config.o app_manager_bank.o app_timer_bank.o app_timer_bank_for_engine.o app_timer_bank_single.o app_timer_rcode.o app_timer_rcode_for_engine.o common_config.o message_bank_broadcast.o message_bank_init.o message_bank_init_for_engine.o message_bank_send.o message_bank_send_async.o message_bank_send_btmanager.o message_bank_send_btstack.o message_key_deal.o message_key_rcode.o message_rcode.o message_rcode_for_btstack.o message_rcode_for_engine.o   
 sde-readelf -h -S applib.a > applib.map
 cp -f app_engine_config.o app_manager_bank.o app_timer_bank.o app_timer_bank_for_engine.o app_timer_bank_single.o app_timer_rcode.o app_timer_rcode_for_engine.o common_config.o message_bank_broadcast.o message_bank_init.o message_bank_init_for_engine.o message_bank_send.o message_bank_send_async.o message_bank_send_btmanager.o message_bank_send_btstack.o message_key_deal.o message_key_rcode.o message_rcode.o message_rcode_for_btstack.o message_rcode_for_engine.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/applib'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/applib'
 make -C ./../common/common_func
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_func'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_func'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	app_sleep.o app_sleep.c
 
@@ -378,9 +378,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_func.a app_sleep.o common_ap_switch.o common_charge.o common_math_exp_fixed.o common_setdae.o common_setdae_init.o common_seteq.o common_setvolume.o common_share_data.o common_standby.o common_stub_switch.o setting_comval.o sys_counter.o sys_timer.o   
 sde-readelf -h -S common_func.a > common_func.map
 cp -f app_sleep.o common_ap_switch.o common_charge.o common_math_exp_fixed.o common_setdae.o common_setdae_init.o common_seteq.o common_setvolume.o common_share_data.o common_standby.o common_stub_switch.o setting_comval.o sys_counter.o sys_timer.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_func'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_func'
 make -C ./../common/bt_common
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/bt_common'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/bt_common'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	bt_common_autoconnect.o bt_common_autoconnect.c
 bt_common_autoconnect.c: In function `check_auto_con_flag':
@@ -439,9 +439,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs bt_common.a bt_common_autoconnect.o bt_common_avrcp.o bt_common_event_dispatch.o bt_common_gen_addr.o bt_common_hfp.o bt_common_manager.o bt_common_manager_deal.o bt_common_manager_misc.o bt_common_sppble.o   
 sde-readelf -h -S bt_common.a > bt_common.map
 cp -f bt_common_autoconnect.o bt_common_avrcp.o bt_common_event_dispatch.o bt_common_gen_addr.o bt_common_hfp.o bt_common_manager.o bt_common_manager_deal.o bt_common_manager_misc.o bt_common_sppble.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/bt_common'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/bt_common'
 make -C ./../common/time_alarm
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/time_alarm'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/time_alarm'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	time_alarm_alarm_record.o time_alarm_alarm_record.c
 
@@ -466,9 +466,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs time_alarm.a time_alarm_alarm_record.o time_alarm_alarm_ring.o time_alarm_clock.o time_alarm_rcp_deal.o time_alarm_rcp_deal_ring.o time_alarm_set_alarm.o time_alarm_set_alarm_sub.o time_alarm_set_calendar.o time_alarm_set_calendar_sub.o   
 sde-readelf -h -S time_alarm.a > time_alarm.map
 cp -f time_alarm_alarm_record.o time_alarm_alarm_ring.o time_alarm_clock.o time_alarm_rcp_deal.o time_alarm_rcp_deal_ring.o time_alarm_set_alarm.o time_alarm_set_alarm_sub.o time_alarm_set_calendar.o time_alarm_set_calendar_sub.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/time_alarm'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/time_alarm'
 make -C ./../common/common_rcp
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_rcp'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_rcp'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_rcp_dialog.o common_rcp_dialog.c
 
@@ -504,9 +504,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_rcp.a common_rcp_dialog.o common_rcp_dispatch.o common_rcp_dispatch_misc.o common_rcp_func.o common_rcp_servs.o common_rcp_dispatch_block.o common_rcp_send.o   
 sde-readelf -h -S common_rcp.a > common_rcp.map
 cp -f common_rcp_dialog.o common_rcp_dispatch.o common_rcp_dispatch_misc.o common_rcp_func.o common_rcp_servs.o common_rcp_dispatch_block.o common_rcp_send.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_rcp'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_rcp'
 make -C ./../common/common_ota
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_ota'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_ota'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	Ota_rcp_q_cmd_deal.o Ota_rcp_q_cmd_deal.c
 Ota_rcp_q_cmd_deal.c: In function `message_copy':
@@ -527,9 +527,9 @@ sde-ar rcs common_ota.a Ota_rcp_q_cmd_deal.o Ota_rcp_reboot_cmd.o Ota_rcp_s_cmd_
 sde-objdump -D common_ota.a > common_ota.lst
 sde-readelf -h -S common_ota.a > common_ota.map
 cp -f Ota_rcp_q_cmd_deal.o Ota_rcp_reboot_cmd.o Ota_rcp_s_cmd_deal.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_ota'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_ota'
 make -C ./../common/common_view
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_view'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_view'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_view_key_event.o common_view_key_event.c
 
@@ -542,9 +542,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_view.a common_view_key_event.o common_view_loop.o common_view_manager.o common_view_sys_event.o   
 sde-readelf -h -S common_view.a > common_view.map
 cp -f common_view_key_event.o common_view_loop.o common_view_manager.o common_view_sys_event.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_view'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_view'
 make -C ./../common/common_sound
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_sound'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_sound'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_keytone_file.o common_keytone_file.c
 
@@ -589,9 +589,9 @@ common_volume.c:182: warning: passing arg 4 of `com_btmanager_tws_send' makes in
 sde-ar rcs common_sound.a common_keytone_file.o common_keytone_play.o common_phy_volume_deal.o common_phy_volume_table.o common_sound.o common_speaker_control.o common_speaker_out_switch.o common_tts.o common_tts_thread.o common_volume.o   
 sde-readelf -h -S common_sound.a > common_sound.map
 cp -f common_keytone_file.o common_keytone_play.o common_phy_volume_deal.o common_phy_volume_table.o common_sound.o common_speaker_control.o common_speaker_out_switch.o common_tts.o common_tts_thread.o common_volume.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_sound'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_sound'
 make -C ./../common/common_event
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_event'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_event'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_key_deal.o common_key_deal.c
 common_key_deal.c: In function `com_app_deal_play_prev_next':
@@ -601,10 +601,8 @@ common_key_deal.c:186: warning: passing arg 3 of `com_switch_mute' makes integer
 common_key_deal.c: In function `com_key_deal_force_unlink':
 common_key_deal.c:433: warning: implicit declaration of function `set_led_state'
 common_key_deal.c:434: warning: implicit declaration of function `com_set_discoverable'
-common_key_deal.c: In function `com_key_deal_FT_test':
-common_key_deal.c:516: warning: no return statement in function returning non-void
 common_key_deal.c: In function `com_key_deal_force_ble_unlink':
-common_key_deal.c:615: warning: implicit declaration of function `com_btmanager_unlink_spp_ble_profile'
+common_key_deal.c:616: warning: implicit declaration of function `com_btmanager_unlink_spp_ble_profile'
 
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_key_hook.o common_key_hook.c
 common_key_hook.c: In function `com_gui_msg_hook':
@@ -630,9 +628,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_event.a common_key_deal.o common_key_hook.o common_power_config.o common_sys_deal.o common_sys_hook.o   
 sde-readelf -h -S common_event.a > common_event.map
 cp -f common_key_deal.o common_key_hook.o common_power_config.o common_sys_deal.o common_sys_hook.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_event'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_event'
 make -C ./../common/common_display
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_display'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_display'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_discrete_led.o common_discrete_led.c
 
@@ -641,9 +639,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_display.a common_discrete_led.o pair_headphone_led.o   
 sde-readelf -h -S common_display.a > common_display.map
 cp -f common_discrete_led.o pair_headphone_led.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_display'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/common_display'
 make -C ./../common/aset_common	
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/aset_common'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/aset_common'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	common_aset_main_deal.o common_aset_main_deal.c
 common_aset_main_deal.c: In function `write_application_properties':
@@ -660,9 +658,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs aset_common.a common_aset_main_deal.o common_aset_new_func.o common_aset_sub_code.o   
 sde-readelf -h -S aset_common.a > aset_common.map
 cp -f common_aset_main_deal.o common_aset_new_func.o common_aset_sub_code.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/aset_common'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/aset_common'
 make -C ./../common/data
-make[3]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/data'
+make[3]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/data'
 make[3]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/include/ucos -I./../../../../psp_rel/include -I./../../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -o	applib_app_data.o applib_app_data.c
 
@@ -675,10 +673,10 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../../psp_rel/inc
 sde-ar rcs common_data.a applib_app_data.o applib_globe_data.o applib_globe_data_com.o common_func_data.o   
 sde-readelf -h -S common_data.a > common_data.map
 cp -f applib_app_data.o applib_globe_data.o applib_globe_data_com.o common_func_data.o    ./../../../lib
-make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common/data'
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/common'
+make[3]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common/data'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/common'
 make -j16 -C ./../ap/ap_manager
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_manager'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_manager'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_FT_test.o manager_FT_test.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_applib_funs.o manager_applib_funs.c
@@ -688,25 +686,28 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_key_drv_install.o manager_key_drv_install.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_main.o manager_main.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_mem_manager.o manager_mem_manager.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle.o manager_msg_handle.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle2.o manager_msg_handle2.c
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle3.o manager_msg_handle3.c
 manager_config_hosc_freq.c: In function `manager_config_hosc_freq':
 manager_config_hosc_freq.c:72: warning: assignment makes integer from pointer without a cast
 manager_config_hosc_freq.c:65: warning: unused variable `trim_cap_offset'
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_loop.o manager_msg_loop.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle.o manager_msg_handle.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle2.o manager_msg_handle2.c
 
-manager_main.c: In function `main':
-manager_main.c:203: warning: cast to pointer from integer of different size
+
 manager_msg_handle.c: In function `dump_cache_info':
-manager_msg_handle.c:183: warning: unused variable `pool_addr'
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_stub_deal.o manager_stub_deal.c
 
-sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_sub_thread.o manager_sub_thread.c
+
+manager_msg_handle.c:183: warning: unused variable `pool_addr'
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_handle3.o manager_msg_handle3.c
 manager_msg_handle2.c: In function `manager_msg_callback_sub':
 manager_msg_handle2.c:89: warning: implicit declaration of function `manager_open_stub'
 manager_msg_handle2.c:39: warning: unused variable `waitpid_ret'
 manager_msg_handle2.c:40: warning: unused variable `ap_ret'
+manager_main.c: In function `main':
+manager_main.c:203: warning: cast to pointer from integer of different size
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_msg_loop.o manager_msg_loop.c
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_stub_deal.o manager_stub_deal.c
+
+sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/manager_sub_thread.o manager_sub_thread.c
 
 
 
@@ -718,17 +719,14 @@ manager_stub_deal.c:108: warning: cast to pointer from integer of different size
 
 
 
-
-
-
 sde-ld -L./obj -L./../../../psp_rel/include -L./../../../psp_rel/lib -L./../../lib -G0 -gc-section -T process_manager_linker.xn -EL -o manager.exe -Map manager.map
 sde-readelf -a manager.exe > manager.info
 ./../../../psp_rel/tools/ap_builder.exe    manager.exe manager.ap 0xC 0x1b940 0x340
 恭喜，成功！
 cp -f manager.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_manager'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_manager'
 make -C ./../ap/ap_config
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_config'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_config'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -o	./obj/config_att.o config_att.c
 In file included from config_att.c:18:
@@ -826,9 +824,9 @@ Warning cannot found segment: BANK_FRONT_ENHANCED
 ./../../../psp_rel/tools/ap_builder.exe   config.exe config.ap 0xA 0x1d100 0x6e0
 恭喜，成功！
 cp -f config.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_config'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_config'
 make -j16 -C ./../ap/./../ap/ap_linein_tws
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_linein_tws'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_linein_tws'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_display.o linein_display.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_main.o linein_main.c
@@ -836,13 +834,6 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_message_loop.o linein_message_loop.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_rcp_deal.o linein_rcp_deal.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_tts_play.o linein_tts_play.c
-linein_rcp_deal.c: In function `linein_apk_key_play':
-linein_rcp_deal.c:65: warning: implicit declaration of function `key_play_deal'
-linein_message_handle.c:24: warning: initialization from incompatible pointer type
-linein_message_handle.c:27: warning: initialization from incompatible pointer type
-linein_message_handle.c: In function `deal_btstack_hd_err':
-linein_message_handle.c:154: warning: implicit declaration of function `kill_console'
-linein_message_handle.c:164: warning: implicit declaration of function `create_console'
 linein_main.c: In function `_app_init':
 linein_main.c:112: warning: implicit declaration of function `linein_rcp_var_init'
 linein_main.c: In function `_app_exit':
@@ -851,6 +842,13 @@ linein_main.c: In function `main':
 linein_main.c:307: warning: passing arg 2 of `com_tts_state_play' makes pointer from integer without a cast
 linein_main.c:341: warning: implicit declaration of function `tws_sync_deal'
 linein_main.c:410: warning: unused variable `sd_sec_param'
+linein_message_handle.c:24: warning: initialization from incompatible pointer type
+linein_message_handle.c:27: warning: initialization from incompatible pointer type
+linein_message_handle.c: In function `deal_btstack_hd_err':
+linein_message_handle.c:154: warning: implicit declaration of function `kill_console'
+linein_message_handle.c:164: warning: implicit declaration of function `create_console'
+linein_rcp_deal.c: In function `linein_apk_key_play':
+linein_rcp_deal.c:65: warning: implicit declaration of function `key_play_deal'
 linein_message_loop.c: In function `message_loop_exit':
 linein_message_loop.c:156: warning: implicit declaration of function `handl_fast_auto_play'
 linein_message_loop.c:175: warning: implicit declaration of function `tws_sync_deal'
@@ -859,10 +857,10 @@ linein_message_loop.c:267: warning: implicit declaration of function `linein_sen
 linein_message_loop.c:259: warning: unused variable `need_deal_s3bt_back'
 
 
+
+
 linein_message_loop.c: At top level:
 linein_message_loop.c:376: warning: 'sound_mode_handle' defined but not used
-
-
 
 
 sde-ld -L./obj -L./../../../psp_rel/lib -L./../../../psp_rel/lib/lib_enhanced -L./../../lib -L./../../../psp_rel/include -G0 -gc-section -T ap_linein.xn ./../common/common_front.xn -EL -o linein.exe -Map linein.map
@@ -873,9 +871,9 @@ Warning cannot found segment: BANK_FRONT_ENHANCED
 ./../../../psp_rel/tools/ap_builder.exe   linein.exe linein.ap 0xA 0x1d100 0x6e0
 恭喜，成功！
 cp -f linein.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_linein_tws'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_linein_tws'
 make -j16 -C ./../ap/./../ap/linein_tws_engine
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/linein_tws_engine'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/linein_tws_engine'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/linein_tws_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_eg_global_var.o linein_eg_global_var.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/linein_tws_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_eg_main.o linein_eg_main.c
@@ -885,9 +883,9 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/linein_tws_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/linein_eg_send_cmd_tws.o linein_eg_send_cmd_tws.c
 linein_eg_main.c: In function `message_loop_init':
 linein_eg_main.c:221: warning: implicit declaration of function `update_btstack_parm_control'
-linein_eg_global_var.c:36:7: warning: no newline at end of file
-linein_eg_message_handle.c: In function `update_btstack_parm_control':
+linein_eg_global_var.c:36:7: linein_eg_message_handle.c: In function `update_btstack_parm_control':
 linein_eg_message_handle.c:74: warning: assignment makes pointer from integer without a cast
+warning: no newline at end of file
 linein_eg_music_control.c: In function `a2dp_decode_init':
 linein_eg_music_control.c:187: warning: passing arg 3 of `mmm_bp_cmd' makes integer from pointer without a cast
 
@@ -908,9 +906,9 @@ cp -f lineineg.ap ./../../fwpkg/ap
 
 OK, SUCCESSFUL!!!
 
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/linein_tws_engine'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/linein_tws_engine'
 make -j16 -C ./../ap/btplay_engine
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/btplay_engine'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/btplay_engine'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btplay_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_eg_global_var.o btplay_eg_global_var.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btplay_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_eg_main.o btplay_eg_main.c
@@ -937,9 +935,9 @@ cp -f btplayeg.ap ./../../fwpkg/ap
 
 OK, SUCCESSFUL!!!
 
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/btplay_engine'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/btplay_engine'
 make -j16 -C ./../ap/btcall_engine
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/btcall_engine'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/btcall_engine'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_audio_config.o btcall_eg_audio_config.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_callring.o btcall_eg_callring.c
@@ -949,11 +947,11 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_message_loop.o btcall_eg_message_loop.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_sco_connect.o btcall_eg_sco_connect.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_stub_asqt.o btcall_eg_stub_asqt.c
-
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc -I./../../ap/btcall_engine  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O1 -mlong-calls -o ./obj/btcall_eg_stub_asqt_init.o btcall_eg_stub_asqt_init.c
-
 btcall_eg_message_loop.c: In function `bt_stack_status':
 btcall_eg_message_loop.c:101: warning: unused variable `sco_link_out_tick'
+
+
 
 
 
@@ -973,22 +971,20 @@ cp -f btcalleg.ap ./../../fwpkg/ap
 
 OK, SUCCESSFUL!!!
 
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/btcall_engine'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/btcall_engine'
 make -j16 -C ./../ap/ap_btplay
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btplay'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btplay'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_display.o btplay_display.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_main.o btplay_main.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_message_handle.o btplay_message_handle.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_message_loop.o btplay_message_loop.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -Os -mlong-calls -o ./obj/btplay_tts_play.o btplay_tts_play.c
-btplay_tts_play.c: In function `btplay_tts_play':
-btplay_tts_play.c:29: warning: implicit declaration of function `set_led_state'
-btplay_display.c: In function `btplay_main_view':
-btplay_display.c:139: warning: unused variable `reg_val'
 btplay_main.c: In function `main':
 btplay_main.c:342: warning: implicit declaration of function `set_led_state'
 btplay_main.c:487: warning: unused variable `sd_sec_param'
+btplay_display.c: In function `btplay_main_view':
+btplay_display.c:139: warning: unused variable `reg_val'
 btplay_message_loop.c: In function `tws_vol_sync':
 btplay_message_loop.c:102: warning: passing arg 3 of `com_btmanager_tws_send' makes integer from pointer without a cast
 btplay_message_loop.c:102: warning: passing arg 4 of `com_btmanager_tws_send' makes integer from pointer without a cast
@@ -1002,9 +998,11 @@ btplay_message_handle.c: In function `deal_btstack_hd_err':
 btplay_message_handle.c:616: warning: implicit declaration of function `kill_console'
 btplay_message_handle.c:626: warning: implicit declaration of function `create_console'
 
-
+btplay_tts_play.c: In function `btplay_tts_play':
+btplay_tts_play.c:29: warning: implicit declaration of function `set_led_state'
 btplay_message_loop.c: At top level:
 btplay_message_loop.c:721: warning: 'sound_mode_handle' defined but not used
+
 
 
 
@@ -1016,9 +1014,9 @@ Warning cannot found segment: BANK_FRONT_ENHANCED
 ./../../../psp_rel/tools/ap_builder.exe   btplay.exe btplay.ap 0xA 0x1d100 0x6e0
 恭喜，成功！
 cp -f btplay.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btplay'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btplay'
 make -j16 -C ./../ap/ap_btcall
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btcall'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btcall'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -mlong-calls -o ./obj/ap_btcall_AP_mode.o ap_btcall_AP_mode.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O0 -mlong-calls -o ./obj/btcall_display.o btcall_display.c
@@ -1034,12 +1032,12 @@ btcall_main.c:209: warning: implicit declaration of function `hfp_change_to_phon
 btcall_message_handle.c: In function `key_switch_ap':
 btcall_message_handle.c:411: warning: implicit declaration of function `com_key_deal_switch_app'
 
+btcall_tts_play.c: In function `btcall_tts_play':
+btcall_tts_play.c:42: warning: implicit declaration of function `set_led_state'
 btcall_message_loop.c: In function `get_message_loop':
 btcall_message_loop.c:145: warning: implicit declaration of function `set_led_state'
 btcall_message_loop.c:217: warning: implicit declaration of function `get_eg_asqt_PA'
 
-btcall_tts_play.c: In function `btcall_tts_play':
-btcall_tts_play.c:42: warning: implicit declaration of function `set_led_state'
 
 
 
@@ -1055,9 +1053,9 @@ Warning cannot found segment: BANK_FRONT_ENHANCED
 ./../../../psp_rel/tools/ap_builder.exe   btcall.exe btcall.ap 0xA 0x1d100 0x6e0
 恭喜，成功！
 cp -f btcall.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btcall'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_btcall'
 make -j16 -C ./../ap/ap_upgrade	
-make[2]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_upgrade'
+make[2]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_upgrade'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -mlong-calls -o ./obj/ap_upgrade_bank.o ap_upgrade_bank.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -mlong-calls -o ./obj/ap_upgrade_fw_check.o ap_upgrade_fw_check.c
@@ -1065,6 +1063,16 @@ sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/includ
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -mlong-calls -o ./obj/ap_upgrade_rcode.o ap_upgrade_rcode.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -mlong-calls -o ./obj/ap_upgrade_voice.o ap_upgrade_voice.c
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -mlong-calls -o ./obj/decrypt.o decrypt.c
+ap_upgrade_main.c: In function `_app_init':
+ap_upgrade_main.c:94: warning: unused variable `temp_save'
+ap_upgrade_main.c: In function `main':
+ap_upgrade_main.c:256: warning: implicit declaration of function `upgrade_deal'
+ap_upgrade_main.c:232: warning: unused variable `wd_ctl_tmp'
+decrypt.c: In function `_read_file_translate':
+decrypt.c:105: warning: passing arg 2 of `PCFWDecrypt' makes integer from pointer without a cast
+decrypt.c:43: warning: unused variable `ret_val'
+decrypt.c: In function `_read_file':
+decrypt.c:184: warning: passing arg 1 of `_read_file_translate' makes pointer from integer without a cast
 ap_upgrade_fw_check.c: In function `upgrade_fw_check':
 ap_upgrade_fw_check.c:168: warning: passing arg 2 of `is_fw_exist' discards qualifiers from pointer target type
 ap_upgrade_fw_check.c:169: warning: passing arg 2 of `is_fw_exist' discards qualifiers from pointer target type
@@ -1081,16 +1089,6 @@ ap_upgrade_bank.c: In function `upgrade_deal':
 ap_upgrade_bank.c:230: warning: implicit declaration of function `upgrade_fw_check'
 ap_upgrade_bank.c:244: warning: implicit declaration of function `upgrade_fw_write'
 ap_upgrade_bank.c:228: warning: unused variable `result'
-ap_upgrade_main.c: In function `_app_init':
-ap_upgrade_main.c:94: warning: unused variable `temp_save'
-ap_upgrade_main.c: In function `main':
-ap_upgrade_main.c:256: warning: implicit declaration of function `upgrade_deal'
-ap_upgrade_main.c:232: warning: unused variable `wd_ctl_tmp'
-decrypt.c: In function `_read_file_translate':
-decrypt.c:105: warning: passing arg 2 of `PCFWDecrypt' makes integer from pointer without a cast
-decrypt.c:43: warning: unused variable `ret_val'
-decrypt.c: In function `_read_file':
-decrypt.c:184: warning: passing arg 1 of `_read_file_translate' makes pointer from integer without a cast
 ap_upgrade_rcode.c: In function `fresh_display':
 ap_upgrade_rcode.c:39: warning: unused variable `temp'
 ap_upgrade_rcode.c: In function `remind_voice':
@@ -1109,5 +1107,5 @@ sde-readelf -a upgrade.exe > upgrade.info
 ./../../../psp_rel/tools/ap_builder.exe   upgrade.exe upgrade.ap 0xA 0x1d100 0x6e0
 恭喜，成功！
 cp -f upgrade.ap ./../../fwpkg/ap	
-make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/ap/ap_upgrade'
-make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_limittwsdiscoverable_v1804/case/cfg'
+make[2]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/ap/ap_upgrade'
+make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_limittwsdiscoverable_v1804/case/cfg'

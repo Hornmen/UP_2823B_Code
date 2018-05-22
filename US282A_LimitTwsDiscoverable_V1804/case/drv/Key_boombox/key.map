@@ -708,44 +708,44 @@ OUTPUT(key.exe elf32-tradlittlemips)
  .debug_aranges
                 0x0000000000000200       0x20 ./../../drv/rom_TWI_lib/rom_TWI.o
 
-.debug_str      0x0000000000000000     0x1d8e
- .debug_str     0x0000000000000000      0x554 dae_print.o
-                                        0x638 (size before relaxing)
- .debug_str     0x0000000000000554      0x165 dae_print1.o
-                                        0x797 (size before relaxing)
- .debug_str     0x00000000000006b9       0x84 key_bankb0_init.o
-                                        0x1a4 (size before relaxing)
- .debug_str     0x000000000000073d       0x1b key_bankb1_exit.o
-                                        0x138 (size before relaxing)
- .debug_str     0x0000000000000758      0x717 key_dae.o
-                                        0xeda (size before relaxing)
- .debug_str     0x0000000000000e6f       0x3c key_math_exp_fixed.o
-                                        0x154 (size before relaxing)
- .debug_str     0x0000000000000eab       0x13 key_rcode_i2c_tk.o
-                                        0x125 (size before relaxing)
- .debug_str     0x0000000000000ebe       0x3a key_rcode_irq_ir.o
-                                        0x14c (size before relaxing)
- .debug_str     0x0000000000000ef8       0x13 key_rcode_irq_tk.o
-                                        0x125 (size before relaxing)
- .debug_str     0x0000000000000f0b      0x131 key_rcode_op_entry.o
-                                        0x243 (size before relaxing)
- .debug_str     0x000000000000103c      0x251 key_rcode_scan.o
-                                        0x3de (size before relaxing)
- .debug_str     0x000000000000128d       0x1b key_rcode_uart_recordkey.o
-                                        0x12d (size before relaxing)
- .debug_str     0x00000000000012a8      0x1d6 key_waves_dae.o
-                                        0x395 (size before relaxing)
- .debug_str     0x000000000000147e       0x16 uart_recordkey_init.o
-                                        0x128 (size before relaxing)
- .debug_str     0x0000000000001494      0x1a7 adjust_freq_comm.o
-                                        0x2e0 (size before relaxing)
- .debug_str     0x000000000000163b      0x45d key_bat_charge_comm.o
-                                        0x5bd (size before relaxing)
- .debug_str     0x0000000000001a98      0x1a7 key_discrete_led_op.o
-                                        0x2bf (size before relaxing)
- .debug_str     0x0000000000001c3f      0x129 key_peripheral_detect.o
-                                        0x254 (size before relaxing)
- .debug_str     0x0000000000001d68       0x26 ./../../drv/rom_TWI_lib/rom_TWI.o
+.debug_str      0x0000000000000000     0x1d97
+ .debug_str     0x0000000000000000      0x55d dae_print.o
+                                        0x641 (size before relaxing)
+ .debug_str     0x000000000000055d      0x165 dae_print1.o
+                                        0x7a0 (size before relaxing)
+ .debug_str     0x00000000000006c2       0x84 key_bankb0_init.o
+                                        0x1ad (size before relaxing)
+ .debug_str     0x0000000000000746       0x1b key_bankb1_exit.o
+                                        0x141 (size before relaxing)
+ .debug_str     0x0000000000000761      0x717 key_dae.o
+                                        0xee3 (size before relaxing)
+ .debug_str     0x0000000000000e78       0x3c key_math_exp_fixed.o
+                                        0x15d (size before relaxing)
+ .debug_str     0x0000000000000eb4       0x13 key_rcode_i2c_tk.o
+                                        0x12e (size before relaxing)
+ .debug_str     0x0000000000000ec7       0x3a key_rcode_irq_ir.o
+                                        0x155 (size before relaxing)
+ .debug_str     0x0000000000000f01       0x13 key_rcode_irq_tk.o
+                                        0x12e (size before relaxing)
+ .debug_str     0x0000000000000f14      0x131 key_rcode_op_entry.o
+                                        0x24c (size before relaxing)
+ .debug_str     0x0000000000001045      0x251 key_rcode_scan.o
+                                        0x3e7 (size before relaxing)
+ .debug_str     0x0000000000001296       0x1b key_rcode_uart_recordkey.o
+                                        0x136 (size before relaxing)
+ .debug_str     0x00000000000012b1      0x1d6 key_waves_dae.o
+                                        0x39e (size before relaxing)
+ .debug_str     0x0000000000001487       0x16 uart_recordkey_init.o
+                                        0x131 (size before relaxing)
+ .debug_str     0x000000000000149d      0x1a7 adjust_freq_comm.o
+                                        0x2e9 (size before relaxing)
+ .debug_str     0x0000000000001644      0x45d key_bat_charge_comm.o
+                                        0x5c6 (size before relaxing)
+ .debug_str     0x0000000000001aa1      0x1a7 key_discrete_led_op.o
+                                        0x2c8 (size before relaxing)
+ .debug_str     0x0000000000001c48      0x129 key_peripheral_detect.o
+                                        0x25d (size before relaxing)
+ .debug_str     0x0000000000001d71       0x26 ./../../drv/rom_TWI_lib/rom_TWI.o
 
 .comment        0x0000000000000000      0x331
  .comment       0x0000000000000000       0x2b dae_print.o

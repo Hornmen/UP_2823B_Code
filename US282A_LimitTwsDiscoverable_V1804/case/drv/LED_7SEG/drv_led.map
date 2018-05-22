@@ -397,14 +397,14 @@ OUTPUT(drv_led.exe elf32-tradlittlemips)
  .debug_abbrev  0x00000000000002c2       0x9c hdrv_hard_init.o
  .debug_abbrev  0x000000000000035e       0x70 bank_a_led_init.o
 
-.debug_info     0x0000000000000000     0x101f
- .debug_info    0x0000000000000000      0x270 rcode_led_op_entry.o
- .debug_info    0x0000000000000270      0x1f6 sdrv_clear_screen.o
- .debug_info    0x0000000000000466      0x2f8 sdrv_led_display.o
- .debug_info    0x000000000000075e      0x213 hdrv_hard_deal.o
- .debug_info    0x0000000000000971      0x218 sdrv_flash_screen.o
- .debug_info    0x0000000000000b89      0x297 hdrv_hard_init.o
- .debug_info    0x0000000000000e20      0x1ff bank_a_led_init.o
+.debug_info     0x0000000000000000     0x105e
+ .debug_info    0x0000000000000000      0x279 rcode_led_op_entry.o
+ .debug_info    0x0000000000000279      0x1ff sdrv_clear_screen.o
+ .debug_info    0x0000000000000478      0x301 sdrv_led_display.o
+ .debug_info    0x0000000000000779      0x21c hdrv_hard_deal.o
+ .debug_info    0x0000000000000995      0x221 sdrv_flash_screen.o
+ .debug_info    0x0000000000000bb6      0x2a0 hdrv_hard_init.o
+ .debug_info    0x0000000000000e56      0x208 bank_a_led_init.o
 
 .debug_line     0x0000000000000000      0x359
  .debug_line    0x0000000000000000       0x32 rcode_led_op_entry.o

@@ -470,15 +470,15 @@ OUTPUT(drv_fm.exe elf32-tradlittlemips)
  .debug_abbrev  0x00000000000005e5       0x93 bank_b_fm_init_deal.o
  .debug_abbrev  0x0000000000000678       0x7c bank_b_fm_get_deal.o
 
-.debug_info     0x0000000000000000     0x28e5
- .debug_info    0x0000000000000000      0x403 rcode_fm_op_entry.o
- .debug_info    0x0000000000000403      0xa2b rcode_fm_deal.o
- .debug_info    0x0000000000000e2e      0x78d qndriver.o
- .debug_info    0x00000000000015bb      0x34a qnio.o
- .debug_info    0x0000000000001905      0x8ce ./../../drv/rom_TWI_lib/rom_TWI.o
- .debug_info    0x00000000000021d3      0x2af bank_a_fm_init.o
- .debug_info    0x0000000000002482      0x273 bank_b_fm_init_deal.o
- .debug_info    0x00000000000026f5      0x1f0 bank_b_fm_get_deal.o
+.debug_info     0x0000000000000000     0x2924
+ .debug_info    0x0000000000000000      0x40c rcode_fm_op_entry.o
+ .debug_info    0x000000000000040c      0xa34 rcode_fm_deal.o
+ .debug_info    0x0000000000000e40      0x796 qndriver.o
+ .debug_info    0x00000000000015d6      0x353 qnio.o
+ .debug_info    0x0000000000001929      0x8ce ./../../drv/rom_TWI_lib/rom_TWI.o
+ .debug_info    0x00000000000021f7      0x2b8 bank_a_fm_init.o
+ .debug_info    0x00000000000024af      0x27c bank_b_fm_init_deal.o
+ .debug_info    0x000000000000272b      0x1f9 bank_b_fm_get_deal.o
 
 .debug_line     0x0000000000000000      0x74f
  .debug_line    0x0000000000000000       0x96 rcode_fm_op_entry.o

@@ -466,6 +466,7 @@ app_result_e com_key_deal_force_unlink_10s(void)
 
     if((g_bt_stack_cur_info.dev_role==0)&&(g_bt_stack_cur_info.conn_status==CONN_STATUS_WAIT_PAIR))
    	{
+   	    g_bt_auto_connect_ctrl.need_auto_connect = 0x0;	
 		 #ifdef ENABLE_TRUE_WIRELESS_STEREO    
     	if (g_app_info_vector[APP_TYPE_BTSTACK].used != 0)
     	{
@@ -480,7 +481,7 @@ app_result_e com_key_deal_force_unlink_10s(void)
      return RESULT_NULL;
 }
 
-#if 1
+
 app_result_e com_key_deal_call_last(void)
 {
     if (g_app_info_vector[APP_TYPE_BTSTACK].used != 0)
@@ -491,7 +492,7 @@ app_result_e com_key_deal_call_last(void)
     return RESULT_NULL;
 }
 
-app_result_e com_key_deal_BQB_test(void)
+/*app_result_e com_key_deal_BQB_test(void)
 {
     if (g_app_info_vector[APP_TYPE_BTSTACK].used != 0)
     {
@@ -514,7 +515,7 @@ app_result_e com_key_deal_FT_test(void)
         ;//wait for reset
     }
 }
-#endif
+*/
 
 
 app_result_e com_key_deal_siri(void)

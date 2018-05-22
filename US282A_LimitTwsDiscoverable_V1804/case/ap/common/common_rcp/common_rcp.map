@@ -12,7 +12,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          8316 (bytes into file)
+  Start of section headers:          8324 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -25,30 +25,30 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000180 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 0028e0 000098 08     24   1  4
+  [ 2] .rel.text         REL             00000000 0028e8 000098 08     24   1  4
   [ 3] .data             PROGBITS        00000000 0001b4 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 0001b4 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 0001b4 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 0001cc 000060 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 002978 000018 08     24   6  4
+  [ 7] .rel.pdr          REL             00000000 002980 000018 08     24   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 00022c 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 00022c 00019f 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 0003cb 000a0c 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 002990 0007f8 08     24  10  4
+  [11] .rel.debug_info   REL             00000000 002998 0007f8 08     24  10  4
   [12] .debug_line       MIPS_DWARF      00000000 000dd7 00014f 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 003188 000008 08     24  12  4
+  [13] .rel.debug_line   REL             00000000 003190 000008 08     24  12  4
   [14] .rodata           PROGBITS        00000000 000f28 00002c 00   A  0   0  4
   [15] .debug_frame      MIPS_DWARF      00000000 000f54 000054 00      0   0  4
-  [16] .rel.debug_frame  REL             00000000 003190 000030 08     24  15  4
+  [16] .rel.debug_frame  REL             00000000 003198 000030 08     24  15  4
   [17] .debug_pubnames   MIPS_DWARF      00000000 000fa8 00006a 00      0   0  1
-  [18] .rel.debug_pubnam REL             00000000 0031c0 000008 08     24  17  4
+  [18] .rel.debug_pubnam REL             00000000 0031c8 000008 08     24  17  4
   [19] .debug_aranges    MIPS_DWARF      00000000 001012 000020 00      0   0  1
-  [20] .rel.debug_arange REL             00000000 0031c8 000010 08     24  19  4
-  [21] .debug_str        MIPS_DWARF      00000000 001032 000f4a 01  MS  0   0  1
-  [22] .comment          PROGBITS        00000000 001f7c 00002b 00      0   0  1
-  [23] .shstrtab         STRTAB          00000000 001fa7 0000d2 00      0   0  1
-  [24] .symtab           SYMTAB          00000000 00248c 0002c0 10     25  24  4
-  [25] .strtab           STRTAB          00000000 00274c 000193 00      0   0  1
+  [20] .rel.debug_arange REL             00000000 0031d0 000010 08     24  19  4
+  [21] .debug_str        MIPS_DWARF      00000000 001032 000f53 01  MS  0   0  1
+  [22] .comment          PROGBITS        00000000 001f85 00002b 00      0   0  1
+  [23] .shstrtab         STRTAB          00000000 001fb0 0000d2 00      0   0  1
+  [24] .symtab           SYMTAB          00000000 002494 0002c0 10     25  24  4
+  [25] .strtab           STRTAB          00000000 002754 000193 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -67,7 +67,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          12900 (bytes into file)
+  Start of section headers:          12912 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -80,34 +80,34 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000400 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 003e70 000080 08     28   1  4
+  [ 2] .rel.text         REL             00000000 003e7c 000080 08     28   1  4
   [ 3] .data             PROGBITS        00000000 000434 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 000434 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 000434 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 00044c 0000a0 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 003ef0 000028 08     28   6  4
+  [ 7] .rel.pdr          REL             00000000 003efc 000028 08     28   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 0004ec 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 0004ec 000215 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 000701 000fa0 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 003f18 000ab8 08     28  10  4
+  [11] .rel.debug_info   REL             00000000 003f24 000ab8 08     28  10  4
   [12] .debug_line       MIPS_DWARF      00000000 0016a1 000266 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 0049d0 000018 08     28  12  4
+  [13] .rel.debug_line   REL             00000000 0049dc 000018 08     28  12  4
   [14] .rcode            PROGBITS        00000000 001908 0000dc 00  AX  0   0  4
-  [15] .rel.rcode        REL             00000000 0049e8 000050 08     28  14  4
+  [15] .rel.rcode        REL             00000000 0049f4 000050 08     28  14  4
   [16] .bank.check_for_t PROGBITS        00000000 0019e4 000110 00  AX  0   0  4
-  [17] .rel.bank.check_f REL             00000000 004a38 000028 08     28  16  4
+  [17] .rel.bank.check_f REL             00000000 004a44 000028 08     28  16  4
   [18] .gl_rcp_data      PROGBITS        00000000 001af4 000064 00  WA  0   0  4
   [19] .debug_frame      MIPS_DWARF      00000000 001b58 0000ac 00      0   0  4
-  [20] .rel.debug_frame  REL             00000000 004a60 000050 08     28  19  4
+  [20] .rel.debug_frame  REL             00000000 004a6c 000050 08     28  19  4
   [21] .debug_pubnames   MIPS_DWARF      00000000 001c04 00027c 00      0   0  1
-  [22] .rel.debug_pubnam REL             00000000 004ab0 000008 08     28  21  4
+  [22] .rel.debug_pubnam REL             00000000 004abc 000008 08     28  21  4
   [23] .debug_aranges    MIPS_DWARF      00000000 001e80 000030 00      0   0  1
-  [24] .rel.debug_arange REL             00000000 004ab8 000020 08     28  23  4
-  [25] .debug_str        MIPS_DWARF      00000000 001eb0 00128f 01  MS  0   0  1
-  [26] .comment          PROGBITS        00000000 00313f 00002b 00      0   0  1
-  [27] .shstrtab         STRTAB          00000000 00316a 0000fa 00      0   0  1
-  [28] .symtab           SYMTAB          00000000 003714 000430 10     29  29  4
-  [29] .strtab           STRTAB          00000000 003b44 000329 00      0   0  1
+  [24] .rel.debug_arange REL             00000000 004ac4 000020 08     28  23  4
+  [25] .debug_str        MIPS_DWARF      00000000 001eb0 001298 01  MS  0   0  1
+  [26] .comment          PROGBITS        00000000 003148 00002b 00      0   0  1
+  [27] .shstrtab         STRTAB          00000000 003173 0000fa 00      0   0  1
+  [28] .symtab           SYMTAB          00000000 003720 000430 10     29  29  4
+  [29] .strtab           STRTAB          00000000 003b50 000329 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -126,7 +126,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          17288 (bytes into file)
+  Start of section headers:          17300 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -139,33 +139,33 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000070 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 004f5c 000028 08     27   1  4
+  [ 2] .rel.text         REL             00000000 004f68 000028 08     27   1  4
   [ 3] .data             PROGBITS        00000000 0000a4 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 0000a4 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 0000a4 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 0000bc 000080 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 004f84 000020 08     27   6  4
+  [ 7] .rel.pdr          REL             00000000 004f90 000020 08     27   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 00013c 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 00013c 0001a3 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 0002df 00112d 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 004fa4 000f88 08     27  10  4
+  [11] .rel.debug_info   REL             00000000 004fb0 000f88 08     27  10  4
   [12] .debug_line       MIPS_DWARF      00000000 00140c 000156 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 005f2c 000010 08     27  12  4
+  [13] .rel.debug_line   REL             00000000 005f38 000010 08     27  12  4
   [14] .rodata           PROGBITS        00000000 001564 000104 00   A  0   0  4
-  [15] .rel.rodata       REL             00000000 005f3c 0000d0 08     27  14  4
+  [15] .rel.rodata       REL             00000000 005f48 0000d0 08     27  14  4
   [16] .rcode            PROGBITS        00000000 001668 00001c 00  AX  0   0  4
-  [17] .rel.rcode        REL             00000000 00600c 000010 08     27  16  4
+  [17] .rel.rcode        REL             00000000 006018 000010 08     27  16  4
   [18] .debug_frame      MIPS_DWARF      00000000 001684 000060 00      0   0  4
-  [19] .rel.debug_frame  REL             00000000 00601c 000040 08     27  18  4
+  [19] .rel.debug_frame  REL             00000000 006028 000040 08     27  18  4
   [20] .debug_pubnames   MIPS_DWARF      00000000 0016e4 0000bb 00      0   0  1
-  [21] .rel.debug_pubnam REL             00000000 00605c 000008 08     27  20  4
+  [21] .rel.debug_pubnam REL             00000000 006068 000008 08     27  20  4
   [22] .debug_aranges    MIPS_DWARF      00000000 00179f 000030 00      0   0  1
-  [23] .rel.debug_arange REL             00000000 006064 000020 08     27  22  4
-  [24] .debug_str        MIPS_DWARF      00000000 0017cf 002aad 01  MS  0   0  1
-  [25] .comment          PROGBITS        00000000 00427c 00002b 00      0   0  1
-  [26] .shstrtab         STRTAB          00000000 0042a7 0000e1 00      0   0  1
-  [27] .symtab           SYMTAB          00000000 004810 0003d0 10     28  24  4
-  [28] .strtab           STRTAB          00000000 004be0 00037a 00      0   0  1
+  [23] .rel.debug_arange REL             00000000 006070 000020 08     27  22  4
+  [24] .debug_str        MIPS_DWARF      00000000 0017cf 002ab6 01  MS  0   0  1
+  [25] .comment          PROGBITS        00000000 004285 00002b 00      0   0  1
+  [26] .shstrtab         STRTAB          00000000 0042b0 0000e1 00      0   0  1
+  [27] .symtab           SYMTAB          00000000 00481c 0003d0 10     28  24  4
+  [28] .strtab           STRTAB          00000000 004bec 00037a 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -184,7 +184,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          18376 (bytes into file)
+  Start of section headers:          18388 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -197,33 +197,33 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000144 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 00569c 000078 08     27   1  4
+  [ 2] .rel.text         REL             00000000 0056a8 000078 08     27   1  4
   [ 3] .data             PROGBITS        00000000 000178 000008 00  WA  0   0  4
   [ 4] .bss              NOBITS          00000000 000180 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 000180 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 000198 0001c0 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 005714 000070 08     27   6  4
+  [ 7] .rel.pdr          REL             00000000 005720 000070 08     27   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 000358 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 000358 0002d9 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 000631 001c95 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 005784 001130 08     27  10  4
+  [11] .rel.debug_info   REL             00000000 005790 001130 08     27  10  4
   [12] .debug_line       MIPS_DWARF      00000000 0022c6 000214 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 0068b4 000018 08     27  12  4
+  [13] .rel.debug_line   REL             00000000 0068c0 000018 08     27  12  4
   [14] .bank_2           PROGBITS        00000000 0024dc 000198 00  AX  0   0  4
-  [15] .rel.bank_2       REL             00000000 0068cc 0000c0 08     27  14  4
+  [15] .rel.bank_2       REL             00000000 0068d8 0000c0 08     27  14  4
   [16] .rcode            PROGBITS        00000000 002674 000020 00  AX  0   0  4
-  [17] .rel.rcode        REL             00000000 00698c 000008 08     27  16  4
+  [17] .rel.rcode        REL             00000000 006998 000008 08     27  16  4
   [18] .debug_frame      MIPS_DWARF      00000000 002694 000144 00      0   0  4
-  [19] .rel.debug_frame  REL             00000000 006994 0000e0 08     27  18  4
+  [19] .rel.debug_frame  REL             00000000 0069a0 0000e0 08     27  18  4
   [20] .debug_pubnames   MIPS_DWARF      00000000 0027d8 000179 00      0   0  1
-  [21] .rel.debug_pubnam REL             00000000 006a74 000008 08     27  20  4
+  [21] .rel.debug_pubnam REL             00000000 006a80 000008 08     27  20  4
   [22] .debug_aranges    MIPS_DWARF      00000000 002951 000070 00      0   0  1
-  [23] .rel.debug_arange REL             00000000 006a7c 000060 08     27  22  4
-  [24] .debug_str        MIPS_DWARF      00000000 0029c1 001cfb 01  MS  0   0  1
-  [25] .comment          PROGBITS        00000000 0046bc 00002b 00      0   0  1
-  [26] .shstrtab         STRTAB          00000000 0046e7 0000e1 00      0   0  1
-  [27] .symtab           SYMTAB          00000000 004c50 000610 10     28  52  4
-  [28] .strtab           STRTAB          00000000 005260 00043c 00      0   0  1
+  [23] .rel.debug_arange REL             00000000 006a88 000060 08     27  22  4
+  [24] .debug_str        MIPS_DWARF      00000000 0029c1 001d04 01  MS  0   0  1
+  [25] .comment          PROGBITS        00000000 0046c5 00002b 00      0   0  1
+  [26] .shstrtab         STRTAB          00000000 0046f0 0000e1 00      0   0  1
+  [27] .symtab           SYMTAB          00000000 004c5c 000610 10     28  52  4
+  [28] .strtab           STRTAB          00000000 00526c 00043c 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -242,7 +242,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          6860 (bytes into file)
+  Start of section headers:          6868 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -255,29 +255,29 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 00014c 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 0021a4 000060 08     23   1  4
+  [ 2] .rel.text         REL             00000000 0021ac 000060 08     23   1  4
   [ 3] .data             PROGBITS        00000000 000180 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 000180 000010 00  WA  0   0  4
   [ 5] .reginfo          MIPS_REGINFO    00000000 000180 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 000198 0000c0 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 002204 000030 08     23   6  4
+  [ 7] .rel.pdr          REL             00000000 00220c 000030 08     23   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 000258 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 000258 00016d 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 0003c5 0007e7 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 002234 000600 08     23  10  4
+  [11] .rel.debug_info   REL             00000000 00223c 000600 08     23  10  4
   [12] .debug_line       MIPS_DWARF      00000000 000bac 00010e 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 002834 000008 08     23  12  4
+  [13] .rel.debug_line   REL             00000000 00283c 000008 08     23  12  4
   [14] .debug_frame      MIPS_DWARF      00000000 000cbc 0000ac 00      0   0  4
-  [15] .rel.debug_frame  REL             00000000 00283c 000060 08     23  14  4
+  [15] .rel.debug_frame  REL             00000000 002844 000060 08     23  14  4
   [16] .debug_pubnames   MIPS_DWARF      00000000 000d68 0000aa 00      0   0  1
-  [17] .rel.debug_pubnam REL             00000000 00289c 000008 08     23  16  4
+  [17] .rel.debug_pubnam REL             00000000 0028a4 000008 08     23  16  4
   [18] .debug_aranges    MIPS_DWARF      00000000 000e12 000020 00      0   0  1
-  [19] .rel.debug_arange REL             00000000 0028a4 000010 08     23  18  4
-  [20] .debug_str        MIPS_DWARF      00000000 000e32 000ba4 01  MS  0   0  1
-  [21] .comment          PROGBITS        00000000 0019d6 00002b 00      0   0  1
-  [22] .shstrtab         STRTAB          00000000 001a01 0000ca 00      0   0  1
-  [23] .symtab           SYMTAB          00000000 001eb4 000200 10     24  22  4
-  [24] .strtab           STRTAB          00000000 0020b4 0000f0 00      0   0  1
+  [19] .rel.debug_arange REL             00000000 0028ac 000010 08     23  18  4
+  [20] .debug_str        MIPS_DWARF      00000000 000e32 000bad 01  MS  0   0  1
+  [21] .comment          PROGBITS        00000000 0019df 00002b 00      0   0  1
+  [22] .shstrtab         STRTAB          00000000 001a0a 0000ca 00      0   0  1
+  [23] .symtab           SYMTAB          00000000 001ebc 000200 10     24  22  4
+  [24] .strtab           STRTAB          00000000 0020bc 0000f0 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -296,7 +296,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          17284 (bytes into file)
+  Start of section headers:          17292 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -309,31 +309,31 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000134 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 004cec 000050 08     25   1  4
+  [ 2] .rel.text         REL             00000000 004cf4 000050 08     25   1  4
   [ 3] .data             PROGBITS        00000000 000168 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 000168 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 000168 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 000180 000080 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 004d3c 000020 08     25   6  4
+  [ 7] .rel.pdr          REL             00000000 004d44 000020 08     25   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 000200 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 000200 000184 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 000384 00118b 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 004d5c 000fa8 08     25  10  4
+  [11] .rel.debug_info   REL             00000000 004d64 000fa8 08     25  10  4
   [12] .debug_line       MIPS_DWARF      00000000 00150f 0001ac 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 005d04 000010 08     25  12  4
+  [13] .rel.debug_line   REL             00000000 005d0c 000010 08     25  12  4
   [14] .rcode            PROGBITS        00000000 0016bc 0000c0 00  AX  0   0  4
-  [15] .rel.rcode        REL             00000000 005d14 000050 08     25  14  4
+  [15] .rel.rcode        REL             00000000 005d1c 000050 08     25  14  4
   [16] .debug_frame      MIPS_DWARF      00000000 00177c 000088 00      0   0  4
-  [17] .rel.debug_frame  REL             00000000 005d64 000040 08     25  16  4
+  [17] .rel.debug_frame  REL             00000000 005d6c 000040 08     25  16  4
   [18] .debug_pubnames   MIPS_DWARF      00000000 001804 000084 00      0   0  1
-  [19] .rel.debug_pubnam REL             00000000 005da4 000008 08     25  18  4
+  [19] .rel.debug_pubnam REL             00000000 005dac 000008 08     25  18  4
   [20] .debug_aranges    MIPS_DWARF      00000000 001888 000030 00      0   0  1
-  [21] .rel.debug_arange REL             00000000 005dac 000020 08     25  20  4
-  [22] .debug_str        MIPS_DWARF      00000000 0018b8 0029cb 01  MS  0   0  1
-  [23] .comment          PROGBITS        00000000 004283 00002b 00      0   0  1
-  [24] .shstrtab         STRTAB          00000000 0042ae 0000d5 00      0   0  1
-  [25] .symtab           SYMTAB          00000000 0047bc 000300 10     26  28  4
-  [26] .strtab           STRTAB          00000000 004abc 00022d 00      0   0  1
+  [21] .rel.debug_arange REL             00000000 005db4 000020 08     25  20  4
+  [22] .debug_str        MIPS_DWARF      00000000 0018b8 0029d4 01  MS  0   0  1
+  [23] .comment          PROGBITS        00000000 00428c 00002b 00      0   0  1
+  [24] .shstrtab         STRTAB          00000000 0042b7 0000d5 00      0   0  1
+  [25] .symtab           SYMTAB          00000000 0047c4 000300 10     26  28  4
+  [26] .strtab           STRTAB          00000000 004ac4 00022d 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -352,7 +352,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          4608 (bytes into file)
+  Start of section headers:          4620 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -365,31 +365,31 @@ Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
   [ 1] .text             PROGBITS        00000000 000034 000094 00  AX  0   0  4
-  [ 2] .rel.text         REL             00000000 001900 000028 08     25   1  4
+  [ 2] .rel.text         REL             00000000 00190c 000028 08     25   1  4
   [ 3] .data             PROGBITS        00000000 0000c8 000000 00  WA  0   0  1
   [ 4] .bss              NOBITS          00000000 0000c8 000000 00  WA  0   0  1
   [ 5] .reginfo          MIPS_REGINFO    00000000 0000c8 000018 18      0   0  4
   [ 6] .pdr              PROGBITS        00000000 0000e0 000080 00      0   0  4
-  [ 7] .rel.pdr          REL             00000000 001928 000020 08     25   6  4
+  [ 7] .rel.pdr          REL             00000000 001934 000020 08     25   6  4
   [ 8] .mdebug.abi32     PROGBITS        00000000 000160 000000 00      0   0  1
   [ 9] .debug_abbrev     MIPS_DWARF      00000000 000160 000122 00      0   0  1
   [10] .debug_info       MIPS_DWARF      00000000 000282 0005e7 00      0   0  1
-  [11] .rel.debug_info   REL             00000000 001948 000390 08     25  10  4
+  [11] .rel.debug_info   REL             00000000 001954 000390 08     25  10  4
   [12] .debug_line       MIPS_DWARF      00000000 000869 000167 00      0   0  1
-  [13] .rel.debug_line   REL             00000000 001cd8 000010 08     25  12  4
+  [13] .rel.debug_line   REL             00000000 001ce4 000010 08     25  12  4
   [14] .rcode            PROGBITS        00000000 0009d0 000058 00  AX  0   0  4
-  [15] .rel.rcode        REL             00000000 001ce8 000018 08     25  14  4
+  [15] .rel.rcode        REL             00000000 001cf4 000018 08     25  14  4
   [16] .debug_frame      MIPS_DWARF      00000000 000a28 00007c 00      0   0  4
-  [17] .rel.debug_frame  REL             00000000 001d00 000040 08     25  16  4
+  [17] .rel.debug_frame  REL             00000000 001d0c 000040 08     25  16  4
   [18] .debug_pubnames   MIPS_DWARF      00000000 000aa4 000073 00      0   0  1
-  [19] .rel.debug_pubnam REL             00000000 001d40 000008 08     25  18  4
+  [19] .rel.debug_pubnam REL             00000000 001d4c 000008 08     25  18  4
   [20] .debug_aranges    MIPS_DWARF      00000000 000b17 000028 00      0   0  1
-  [21] .rel.debug_arange REL             00000000 001d48 000018 08     25  20  4
-  [22] .debug_str        MIPS_DWARF      00000000 000b3f 0005c1 01  MS  0   0  1
-  [23] .comment          PROGBITS        00000000 001100 00002b 00      0   0  1
-  [24] .shstrtab         STRTAB          00000000 00112b 0000d5 00      0   0  1
-  [25] .symtab           SYMTAB          00000000 001638 0001d0 10     26  21  4
-  [26] .strtab           STRTAB          00000000 001808 0000f7 00      0   0  1
+  [21] .rel.debug_arange REL             00000000 001d54 000018 08     25  20  4
+  [22] .debug_str        MIPS_DWARF      00000000 000b3f 0005ca 01  MS  0   0  1
+  [23] .comment          PROGBITS        00000000 001109 00002b 00      0   0  1
+  [24] .shstrtab         STRTAB          00000000 001134 0000d5 00      0   0  1
+  [25] .symtab           SYMTAB          00000000 001644 0001d0 10     26  21  4
+  [26] .strtab           STRTAB          00000000 001814 0000f7 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)

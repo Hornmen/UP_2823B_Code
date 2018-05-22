@@ -1223,23 +1223,23 @@ BANK_UI_1_18    0x00000000484a5800      0x800
 
 BANK_UI_1_19    0x00000000484e5800      0x800
  message_key_deal.o(.text .rodata .xdata)
- .text          0x00000000484e5800      0x598 ./../../lib/message_key_deal.o
+ .text          0x00000000484e5800      0x594 ./../../lib/message_key_deal.o
                 0x00000000484e5801                com_phy_key_phy2log
-                0x00000000484e5c95                com_filter_keymsg_in_queue
-                0x00000000484e5911                com_phy_key_fsm
+                0x00000000484e5c91                com_filter_keymsg_in_queue
+                0x00000000484e590d                com_phy_key_fsm
                 0x00000000484e5871                com_need_cont_dck_deal
                 0x00000000484e58e1                com_flush_rtc_reg
- .rodata        0x00000000484e5d98       0xa8 ./../../lib/message_key_deal.o
-                0x00000000484e5dec                IrcKeyValueTab
-                0x00000000484e5d98                IrcKeyMsgTab
+ .rodata        0x00000000484e5d94       0xa8 ./../../lib/message_key_deal.o
+                0x00000000484e5de8                IrcKeyValueTab
+                0x00000000484e5d94                IrcKeyMsgTab
  common_key_hook.o(.text .rodata .xdata)
- .text          0x00000000484e5e40      0x19c ./../../lib/common_key_hook.o
-                0x00000000484e5fc9                com_filter_key_itself
-                0x00000000484e5e41                com_gui_msg_hook
-                0x00000000484e5fb5                com_filter_key_up
-                0x00000000484e5fa1                com_filter_key_hold
+ .text          0x00000000484e5e3c      0x19c ./../../lib/common_key_hook.o
+                0x00000000484e5fc5                com_filter_key_itself
+                0x00000000484e5e3d                com_gui_msg_hook
+                0x00000000484e5fb1                com_filter_key_up
+                0x00000000484e5f9d                com_filter_key_hold
                 0x0000000000000800                . = BANK_UI_SIZE
- *fill*         0x00000000484e5fdc       0x24 00
+ *fill*         0x00000000484e5fd8       0x28 00
                 0x0000000048525800                . = (((. + AP_BANK_SPACE) & ~ ((AP_BANK_SPACE - 0x1))) + OFFSET)
 
 BANK_UI_1_20    0x0000000048525800      0x800
@@ -1487,33 +1487,31 @@ BANK_UI_1_29    0x0000000048765800      0x600
                 0x00000000487658a0       0x28 ./../../lib/common_key_deal.o
                 0x00000000487658a0                com_ke_maplist
  common_key_deal.o(.text .rodata .xdata)
- .text          0x00000000487658c8      0x370 ./../../lib/common_key_deal.o
-                0x0000000048765ba5                com_key_deal_FT_test
+ .text          0x00000000487658c8      0x320 ./../../lib/common_key_deal.o
                 0x0000000048765b29                com_key_deal_force_unlink_10s
-                0x0000000048765c15                com_hid_send_key
+                0x0000000048765bc5                com_hid_send_key
                 0x0000000048765951                com_key_deal_volume_add
                 0x0000000048765a29                com_key_deal_switch_tts_language
                 0x0000000048765931                com_key_deal_switch_mute
-                0x0000000048765be1                com_key_deal_siri
+                0x0000000048765b91                com_key_deal_siri
                 0x0000000048765999                com_key_deal_enter_clock
                 0x00000000487658c9                com_key_deal_switch_app
-                0x0000000048765c19                com_hid_disconnect
-                0x0000000048765b89                com_key_deal_BQB_test
+                0x0000000048765bc9                com_hid_disconnect
                 0x0000000048765975                com_key_deal_volume_sub
-                0x0000000048765c1d                com_key_deal_force_ble_unlink
-                0x0000000048765b6d                com_key_deal_call_last
+                0x0000000048765bcd                com_key_deal_force_ble_unlink
+                0x0000000048765b75                com_key_deal_call_last
                 0x0000000048765a65                com_key_deal_force_unlink
                 0x000000004876599d                com_key_deal_shutoff
  common_view_key_event.o(.text .rodata .xdata)
- .text          0x0000000048765c38      0x150 ./../../lib/common_view_key_event.o
-                0x0000000048765d11                com_view_key_check_dck
-                0x0000000048765c51                com_view_key_event
+ .text          0x0000000048765be8      0x150 ./../../lib/common_view_key_event.o
+                0x0000000048765cc1                com_view_key_check_dck
+                0x0000000048765c01                com_view_key_event
  common_view_loop.o(.text.com_view_loop_key)
  .text.com_view_loop_key
-                0x0000000048765d88       0x74 ./../../lib/common_view_loop.o
-                0x0000000048765d89                com_view_loop_key
+                0x0000000048765d38       0x74 ./../../lib/common_view_loop.o
+                0x0000000048765d39                com_view_loop_key
                 0x0000000048765e00                . = 0x600
- *fill*         0x0000000048765dfc        0x4 00
+ *fill*         0x0000000048765dac       0x54 00
                 0x00000000487a5800                . = (((. + AP_BANK_SPACE) & ~ ((AP_BANK_SPACE - 0x1))) + OFFSET)
 
 BANK_UI_1_30    0x00000000487a5800      0x800
@@ -1893,7 +1891,7 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
 .reginfo        0x0000000000000000       0x18
  .reginfo       0x0000000000000000       0x18 ./../../../psp_rel/lib/sys_op_entry.o
 
-.pdr            0x0000000000000000     0x4000
+.pdr            0x0000000000000000     0x3fc0
  .pdr           0x0000000000000000       0x20 ./../../../psp_rel/lib/sys_op_entry.o
  .pdr           0x0000000000000020       0x20 ./../../../psp_rel/lib/libc_op_entry.o
  .pdr           0x0000000000000040       0x20 ./../../../psp_rel/lib/audio_device_op_entry.o
@@ -1960,37 +1958,37 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .pdr           0x0000000000002280       0x80 ./../../lib/common_key_hook.o
  .pdr           0x0000000000002300      0x260 ./../../lib/common_aset_new_func.o
  .pdr           0x0000000000002560      0x140 ./../../lib/common_aset_sub_code.o
- .pdr           0x00000000000026a0      0x240 ./../../lib/common_key_deal.o
- .pdr           0x00000000000028e0       0xc0 ./../../lib/common_speaker_control.o
- .pdr           0x00000000000029a0       0x80 ./../../lib/common_standby.o
- .pdr           0x0000000000002a20       0xc0 ./../../lib/bt_common_manager_misc.o
- .pdr           0x0000000000002ae0       0xe0 ./../../lib/time_alarm_clock.o
- .pdr           0x0000000000002bc0       0xa0 ./../../lib/time_alarm_rcp_deal.o
- .pdr           0x0000000000002c60       0xe0 ./../../lib/time_alarm_rcp_deal_ring.o
- .pdr           0x0000000000002d40      0x120 ./../../lib/time_alarm_set_calendar.o
- .pdr           0x0000000000002e60       0xc0 ./../../lib/time_alarm_set_calendar_sub.o
- .pdr           0x0000000000002f20      0x120 ./../../lib/time_alarm_set_alarm.o
- .pdr           0x0000000000003040       0x60 ./../../lib/time_alarm_set_alarm_sub.o
- .pdr           0x00000000000030a0       0x20 ./../../lib/time_alarm_alarm_ring.o
- .pdr           0x00000000000030c0       0x60 ./../../lib/time_alarm_alarm_record.o
- .pdr           0x0000000000003120       0x60 ./../../lib/common_view_key_event.o
- .pdr           0x0000000000003180      0x440 ./../../lib/common_sys_deal.o
- .pdr           0x00000000000035c0       0x20 ./../../lib/common_view_sys_event.o
- .pdr           0x00000000000035e0       0xe0 ./../../lib/bt_common_avrcp.o
- .pdr           0x00000000000036c0      0x100 ./../../lib/bt_common_hfp.o
- .pdr           0x00000000000037c0      0x100 ./../../lib/bt_common_gen_addr.o
- .pdr           0x00000000000038c0      0x160 ./../../lib/app_timer_bank.o
- .pdr           0x0000000000003a20       0x40 ./../../lib/sys_timer.o
- .pdr           0x0000000000003a60       0x20 ./../../lib/app_timer_bank_single.o
- .pdr           0x0000000000003a80       0x60 ./../../lib/common_stub_switch.o
- .pdr           0x0000000000003ae0       0xc0 ./../../lib/common_seteq.o
- .pdr           0x0000000000003ba0       0xc0 ./../../lib/common_setdae_init.o
- .pdr           0x0000000000003c60       0xc0 ./../../lib/Ota_rcp_s_cmd_deal.o
- .pdr           0x0000000000003d20       0xc0 ./../../lib/Ota_rcp_q_cmd_deal.o
- .pdr           0x0000000000003de0       0x60 ./../../lib/Ota_rcp_reboot_cmd.o
- .pdr           0x0000000000003e40       0xe0 ./../../lib/common_volume.o
- .pdr           0x0000000000003f20       0x80 ./../../lib/pair_headphone_led.o
- .pdr           0x0000000000003fa0       0x60 ./../../lib/common_power_config.o
+ .pdr           0x00000000000026a0      0x200 ./../../lib/common_key_deal.o
+ .pdr           0x00000000000028a0       0xc0 ./../../lib/common_speaker_control.o
+ .pdr           0x0000000000002960       0x80 ./../../lib/common_standby.o
+ .pdr           0x00000000000029e0       0xc0 ./../../lib/bt_common_manager_misc.o
+ .pdr           0x0000000000002aa0       0xe0 ./../../lib/time_alarm_clock.o
+ .pdr           0x0000000000002b80       0xa0 ./../../lib/time_alarm_rcp_deal.o
+ .pdr           0x0000000000002c20       0xe0 ./../../lib/time_alarm_rcp_deal_ring.o
+ .pdr           0x0000000000002d00      0x120 ./../../lib/time_alarm_set_calendar.o
+ .pdr           0x0000000000002e20       0xc0 ./../../lib/time_alarm_set_calendar_sub.o
+ .pdr           0x0000000000002ee0      0x120 ./../../lib/time_alarm_set_alarm.o
+ .pdr           0x0000000000003000       0x60 ./../../lib/time_alarm_set_alarm_sub.o
+ .pdr           0x0000000000003060       0x20 ./../../lib/time_alarm_alarm_ring.o
+ .pdr           0x0000000000003080       0x60 ./../../lib/time_alarm_alarm_record.o
+ .pdr           0x00000000000030e0       0x60 ./../../lib/common_view_key_event.o
+ .pdr           0x0000000000003140      0x440 ./../../lib/common_sys_deal.o
+ .pdr           0x0000000000003580       0x20 ./../../lib/common_view_sys_event.o
+ .pdr           0x00000000000035a0       0xe0 ./../../lib/bt_common_avrcp.o
+ .pdr           0x0000000000003680      0x100 ./../../lib/bt_common_hfp.o
+ .pdr           0x0000000000003780      0x100 ./../../lib/bt_common_gen_addr.o
+ .pdr           0x0000000000003880      0x160 ./../../lib/app_timer_bank.o
+ .pdr           0x00000000000039e0       0x40 ./../../lib/sys_timer.o
+ .pdr           0x0000000000003a20       0x20 ./../../lib/app_timer_bank_single.o
+ .pdr           0x0000000000003a40       0x60 ./../../lib/common_stub_switch.o
+ .pdr           0x0000000000003aa0       0xc0 ./../../lib/common_seteq.o
+ .pdr           0x0000000000003b60       0xc0 ./../../lib/common_setdae_init.o
+ .pdr           0x0000000000003c20       0xc0 ./../../lib/Ota_rcp_s_cmd_deal.o
+ .pdr           0x0000000000003ce0       0xc0 ./../../lib/Ota_rcp_q_cmd_deal.o
+ .pdr           0x0000000000003da0       0x60 ./../../lib/Ota_rcp_reboot_cmd.o
+ .pdr           0x0000000000003e00       0xe0 ./../../lib/common_volume.o
+ .pdr           0x0000000000003ee0       0x80 ./../../lib/pair_headphone_led.o
+ .pdr           0x0000000000003f60       0x60 ./../../lib/common_power_config.o
 
 .mdebug.abi32   0x0000000000000000        0x0
 
@@ -2089,102 +2087,102 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .debug_abbrev  0x00000000000099a1      0x161 ./../../lib/pair_headphone_led.o
  .debug_abbrev  0x0000000000009b02      0x141 ./../../lib/common_power_config.o
 
-.debug_info     0x0000000000000000    0x5fbf3
+.debug_info     0x0000000000000000    0x5fb72
  .debug_info    0x0000000000000000      0x571 ./../../lib/app_timer_rcode.o
  .debug_info    0x0000000000000571      0xe4c ./../../lib/message_rcode.o
  .debug_info    0x00000000000013bd      0x7e8 ./../../lib/message_key_rcode.o
  .debug_info    0x0000000000001ba5     0x2357 ./../../lib/common_view_loop.o
  .debug_info    0x0000000000003efc     0x13d5 ./../../lib/common_view_manager.o
- .debug_info    0x00000000000052d1     0x182b ./obj/btcall_message_loop.o
- .debug_info    0x0000000000006afc     0x3e0f ./obj/btcall_message_handle.o
- .debug_info    0x000000000000a90b      0x979 ./../../lib/applib_app_data.o
- .debug_info    0x000000000000b284     0x23ae ./../../lib/common_func_data.o
- .debug_info    0x000000000000d632     0x2ab2 ./obj/btcall_main.o
- .debug_info    0x00000000000100e4      0xa85 ./obj/btcall_pb_tts_deal.o
- .debug_info    0x0000000000010b69      0xdf3 ./obj/btcall_tts_play.o
- .debug_info    0x000000000001195c     0x34a7 ./obj/btcall_display.o
- .debug_info    0x0000000000014e03      0xa3a ./obj/btcall_pb_charcode_deal.o
- .debug_info    0x000000000001583d      0x88e ./obj/btcall_msg_send.o
- .debug_info    0x00000000000160cb      0x800 ./obj/ap_btcall_AP_mode.o
- .debug_info    0x00000000000168cb     0x257f ./../../lib/bt_common_manager_deal.o
- .debug_info    0x0000000000018e4a      0xfa0 ./../../lib/common_rcp_dispatch.o
- .debug_info    0x0000000000019dea     0x15de ./../../lib/common_aset_main_deal.o
- .debug_info    0x000000000001b3c8     0x118b ./../../lib/common_rcp_dispatch_block.o
- .debug_info    0x000000000001c553     0x112d ./../../lib/common_rcp_dispatch_misc.o
- .debug_info    0x000000000001d680     0x1c95 ./../../lib/common_rcp_func.o
- .debug_info    0x000000000001f315      0xcd1 ./../../lib/bt_common_sppble.o
- .debug_info    0x000000000001ffe6      0x70c ./../../lib/message_bank_send_btmanager.o
- .debug_info    0x00000000000206f2     0x192d ./../../lib/common_setdae.o
- .debug_info    0x000000000002201f      0x72e ./../../lib/common_discrete_led.o
- .debug_info    0x000000000002274d      0x518 ./../../lib/applib_globe_data.o
- .debug_info    0x0000000000022c65     0x1009 ./../../lib/applib_globe_data_com.o
- .debug_info    0x0000000000023c6e      0xa36 ./../../lib/message_key_deal.o
- .debug_info    0x00000000000246a4     0x1b17 ./../../lib/common_tts.o
- .debug_info    0x00000000000261bb     0x1560 ./../../lib/common_keytone_play.o
- .debug_info    0x000000000002771b     0x23b4 ./../../lib/bt_common_manager.o
- .debug_info    0x0000000000029acf      0x7e7 ./../../lib/common_rcp_servs.o
- .debug_info    0x000000000002a2b6     0x1115 ./../../lib/common_charge.o
- .debug_info    0x000000000002b3cb     0x18c0 ./../../lib/sys_counter.o
- .debug_info    0x000000000002cc8b     0x124b ./../../lib/bt_common_autoconnect.o
- .debug_info    0x000000000002ded6     0x163c ./../../lib/bt_common_event_dispatch.o
- .debug_info    0x000000000002f512      0x5e7 ./../../lib/common_rcp_send.o
- .debug_info    0x000000000002faf9      0x4ec ./../../lib/app_engine_config.o
- .debug_info    0x000000000002ffe5      0x5fb ./../../lib/app_manager_bank.o
- .debug_info    0x00000000000305e0      0x847 ./../../lib/message_bank_init.o
- .debug_info    0x0000000000030e27      0x75f ./../../lib/message_bank_send.o
- .debug_info    0x0000000000031586      0x711 ./../../lib/message_bank_send_async.o
- .debug_info    0x0000000000031c97      0x522 ./../../lib/message_bank_broadcast.o
- .debug_info    0x00000000000321b9      0x86d ./../../lib/app_sleep.o
- .debug_info    0x0000000000032a26     0x1d54 ./../../lib/common_setvolume.o
- .debug_info    0x000000000003477a     0x14d7 ./../../lib/common_sys_hook.o
- .debug_info    0x0000000000035c51      0x54c ./../../lib/common_speaker_out_switch.o
- .debug_info    0x000000000003619d      0x46d ./../../lib/common_sound.o
- .debug_info    0x000000000003660a     0x1640 ./../../lib/common_phy_volume_deal.o
- .debug_info    0x0000000000037c4a      0x494 ./../../lib/common_phy_volume_table.o
- .debug_info    0x00000000000380de     0x1360 ./../../lib/common_tts_thread.o
- .debug_info    0x000000000003943e     0x11d6 ./../../lib/common_ap_switch.o
- .debug_info    0x000000000003a614      0xf9a ./../../lib/setting_comval.o
- .debug_info    0x000000000003b5ae      0x5a9 ./../../lib/common_config.o
- .debug_info    0x000000000003bb57      0xa0c ./../../lib/common_rcp_dialog.o
- .debug_info    0x000000000003c563      0x587 ./../../lib/common_share_data.o
- .debug_info    0x000000000003caea      0x48c ./../../lib/common_math_exp_fixed.o
- .debug_info    0x000000000003cf76      0x8f4 ./../../lib/common_key_hook.o
- .debug_info    0x000000000003d86a     0x25bf ./../../lib/common_aset_new_func.o
- .debug_info    0x000000000003fe29     0x11d3 ./../../lib/common_aset_sub_code.o
- .debug_info    0x0000000000040ffc      0x41c ./../../lib/common_keytone_file.o
- .debug_info    0x0000000000041418     0x1eeb ./../../lib/common_key_deal.o
- .debug_info    0x0000000000043303      0x472 ./../../lib/common_speaker_control.o
- .debug_info    0x0000000000043775      0xda4 ./../../lib/common_standby.o
- .debug_info    0x0000000000044519      0xe54 ./../../lib/bt_common_manager_misc.o
- .debug_info    0x000000000004536d     0x12ed ./../../lib/time_alarm_clock.o
- .debug_info    0x000000000004665a     0x153c ./../../lib/time_alarm_rcp_deal.o
- .debug_info    0x0000000000047b96      0x98d ./../../lib/time_alarm_rcp_deal_ring.o
- .debug_info    0x0000000000048523     0x1454 ./../../lib/time_alarm_set_calendar.o
- .debug_info    0x0000000000049977      0x9e2 ./../../lib/time_alarm_set_calendar_sub.o
- .debug_info    0x000000000004a359     0x1685 ./../../lib/time_alarm_set_alarm.o
- .debug_info    0x000000000004b9de      0x991 ./../../lib/time_alarm_set_alarm_sub.o
- .debug_info    0x000000000004c36f     0x1590 ./../../lib/time_alarm_alarm_ring.o
- .debug_info    0x000000000004d8ff     0x1426 ./../../lib/time_alarm_alarm_record.o
- .debug_info    0x000000000004ed25     0x13b7 ./../../lib/common_view_key_event.o
- .debug_info    0x00000000000500dc     0x297a ./../../lib/common_sys_deal.o
- .debug_info    0x0000000000052a56      0xf14 ./../../lib/common_view_sys_event.o
- .debug_info    0x000000000005396a     0x1052 ./../../lib/bt_common_avrcp.o
- .debug_info    0x00000000000549bc      0xfb0 ./../../lib/bt_common_hfp.o
- .debug_info    0x000000000005596c      0x735 ./../../lib/bt_common_gen_addr.o
- .debug_info    0x00000000000560a1      0xa1d ./../../lib/app_timer_bank.o
- .debug_info    0x0000000000056abe      0x442 ./../../lib/sys_timer.o
- .debug_info    0x0000000000056f00      0x5d2 ./../../lib/app_timer_bank_single.o
- .debug_info    0x00000000000574d2      0xdb6 ./../../lib/common_stub_switch.o
- .debug_info    0x0000000000058288     0x1e11 ./../../lib/common_seteq.o
- .debug_info    0x000000000005a099     0x1604 ./../../lib/common_setdae_init.o
- .debug_info    0x000000000005b69d      0xd31 ./../../lib/Ota_rcp_s_cmd_deal.o
- .debug_info    0x000000000005c3ce      0xd5b ./../../lib/Ota_rcp_q_cmd_deal.o
- .debug_info    0x000000000005d129      0x9de ./../../lib/Ota_rcp_reboot_cmd.o
- .debug_info    0x000000000005db07     0x14cf ./../../lib/common_volume.o
- .debug_info    0x000000000005efd6      0x8be ./../../lib/pair_headphone_led.o
- .debug_info    0x000000000005f894      0x35f ./../../lib/common_power_config.o
+ .debug_info    0x00000000000052d1     0x1834 ./obj/btcall_message_loop.o
+ .debug_info    0x0000000000006b05     0x3e18 ./obj/btcall_message_handle.o
+ .debug_info    0x000000000000a91d      0x979 ./../../lib/applib_app_data.o
+ .debug_info    0x000000000000b296     0x23ae ./../../lib/common_func_data.o
+ .debug_info    0x000000000000d644     0x2abb ./obj/btcall_main.o
+ .debug_info    0x00000000000100ff      0xa8e ./obj/btcall_pb_tts_deal.o
+ .debug_info    0x0000000000010b8d      0xdfc ./obj/btcall_tts_play.o
+ .debug_info    0x0000000000011989     0x34b0 ./obj/btcall_display.o
+ .debug_info    0x0000000000014e39      0xa43 ./obj/btcall_pb_charcode_deal.o
+ .debug_info    0x000000000001587c      0x897 ./obj/btcall_msg_send.o
+ .debug_info    0x0000000000016113      0x809 ./obj/ap_btcall_AP_mode.o
+ .debug_info    0x000000000001691c     0x257f ./../../lib/bt_common_manager_deal.o
+ .debug_info    0x0000000000018e9b      0xfa0 ./../../lib/common_rcp_dispatch.o
+ .debug_info    0x0000000000019e3b     0x15de ./../../lib/common_aset_main_deal.o
+ .debug_info    0x000000000001b419     0x118b ./../../lib/common_rcp_dispatch_block.o
+ .debug_info    0x000000000001c5a4     0x112d ./../../lib/common_rcp_dispatch_misc.o
+ .debug_info    0x000000000001d6d1     0x1c95 ./../../lib/common_rcp_func.o
+ .debug_info    0x000000000001f366      0xcd1 ./../../lib/bt_common_sppble.o
+ .debug_info    0x0000000000020037      0x70c ./../../lib/message_bank_send_btmanager.o
+ .debug_info    0x0000000000020743     0x192d ./../../lib/common_setdae.o
+ .debug_info    0x0000000000022070      0x72e ./../../lib/common_discrete_led.o
+ .debug_info    0x000000000002279e      0x518 ./../../lib/applib_globe_data.o
+ .debug_info    0x0000000000022cb6     0x1009 ./../../lib/applib_globe_data_com.o
+ .debug_info    0x0000000000023cbf      0xa36 ./../../lib/message_key_deal.o
+ .debug_info    0x00000000000246f5     0x1b17 ./../../lib/common_tts.o
+ .debug_info    0x000000000002620c     0x1560 ./../../lib/common_keytone_play.o
+ .debug_info    0x000000000002776c     0x23b4 ./../../lib/bt_common_manager.o
+ .debug_info    0x0000000000029b20      0x7e7 ./../../lib/common_rcp_servs.o
+ .debug_info    0x000000000002a307     0x1115 ./../../lib/common_charge.o
+ .debug_info    0x000000000002b41c     0x18c0 ./../../lib/sys_counter.o
+ .debug_info    0x000000000002ccdc     0x124b ./../../lib/bt_common_autoconnect.o
+ .debug_info    0x000000000002df27     0x163c ./../../lib/bt_common_event_dispatch.o
+ .debug_info    0x000000000002f563      0x5e7 ./../../lib/common_rcp_send.o
+ .debug_info    0x000000000002fb4a      0x4ec ./../../lib/app_engine_config.o
+ .debug_info    0x0000000000030036      0x5fb ./../../lib/app_manager_bank.o
+ .debug_info    0x0000000000030631      0x847 ./../../lib/message_bank_init.o
+ .debug_info    0x0000000000030e78      0x75f ./../../lib/message_bank_send.o
+ .debug_info    0x00000000000315d7      0x711 ./../../lib/message_bank_send_async.o
+ .debug_info    0x0000000000031ce8      0x522 ./../../lib/message_bank_broadcast.o
+ .debug_info    0x000000000003220a      0x86d ./../../lib/app_sleep.o
+ .debug_info    0x0000000000032a77     0x1d54 ./../../lib/common_setvolume.o
+ .debug_info    0x00000000000347cb     0x14d7 ./../../lib/common_sys_hook.o
+ .debug_info    0x0000000000035ca2      0x54c ./../../lib/common_speaker_out_switch.o
+ .debug_info    0x00000000000361ee      0x46d ./../../lib/common_sound.o
+ .debug_info    0x000000000003665b     0x1640 ./../../lib/common_phy_volume_deal.o
+ .debug_info    0x0000000000037c9b      0x494 ./../../lib/common_phy_volume_table.o
+ .debug_info    0x000000000003812f     0x1360 ./../../lib/common_tts_thread.o
+ .debug_info    0x000000000003948f     0x11d6 ./../../lib/common_ap_switch.o
+ .debug_info    0x000000000003a665      0xf9a ./../../lib/setting_comval.o
+ .debug_info    0x000000000003b5ff      0x5a9 ./../../lib/common_config.o
+ .debug_info    0x000000000003bba8      0xa0c ./../../lib/common_rcp_dialog.o
+ .debug_info    0x000000000003c5b4      0x587 ./../../lib/common_share_data.o
+ .debug_info    0x000000000003cb3b      0x48c ./../../lib/common_math_exp_fixed.o
+ .debug_info    0x000000000003cfc7      0x8f4 ./../../lib/common_key_hook.o
+ .debug_info    0x000000000003d8bb     0x25bf ./../../lib/common_aset_new_func.o
+ .debug_info    0x000000000003fe7a     0x11d3 ./../../lib/common_aset_sub_code.o
+ .debug_info    0x000000000004104d      0x41c ./../../lib/common_keytone_file.o
+ .debug_info    0x0000000000041469     0x1e19 ./../../lib/common_key_deal.o
+ .debug_info    0x0000000000043282      0x472 ./../../lib/common_speaker_control.o
+ .debug_info    0x00000000000436f4      0xda4 ./../../lib/common_standby.o
+ .debug_info    0x0000000000044498      0xe54 ./../../lib/bt_common_manager_misc.o
+ .debug_info    0x00000000000452ec     0x12ed ./../../lib/time_alarm_clock.o
+ .debug_info    0x00000000000465d9     0x153c ./../../lib/time_alarm_rcp_deal.o
+ .debug_info    0x0000000000047b15      0x98d ./../../lib/time_alarm_rcp_deal_ring.o
+ .debug_info    0x00000000000484a2     0x1454 ./../../lib/time_alarm_set_calendar.o
+ .debug_info    0x00000000000498f6      0x9e2 ./../../lib/time_alarm_set_calendar_sub.o
+ .debug_info    0x000000000004a2d8     0x1685 ./../../lib/time_alarm_set_alarm.o
+ .debug_info    0x000000000004b95d      0x991 ./../../lib/time_alarm_set_alarm_sub.o
+ .debug_info    0x000000000004c2ee     0x1590 ./../../lib/time_alarm_alarm_ring.o
+ .debug_info    0x000000000004d87e     0x1426 ./../../lib/time_alarm_alarm_record.o
+ .debug_info    0x000000000004eca4     0x13b7 ./../../lib/common_view_key_event.o
+ .debug_info    0x000000000005005b     0x297a ./../../lib/common_sys_deal.o
+ .debug_info    0x00000000000529d5      0xf14 ./../../lib/common_view_sys_event.o
+ .debug_info    0x00000000000538e9     0x1052 ./../../lib/bt_common_avrcp.o
+ .debug_info    0x000000000005493b      0xfb0 ./../../lib/bt_common_hfp.o
+ .debug_info    0x00000000000558eb      0x735 ./../../lib/bt_common_gen_addr.o
+ .debug_info    0x0000000000056020      0xa1d ./../../lib/app_timer_bank.o
+ .debug_info    0x0000000000056a3d      0x442 ./../../lib/sys_timer.o
+ .debug_info    0x0000000000056e7f      0x5d2 ./../../lib/app_timer_bank_single.o
+ .debug_info    0x0000000000057451      0xdb6 ./../../lib/common_stub_switch.o
+ .debug_info    0x0000000000058207     0x1e11 ./../../lib/common_seteq.o
+ .debug_info    0x000000000005a018     0x1604 ./../../lib/common_setdae_init.o
+ .debug_info    0x000000000005b61c      0xd31 ./../../lib/Ota_rcp_s_cmd_deal.o
+ .debug_info    0x000000000005c34d      0xd5b ./../../lib/Ota_rcp_q_cmd_deal.o
+ .debug_info    0x000000000005d0a8      0x9de ./../../lib/Ota_rcp_reboot_cmd.o
+ .debug_info    0x000000000005da86     0x14cf ./../../lib/common_volume.o
+ .debug_info    0x000000000005ef55      0x8be ./../../lib/pair_headphone_led.o
+ .debug_info    0x000000000005f813      0x35f ./../../lib/common_power_config.o
 
-.debug_line     0x0000000000000000     0x93dd
+.debug_line     0x0000000000000000     0x93d2
  .debug_line    0x0000000000000000       0xfa ./../../lib/app_timer_rcode.o
  .debug_line    0x00000000000000fa       0xf8 ./../../lib/message_rcode.o
  .debug_line    0x00000000000001f2       0xf7 ./../../lib/message_key_rcode.o
@@ -2247,39 +2245,39 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .debug_line    0x0000000000005bbc      0x3da ./../../lib/common_aset_new_func.o
  .debug_line    0x0000000000005f96      0x1a8 ./../../lib/common_aset_sub_code.o
  .debug_line    0x000000000000613e       0xbb ./../../lib/common_keytone_file.o
- .debug_line    0x00000000000061f9      0x20c ./../../lib/common_key_deal.o
- .debug_line    0x0000000000006405      0x155 ./../../lib/common_speaker_control.o
- .debug_line    0x000000000000655a      0x1f6 ./../../lib/common_standby.o
- .debug_line    0x0000000000006750      0x165 ./../../lib/bt_common_manager_misc.o
- .debug_line    0x00000000000068b5      0x15b ./../../lib/time_alarm_clock.o
- .debug_line    0x0000000000006a10      0x177 ./../../lib/time_alarm_rcp_deal.o
- .debug_line    0x0000000000006b87      0x176 ./../../lib/time_alarm_rcp_deal_ring.o
- .debug_line    0x0000000000006cfd      0x1b9 ./../../lib/time_alarm_set_calendar.o
- .debug_line    0x0000000000006eb6      0x1a9 ./../../lib/time_alarm_set_calendar_sub.o
- .debug_line    0x000000000000705f      0x1cb ./../../lib/time_alarm_set_alarm.o
- .debug_line    0x000000000000722a      0x14c ./../../lib/time_alarm_set_alarm_sub.o
- .debug_line    0x0000000000007376      0x186 ./../../lib/time_alarm_alarm_ring.o
- .debug_line    0x00000000000074fc      0x1fb ./../../lib/time_alarm_alarm_record.o
- .debug_line    0x00000000000076f7      0x151 ./../../lib/common_view_key_event.o
- .debug_line    0x0000000000007848      0x34c ./../../lib/common_sys_deal.o
- .debug_line    0x0000000000007b94      0x10d ./../../lib/common_view_sys_event.o
- .debug_line    0x0000000000007ca1      0x182 ./../../lib/bt_common_avrcp.o
- .debug_line    0x0000000000007e23      0x193 ./../../lib/bt_common_hfp.o
- .debug_line    0x0000000000007fb6      0x15f ./../../lib/bt_common_gen_addr.o
- .debug_line    0x0000000000008115      0x1d6 ./../../lib/app_timer_bank.o
- .debug_line    0x00000000000082eb       0xe3 ./../../lib/sys_timer.o
- .debug_line    0x00000000000083ce       0xfb ./../../lib/app_timer_bank_single.o
- .debug_line    0x00000000000084c9      0x1e9 ./../../lib/common_stub_switch.o
- .debug_line    0x00000000000086b2      0x183 ./../../lib/common_seteq.o
- .debug_line    0x0000000000008835      0x26d ./../../lib/common_setdae_init.o
- .debug_line    0x0000000000008aa2      0x211 ./../../lib/Ota_rcp_s_cmd_deal.o
- .debug_line    0x0000000000008cb3      0x158 ./../../lib/Ota_rcp_q_cmd_deal.o
- .debug_line    0x0000000000008e0b      0x124 ./../../lib/Ota_rcp_reboot_cmd.o
- .debug_line    0x0000000000008f2f      0x197 ./../../lib/common_volume.o
- .debug_line    0x00000000000090c6      0x18a ./../../lib/pair_headphone_led.o
- .debug_line    0x0000000000009250      0x18d ./../../lib/common_power_config.o
+ .debug_line    0x00000000000061f9      0x201 ./../../lib/common_key_deal.o
+ .debug_line    0x00000000000063fa      0x155 ./../../lib/common_speaker_control.o
+ .debug_line    0x000000000000654f      0x1f6 ./../../lib/common_standby.o
+ .debug_line    0x0000000000006745      0x165 ./../../lib/bt_common_manager_misc.o
+ .debug_line    0x00000000000068aa      0x15b ./../../lib/time_alarm_clock.o
+ .debug_line    0x0000000000006a05      0x177 ./../../lib/time_alarm_rcp_deal.o
+ .debug_line    0x0000000000006b7c      0x176 ./../../lib/time_alarm_rcp_deal_ring.o
+ .debug_line    0x0000000000006cf2      0x1b9 ./../../lib/time_alarm_set_calendar.o
+ .debug_line    0x0000000000006eab      0x1a9 ./../../lib/time_alarm_set_calendar_sub.o
+ .debug_line    0x0000000000007054      0x1cb ./../../lib/time_alarm_set_alarm.o
+ .debug_line    0x000000000000721f      0x14c ./../../lib/time_alarm_set_alarm_sub.o
+ .debug_line    0x000000000000736b      0x186 ./../../lib/time_alarm_alarm_ring.o
+ .debug_line    0x00000000000074f1      0x1fb ./../../lib/time_alarm_alarm_record.o
+ .debug_line    0x00000000000076ec      0x151 ./../../lib/common_view_key_event.o
+ .debug_line    0x000000000000783d      0x34c ./../../lib/common_sys_deal.o
+ .debug_line    0x0000000000007b89      0x10d ./../../lib/common_view_sys_event.o
+ .debug_line    0x0000000000007c96      0x182 ./../../lib/bt_common_avrcp.o
+ .debug_line    0x0000000000007e18      0x193 ./../../lib/bt_common_hfp.o
+ .debug_line    0x0000000000007fab      0x15f ./../../lib/bt_common_gen_addr.o
+ .debug_line    0x000000000000810a      0x1d6 ./../../lib/app_timer_bank.o
+ .debug_line    0x00000000000082e0       0xe3 ./../../lib/sys_timer.o
+ .debug_line    0x00000000000083c3       0xfb ./../../lib/app_timer_bank_single.o
+ .debug_line    0x00000000000084be      0x1e9 ./../../lib/common_stub_switch.o
+ .debug_line    0x00000000000086a7      0x183 ./../../lib/common_seteq.o
+ .debug_line    0x000000000000882a      0x26d ./../../lib/common_setdae_init.o
+ .debug_line    0x0000000000008a97      0x211 ./../../lib/Ota_rcp_s_cmd_deal.o
+ .debug_line    0x0000000000008ca8      0x158 ./../../lib/Ota_rcp_q_cmd_deal.o
+ .debug_line    0x0000000000008e00      0x124 ./../../lib/Ota_rcp_reboot_cmd.o
+ .debug_line    0x0000000000008f24      0x197 ./../../lib/common_volume.o
+ .debug_line    0x00000000000090bb      0x18a ./../../lib/pair_headphone_led.o
+ .debug_line    0x0000000000009245      0x18d ./../../lib/common_power_config.o
 
-.debug_frame    0x0000000000000000     0x3d78
+.debug_frame    0x0000000000000000     0x3d40
  .debug_frame   0x0000000000000000       0x34 ./../../lib/app_timer_rcode.o
  .debug_frame   0x0000000000000034       0x54 ./../../lib/message_rcode.o
  .debug_frame   0x0000000000000088       0x34 ./../../lib/message_key_rcode.o
@@ -2336,40 +2334,40 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .debug_frame   0x000000000000227c       0x64 ./../../lib/common_key_hook.o
  .debug_frame   0x00000000000022e0      0x28c ./../../lib/common_aset_new_func.o
  .debug_frame   0x000000000000256c      0x120 ./../../lib/common_aset_sub_code.o
- .debug_frame   0x000000000000268c      0x1e8 ./../../lib/common_key_deal.o
- .debug_frame   0x0000000000002874       0x9c ./../../lib/common_speaker_control.o
- .debug_frame   0x0000000000002910       0x64 ./../../lib/common_standby.o
- .debug_frame   0x0000000000002974       0x98 ./../../lib/bt_common_manager_misc.o
- .debug_frame   0x0000000000002a0c       0xcc ./../../lib/time_alarm_clock.o
- .debug_frame   0x0000000000002ad8       0xa0 ./../../lib/time_alarm_rcp_deal.o
- .debug_frame   0x0000000000002b78       0xc0 ./../../lib/time_alarm_rcp_deal_ring.o
- .debug_frame   0x0000000000002c38      0x110 ./../../lib/time_alarm_set_calendar.o
- .debug_frame   0x0000000000002d48       0xc8 ./../../lib/time_alarm_set_calendar_sub.o
- .debug_frame   0x0000000000002e10      0x110 ./../../lib/time_alarm_set_alarm.o
- .debug_frame   0x0000000000002f20       0x40 ./../../lib/time_alarm_set_alarm_sub.o
- .debug_frame   0x0000000000002f60       0x34 ./../../lib/time_alarm_alarm_ring.o
- .debug_frame   0x0000000000002f94       0x78 ./../../lib/time_alarm_alarm_record.o
- .debug_frame   0x000000000000300c       0x5c ./../../lib/common_view_key_event.o
- .debug_frame   0x0000000000003068      0x2e8 ./../../lib/common_sys_deal.o
- .debug_frame   0x0000000000003350       0x20 ./../../lib/common_view_sys_event.o
- .debug_frame   0x0000000000003370       0xcc ./../../lib/bt_common_avrcp.o
- .debug_frame   0x000000000000343c       0xfc ./../../lib/bt_common_hfp.o
- .debug_frame   0x0000000000003538      0x100 ./../../lib/bt_common_gen_addr.o
- .debug_frame   0x0000000000003638      0x12c ./../../lib/app_timer_bank.o
- .debug_frame   0x0000000000003764       0x54 ./../../lib/sys_timer.o
- .debug_frame   0x00000000000037b8       0x34 ./../../lib/app_timer_bank_single.o
- .debug_frame   0x00000000000037ec       0x78 ./../../lib/common_stub_switch.o
- .debug_frame   0x0000000000003864       0x9c ./../../lib/common_seteq.o
- .debug_frame   0x0000000000003900       0xe8 ./../../lib/common_setdae_init.o
- .debug_frame   0x00000000000039e8       0xac ./../../lib/Ota_rcp_s_cmd_deal.o
- .debug_frame   0x0000000000003a94       0xb8 ./../../lib/Ota_rcp_q_cmd_deal.o
- .debug_frame   0x0000000000003b4c       0x7c ./../../lib/Ota_rcp_reboot_cmd.o
- .debug_frame   0x0000000000003bc8       0xd4 ./../../lib/common_volume.o
- .debug_frame   0x0000000000003c9c       0x88 ./../../lib/pair_headphone_led.o
- .debug_frame   0x0000000000003d24       0x54 ./../../lib/common_power_config.o
+ .debug_frame   0x000000000000268c      0x1b0 ./../../lib/common_key_deal.o
+ .debug_frame   0x000000000000283c       0x9c ./../../lib/common_speaker_control.o
+ .debug_frame   0x00000000000028d8       0x64 ./../../lib/common_standby.o
+ .debug_frame   0x000000000000293c       0x98 ./../../lib/bt_common_manager_misc.o
+ .debug_frame   0x00000000000029d4       0xcc ./../../lib/time_alarm_clock.o
+ .debug_frame   0x0000000000002aa0       0xa0 ./../../lib/time_alarm_rcp_deal.o
+ .debug_frame   0x0000000000002b40       0xc0 ./../../lib/time_alarm_rcp_deal_ring.o
+ .debug_frame   0x0000000000002c00      0x110 ./../../lib/time_alarm_set_calendar.o
+ .debug_frame   0x0000000000002d10       0xc8 ./../../lib/time_alarm_set_calendar_sub.o
+ .debug_frame   0x0000000000002dd8      0x110 ./../../lib/time_alarm_set_alarm.o
+ .debug_frame   0x0000000000002ee8       0x40 ./../../lib/time_alarm_set_alarm_sub.o
+ .debug_frame   0x0000000000002f28       0x34 ./../../lib/time_alarm_alarm_ring.o
+ .debug_frame   0x0000000000002f5c       0x78 ./../../lib/time_alarm_alarm_record.o
+ .debug_frame   0x0000000000002fd4       0x5c ./../../lib/common_view_key_event.o
+ .debug_frame   0x0000000000003030      0x2e8 ./../../lib/common_sys_deal.o
+ .debug_frame   0x0000000000003318       0x20 ./../../lib/common_view_sys_event.o
+ .debug_frame   0x0000000000003338       0xcc ./../../lib/bt_common_avrcp.o
+ .debug_frame   0x0000000000003404       0xfc ./../../lib/bt_common_hfp.o
+ .debug_frame   0x0000000000003500      0x100 ./../../lib/bt_common_gen_addr.o
+ .debug_frame   0x0000000000003600      0x12c ./../../lib/app_timer_bank.o
+ .debug_frame   0x000000000000372c       0x54 ./../../lib/sys_timer.o
+ .debug_frame   0x0000000000003780       0x34 ./../../lib/app_timer_bank_single.o
+ .debug_frame   0x00000000000037b4       0x78 ./../../lib/common_stub_switch.o
+ .debug_frame   0x000000000000382c       0x9c ./../../lib/common_seteq.o
+ .debug_frame   0x00000000000038c8       0xe8 ./../../lib/common_setdae_init.o
+ .debug_frame   0x00000000000039b0       0xac ./../../lib/Ota_rcp_s_cmd_deal.o
+ .debug_frame   0x0000000000003a5c       0xb8 ./../../lib/Ota_rcp_q_cmd_deal.o
+ .debug_frame   0x0000000000003b14       0x7c ./../../lib/Ota_rcp_reboot_cmd.o
+ .debug_frame   0x0000000000003b90       0xd4 ./../../lib/common_volume.o
+ .debug_frame   0x0000000000003c64       0x88 ./../../lib/pair_headphone_led.o
+ .debug_frame   0x0000000000003cec       0x54 ./../../lib/common_power_config.o
 
 .debug_pubnames
-                0x0000000000000000     0x4480
+                0x0000000000000000     0x444d
  .debug_pubnames
                 0x0000000000000000       0x24 ./../../lib/app_timer_rcode.o
  .debug_pubnames
@@ -2495,67 +2493,67 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .debug_pubnames
                 0x0000000000002d0d       0x29 ./../../lib/common_keytone_file.o
  .debug_pubnames
-                0x0000000000002d36      0x251 ./../../lib/common_key_deal.o
+                0x0000000000002d36      0x21e ./../../lib/common_key_deal.o
  .debug_pubnames
-                0x0000000000002f87       0x92 ./../../lib/common_speaker_control.o
+                0x0000000000002f54       0x92 ./../../lib/common_speaker_control.o
  .debug_pubnames
-                0x0000000000003019       0x3b ./../../lib/common_standby.o
+                0x0000000000002fe6       0x3b ./../../lib/common_standby.o
  .debug_pubnames
-                0x0000000000003054       0xc9 ./../../lib/bt_common_manager_misc.o
+                0x0000000000003021       0xc9 ./../../lib/bt_common_manager_misc.o
  .debug_pubnames
-                0x000000000000311d       0xd2 ./../../lib/time_alarm_clock.o
+                0x00000000000030ea       0xd2 ./../../lib/time_alarm_clock.o
  .debug_pubnames
-                0x00000000000031ef       0xab ./../../lib/time_alarm_rcp_deal.o
+                0x00000000000031bc       0xab ./../../lib/time_alarm_rcp_deal.o
  .debug_pubnames
-                0x000000000000329a       0xd3 ./../../lib/time_alarm_rcp_deal_ring.o
+                0x0000000000003267       0xd3 ./../../lib/time_alarm_rcp_deal_ring.o
  .debug_pubnames
-                0x000000000000336d      0x11f ./../../lib/time_alarm_set_calendar.o
+                0x000000000000333a      0x11f ./../../lib/time_alarm_set_calendar.o
  .debug_pubnames
-                0x000000000000348c       0x83 ./../../lib/time_alarm_set_calendar_sub.o
+                0x0000000000003459       0x83 ./../../lib/time_alarm_set_calendar_sub.o
  .debug_pubnames
-                0x000000000000350f      0x104 ./../../lib/time_alarm_set_alarm.o
+                0x00000000000034dc      0x104 ./../../lib/time_alarm_set_alarm.o
  .debug_pubnames
-                0x0000000000003613       0x5a ./../../lib/time_alarm_set_alarm_sub.o
+                0x00000000000035e0       0x5a ./../../lib/time_alarm_set_alarm_sub.o
  .debug_pubnames
-                0x000000000000366d       0x2f ./../../lib/time_alarm_alarm_ring.o
+                0x000000000000363a       0x2f ./../../lib/time_alarm_alarm_ring.o
  .debug_pubnames
-                0x000000000000369c       0x66 ./../../lib/time_alarm_alarm_record.o
+                0x0000000000003669       0x66 ./../../lib/time_alarm_alarm_record.o
  .debug_pubnames
-                0x0000000000003702       0x44 ./../../lib/common_view_key_event.o
+                0x00000000000036cf       0x44 ./../../lib/common_view_key_event.o
  .debug_pubnames
-                0x0000000000003746      0x3fc ./../../lib/common_sys_deal.o
+                0x0000000000003713      0x3fc ./../../lib/common_sys_deal.o
  .debug_pubnames
-                0x0000000000003b42       0x29 ./../../lib/common_view_sys_event.o
+                0x0000000000003b0f       0x29 ./../../lib/common_view_sys_event.o
  .debug_pubnames
-                0x0000000000003b6b       0xee ./../../lib/bt_common_avrcp.o
+                0x0000000000003b38       0xee ./../../lib/bt_common_avrcp.o
  .debug_pubnames
-                0x0000000000003c59      0x158 ./../../lib/bt_common_hfp.o
+                0x0000000000003c26      0x158 ./../../lib/bt_common_hfp.o
  .debug_pubnames
-                0x0000000000003db1      0x102 ./../../lib/bt_common_gen_addr.o
+                0x0000000000003d7e      0x102 ./../../lib/bt_common_gen_addr.o
  .debug_pubnames
-                0x0000000000003eb3       0xfb ./../../lib/app_timer_bank.o
+                0x0000000000003e80       0xfb ./../../lib/app_timer_bank.o
  .debug_pubnames
-                0x0000000000003fae       0x38 ./../../lib/sys_timer.o
+                0x0000000000003f7b       0x38 ./../../lib/sys_timer.o
  .debug_pubnames
-                0x0000000000003fe6       0x3a ./../../lib/app_timer_bank_single.o
+                0x0000000000003fb3       0x3a ./../../lib/app_timer_bank_single.o
  .debug_pubnames
-                0x0000000000004020       0x57 ./../../lib/common_stub_switch.o
+                0x0000000000003fed       0x57 ./../../lib/common_stub_switch.o
  .debug_pubnames
-                0x0000000000004077       0x81 ./../../lib/common_seteq.o
+                0x0000000000004044       0x81 ./../../lib/common_seteq.o
  .debug_pubnames
-                0x00000000000040f8       0xaf ./../../lib/common_setdae_init.o
+                0x00000000000040c5       0xaf ./../../lib/common_setdae_init.o
  .debug_pubnames
-                0x00000000000041a7       0x90 ./../../lib/Ota_rcp_s_cmd_deal.o
+                0x0000000000004174       0x90 ./../../lib/Ota_rcp_s_cmd_deal.o
  .debug_pubnames
-                0x0000000000004237       0x8d ./../../lib/Ota_rcp_q_cmd_deal.o
+                0x0000000000004204       0x8d ./../../lib/Ota_rcp_q_cmd_deal.o
  .debug_pubnames
-                0x00000000000042c4       0x61 ./../../lib/Ota_rcp_reboot_cmd.o
+                0x0000000000004291       0x61 ./../../lib/Ota_rcp_reboot_cmd.o
  .debug_pubnames
-                0x0000000000004325       0xb7 ./../../lib/common_volume.o
+                0x00000000000042f2       0xb7 ./../../lib/common_volume.o
  .debug_pubnames
-                0x00000000000043dc       0x7e ./../../lib/pair_headphone_led.o
+                0x00000000000043a9       0x7e ./../../lib/pair_headphone_led.o
  .debug_pubnames
-                0x000000000000445a       0x26 ./../../lib/common_power_config.o
+                0x0000000000004427       0x26 ./../../lib/common_power_config.o
 
 .debug_aranges  0x0000000000000000      0xd40
  .debug_aranges
@@ -2733,184 +2731,184 @@ BANK_UI_1_50    0x0000000048ca5800      0x800
  .debug_aranges
                 0x0000000000000d20       0x20 ./../../lib/common_power_config.o
 
-.debug_str      0x0000000000000000     0xc069
- .debug_str     0x0000000000000000      0x3f6 ./../../lib/app_timer_rcode.o
-                                        0x52b (size before relaxing)
- .debug_str     0x00000000000003f6     0x1d42 ./../../lib/message_rcode.o
-                                       0x21d8 (size before relaxing)
- .debug_str     0x0000000000002138      0x435 ./../../lib/message_key_rcode.o
-                                        0x8e3 (size before relaxing)
- .debug_str     0x000000000000256d     0x147a ./../../lib/common_view_loop.o
-                                       0x3a29 (size before relaxing)
- .debug_str     0x00000000000039e7      0x16a ./../../lib/common_view_manager.o
-                                       0x2c39 (size before relaxing)
- .debug_str     0x0000000000003b51       0x20 ./obj/btcall_message_loop.o
- .debug_str     0x0000000000003b71       0x34 ./obj/btcall_message_handle.o
- .debug_str     0x0000000000003ba5       0x75 ./../../lib/applib_app_data.o
-                                        0x8ab (size before relaxing)
- .debug_str     0x0000000000003c1a      0x4fc ./../../lib/common_func_data.o
-                                       0x3bc8 (size before relaxing)
- .debug_str     0x0000000000004116       0x7e ./obj/btcall_main.o
- .debug_str     0x0000000000004194       0x29 ./obj/btcall_pb_tts_deal.o
- .debug_str     0x00000000000041bd       0x2e ./obj/btcall_tts_play.o
- .debug_str     0x00000000000041eb       0x20 ./obj/btcall_display.o
- .debug_str     0x000000000000420b       0x47 ./obj/btcall_pb_charcode_deal.o
- .debug_str     0x0000000000004252       0x20 ./obj/btcall_msg_send.o
- .debug_str     0x0000000000004272       0x20 ./obj/ap_btcall_AP_mode.o
- .debug_str     0x0000000000004292      0xb31 ./../../lib/bt_common_manager_deal.o
-                                       0x3ea1 (size before relaxing)
- .debug_str     0x0000000000004dc3      0x49b ./../../lib/common_rcp_dispatch.o
-                                       0x128f (size before relaxing)
- .debug_str     0x000000000000525e      0x4c9 ./../../lib/common_aset_main_deal.o
-                                       0x1503 (size before relaxing)
- .debug_str     0x0000000000005727      0x164 ./../../lib/common_rcp_dispatch_block.o
-                                       0x29cb (size before relaxing)
- .debug_str     0x000000000000588b      0x2c7 ./../../lib/common_rcp_dispatch_misc.o
-                                       0x2aad (size before relaxing)
- .debug_str     0x0000000000005b52      0x37b ./../../lib/common_rcp_func.o
-                                       0x1cfb (size before relaxing)
- .debug_str     0x0000000000005ecd       0xbd ./../../lib/bt_common_sppble.o
-                                        0xdae (size before relaxing)
- .debug_str     0x0000000000005f8a       0x79 ./../../lib/message_bank_send_btmanager.o
-                                        0x5a2 (size before relaxing)
- .debug_str     0x0000000000006003      0x57e ./../../lib/common_setdae.o
-                                       0x15ff (size before relaxing)
- .debug_str     0x0000000000006581      0x280 ./../../lib/common_discrete_led.o
-                                        0x702 (size before relaxing)
- .debug_str     0x0000000000006801       0x72 ./../../lib/applib_globe_data.o
-                                        0x50c (size before relaxing)
- .debug_str     0x0000000000006873      0x172 ./../../lib/applib_globe_data_com.o
-                                       0x12e1 (size before relaxing)
- .debug_str     0x00000000000069e5      0x187 ./../../lib/message_key_deal.o
-                                        0xa1e (size before relaxing)
- .debug_str     0x0000000000006b6c      0x2a6 ./../../lib/common_tts.o
-                                       0x1d93 (size before relaxing)
- .debug_str     0x0000000000006e12      0x2a0 ./../../lib/common_keytone_play.o
-                                       0x13c7 (size before relaxing)
- .debug_str     0x00000000000070b2      0x541 ./../../lib/bt_common_manager.o
-                                       0x25be (size before relaxing)
- .debug_str     0x00000000000075f3       0x85 ./../../lib/common_rcp_servs.o
-                                        0xba4 (size before relaxing)
- .debug_str     0x0000000000007678       0xc4 ./../../lib/common_charge.o
-                                       0x1177 (size before relaxing)
- .debug_str     0x000000000000773c      0x1d3 ./../../lib/sys_counter.o
-                                       0x19e7 (size before relaxing)
- .debug_str     0x000000000000790f      0x162 ./../../lib/bt_common_autoconnect.o
-                                       0x1705 (size before relaxing)
- .debug_str     0x0000000000007a71       0xa0 ./../../lib/bt_common_event_dispatch.o
-                                       0x2f02 (size before relaxing)
- .debug_str     0x0000000000007b11       0xd3 ./../../lib/common_rcp_send.o
-                                        0x5c1 (size before relaxing)
- .debug_str     0x0000000000007be4       0x79 ./../../lib/app_engine_config.o
-                                        0x530 (size before relaxing)
- .debug_str     0x0000000000007c5d       0x9b ./../../lib/app_manager_bank.o
-                                        0x58f (size before relaxing)
- .debug_str     0x0000000000007cf8       0x28 ./../../lib/message_bank_init.o
-                                        0x815 (size before relaxing)
- .debug_str     0x0000000000007d20       0x67 ./../../lib/message_bank_send.o
-                                        0x636 (size before relaxing)
- .debug_str     0x0000000000007d87       0x32 ./../../lib/message_bank_send_async.o
-                                        0x60d (size before relaxing)
- .debug_str     0x0000000000007db9       0x32 ./../../lib/message_bank_broadcast.o
-                                        0x4d7 (size before relaxing)
- .debug_str     0x0000000000007deb       0x38 ./../../lib/app_sleep.o
-                                        0xdad (size before relaxing)
- .debug_str     0x0000000000007e23       0x7c ./../../lib/common_setvolume.o
-                                       0x36dd (size before relaxing)
- .debug_str     0x0000000000007e9f      0x248 ./../../lib/common_sys_hook.o
-                                       0x2cba (size before relaxing)
- .debug_str     0x00000000000080e7       0x68 ./../../lib/common_speaker_out_switch.o
-                                        0x562 (size before relaxing)
- .debug_str     0x000000000000814f       0x37 ./../../lib/common_sound.o
-                                        0x4d8 (size before relaxing)
- .debug_str     0x0000000000008186      0x235 ./../../lib/common_phy_volume_deal.o
-                                       0x1326 (size before relaxing)
- .debug_str     0x00000000000083bb       0x1a ./../../lib/common_phy_volume_table.o
+.debug_str      0x0000000000000000     0xc024
+ .debug_str     0x0000000000000000      0x3ff ./../../lib/app_timer_rcode.o
+                                        0x534 (size before relaxing)
+ .debug_str     0x00000000000003ff     0x1d42 ./../../lib/message_rcode.o
+                                       0x21e1 (size before relaxing)
+ .debug_str     0x0000000000002141      0x435 ./../../lib/message_key_rcode.o
+                                        0x8ec (size before relaxing)
+ .debug_str     0x0000000000002576     0x1483 ./../../lib/common_view_loop.o
+                                       0x3a32 (size before relaxing)
+ .debug_str     0x00000000000039f9      0x16a ./../../lib/common_view_manager.o
+                                       0x2c42 (size before relaxing)
+ .debug_str     0x0000000000003b63       0x20 ./obj/btcall_message_loop.o
+ .debug_str     0x0000000000003b83       0x34 ./obj/btcall_message_handle.o
+ .debug_str     0x0000000000003bb7       0x7e ./../../lib/applib_app_data.o
+                                        0x8b4 (size before relaxing)
+ .debug_str     0x0000000000003c35      0x4fc ./../../lib/common_func_data.o
+                                       0x3bd1 (size before relaxing)
+ .debug_str     0x0000000000004131       0x7e ./obj/btcall_main.o
+ .debug_str     0x00000000000041af       0x29 ./obj/btcall_pb_tts_deal.o
+ .debug_str     0x00000000000041d8       0x2e ./obj/btcall_tts_play.o
+ .debug_str     0x0000000000004206       0x20 ./obj/btcall_display.o
+ .debug_str     0x0000000000004226       0x47 ./obj/btcall_pb_charcode_deal.o
+ .debug_str     0x000000000000426d       0x20 ./obj/btcall_msg_send.o
+ .debug_str     0x000000000000428d       0x20 ./obj/ap_btcall_AP_mode.o
+ .debug_str     0x00000000000042ad      0xb3a ./../../lib/bt_common_manager_deal.o
+                                       0x3eaa (size before relaxing)
+ .debug_str     0x0000000000004de7      0x4a4 ./../../lib/common_rcp_dispatch.o
+                                       0x1298 (size before relaxing)
+ .debug_str     0x000000000000528b      0x4d2 ./../../lib/common_aset_main_deal.o
+                                       0x150c (size before relaxing)
+ .debug_str     0x000000000000575d      0x164 ./../../lib/common_rcp_dispatch_block.o
+                                       0x29d4 (size before relaxing)
+ .debug_str     0x00000000000058c1      0x2c7 ./../../lib/common_rcp_dispatch_misc.o
+                                       0x2ab6 (size before relaxing)
+ .debug_str     0x0000000000005b88      0x37b ./../../lib/common_rcp_func.o
+                                       0x1d04 (size before relaxing)
+ .debug_str     0x0000000000005f03       0xbd ./../../lib/bt_common_sppble.o
+                                        0xdb7 (size before relaxing)
+ .debug_str     0x0000000000005fc0       0x79 ./../../lib/message_bank_send_btmanager.o
+                                        0x5ab (size before relaxing)
+ .debug_str     0x0000000000006039      0x587 ./../../lib/common_setdae.o
+                                       0x1608 (size before relaxing)
+ .debug_str     0x00000000000065c0      0x289 ./../../lib/common_discrete_led.o
+                                        0x70b (size before relaxing)
+ .debug_str     0x0000000000006849       0x72 ./../../lib/applib_globe_data.o
+                                        0x515 (size before relaxing)
+ .debug_str     0x00000000000068bb      0x172 ./../../lib/applib_globe_data_com.o
+                                       0x12ea (size before relaxing)
+ .debug_str     0x0000000000006a2d      0x187 ./../../lib/message_key_deal.o
+                                        0xa27 (size before relaxing)
+ .debug_str     0x0000000000006bb4      0x2af ./../../lib/common_tts.o
+                                       0x1d9c (size before relaxing)
+ .debug_str     0x0000000000006e63      0x2a0 ./../../lib/common_keytone_play.o
+                                       0x13d0 (size before relaxing)
+ .debug_str     0x0000000000007103      0x541 ./../../lib/bt_common_manager.o
+                                       0x25c7 (size before relaxing)
+ .debug_str     0x0000000000007644       0x85 ./../../lib/common_rcp_servs.o
+                                        0xbad (size before relaxing)
+ .debug_str     0x00000000000076c9       0xc4 ./../../lib/common_charge.o
+                                       0x1180 (size before relaxing)
+ .debug_str     0x000000000000778d      0x1d3 ./../../lib/sys_counter.o
+                                       0x19f0 (size before relaxing)
+ .debug_str     0x0000000000007960      0x162 ./../../lib/bt_common_autoconnect.o
+                                       0x170e (size before relaxing)
+ .debug_str     0x0000000000007ac2       0xa0 ./../../lib/bt_common_event_dispatch.o
+                                       0x2f0b (size before relaxing)
+ .debug_str     0x0000000000007b62       0xd3 ./../../lib/common_rcp_send.o
+                                        0x5ca (size before relaxing)
+ .debug_str     0x0000000000007c35       0x79 ./../../lib/app_engine_config.o
+                                        0x539 (size before relaxing)
+ .debug_str     0x0000000000007cae       0x9b ./../../lib/app_manager_bank.o
+                                        0x598 (size before relaxing)
+ .debug_str     0x0000000000007d49       0x28 ./../../lib/message_bank_init.o
+                                        0x81e (size before relaxing)
+ .debug_str     0x0000000000007d71       0x67 ./../../lib/message_bank_send.o
+                                        0x63f (size before relaxing)
+ .debug_str     0x0000000000007dd8       0x32 ./../../lib/message_bank_send_async.o
+                                        0x616 (size before relaxing)
+ .debug_str     0x0000000000007e0a       0x32 ./../../lib/message_bank_broadcast.o
+                                        0x4e0 (size before relaxing)
+ .debug_str     0x0000000000007e3c       0x38 ./../../lib/app_sleep.o
+                                        0xdb6 (size before relaxing)
+ .debug_str     0x0000000000007e74       0x7c ./../../lib/common_setvolume.o
+                                       0x36e6 (size before relaxing)
+ .debug_str     0x0000000000007ef0      0x251 ./../../lib/common_sys_hook.o
+                                       0x2cc3 (size before relaxing)
+ .debug_str     0x0000000000008141       0x68 ./../../lib/common_speaker_out_switch.o
+                                        0x56b (size before relaxing)
+ .debug_str     0x00000000000081a9       0x37 ./../../lib/common_sound.o
+                                        0x4e1 (size before relaxing)
+ .debug_str     0x00000000000081e0      0x235 ./../../lib/common_phy_volume_deal.o
+                                       0x132f (size before relaxing)
+ .debug_str     0x0000000000008415       0x1a ./../../lib/common_phy_volume_table.o
+                                        0x4d3 (size before relaxing)
+ .debug_str     0x000000000000842f       0x7b ./../../lib/common_tts_thread.o
+                                       0x127b (size before relaxing)
+ .debug_str     0x00000000000084aa      0x2c4 ./../../lib/common_ap_switch.o
+                                       0x1499 (size before relaxing)
+ .debug_str     0x000000000000876e       0x5e ./../../lib/setting_comval.o
+                                       0x1049 (size before relaxing)
+ .debug_str     0x00000000000087cc       0x7e ./../../lib/common_config.o
+                                        0x550 (size before relaxing)
+ .debug_str     0x000000000000884a       0xa4 ./../../lib/common_rcp_dialog.o
+                                        0xf53 (size before relaxing)
+ .debug_str     0x00000000000088ee       0xcf ./../../lib/common_share_data.o
+                                        0x539 (size before relaxing)
+ .debug_str     0x00000000000089bd       0x3c ./../../lib/common_math_exp_fixed.o
+                                        0x4a1 (size before relaxing)
+ .debug_str     0x00000000000089f9       0x74 ./../../lib/common_key_hook.o
+                                        0xa38 (size before relaxing)
+ .debug_str     0x0000000000008a6d      0x94d ./../../lib/common_aset_new_func.o
+                                       0x1d74 (size before relaxing)
+ .debug_str     0x00000000000093ba      0x227 ./../../lib/common_aset_sub_code.o
+                                        0xf71 (size before relaxing)
+ .debug_str     0x00000000000095e1       0x16 ./../../lib/common_keytone_file.o
+                                        0x47c (size before relaxing)
+ .debug_str     0x00000000000095f7      0x1ed ./../../lib/common_key_deal.o
+                                       0x24b0 (size before relaxing)
+ .debug_str     0x00000000000097e4       0x76 ./../../lib/common_speaker_control.o
+                                        0x4d9 (size before relaxing)
+ .debug_str     0x000000000000985a      0x144 ./../../lib/common_standby.o
+                                       0x10d4 (size before relaxing)
+ .debug_str     0x000000000000999e       0xc1 ./../../lib/bt_common_manager_misc.o
+                                       0x129b (size before relaxing)
+ .debug_str     0x0000000000009a5f      0x134 ./../../lib/time_alarm_clock.o
+                                       0x2c1b (size before relaxing)
+ .debug_str     0x0000000000009b93      0x128 ./../../lib/time_alarm_rcp_deal.o
+                                       0x1884 (size before relaxing)
+ .debug_str     0x0000000000009cbb      0x20b ./../../lib/time_alarm_rcp_deal_ring.o
+                                        0xd41 (size before relaxing)
+ .debug_str     0x0000000000009ec6      0x156 ./../../lib/time_alarm_set_calendar.o
+                                       0x2d98 (size before relaxing)
+ .debug_str     0x000000000000a01c       0xf3 ./../../lib/time_alarm_set_calendar_sub.o
+                                        0xd10 (size before relaxing)
+ .debug_str     0x000000000000a10f      0x142 ./../../lib/time_alarm_set_alarm.o
+                                       0x2ebb (size before relaxing)
+ .debug_str     0x000000000000a251       0x65 ./../../lib/time_alarm_set_alarm_sub.o
+                                        0xcfd (size before relaxing)
+ .debug_str     0x000000000000a2b6       0xcc ./../../lib/time_alarm_alarm_ring.o
+                                       0x1995 (size before relaxing)
+ .debug_str     0x000000000000a382      0x17c ./../../lib/time_alarm_alarm_record.o
+                                       0x1262 (size before relaxing)
+ .debug_str     0x000000000000a4fe       0x85 ./../../lib/common_view_key_event.o
+                                       0x2cee (size before relaxing)
+ .debug_str     0x000000000000a583      0x39f ./../../lib/common_sys_deal.o
+                                       0x3f17 (size before relaxing)
+ .debug_str     0x000000000000a922       0x46 ./../../lib/common_view_sys_event.o
+                                       0x27d7 (size before relaxing)
+ .debug_str     0x000000000000a968      0x228 ./../../lib/bt_common_avrcp.o
+                                       0x1504 (size before relaxing)
+ .debug_str     0x000000000000ab90      0x41f ./../../lib/bt_common_hfp.o
+                                       0x1654 (size before relaxing)
+ .debug_str     0x000000000000afaf      0x1a5 ./../../lib/bt_common_gen_addr.o
+                                        0x67b (size before relaxing)
+ .debug_str     0x000000000000b154      0x1be ./../../lib/app_timer_bank.o
+                                        0x70d (size before relaxing)
+ .debug_str     0x000000000000b312       0x2a ./../../lib/sys_timer.o
                                         0x4ca (size before relaxing)
- .debug_str     0x00000000000083d5       0x7b ./../../lib/common_tts_thread.o
-                                       0x1272 (size before relaxing)
- .debug_str     0x0000000000008450      0x2c4 ./../../lib/common_ap_switch.o
-                                       0x1490 (size before relaxing)
- .debug_str     0x0000000000008714       0x5e ./../../lib/setting_comval.o
-                                       0x1040 (size before relaxing)
- .debug_str     0x0000000000008772       0x7e ./../../lib/common_config.o
-                                        0x547 (size before relaxing)
- .debug_str     0x00000000000087f0       0xa4 ./../../lib/common_rcp_dialog.o
-                                        0xf4a (size before relaxing)
- .debug_str     0x0000000000008894       0xcf ./../../lib/common_share_data.o
-                                        0x530 (size before relaxing)
- .debug_str     0x0000000000008963       0x3c ./../../lib/common_math_exp_fixed.o
-                                        0x498 (size before relaxing)
- .debug_str     0x000000000000899f       0x74 ./../../lib/common_key_hook.o
-                                        0xa2f (size before relaxing)
- .debug_str     0x0000000000008a13      0x94d ./../../lib/common_aset_new_func.o
-                                       0x1d6b (size before relaxing)
- .debug_str     0x0000000000009360      0x227 ./../../lib/common_aset_sub_code.o
-                                        0xf68 (size before relaxing)
- .debug_str     0x0000000000009587       0x16 ./../../lib/common_keytone_file.o
-                                        0x473 (size before relaxing)
- .debug_str     0x000000000000959d      0x29e ./../../lib/common_key_deal.o
-                                       0x2558 (size before relaxing)
- .debug_str     0x000000000000983b       0x76 ./../../lib/common_speaker_control.o
-                                        0x4d0 (size before relaxing)
- .debug_str     0x00000000000098b1      0x144 ./../../lib/common_standby.o
-                                       0x10cb (size before relaxing)
- .debug_str     0x00000000000099f5       0xc1 ./../../lib/bt_common_manager_misc.o
-                                       0x1292 (size before relaxing)
- .debug_str     0x0000000000009ab6      0x12b ./../../lib/time_alarm_clock.o
-                                       0x2c12 (size before relaxing)
- .debug_str     0x0000000000009be1      0x128 ./../../lib/time_alarm_rcp_deal.o
-                                       0x187b (size before relaxing)
- .debug_str     0x0000000000009d09      0x20b ./../../lib/time_alarm_rcp_deal_ring.o
-                                        0xd38 (size before relaxing)
- .debug_str     0x0000000000009f14      0x156 ./../../lib/time_alarm_set_calendar.o
-                                       0x2d8f (size before relaxing)
- .debug_str     0x000000000000a06a       0xf3 ./../../lib/time_alarm_set_calendar_sub.o
-                                        0xd07 (size before relaxing)
- .debug_str     0x000000000000a15d      0x142 ./../../lib/time_alarm_set_alarm.o
-                                       0x2eb2 (size before relaxing)
- .debug_str     0x000000000000a29f       0x65 ./../../lib/time_alarm_set_alarm_sub.o
-                                        0xcf4 (size before relaxing)
- .debug_str     0x000000000000a304       0xcc ./../../lib/time_alarm_alarm_ring.o
-                                       0x198c (size before relaxing)
- .debug_str     0x000000000000a3d0      0x17c ./../../lib/time_alarm_alarm_record.o
-                                       0x1259 (size before relaxing)
- .debug_str     0x000000000000a54c       0x85 ./../../lib/common_view_key_event.o
-                                       0x2ce5 (size before relaxing)
- .debug_str     0x000000000000a5d1      0x39f ./../../lib/common_sys_deal.o
-                                       0x3f0e (size before relaxing)
- .debug_str     0x000000000000a970       0x46 ./../../lib/common_view_sys_event.o
-                                       0x27ce (size before relaxing)
- .debug_str     0x000000000000a9b6      0x228 ./../../lib/bt_common_avrcp.o
-                                       0x14fb (size before relaxing)
- .debug_str     0x000000000000abde      0x41f ./../../lib/bt_common_hfp.o
-                                       0x164b (size before relaxing)
- .debug_str     0x000000000000affd      0x1a5 ./../../lib/bt_common_gen_addr.o
-                                        0x672 (size before relaxing)
- .debug_str     0x000000000000b1a2      0x1be ./../../lib/app_timer_bank.o
-                                        0x704 (size before relaxing)
- .debug_str     0x000000000000b360       0x2a ./../../lib/sys_timer.o
-                                        0x4c1 (size before relaxing)
- .debug_str     0x000000000000b38a       0x3c ./../../lib/app_timer_bank_single.o
-                                        0x5d0 (size before relaxing)
- .debug_str     0x000000000000b3c6      0x2bc ./../../lib/common_stub_switch.o
-                                        0xef2 (size before relaxing)
- .debug_str     0x000000000000b682       0x78 ./../../lib/common_seteq.o
-                                       0x3757 (size before relaxing)
- .debug_str     0x000000000000b6fa      0x2f8 ./../../lib/common_setdae_init.o
-                                       0x142f (size before relaxing)
- .debug_str     0x000000000000b9f2      0x230 ./../../lib/Ota_rcp_s_cmd_deal.o
-                                        0xea0 (size before relaxing)
- .debug_str     0x000000000000bc22       0xbf ./../../lib/Ota_rcp_q_cmd_deal.o
-                                       0x102a (size before relaxing)
- .debug_str     0x000000000000bce1       0x58 ./../../lib/Ota_rcp_reboot_cmd.o
-                                        0xce9 (size before relaxing)
- .debug_str     0x000000000000bd39       0xbb ./../../lib/common_volume.o
-                                       0x1445 (size before relaxing)
- .debug_str     0x000000000000bdf4      0x141 ./../../lib/pair_headphone_led.o
-                                        0x943 (size before relaxing)
- .debug_str     0x000000000000bf35      0x134 ./../../lib/common_power_config.o
-                                        0x29b (size before relaxing)
+ .debug_str     0x000000000000b33c       0x3c ./../../lib/app_timer_bank_single.o
+                                        0x5d9 (size before relaxing)
+ .debug_str     0x000000000000b378      0x2bc ./../../lib/common_stub_switch.o
+                                        0xefb (size before relaxing)
+ .debug_str     0x000000000000b634       0x78 ./../../lib/common_seteq.o
+                                       0x3760 (size before relaxing)
+ .debug_str     0x000000000000b6ac      0x2f8 ./../../lib/common_setdae_init.o
+                                       0x1438 (size before relaxing)
+ .debug_str     0x000000000000b9a4      0x239 ./../../lib/Ota_rcp_s_cmd_deal.o
+                                        0xea9 (size before relaxing)
+ .debug_str     0x000000000000bbdd       0xbf ./../../lib/Ota_rcp_q_cmd_deal.o
+                                       0x1033 (size before relaxing)
+ .debug_str     0x000000000000bc9c       0x58 ./../../lib/Ota_rcp_reboot_cmd.o
+                                        0xcf2 (size before relaxing)
+ .debug_str     0x000000000000bcf4       0xbb ./../../lib/common_volume.o
+                                       0x144e (size before relaxing)
+ .debug_str     0x000000000000bdaf      0x141 ./../../lib/pair_headphone_led.o
+                                        0x94c (size before relaxing)
+ .debug_str     0x000000000000bef0      0x134 ./../../lib/common_power_config.o
+                                        0x2a4 (size before relaxing)
 
 .comment        0x0000000000000000      0xfca
  .comment       0x0000000000000000       0x2b ./../../lib/app_timer_rcode.o
