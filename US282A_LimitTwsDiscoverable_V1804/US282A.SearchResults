@@ -1,0 +1,7 @@
+---- com_btmanager_conn_status_change_handle Matches (6 in 5 files) ----
+Bt_common_autoconnect.c (case\ap\common\bt_common):			 com_btmanager_conn_status_change_handle(CONN_STATUS_WAIT_PAIR);
+Bt_common_manager.c (case\ap\common\bt_common):        com_btmanager_conn_status_change_handle(TRUE);
+Bt_common_manager_deal.c (case\ap\common\bt_common):        com_btmanager_conn_status_change_handle(FALSE);
+Bt_common_manager_deal.c (case\ap\common\bt_common):void com_btmanager_conn_status_change_handle(bool init_flag)
+Common_btmanager.h (case\inc):extern void com_btmanager_conn_status_change_handle(bool init_flag) __FAR__;
+Common_key_deal.c (case\ap\common\common_event):			 com_btmanager_conn_status_change_handle(CONN_STATUS_WAIT_PAIR);

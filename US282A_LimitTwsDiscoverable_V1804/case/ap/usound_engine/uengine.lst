@@ -1,0 +1,5694 @@
+
+uengine.exe:     file format elf32-tradlittlemips
+
+Disassembly of section .text:
+
+bfc26000 <audio_device_op_entry>:
+bfc26000:	6b0a      	li	v1,10
+bfc26002:	e805      	break	0
+
+bfc26004 <key_op_entry>:
+bfc26004:	6b08      	li	v1,8
+bfc26006:	e805      	break	0
+
+bfc26008 <libc_op_entry>:
+bfc26008:	6b10      	li	v1,16
+bfc2600a:	e805      	break	0
+
+bfc2600c <mmm_pp_cmd>:
+bfc2600c:	6b42      	li	v1,66
+bfc2600e:	e805      	break	0
+
+bfc26010 <sys_op_entry>:
+bfc26010:	6b0f      	li	v1,15
+bfc26012:	e805      	break	0
+
+bfc26014 <ud_op_entry>:
+bfc26014:	6b05      	li	v1,5
+bfc26016:	e805      	break	0
+
+bfc26018 <check_energy_info>:
+bfc26018:	64e3      	save	24,ra,s0
+        g_energy_max = *energy_max;
+    }
+}
+void check_energy_info(void)
+{
+bfc2601a:	b316      	lw	v1,bfc26070 <check_energy_info+0x58>
+    short *p_energy_mean;
+    short *p_energy_max;
+
+    if (g_app_info_state_all.energy_available_flag == TRUE)
+bfc2601c:	a34a      	lbu	v0,10(v1)
+bfc2601e:	7201      	cmpi	v0,1
+bfc26020:	610d      	btnez	bfc2603c <check_energy_info+0x24>
+bfc26022:	9b83      	lw	a0,12(v1)
+    {
+        p_energy_mean = g_app_info_state_all.p_energy_value;
+bfc26024:	8cc0      	lh	a2,0(a0)
+        p_energy_max = g_app_info_state_all.p_energy_value + 1;
+#ifdef __ESD_MODE_
+        g_temp_conut ++;
+        if((g_temp_conut & 0xff) == 0x80)
+        {
+            esd_check_dsp_excption(p_energy_mean,p_energy_max,g_temp_conut); 
+        }
+#endif        
+        if ((*p_energy_mean == 0) && (*p_energy_max < 5))
+bfc26026:	4462      	addiu	v1,a0,2
+bfc26028:	2e0b      	bnez	a2,bfc26040 <check_energy_info+0x28>
+bfc2602a:	8ba0      	lh	a1,0(v1)
+bfc2602c:	5505      	slti	a1,5
+bfc2602e:	6008      	bteqz	bfc26040 <check_energy_info+0x28>
+bfc26030:	b711      	lw	a3,bfc26074 <check_energy_info+0x5c>
+        {
+            energy_count++;
+bfc26032:	9f40      	lw	v0,0(a3)
+bfc26034:	4261      	addiu	v1,v0,1
+bfc26036:	7308      	cmpi	v1,8
+            if (energy_count == MAX_ENERGY_NUM)
+bfc26038:	df60      	sw	v1,0(a3)
+bfc2603a:	6013      	bteqz	bfc26062 <check_energy_info+0x4a>
+bfc2603c:	6463      	restore	24,ra,s0
+            {
+                //设置能量低标志，告知驱动当前处理暂停状态
+                ud_set_cmd(SET_PLAY_FLAG, 3);
+                //g_data_flag = 1;
+            }
+        }
+        else
+        {
+            if (energy_count >= MAX_ENERGY_NUM)
+            {
+                //清除能量低标志，恢复正常状态处理
+                ud_set_cmd(SET_PLAY_FLAG, 4);
+                //g_data_flag = 0;
+            }
+            energy_count=0;
+        }
+        //libc_print("\n energy_mean:", *p_energy_mean,2);
+        //libc_print("\n energy_max:", *p_energy_max,2);
+    }
+}
+bfc2603e:	e8a0      	jrc	ra
+bfc26040:	b00d      	lw	s0,bfc26070 <check_energy_info+0x58>
+bfc26042:	98c0      	lw	a2,0(s0)
+bfc26044:	5e08      	sltiu	a2,8
+bfc26046:	6004      	bteqz	bfc26050 <check_energy_info+0x38>
+bfc26048:	6c00      	li	a0,0
+bfc2604a:	d880      	sw	a0,0(s0)
+bfc2604c:	6463      	restore	24,ra,s0
+bfc2604e:	e8a0      	jrc	ra
+bfc26050:	6c00      	li	a0,0
+bfc26052:	b20a      	lw	v0,bfc26078 <check_energy_info+0x60>
+bfc26054:	67c4      	move	a2,a0
+bfc26056:	6d04      	li	a1,4
+bfc26058:	ea40      	jalr	v0
+bfc2605a:	6f06      	li	a3,6
+bfc2605c:	6c00      	li	a0,0
+bfc2605e:	d880      	sw	a0,0(s0)
+bfc26060:	17f5      	b	bfc2604c <check_energy_info+0x34>
+bfc26062:	b206      	lw	v0,bfc26078 <check_energy_info+0x60>
+bfc26064:	6786      	move	a0,a2
+bfc26066:	6d03      	li	a1,3
+bfc26068:	ea40      	jalr	v0
+bfc2606a:	6f06      	li	a3,6
+bfc2606c:	6463      	restore	24,ra,s0
+bfc2606e:	e8a0      	jrc	ra
+bfc26070:	a094      	lbu	a0,20(s0)
+bfc26072:	9fc1      	lw	a2,4(a3)
+bfc26074:	95a0      	lw	a1,640(sp)
+bfc26076:	9fc1      	lw	a2,4(a3)
+bfc26078:	6015      	bteqz	bfc260a4 <uengine_control_block+0x28>
+bfc2607a:	bfc2      	lwu	a2,8(a3)
+
+bfc2607c <uengine_control_block>:
+bfc2607c:	64f8      	save	64,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \void uengine_control_block(void)
+ * \引擎功能处理函数
+ * \param[in]    void  para1
+ * \param[out]   none
+ * \return       void the result
+ * \retval       none
+ * \ingroup      uengine_control.c
+ * \note
+ */
+/*******************************************************************************/
+app_result_e uengine_control_block(void)
+{
+bfc2607e:	6a00      	li	v0,0
+    //mmm_pp_status_t play_status;
+
+    private_msg_t cur_msg_val;
+
+    uint32 hid_count = 0;
+bfc26080:	d209      	sw	v0,36(sp)
+bfc26082:	d208      	sw	v0,32(sp)
+
+    app_result_e uengine_retval = RESULT_NULL;
+bfc26084:	d20a      	sw	v0,40(sp)
+
+    uint8 i = 0;
+bfc26086:	d20b      	sw	v0,44(sp)
+    
+    int8 vol_dif = 0;
+
+    //250ms处理hid 事务
+    //g_hid_timer = set_app_timer(APP_TIMER_ATTRB_CONTROL, 500, uegine_deal_hid);
+    uint32 auto_play_count = 0;
+bfc26088:	b0d7      	lw	s0,bfc263e4 <uengine_control_block+0x368>
+    
+    uint32 flags;
+#ifdef __ESD_MODE_
+uint8 check_auto_play_time = 0;   
+uint32 esd_count_time;
+#endif
+ 
+    while (1)
+    {
+        //查询当前播放状态
+        ud_get_status(&g_status_data);
+bfc2608a:	6d00      	li	a1,0
+bfc2608c:	b3d7      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc2608e:	6790      	move	a0,s0
+bfc26090:	67c5      	move	a2,a1
+bfc26092:	eb40      	jalr	v1
+bfc26094:	67e5      	move	a3,a1
+bfc26096:	9886      	lw	a0,24(s0)
+        if (g_status_data.start_play == 0)
+bfc26098:	f0a0 2c0f 	bnez	a0,bfc261fa <uengine_control_block+0x17e>
+bfc2609c:	b6d4      	lw	a2,bfc263ec <uengine_control_block+0x370>
+        {
+            g_stop_count++;
+bfc2609e:	9ee0      	lw	a3,0(a2)
+bfc260a0:	47a1      	addiu	a1,a3,1
+bfc260a2:	5d05      	sltiu	a1,5
+
+            if (g_stop_count >= 5)
+bfc260a4:	dea0      	sw	a1,0(a2)
+bfc260a6:	6103      	btnez	bfc260ae <uengine_control_block+0x32>
+bfc260a8:	b2d2      	lw	v0,bfc263f0 <uengine_control_block+0x374>
+            {
+                g_cur_play_status_p->play_status = 0;
+bfc260aa:	9a20      	lw	s1,0(v0)
+bfc260ac:	d980      	sw	a0,0(s1)
+bfc260ae:	b1ce      	lw	s1,bfc263e4 <uengine_control_block+0x368>
+            }
+#ifdef __ESD_MODE_
+            if(g_stop_count == 500)
+            {
+                //libc_print("no_empty_fla",g_status_data.no_empty_fla,2);
+                g_stop_count = 0;
+                if(g_status_data.no_empty_fla==1)
+                {
+                    //libc_print("error!reset sys",0,0);
+                    ENABLE_WATCH_DOG(4);
+                    while(1);
+                }
+            }
+#endif            
+        }
+        else
+        {
+            g_stop_count = 0;
+
+            g_cur_play_status_p->play_status = 1;
+
+        }
+        
+        if(g_status_data.data_in_flag != 0)
+bfc260b0:	a1e4      	lbu	a3,4(s1)
+bfc260b2:	2704      	beqz	a3,bfc260bc <uengine_control_block+0x40>
+bfc260b4:	b0d0      	lw	s0,bfc263f4 <uengine_control_block+0x378>
+        {    
+            if(g_mute_cnt_flag == 0)
+bfc260b6:	a0c0      	lbu	a2,0(s0)
+bfc260b8:	f0e0 2616 	beqz	a2,bfc262a8 <uengine_control_block+0x22c>
+bfc260bc:	6c00      	li	a0,0
+            {
+                mute_cnt = sys_get_ab_timer();
+                
+                g_mute_cnt_flag = 1;
+            }
+        }
+
+        if ((sys_get_ab_timer() - mute_cnt >= MUTE_DELAY) && (g_mute_flag == 1) && (g_mute_cnt_flag == 1))
+bfc260be:	b1d0      	lw	s1,bfc263fc <uengine_control_block+0x380>
+bfc260c0:	67a4      	move	a1,a0
+bfc260c2:	67c4      	move	a2,a0
+bfc260c4:	e940      	jalr	s1
+bfc260c6:	6f1c      	li	a3,28
+bfc260c8:	b6cc      	lw	a2,bfc263f8 <uengine_control_block+0x37c>
+bfc260ca:	9ea0      	lw	a1,0(a2)
+bfc260cc:	e2a3      	subu	s0,v0,a1
+bfc260ce:	f1c1 5804 	sltiu	s0,2500
+bfc260d2:	6109      	btnez	bfc260e6 <uengine_control_block+0x6a>
+bfc260d4:	b0cb      	lw	s0,bfc26400 <uengine_control_block+0x384>
+bfc260d6:	a0e0      	lbu	a3,0(s0)
+bfc260d8:	7701      	cmpi	a3,1
+bfc260da:	6105      	btnez	bfc260e6 <uengine_control_block+0x6a>
+bfc260dc:	b4c6      	lw	a0,bfc263f4 <uengine_control_block+0x378>
+bfc260de:	a440      	lbu	v0,0(a0)
+bfc260e0:	7201      	cmpi	v0,1
+bfc260e2:	f120 6004 	bteqz	bfc2632e <uengine_control_block+0x2b2>
+bfc260e6:	b0c3      	lw	s0,bfc263f0 <uengine_control_block+0x374>
+        {            
+            ud_set_cmd(SET_MUTE_FLAG,0);
+            
+            g_mute_flag = 0;
+        }
+
+        g_cur_play_status_p->line_status = g_status_data.line_sta;
+bfc260e8:	6d00      	li	a1,0
+
+        //更新共享内存
+        g_cur_play_status_p = sys_share_query_update(APP_ID_UENGINE);
+bfc260ea:	9820      	lw	s1,0(s0)
+bfc260ec:	b0be      	lw	s0,bfc263e4 <uengine_control_block+0x368>
+bfc260ee:	b3c4      	lw	v1,bfc263fc <uengine_control_block+0x380>
+bfc260f0:	a843      	lhu	v0,6(s0)
+bfc260f2:	67c5      	move	a2,a1
+bfc260f4:	6c13      	li	a0,19
+bfc260f6:	6f46      	li	a3,70
+bfc260f8:	eb40      	jalr	v1
+bfc260fa:	c944      	sh	v0,8(s1)
+bfc260fc:	b7c2      	lw	a3,bfc26404 <uengine_control_block+0x388>
+
+        if (((g_volume_syn_cfg & 0x02) != 0) && (g_status_data.volume_chg != 0))
+bfc260fe:	b4bd      	lw	a0,bfc263f0 <uengine_control_block+0x374>
+bfc26100:	9fa0      	lw	a1,0(a3)
+bfc26102:	6e02      	li	a2,2
+bfc26104:	edcc      	and	a1,a2
+bfc26106:	dc40      	sw	v0,0(a0)
+bfc26108:	2503      	beqz	a1,bfc26110 <uengine_control_block+0x94>
+bfc2610a:	98a8      	lw	a1,32(s0)
+bfc2610c:	f0c0 2d16 	bnez	a1,bfc262bc <uengine_control_block+0x240>
+bfc26110:	b0b5      	lw	s0,bfc263e4 <uengine_control_block+0x368>
+        {
+
+            ud_set_cmd(SET_VOLUME_FLAG, 0);
+
+            //change volume
+            uengine_sync_volume(g_status_data.volume_value,0);
+
+            //sys_os_time_dly(1);
+        }
+        
+        if (g_status_data.switch_flag != 0)
+bfc26112:	a8c4      	lhu	a2,8(s0)
+bfc26114:	2e7c      	bnez	a2,bfc2620e <uengine_control_block+0x192>
+bfc26116:	9708      	lw	a3,32(sp)
+        {
+        	   
+        	  ud_set_cmd(CLR_SWITCH_FLAG, 0);
+        	  
+        	  uengine_switch_deal();
+        }
+
+        //hid change
+
+        hid_count++;
+bfc26118:	986a      	lw	v1,40(s0)
+
+        if ((g_status_data.hid_idle_time != 0) && (g_status_data.hid_idle_time < (hid_count * 10)))
+bfc2611a:	4781      	addiu	a0,a3,1
+bfc2611c:	d408      	sw	a0,32(sp)
+bfc2611e:	2306      	beqz	v1,bfc2612c <uengine_control_block+0xb0>
+bfc26120:	3688      	sll	a2,a0,2
+bfc26122:	e695      	addu	a1,a2,a0
+bfc26124:	34a4      	sll	a0,a1,1
+bfc26126:	eb83      	sltu	v1,a0
+bfc26128:	f0e0 6118 	btnez	bfc2631c <uengine_control_block+0x2a0>
+bfc2612c:	b1ae      	lw	s1,bfc263e4 <uengine_control_block+0x368>
+        {
+            hid_count = 0;
+
+            ud_set_cmd(SET_HID_CHANGE, 0);
+        }
+
+        //play flag need set sample rate
+        if (g_status_data.set_sample == 1)
+bfc2612e:	a1e0      	lbu	a3,0(s1)
+bfc26130:	7701      	cmpi	a3,1
+bfc26132:	611b      	btnez	bfc2616a <uengine_control_block+0xee>
+bfc26134:	b4b7      	lw	a0,bfc26410 <uengine_control_block+0x394>
+        {
+            if (g_mmm_pp_handle != NULL)
+bfc26136:	9cc0      	lw	a2,0(a0)
+bfc26138:	f0c0 2e0b 	bnez	a2,bfc262d2 <uengine_control_block+0x256>
+bfc2613c:	b2b8      	lw	v0,bfc2641c <uengine_control_block+0x3a0>
+            {
+                flags = sys_local_irq_save();
+                
+                ud_get_status(&g_status_data);
+                
+                //clr flag
+                ud_set_cmd(SET_SAMPLE_RATE, 0);
+                
+                sys_local_irq_restore(flags);
+	            //set adjust
+           	 	//ud_set_cmd(SET_ADJUST_TIMER, 0);
+
+                //mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_SET_PARAM, (unsigned int) &g_status_data.sample_rate);
+                if(g_status_data.set_adc_sample == 1)
+                {
+                    mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_SET_ADC_RATE, (unsigned int) &g_status_data.adc_sample_rate);
+                }
+                
+                if(g_status_data.set_dac_sample == 1)
+                {
+                    mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_SET_DAC_RATE, (unsigned int) &g_status_data.dac_sample_rate);
+                }
+
+                g_ain_out_setting.dac_sample = (int32) g_status_data.dac_sample_rate;
+
+                g_ain_out_setting.adc_sample = (int32) g_status_data.adc_sample_rate;
+
+
+            	//ud_set_cmd(SET_ADJUST_TIMER, 1);
+            }
+            else if(1 == g_uspeaker_24bit)
+bfc2613e:	a2e0      	lbu	a3,0(v0)
+bfc26140:	7701      	cmpi	a3,1
+bfc26142:	6113      	btnez	bfc2616a <uengine_control_block+0xee>
+bfc26144:	b0b5      	lw	s0,bfc26418 <uengine_control_block+0x39c>
+            {
+                if((g_ain_out_setting.dac_sample != (int32) g_status_data.sample_rate)&&(g_pa_type == 1))
+bfc26146:	9983      	lw	a0,12(s1)
+bfc26148:	98a2      	lw	a1,8(s0)
+bfc2614a:	ed8e      	xor	a1,a0
+bfc2614c:	2505      	beqz	a1,bfc26158 <uengine_control_block+0xdc>
+bfc2614e:	b7b5      	lw	a3,bfc26420 <uengine_control_block+0x3a4>
+bfc26150:	a760      	lbu	v1,0(a3)
+bfc26152:	7301      	cmpi	v1,1
+bfc26154:	f120 600b 	bteqz	bfc263ae <uengine_control_block+0x332>
+bfc26158:	9983      	lw	a0,12(s1)
+                {
+                    ccd_i2s_pa_set_clock(g_status_data.sample_rate);
+                }
+                
+                g_ain_out_setting.dac_sample = (int32) g_status_data.sample_rate;
+bfc2615a:	b3a4      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+                
+                g_ain_out_setting.adc_sample = (int32) g_status_data.sample_rate;
+
+                //ccd_i2s_pa_set_clock(0xff);
+                
+                ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_SAMPLE_RATE);
+bfc2615c:	d882      	sw	a0,8(s0)
+bfc2615e:	d885      	sw	a0,20(s0)
+bfc26160:	6d02      	li	a1,2
+bfc26162:	6c0a      	li	a0,10
+bfc26164:	6e00      	li	a2,0
+bfc26166:	eb40      	jalr	v1
+bfc26168:	6f06      	li	a3,6
+bfc2616a:	b2b0      	lw	v0,bfc26428 <uengine_control_block+0x3ac>
+            }
+            else
+            {
+                ;//for QAC
+            }
+        }
+
+        //获取并处理详细
+        if (get_app_msg(&cur_msg_val) == TRUE)
+bfc2616c:	ea40      	jalr	v0
+bfc2616e:	0404      	addiu	a0,sp,16
+bfc26170:	7201      	cmpi	v0,1
+bfc26172:	6056      	bteqz	bfc26220 <uengine_control_block+0x1a4>
+bfc26174:	9609      	lw	a2,36(sp)
+        {
+            uengine_retval = uengine_message_deal(&cur_msg_val);
+        }
+
+        if (uengine_retval == RESULT_APP_QUIT)
+bfc26176:	f100 7600 	cmpi	a2,256
+bfc2617a:	605a      	bteqz	bfc26230 <uengine_control_block+0x1b4>
+bfc2617c:	1a1f 9806 	jal	bfc26018 <check_energy_info>
+        {
+            break;
+        }
+        check_energy_info();
+bfc26180:	6500      	nop
+bfc26182:	910a      	lw	s1,40(sp)
+        if (i == 10)
+bfc26184:	710a      	cmpi	s1,10
+bfc26186:	f080 6006 	bteqz	bfc26296 <uengine_control_block+0x21a>
+bfc2618a:	b0aa      	lw	s0,bfc26430 <uengine_control_block+0x3b4>
+        {
+            ud_hid_deal();
+            i = 0;
+        }
+        if ((g_vol_sync_timer != 0) && (sys_get_ab_timer() - g_vol_sync_timer >= 50))
+bfc2618c:	98a0      	lw	a1,0(s0)
+bfc2618e:	2d53      	bnez	a1,bfc26236 <uengine_control_block+0x1ba>
+bfc26190:	930b      	lw	v1,44(sp)
+        {
+            vol_dif = g_cur_play_status_p->change_vol_val - g_current_vol;
+
+            if(g_pre_dif == vol_dif)
+            {
+                g_vol_no_chg ++;
+            }
+            
+            g_pre_dif = vol_dif;
+            
+            if((g_vol_chg_cnt >= 10) || (g_vol_no_chg >= 2))   //防止死循环，兼容winxp
+            {
+                g_vol_sync_timer = 0;
+                g_vol_chg_cnt = 0;
+                g_vol_no_chg = 0;
+                uengine_sync_volume(g_current_vol,1);
+                sys_os_time_dly(1);
+                continue;
+            }
+            
+            if ((g_force_equ == 0) && ((vol_dif == 1) || ((0 - vol_dif) == 1) || (vol_dif == 0)))
+            {
+                g_vol_sync_timer = 0;
+                g_vol_chg_cnt = 0;
+                g_vol_no_chg = 0;
+            }
+            else if (vol_dif != 0)
+            {
+                uengine_vol_sync(g_current_vol);
+            }
+            else    //vol_dif == 0
+            {
+                g_vol_sync_timer = 0;
+                g_vol_chg_cnt = 0;
+                g_vol_no_chg = 0;
+            }
+            
+            g_vol_chg_cnt ++;
+        }
+        
+        if (auto_play_count >= AUTO_PLAY_DELAY)
+bfc26192:	f1c0 5b02 	sltiu	v1,450
+bfc26196:	6111      	btnez	bfc261ba <uengine_control_block+0x13e>
+bfc26198:	b493      	lw	a0,bfc263e4 <uengine_control_block+0x368>
+        {
+            if((g_status_data.start_play == 0) && (g_auto_play_flag == 1) && (g_data_flag == 0))
+bfc2619a:	9c06      	lw	s0,24(a0)
+bfc2619c:	2836      	bnez	s0,bfc2620a <uengine_control_block+0x18e>
+bfc2619e:	b1ac      	lw	s1,bfc2644c <uengine_control_block+0x3d0>
+bfc261a0:	a1a0      	lbu	a1,0(s1)
+bfc261a2:	7501      	cmpi	a1,1
+bfc261a4:	6104      	btnez	bfc261ae <uengine_control_block+0x132>
+bfc261a6:	b2ab      	lw	v0,bfc26450 <uengine_control_block+0x3d4>
+bfc261a8:	a200      	lbu	s0,0(v0)
+bfc261aa:	f0e0 200d 	beqz	s0,bfc26388 <uengine_control_block+0x30c>
+bfc261ae:	6f00      	li	a3,0
+            {
+                ud_set_cmd(SET_HID_OPERS, 0x08);
+                
+                ud_hid_deal();
+
+                libc_print("auto play",0,0);
+            }
+            
+            auto_play_count = 0;
+bfc261b0:	c1e0      	sb	a3,0(s1)
+            
+            g_auto_play_flag = 0;
+bfc261b2:	b1a9      	lw	s1,bfc26454 <uengine_control_block+0x3d8>
+            
+            g_switch_song_flag = 0x01;
+bfc261b4:	6e01      	li	a2,1
+bfc261b6:	d70b      	sw	a3,44(sp)
+bfc261b8:	c1c0      	sb	a2,0(s1)
+bfc261ba:	6d00      	li	a1,0
+        }
+        //挂起10ms 多任务交互
+        sys_os_time_dly(1);
+bfc261bc:	b390      	lw	v1,bfc263fc <uengine_control_block+0x380>
+bfc261be:	6c01      	li	a0,1
+bfc261c0:	67c5      	move	a2,a1
+bfc261c2:	eb40      	jalr	v1
+bfc261c4:	6f31      	li	a3,49
+bfc261c6:	b4a4      	lw	a0,bfc26454 <uengine_control_block+0x3d8>
+        
+        if((g_switch_song_flag == 0)&&(g_auto_play_flag == 1))
+bfc261c8:	a400      	lbu	s0,0(a0)
+bfc261ca:	2807      	bnez	s0,bfc261da <uengine_control_block+0x15e>
+bfc261cc:	b6a0      	lw	a2,bfc2644c <uengine_control_block+0x3d0>
+bfc261ce:	920b      	lw	v0,44(sp)
+        {
+            auto_play_count++;
+bfc261d0:	a620      	lbu	s1,0(a2)
+bfc261d2:	42a1      	addiu	a1,v0,1
+bfc261d4:	7101      	cmpi	s1,1
+bfc261d6:	d50b      	sw	a1,44(sp)
+bfc261d8:	6002      	bteqz	bfc261de <uengine_control_block+0x162>
+bfc261da:	6f00      	li	a3,0
+        }
+        else
+        {
+            auto_play_count = 0;
+bfc261dc:	d70b      	sw	a3,44(sp)
+bfc261de:	940a      	lw	a0,40(sp)
+        }
+        
+        i++;
+bfc261e0:	4401      	addiu	s0,a0,1
+bfc261e2:	e811      	zeb	s0
+bfc261e4:	d00a      	sw	s0,40(sp)
+bfc261e6:	b080      	lw	s0,bfc263e4 <uengine_control_block+0x368>
+bfc261e8:	6d00      	li	a1,0
+bfc261ea:	b380      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc261ec:	6790      	move	a0,s0
+bfc261ee:	67c5      	move	a2,a1
+bfc261f0:	eb40      	jalr	v1
+bfc261f2:	67e5      	move	a3,a1
+bfc261f4:	9886      	lw	a0,24(s0)
+bfc261f6:	f75f 2411 	beqz	a0,bfc2609c <uengine_control_block+0x20>
+bfc261fa:	b37e      	lw	v1,bfc263f0 <uengine_control_block+0x374>
+bfc261fc:	b57c      	lw	a1,bfc263ec <uengine_control_block+0x370>
+bfc261fe:	9b80      	lw	a0,0(v1)
+bfc26200:	6e00      	li	a2,0
+bfc26202:	6801      	li	s0,1
+bfc26204:	ddc0      	sw	a2,0(a1)
+bfc26206:	dc00      	sw	s0,0(a0)
+bfc26208:	1752      	b	bfc260ae <uengine_control_block+0x32>
+bfc2620a:	b191      	lw	s1,bfc2644c <uengine_control_block+0x3d0>
+bfc2620c:	17d0      	b	bfc261ae <uengine_control_block+0x132>
+bfc2620e:	6d00      	li	a1,0
+bfc26210:	b176      	lw	s1,bfc263e8 <uengine_control_block+0x36c>
+bfc26212:	6c0d      	li	a0,13
+bfc26214:	67c5      	move	a2,a1
+bfc26216:	e940      	jalr	s1
+bfc26218:	6f06      	li	a3,6
+bfc2621a:	b27d      	lw	v0,bfc2640c <uengine_control_block+0x390>
+bfc2621c:	eac0      	jalrc	v0
+bfc2621e:	177b      	b	bfc26116 <uengine_control_block+0x9a>
+bfc26220:	b283      	lw	v0,bfc2642c <uengine_control_block+0x3b0>
+bfc26222:	ea40      	jalr	v0
+bfc26224:	0404      	addiu	a0,sp,16
+bfc26226:	d209      	sw	v0,36(sp)
+bfc26228:	9609      	lw	a2,36(sp)
+bfc2622a:	f100 7600 	cmpi	a2,256
+bfc2622e:	61a6      	btnez	bfc2617c <uengine_control_block+0x100>
+bfc26230:	9209      	lw	v0,36(sp)
+/*#ifdef __ESD_MODE_
+        if(g_auto_play_flag == 0 && check_auto_play_time <=2 )
+        {
+            esd_count_time++;
+            if(esd_count_time >= 500)
+            {
+                auto_play_for_esd(&check_auto_play_time);
+                esd_count_time = 0;
+            }
+        }
+#endif*/
+    }
+
+    //kill_app_timer(g_hid_timer);
+
+    return uengine_retval;
+}
+bfc26232:	6478      	restore	64,ra,s0-s1
+bfc26234:	e8a0      	jrc	ra
+bfc26236:	6c00      	li	a0,0
+bfc26238:	b171      	lw	s1,bfc263fc <uengine_control_block+0x380>
+bfc2623a:	67a4      	move	a1,a0
+bfc2623c:	67c4      	move	a2,a0
+bfc2623e:	e940      	jalr	s1
+bfc26240:	6f1c      	li	a3,28
+bfc26242:	9880      	lw	a0,0(s0)
+bfc26244:	e29f      	subu	a3,v0,a0
+bfc26246:	5f32      	sltiu	a3,50
+bfc26248:	61a3      	btnez	bfc26190 <uengine_control_block+0x114>
+bfc2624a:	b46a      	lw	a0,bfc263f0 <uengine_control_block+0x374>
+bfc2624c:	b37a      	lw	v1,bfc26434 <uengine_control_block+0x3b8>
+bfc2624e:	9ce0      	lw	a3,0(a0)
+bfc26250:	9b80      	lw	a0,0(v1)
+bfc26252:	9fa1      	lw	a1,4(a3)
+bfc26254:	b379      	lw	v1,bfc26438 <uengine_control_block+0x3bc>
+bfc26256:	e59b      	subu	a2,a1,a0
+bfc26258:	67a6      	move	a1,a2
+bfc2625a:	8340      	lb	v0,0(v1)
+bfc2625c:	ed91      	seb	a1
+bfc2625e:	eaae      	xor	v0,a1
+bfc26260:	2a6f      	bnez	v0,bfc26340 <uengine_control_block+0x2c4>
+bfc26262:	b677      	lw	a2,bfc2643c <uengine_control_block+0x3c0>
+bfc26264:	a6e0      	lbu	a3,0(a2)
+bfc26266:	4741      	addiu	v0,a3,1
+bfc26268:	c640      	sb	v0,0(a2)
+bfc2626a:	c3a0      	sb	a1,0(v1)
+bfc2626c:	b375      	lw	v1,bfc26440 <uengine_control_block+0x3c4>
+bfc2626e:	a340      	lbu	v0,0(v1)
+bfc26270:	5a0a      	sltiu	v0,10
+bfc26272:	6003      	bteqz	bfc2627a <uengine_control_block+0x1fe>
+bfc26274:	a6e0      	lbu	a3,0(a2)
+bfc26276:	5f02      	sltiu	a3,2
+bfc26278:	6175      	btnez	bfc26364 <uengine_control_block+0x2e8>
+bfc2627a:	6a00      	li	v0,0
+bfc2627c:	d840      	sw	v0,0(s0)
+bfc2627e:	6d00      	li	a1,0
+bfc26280:	b062      	lw	s0,bfc26408 <uengine_control_block+0x38c>
+bfc26282:	c6a0      	sb	a1,0(a2)
+bfc26284:	c340      	sb	v0,0(v1)
+bfc26286:	e840      	jalr	s0
+bfc26288:	6d01      	li	a1,1
+bfc2628a:	6d00      	li	a1,0
+bfc2628c:	6c01      	li	a0,1
+bfc2628e:	67c5      	move	a2,a1
+bfc26290:	e940      	jalr	s1
+bfc26292:	6f31      	li	a3,49
+bfc26294:	16f9      	b	bfc26088 <uengine_control_block+0xc>
+bfc26296:	6c00      	li	a0,0
+bfc26298:	b354      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc2629a:	67a4      	move	a1,a0
+bfc2629c:	67c4      	move	a2,a0
+bfc2629e:	eb40      	jalr	v1
+bfc262a0:	6f07      	li	a3,7
+bfc262a2:	6800      	li	s0,0
+bfc262a4:	d00a      	sw	s0,40(sp)
+bfc262a6:	1771      	b	bfc2618a <uengine_control_block+0x10e>
+bfc262a8:	b355      	lw	v1,bfc263fc <uengine_control_block+0x380>
+bfc262aa:	6786      	move	a0,a2
+bfc262ac:	67a6      	move	a1,a2
+bfc262ae:	eb40      	jalr	v1
+bfc262b0:	6f1c      	li	a3,28
+bfc262b2:	b452      	lw	a0,bfc263f8 <uengine_control_block+0x37c>
+bfc262b4:	dc40      	sw	v0,0(a0)
+bfc262b6:	6a01      	li	v0,1
+bfc262b8:	c040      	sb	v0,0(s0)
+bfc262ba:	1700      	b	bfc260bc <uengine_control_block+0x40>
+bfc262bc:	6d00      	li	a1,0
+bfc262be:	b34b      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc262c0:	67c5      	move	a2,a1
+bfc262c2:	6c05      	li	a0,5
+bfc262c4:	eb40      	jalr	v1
+bfc262c6:	6f06      	li	a3,6
+bfc262c8:	9889      	lw	a0,36(s0)
+bfc262ca:	b150      	lw	s1,bfc26408 <uengine_control_block+0x38c>
+bfc262cc:	e940      	jalr	s1
+bfc262ce:	6d00      	li	a1,0
+bfc262d0:	171f      	b	bfc26110 <uengine_control_block+0x94>
+bfc262d2:	6c00      	li	a0,0
+bfc262d4:	b04a      	lw	s0,bfc263fc <uengine_control_block+0x380>
+bfc262d6:	67a4      	move	a1,a0
+bfc262d8:	67c4      	move	a2,a0
+bfc262da:	e840      	jalr	s0
+bfc262dc:	6f2d      	li	a3,45
+bfc262de:	6d00      	li	a1,0
+bfc262e0:	b342      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc262e2:	67c5      	move	a2,a1
+bfc262e4:	67e5      	move	a3,a1
+bfc262e6:	6791      	move	a0,s1
+bfc262e8:	eb40      	jalr	v1
+bfc262ea:	6702      	move	s0,v0
+bfc262ec:	6d00      	li	a1,0
+bfc262ee:	b33f      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc262f0:	67c5      	move	a2,a1
+bfc262f2:	6c02      	li	a0,2
+bfc262f4:	eb40      	jalr	v1
+bfc262f6:	6f06      	li	a3,6
+bfc262f8:	6d00      	li	a1,0
+bfc262fa:	b341      	lw	v1,bfc263fc <uengine_control_block+0x380>
+bfc262fc:	67c5      	move	a2,a1
+bfc262fe:	6790      	move	a0,s0
+bfc26300:	eb40      	jalr	v1
+bfc26302:	6f2e      	li	a3,46
+bfc26304:	a1a1      	lbu	a1,1(s1)
+bfc26306:	7501      	cmpi	a1,1
+bfc26308:	6025      	bteqz	bfc26354 <uengine_control_block+0x2d8>
+bfc2630a:	a1e2      	lbu	a3,2(s1)
+bfc2630c:	7701      	cmpi	a3,1
+bfc2630e:	601a      	bteqz	bfc26344 <uengine_control_block+0x2c8>
+bfc26310:	b442      	lw	a0,bfc26418 <uengine_control_block+0x39c>
+bfc26312:	99c5      	lw	a2,20(s1)
+bfc26314:	9964      	lw	v1,16(s1)
+bfc26316:	dcc2      	sw	a2,8(a0)
+bfc26318:	dc65      	sw	v1,20(a0)
+bfc2631a:	1727      	b	bfc2616a <uengine_control_block+0xee>
+bfc2631c:	6a00      	li	v0,0
+bfc2631e:	6c06      	li	a0,6
+bfc26320:	b332      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc26322:	d208      	sw	v0,32(sp)
+bfc26324:	67a2      	move	a1,v0
+bfc26326:	67c2      	move	a2,v0
+bfc26328:	eb40      	jalr	v1
+bfc2632a:	67e4      	move	a3,a0
+bfc2632c:	16ff      	b	bfc2612c <uengine_control_block+0xb0>
+bfc2632e:	6d00      	li	a1,0
+bfc26330:	b12e      	lw	s1,bfc263e8 <uengine_control_block+0x36c>
+bfc26332:	6c0e      	li	a0,14
+bfc26334:	67c5      	move	a2,a1
+bfc26336:	e940      	jalr	s1
+bfc26338:	6f06      	li	a3,6
+bfc2633a:	6b00      	li	v1,0
+bfc2633c:	c060      	sb	v1,0(s0)
+bfc2633e:	16d3      	b	bfc260e6 <uengine_control_block+0x6a>
+bfc26340:	b63f      	lw	a2,bfc2643c <uengine_control_block+0x3c0>
+bfc26342:	1793      	b	bfc2626a <uengine_control_block+0x1ee>
+bfc26344:	b533      	lw	a1,bfc26410 <uengine_control_block+0x394>
+bfc26346:	67d1      	move	a2,s1
+bfc26348:	9d80      	lw	a0,0(a1)
+bfc2634a:	b233      	lw	v0,bfc26414 <uengine_control_block+0x398>
+bfc2634c:	6d07      	li	a1,7
+bfc2634e:	ea40      	jalr	v0
+bfc26350:	4e14      	addiu	a2,20
+bfc26352:	17de      	b	bfc26310 <uengine_control_block+0x294>
+bfc26354:	b62f      	lw	a2,bfc26410 <uengine_control_block+0x394>
+bfc26356:	b230      	lw	v0,bfc26414 <uengine_control_block+0x398>
+bfc26358:	9e80      	lw	a0,0(a2)
+bfc2635a:	67d1      	move	a2,s1
+bfc2635c:	6d08      	li	a1,8
+bfc2635e:	ea40      	jalr	v0
+bfc26360:	4e10      	addiu	a2,16
+bfc26362:	17d3      	b	bfc2630a <uengine_control_block+0x28e>
+bfc26364:	b738      	lw	a3,bfc26444 <uengine_control_block+0x3c8>
+bfc26366:	a720      	lbu	s1,0(a3)
+bfc26368:	2927      	bnez	s1,bfc263b8 <uengine_control_block+0x33c>
+bfc2636a:	7501      	cmpi	a1,1
+bfc2636c:	6003      	bteqz	bfc26374 <uengine_control_block+0x2f8>
+bfc2636e:	e8af      	not	s0,a1
+bfc26370:	2001      	beqz	s0,bfc26374 <uengine_control_block+0x2f8>
+bfc26372:	2d23      	bnez	a1,bfc263ba <uengine_control_block+0x33e>
+bfc26374:	6d00      	li	a1,0
+bfc26376:	c3a0      	sb	a1,0(v1)
+bfc26378:	a3e0      	lbu	a3,0(v1)
+bfc2637a:	b22e      	lw	v0,bfc26430 <uengine_control_block+0x3b4>
+bfc2637c:	6c00      	li	a0,0
+bfc2637e:	c680      	sb	a0,0(a2)
+bfc26380:	47c1      	addiu	a2,a3,1
+bfc26382:	daa0      	sw	a1,0(v0)
+bfc26384:	c3c0      	sb	a2,0(v1)
+bfc26386:	1704      	b	bfc26190 <uengine_control_block+0x114>
+bfc26388:	b318      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc2638a:	67d0      	move	a2,s0
+bfc2638c:	6c01      	li	a0,1
+bfc2638e:	6d08      	li	a1,8
+bfc26390:	eb40      	jalr	v1
+bfc26392:	6f06      	li	a3,6
+bfc26394:	b315      	lw	v1,bfc263e8 <uengine_control_block+0x36c>
+bfc26396:	6790      	move	a0,s0
+bfc26398:	67b0      	move	a1,s0
+bfc2639a:	67d0      	move	a2,s0
+bfc2639c:	eb40      	jalr	v1
+bfc2639e:	6f07      	li	a3,7
+bfc263a0:	b317      	lw	v1,bfc263fc <uengine_control_block+0x380>
+bfc263a2:	0c0e      	la	a0,bfc263d8 <uengine_control_block+0x35c>
+bfc263a4:	67b0      	move	a1,s0
+bfc263a6:	67d0      	move	a2,s0
+bfc263a8:	eb40      	jalr	v1
+bfc263aa:	6f4b      	li	a3,75
+bfc263ac:	1700      	b	bfc261ae <uengine_control_block+0x132>
+bfc263ae:	b21e      	lw	v0,bfc26424 <uengine_control_block+0x3a8>
+bfc263b0:	67a6      	move	a1,a2
+bfc263b2:	ea40      	jalr	v0
+bfc263b4:	6f04      	li	a3,4
+bfc263b6:	16d0      	b	bfc26158 <uengine_control_block+0xdc>
+bfc263b8:	2508      	beqz	a1,bfc263ca <uengine_control_block+0x34e>
+bfc263ba:	b124      	lw	s1,bfc26448 <uengine_control_block+0x3cc>
+bfc263bc:	e940      	jalr	s1
+bfc263be:	ec11      	zeb	a0
+bfc263c0:	b320      	lw	v1,bfc26440 <uengine_control_block+0x3c4>
+bfc263c2:	a3e0      	lbu	a3,0(v1)
+bfc263c4:	47c1      	addiu	a2,a3,1
+bfc263c6:	c3c0      	sb	a2,0(v1)
+bfc263c8:	16e3      	b	bfc26190 <uengine_control_block+0x114>
+bfc263ca:	c3a0      	sb	a1,0(v1)
+bfc263cc:	a3e0      	lbu	a3,0(v1)
+bfc263ce:	c6a0      	sb	a1,0(a2)
+bfc263d0:	47c1      	addiu	a2,a3,1
+bfc263d2:	d8a0      	sw	a1,0(s0)
+bfc263d4:	c3c0      	sb	a2,0(v1)
+bfc263d6:	16dc      	b	bfc26190 <uengine_control_block+0x114>
+bfc263d8:	7561      	cmpi	a1,97
+bfc263da:	6f74      	li	a3,116
+bfc263dc:	7020      	cmpi	s0,32
+bfc263de:	616c      	btnez	bfc264b8 <handle_timers+0x28>
+bfc263e0:	0079      	addiu	s0,sp,484
+bfc263e2:	0000      	addiu	s0,sp,0
+bfc263e4:	9628      	lw	a2,160(sp)
+bfc263e6:	9fc1      	lw	a2,4(a3)
+bfc263e8:	6015      	bteqz	bfc26414 <uengine_control_block+0x398>
+bfc263ea:	bfc2      	lwu	a2,8(a3)
+bfc263ec:	9598      	lw	a1,608(sp)
+bfc263ee:	9fc1      	lw	a2,4(a3)
+bfc263f0:	95c4      	lw	a1,784(sp)
+bfc263f2:	9fc1      	lw	a2,4(a3)
+bfc263f4:	95bd      	lw	a1,756(sp)
+bfc263f6:	9fc1      	lw	a2,4(a3)
+bfc263f8:	95b0      	lw	a1,704(sp)
+bfc263fa:	9fc1      	lw	a2,4(a3)
+bfc263fc:	6011      	bteqz	bfc26420 <uengine_control_block+0x3a4>
+bfc263fe:	bfc2      	lwu	a2,8(a3)
+bfc26400:	9581      	lw	a1,516(sp)
+bfc26402:	9fc1      	lw	a2,4(a3)
+bfc26404:	95d0      	lw	a1,832(sp)
+bfc26406:	9fc1      	lw	a2,4(a3)
+bfc26408:	68d5      	li	s0,213
+bfc2640a:	600a      	bteqz	bfc26420 <uengine_control_block+0x3a4>
+bfc2640c:	6959      	li	s1,89
+bfc2640e:	600a      	bteqz	bfc26424 <uengine_control_block+0x3a8>
+bfc26410:	95d4      	lw	a1,848(sp)
+bfc26412:	9fc1      	lw	a2,4(a3)
+bfc26414:	600d      	bteqz	bfc26430 <uengine_control_block+0x3b4>
+bfc26416:	bfc2      	lwu	a2,8(a3)
+bfc26418:	9604      	lw	a2,16(sp)
+bfc2641a:	9fc1      	lw	a2,4(a3)
+bfc2641c:	95b8      	lw	a1,736(sp)
+bfc2641e:	9fc1      	lw	a2,4(a3)
+bfc26420:	95b9      	lw	a1,740(sp)
+bfc26422:	9fc1      	lw	a2,4(a3)
+bfc26424:	65cd      	move	t6,a1
+bfc26426:	bfc2      	lwu	a2,8(a3)
+bfc26428:	658d      	move	t4,a1
+bfc2642a:	bfc2      	lwu	a2,8(a3)
+bfc2642c:	6801      	li	s0,1
+bfc2642e:	600a      	bteqz	bfc26444 <uengine_control_block+0x3c8>
+bfc26430:	95a8      	lw	a1,672(sp)
+bfc26432:	9fc1      	lw	a2,4(a3)
+bfc26434:	9584      	lw	a1,528(sp)
+bfc26436:	9fc1      	lw	a2,4(a3)
+bfc26438:	95ae      	lw	a1,696(sp)
+bfc2643a:	9fc1      	lw	a2,4(a3)
+bfc2643c:	95ad      	lw	a1,692(sp)
+bfc2643e:	9fc1      	lw	a2,4(a3)
+bfc26440:	95bc      	lw	a1,752(sp)
+bfc26442:	9fc1      	lw	a2,4(a3)
+bfc26444:	95ac      	lw	a1,688(sp)
+bfc26446:	9fc1      	lw	a2,4(a3)
+bfc26448:	6afd      	li	v0,253
+bfc2644a:	600a      	bteqz	bfc26460 <uengine_reply_msg+0x8>
+bfc2644c:	95ba      	lw	a1,744(sp)
+bfc2644e:	9fc1      	lw	a2,4(a3)
+bfc26450:	95a5      	lw	a1,660(sp)
+bfc26452:	9fc1      	lw	a2,4(a3)
+bfc26454:	95a4      	lw	a1,656(sp)
+bfc26456:	9fc1      	lw	a2,4(a3)
+
+bfc26458 <uengine_reply_msg>:
+bfc26458:	64c3      	save	24,ra
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_reply_msg(void* msg_ptr, bool ret_vals)
+ * \回复同步消息
+ * \param[in]    void  msg_ptr 消息结构体
+ * \param[in]    bool  ret_vals 相关事件处理结果 TRUE 成功 FALSE 失败
+ * \param[out]   none
+ * \return       app_result_E
+ * \retval       RESULT_IGNOR 忽略
+ * \ingroup      uengine_control.c
+ * \note  回复消息时，根据ret_vals的结果，设置应答成功或失败
+ */
+/*******************************************************************************/
+void uengine_reply_msg(void* msg_ptr, bool ret_vals)
+{
+bfc2645a:	ed11      	zeb	a1
+bfc2645c:	7501      	cmpi	a1,1
+    //消息指针
+    private_msg_t* data_ptr = (private_msg_t*) msg_ptr;
+
+    if (ret_vals == TRUE)
+bfc2645e:	610b      	btnez	bfc26476 <uengine_reply_msg+0x1e>
+bfc26460:	9c63      	lw	v1,12(a0)
+    {
+        data_ptr->reply->type = MSG_REPLY_SUCCESS;
+bfc26462:	6a01      	li	v0,1
+bfc26464:	c340      	sb	v0,0(v1)
+    }
+    else
+    {
+        data_ptr->reply->type = MSG_REPLY_FAILED;
+bfc26466:	6d00      	li	a1,0
+    }
+
+    //回复同步消息(发送信号量)
+    libc_sem_post(data_ptr->sem);
+bfc26468:	9c82      	lw	a0,8(a0)
+bfc2646a:	b209      	lw	v0,bfc2648c <uengine_reply_msg+0x34>
+bfc2646c:	67c5      	move	a2,a1
+bfc2646e:	ea40      	jalr	v0
+bfc26470:	6f16      	li	a3,22
+bfc26472:	6443      	restore	24,ra
+bfc26474:	e8a0      	jrc	ra
+bfc26476:	9c63      	lw	v1,12(a0)
+bfc26478:	6a02      	li	v0,2
+bfc2647a:	c340      	sb	v0,0(v1)
+bfc2647c:	6d00      	li	a1,0
+bfc2647e:	9c82      	lw	a0,8(a0)
+bfc26480:	b203      	lw	v0,bfc2648c <uengine_reply_msg+0x34>
+bfc26482:	67c5      	move	a2,a1
+bfc26484:	ea40      	jalr	v0
+bfc26486:	6f16      	li	a3,22
+bfc26488:	6443      	restore	24,ra
+bfc2648a:	e8a0      	jrc	ra
+bfc2648c:	6009      	bteqz	bfc264a0 <handle_timers+0x10>
+bfc2648e:	bfc2      	lwu	a2,8(a3)
+
+bfc26490 <handle_timers>:
+bfc26490:	f004 64f5 	save	a0,40,ra,s0-s1
+ * \ingroup      app_timer
+ * \note
+ *******************************************************************************/
+void handle_timers(app_timer_t *timers, uint8 count)
+{
+bfc26494:	ed11      	zeb	a1
+bfc26496:	6c00      	li	a0,0
+    app_timer_t *tm;
+    uint32 cur_time_ms = sys_get_ab_timer(); //如果没有执行软定时器服务例程，认为当前时间不变
+bfc26498:	b23a      	lw	v0,bfc26580 <handle_timers+0xf0>
+bfc2649a:	d504      	sw	a1,16(sp)
+bfc2649c:	6f1c      	li	a3,28
+bfc2649e:	67a4      	move	a1,a0
+bfc264a0:	ea40      	jalr	v0
+bfc264a2:	67c4      	move	a2,a0
+bfc264a4:	9304      	lw	v1,16(sp)
+    uint32 next_time_ms;
+    uint16 next_timeout;
+    uint8 i;
+    bool need_proc;
+
+    for (i = 0; i < count; i++)
+bfc264a6:	67e2      	move	a3,v0
+bfc264a8:	6a00      	li	v0,0
+bfc264aa:	d205      	sw	v0,20(sp)
+bfc264ac:	2366      	beqz	v1,bfc2657a <handle_timers+0xea>
+bfc264ae:	9405      	lw	a0,20(sp)
+    {
+        tm = timers + i;
+bfc264b0:	930a      	lw	v1,40(sp)
+bfc264b2:	3290      	sll	v0,a0,4
+bfc264b4:	e351      	addu	a0,v1,v0
+bfc264b6:	a4a0      	lbu	a1,0(a0)
+
+        //定时器正在运行才需要执行
+        if (tm->state != TIMER_STATE_RUNNING)
+bfc264b8:	6e03      	li	a2,3
+bfc264ba:	edcc      	and	a1,a2
+bfc264bc:	7501      	cmpi	a1,1
+bfc264be:	6156      	btnez	bfc2656c <handle_timers+0xdc>
+bfc264c0:	b631      	lw	a2,bfc26584 <handle_timers+0xf4>
+        {
+            continue;
+        }
+
+        //TAG场景检查
+        if ((tm->tag != g_this_app_timer_tag) && (tm->tag != APP_TIMER_TAG_SYS))
+bfc264c2:	a461      	lbu	v1,1(a0)
+bfc264c4:	a6a0      	lbu	a1,0(a2)
+bfc264c6:	ed6e      	xor	a1,v1
+bfc264c8:	2502      	beqz	a1,bfc264ce <handle_timers+0x3e>
+bfc264ca:	73ff      	cmpi	v1,255
+bfc264cc:	614f      	btnez	bfc2656c <handle_timers+0xdc>
+bfc264ce:	677d      	move	v1,sp
+        {
+            continue;
+        }
+
+        g_app_timer_id = i;
+bfc264d0:	a354      	lbu	v0,20(v1)
+bfc264d2:	b12e      	lw	s1,bfc26588 <handle_timers+0xf8>
+bfc264d4:	6860      	li	s0,96
+        next_timeout = tm->timeout;
+        if ((tm->twinkle == TRUE) && (tm->on_off == FALSE))
+bfc264d6:	c140      	sb	v0,0(s1)
+bfc264d8:	a460      	lbu	v1,0(a0)
+bfc264da:	acc2      	lhu	a2,4(a0)
+bfc264dc:	e86c      	and	s0,v1
+bfc264de:	7020      	cmpi	s0,32
+bfc264e0:	653e      	move	t9,a2
+bfc264e2:	6101      	btnez	bfc264e6 <handle_timers+0x56>
+bfc264e4:	acc3      	lhu	a2,6(a0)
+        {
+            next_timeout = tm->timeout_off;
+bfc264e6:	9ca2      	lw	a1,8(a0)
+        }
+        next_time_ms = cur_time_ms + next_timeout;
+        need_proc = FALSE;
+        if (cur_time_ms >= tm->timeout_expires) //定时时间已到
+bfc264e8:	e7c1      	addu	s0,a3,a2
+bfc264ea:	efa3      	sltu	a3,a1
+bfc264ec:	6900      	li	s1,0
+bfc264ee:	612e      	btnez	bfc2654c <handle_timers+0xbc>
+bfc264f0:	6910      	li	s1,16
+        {
+            //单发软定时器一次执行完后 kill 掉
+            if (tm->type == TIMER_TYPE_SINGLE_SHOT)
+bfc264f2:	e96c      	and	s1,v1
+bfc264f4:	2104      	beqz	s1,bfc264fe <handle_timers+0x6e>
+bfc264f6:	6904      	li	s1,4
+            {
+                tm->state = TIMER_STATE_NOUSED;
+bfc264f8:	ea2b      	neg	v0,s1
+bfc264fa:	eb4c      	and	v1,v0
+bfc264fc:	c460      	sb	v1,0(a0)
+bfc264fe:	e7af      	subu	v1,a3,a1
+            }
+            need_proc = TRUE;
+
+            //重设软定时器超时时间
+            if (tm->timeout > (cur_time_ms - tm->timeout_expires))
+bfc26500:	67f9      	move	a3,t9
+bfc26502:	ebe3      	sltu	v1,a3
+bfc26504:	6901      	li	s1,1
+bfc26506:	6003      	bteqz	bfc2650e <handle_timers+0x7e>
+bfc26508:	e5c9      	addu	v0,a1,a2
+            {
+                //当前时间>=这次expires时间<下次expires时间
+                tm->timeout_expires += next_timeout; //直接在expires上加定时周期，以确保多次定时时间准确
+bfc2650a:	dc42      	sw	v0,8(a0)
+bfc2650c:	1001      	b	bfc26510 <handle_timers+0x80>
+bfc2650e:	dc02      	sw	s0,8(a0)
+            }
+            else
+            {
+                //当前时间>=下次expires时间
+                //已经错过了一次expires(说明timeout太短了)
+                //将下次expires时间设置到当前时间的timeout之后, 不然下次timeout立即就会到来
+                tm->timeout_expires = next_time_ms;
+bfc26510:	a460      	lbu	v1,0(a0)
+            }
+
+            if (tm->twinkle == TRUE)
+bfc26512:	6d20      	li	a1,32
+bfc26514:	ed6c      	and	a1,v1
+bfc26516:	251a      	beqz	a1,bfc2654c <handle_timers+0xbc>
+bfc26518:	6d40      	li	a1,64
+            {
+                if (tm->on_off == TRUE)
+bfc2651a:	67c3      	move	a2,v1
+bfc2651c:	eeac      	and	a2,a1
+bfc2651e:	2605      	beqz	a2,bfc2652a <handle_timers+0x9a>
+bfc26520:	6a41      	li	v0,65
+                {
+                    tm->on_off = FALSE;
+bfc26522:	ef4b      	neg	a3,v0
+bfc26524:	ebec      	and	v1,a3
+bfc26526:	c460      	sb	v1,0(a0)
+bfc26528:	1011      	b	bfc2654c <handle_timers+0xbc>
+bfc2652a:	ebad      	or	v1,a1
+                }
+                else
+                {
+                    tm->on_off = TRUE;
+bfc2652c:	c460      	sb	v1,0(a0)
+bfc2652e:	a462      	lbu	v1,2(a0)
+
+                    if (tm->count != 0xff)
+bfc26530:	67a3      	move	a1,v1
+bfc26532:	ed11      	zeb	a1
+bfc26534:	75ff      	cmpi	a1,255
+bfc26536:	6002      	bteqz	bfc2653c <handle_timers+0xac>
+bfc26538:	43cf      	addiu	a2,v1,-1
+                    {
+                        tm->count--;
+bfc2653a:	c4c2      	sb	a2,2(a0)
+bfc2653c:	a4a2      	lbu	a1,2(a0)
+                    }
+                    if (tm->count == 0)
+bfc2653e:	2d06      	bnez	a1,bfc2654c <handle_timers+0xbc>
+bfc26540:	a420      	lbu	s1,0(a0)
+                    {
+                        tm->state = TIMER_STATE_NOUSED;
+bfc26542:	6f04      	li	a3,4
+bfc26544:	ebeb      	neg	v1,a3
+bfc26546:	e96c      	and	s1,v1
+bfc26548:	c420      	sb	s1,0(a0)
+bfc2654a:	6725      	move	s1,a1
+                        need_proc = FALSE;
+bfc2654c:	9c42      	lw	v0,8(a0)
+                    }
+                }
+            }
+        }
+
+        if (next_time_ms <= tm->timeout_expires)
+bfc2654e:	ea03      	sltu	v0,s0
+bfc26550:	6101      	btnez	bfc26554 <handle_timers+0xc4>
+bfc26552:	dc02      	sw	s0,8(a0)
+        {
+            //如果系统时间因某种原因落在超时时间点后面，那么必须修复该时间点
+            tm->timeout_expires = next_time_ms;
+bfc26554:	7101      	cmpi	s1,1
+        }
+
+        //调用软定时器服务例程
+        if ((need_proc == TRUE) && (tm->func_proc != NULL))
+bfc26556:	6103      	btnez	bfc2655e <handle_timers+0xce>
+bfc26558:	9c43      	lw	v0,12(a0)
+bfc2655a:	2201      	beqz	v0,bfc2655e <handle_timers+0xce>
+bfc2655c:	eac0      	jalrc	v0
+        {
+            tm->func_proc();
+bfc2655e:	6c00      	li	a0,0
+        }
+
+        //执行过软定时器服务例程，重新加载当前时间，这样时间较为准确
+        cur_time_ms = sys_get_ab_timer();
+bfc26560:	b208      	lw	v0,bfc26580 <handle_timers+0xf0>
+bfc26562:	6f1c      	li	a3,28
+bfc26564:	67a4      	move	a1,a0
+bfc26566:	ea40      	jalr	v0
+bfc26568:	67c4      	move	a2,a0
+bfc2656a:	67e2      	move	a3,v0
+bfc2656c:	9605      	lw	a2,20(sp)
+bfc2656e:	9404      	lw	a0,16(sp)
+bfc26570:	46a1      	addiu	a1,a2,1
+bfc26572:	ed11      	zeb	a1
+bfc26574:	ed83      	sltu	a1,a0
+bfc26576:	d505      	sw	a1,20(sp)
+bfc26578:	619a      	btnez	bfc264ae <handle_timers+0x1e>
+bfc2657a:	6475      	restore	40,ra,s0-s1
+bfc2657c:	e8a0      	jrc	ra
+bfc2657e:	0000      	addiu	s0,sp,0
+bfc26580:	6011      	bteqz	bfc265a4 <get_app_msg+0x18>
+bfc26582:	bfc2      	lwu	a2,8(a3)
+bfc26584:	9695      	lw	a2,596(sp)
+bfc26586:	9fc1      	lw	a2,4(a3)
+bfc26588:	9694      	lw	a2,592(sp)
+bfc2658a:	9fc1      	lw	a2,4(a3)
+
+bfc2658c <get_app_msg>:
+bfc2658c:	64e3      	save	24,ra,s0
+ * \endcode
+ * \note
+ *******************************************************************************/
+bool get_app_msg(private_msg_t *private_msg)
+{
+bfc2658e:	b20b      	lw	v0,bfc265b8 <get_app_msg+0x2c>
+    //软定时器扫描
+    if (g_app_timer_count > 0)
+bfc26590:	6704      	move	s0,a0
+bfc26592:	a2a0      	lbu	a1,0(v0)
+bfc26594:	2504      	beqz	a1,bfc2659e <get_app_msg+0x12>
+bfc26596:	b60a      	lw	a2,bfc265bc <get_app_msg+0x30>
+    {
+        handle_timers(g_app_timer_vector, g_app_timer_count);
+bfc26598:	b30a      	lw	v1,bfc265c0 <get_app_msg+0x34>
+bfc2659a:	eb40      	jalr	v1
+bfc2659c:	9e80      	lw	a0,0(a2)
+bfc2659e:	b40a      	lw	a0,bfc265c4 <get_app_msg+0x38>
+    }
+
+    //sys_dsp_print();
+
+    //接收 应用私有消息
+    if (sys_mq_receive((uint32) (g_this_app_info->mq_id), (void *) private_msg) == 0)
+bfc265a0:	b20a      	lw	v0,bfc265c8 <get_app_msg+0x3c>
+bfc265a2:	9ca0      	lw	a1,0(a0)
+bfc265a4:	6e00      	li	a2,0
+bfc265a6:	a583      	lbu	a0,3(a1)
+bfc265a8:	6f19      	li	a3,25
+bfc265aa:	ea40      	jalr	v0
+bfc265ac:	67b0      	move	a1,s0
+bfc265ae:	5a01      	sltiu	v0,1
+    {
+        return TRUE;
+    }
+
+    //消息队列已空，返回false
+    return FALSE;
+}
+bfc265b0:	6758      	move	v0,t8
+bfc265b2:	6463      	restore	24,ra,s0
+bfc265b4:	e8a0      	jrc	ra
+bfc265b6:	0000      	addiu	s0,sp,0
+bfc265b8:	96a0      	lw	a2,640(sp)
+bfc265ba:	9fc1      	lw	a2,4(a3)
+bfc265bc:	9690      	lw	a2,576(sp)
+bfc265be:	9fc1      	lw	a2,4(a3)
+bfc265c0:	6491      	save	8,s1
+bfc265c2:	bfc2      	lwu	a2,8(a3)
+bfc265c4:	9698      	lw	a2,608(sp)
+bfc265c6:	9fc1      	lw	a2,4(a3)
+bfc265c8:	6011      	bteqz	bfc265ec <ccd_op_entry+0x20>
+bfc265ca:	bfc2      	lwu	a2,8(a3)
+
+bfc265cc <ccd_op_entry>:
+bfc265cc:	6b09      	li	v1,9
+bfc265ce:	e805      	break	0
+Disassembly of section BANK_CONTROL_1_0:
+
+60026800 <process_start>:
+60026800:	64d4      	save	32,ra,s1
+60026802:	0104      	addiu	s1,sp,16
+60026804:	d984      	sw	a0,16(s1)
+60026806:	9944      	lw	v0,16(s1)
+60026808:	6782      	move	a0,v0
+6002680a:	6d00      	li	a1,0
+6002680c:	b207      	lw	v0,60026828 <BANK_CONTROL_1_ADDR_BASE+0x28>
+6002680e:	eac0      	jalrc	v0
+60026810:	c140      	sb	v0,0(s1)
+60026812:	8140      	lb	v0,0(s1)
+60026814:	6782      	move	a0,v0
+60026816:	6d00      	li	a1,0
+60026818:	6e00      	li	a2,0
+6002681a:	6f0e      	li	a3,14
+6002681c:	b204      	lw	v0,6002682c <BANK_CONTROL_1_ADDR_BASE+0x2c>
+6002681e:	eac0      	jalrc	v0
+60026820:	6a00      	li	v0,0
+60026822:	65b9      	move	sp,s1
+60026824:	6452      	restore	16,ra,s1
+60026826:	e8a0      	jrc	ra
+60026828:	6df5      	li	a1,245
+6002682a:	6006      	bteqz	60026838 <__start+0x8>
+6002682c:	6009      	bteqz	60026840 <__start+0x10>
+6002682e:	bfc2      	lwu	a2,8(a3)
+
+60026830 <__start>:
+60026830:	64d6      	save	48,ra,s1
+60026832:	0104      	addiu	s1,sp,16
+60026834:	d988      	sw	a0,32(s1)
+60026836:	d9a9      	sw	a1,36(s1)
+60026838:	6c00      	li	a0,0
+6002683a:	6d00      	li	a1,0
+6002683c:	6e00      	li	a2,0
+6002683e:	6f10      	li	a3,16
+60026840:	b220      	lw	v0,600268c0 <__start+0x90>
+60026842:	eac0      	jalrc	v0
+60026844:	c150      	sb	v0,16(s1)
+60026846:	8170      	lb	v1,16(s1)
+60026848:	6a01      	li	v0,1
+6002684a:	ea4b      	neg	v0
+6002684c:	ea6e      	xor	v0,v1
+6002684e:	5a01      	sltiu	v0,1
+60026850:	6004      	bteqz	6002685a <__start+0x2a>
+60026852:	6a01      	li	v0,1
+60026854:	ea4b      	neg	v0
+60026856:	d945      	sw	v0,20(s1)
+60026858:	102e      	b	600268b6 <__start+0x86>
+6002685a:	b21b      	lw	v0,600268c4 <__start+0x94>
+6002685c:	d940      	sw	v0,0(s1)
+6002685e:	9948      	lw	v0,32(s1)
+60026860:	d941      	sw	v0,4(s1)
+60026862:	9949      	lw	v0,36(s1)
+60026864:	9a41      	lw	v0,4(v0)
+60026866:	d942      	sw	v0,8(s1)
+60026868:	9949      	lw	v0,36(s1)
+6002686a:	aa41      	lhu	v0,2(v0)
+6002686c:	c946      	sh	v0,12(s1)
+6002686e:	6c00      	li	a0,0
+60026870:	6d00      	li	a1,0
+60026872:	6e00      	li	a2,0
+60026874:	6f33      	li	a3,51
+60026876:	b215      	lw	v0,600268c8 <__start+0x98>
+60026878:	eac0      	jalrc	v0
+6002687a:	9949      	lw	v0,36(s1)
+6002687c:	aa40      	lhu	v0,0(v0)
+6002687e:	8170      	lb	v1,16(s1)
+60026880:	6791      	move	a0,s1
+60026882:	67a2      	move	a1,v0
+60026884:	67c3      	move	a2,v1
+60026886:	6f4a      	li	a3,74
+60026888:	b210      	lw	v0,600268c8 <__start+0x98>
+6002688a:	eac0      	jalrc	v0
+6002688c:	5200      	slti	v0,0
+6002688e:	6011      	bteqz	600268b2 <__start+0x82>
+60026890:	8150      	lb	v0,16(s1)
+60026892:	6782      	move	a0,v0
+60026894:	6d00      	li	a1,0
+60026896:	6e00      	li	a2,0
+60026898:	6f11      	li	a3,17
+6002689a:	b20a      	lw	v0,600268c0 <__start+0x90>
+6002689c:	eac0      	jalrc	v0
+6002689e:	6c00      	li	a0,0
+600268a0:	6d00      	li	a1,0
+600268a2:	6e00      	li	a2,0
+600268a4:	6f34      	li	a3,52
+600268a6:	b209      	lw	v0,600268c8 <__start+0x98>
+600268a8:	eac0      	jalrc	v0
+600268aa:	6a01      	li	v0,1
+600268ac:	ea4b      	neg	v0
+600268ae:	d945      	sw	v0,20(s1)
+600268b0:	1002      	b	600268b6 <__start+0x86>
+600268b2:	6a00      	li	v0,0
+600268b4:	d945      	sw	v0,20(s1)
+600268b6:	9945      	lw	v0,20(s1)
+600268b8:	65b9      	move	sp,s1
+600268ba:	6454      	restore	32,ra,s1
+600268bc:	e8a0      	jrc	ra
+600268be:	0000      	addiu	s0,sp,0
+600268c0:	6009      	bteqz	600268d4 <__start+0xa4>
+600268c2:	bfc2      	lwu	a2,8(a3)
+600268c4:	6801      	li	s0,1
+600268c6:	6002      	bteqz	600268cc <__start+0x9c>
+600268c8:	6011      	bteqz	600268ec <__start+0xbc>
+600268ca:	bfc2      	lwu	a2,8(a3)
+Disassembly of section BANK_CONTROL_1_1:
+
+60066800 <_load_cfg>:
+60066800:	64f4      	save	32,ra,s0-s1
+ * \note
+ */
+/*******************************************************************************/
+void _load_cfg(void)
+{
+60066802:	b015      	lw	s0,60066854 <_load_cfg+0x54>
+    g_usound_cfg = com_get_config_default(USOUND_TYPE);
+60066804:	b113      	lw	s1,60066850 <_load_cfg+0x50>
+60066806:	e840      	jalr	s0
+60066808:	6cfa      	li	a0,250
+6006680a:	b313      	lw	v1,60066854 <_load_cfg+0x54>
+    
+    g_pa_type = com_get_config_default(SETTING_AUDIO_OUTPUT_CHANNAL);
+6006680c:	d942      	sw	v0,8(s1)
+6006680e:	eb40      	jalr	v1
+60066810:	6c28      	li	a0,40
+60066812:	4101      	addiu	s0,s1,1
+60066814:	c040      	sb	v0,0(s0)
+60066816:	9942      	lw	v0,8(s1)
+
+    //sys_vm_read(&g_usoud_config_val, VM_AP_USOUND, sizeof(uengine_config_t));
+
+    //if (g_usoud_config_val.magic != VRAM_MAGIC(VM_AP_USOUND))
+    {
+        //g_usoud_config_val.magic = VRAM_MAGIC(VM_AP_USOUND);
+
+        if(g_usound_cfg == 2)
+60066818:	7202      	cmpi	v0,2
+6006681a:	6107      	btnez	6006682a <_load_cfg+0x2a>
+6006681c:	6751      	move	v0,s1
+        {
+            g_usoud_config_val.dac_sample = 96;
+6006681e:	4a28      	addiu	v0,40
+60066820:	6b60      	li	v1,96
+60066822:	da61      	sw	v1,4(v0)
+
+            g_usoud_config_val.adc_sample = 96;
+        }
+        else if(1 == g_app_info_state_all.fix_sample_rate_flag)
+        {
+            g_usoud_config_val.dac_sample = 48;
+
+            g_usoud_config_val.adc_sample = 48;
+        }
+        else
+        {
+            g_usoud_config_val.dac_sample = 44;
+60066824:	da62      	sw	v1,8(v0)
+
+            g_usoud_config_val.adc_sample = 44;
+60066826:	6474      	restore	32,ra,s0-s1
+        }
+    }
+}
+60066828:	e8a0      	jrc	ra
+6006682a:	b50c      	lw	a1,60066858 <_load_cfg+0x58>
+6006682c:	a588      	lbu	a0,8(a1)
+6006682e:	7401      	cmpi	a0,1
+60066830:	6107      	btnez	60066840 <_load_cfg+0x40>
+60066832:	6751      	move	v0,s1
+60066834:	4a28      	addiu	v0,40
+60066836:	6b30      	li	v1,48
+60066838:	da61      	sw	v1,4(v0)
+6006683a:	da62      	sw	v1,8(v0)
+6006683c:	6474      	restore	32,ra,s0-s1
+6006683e:	e8a0      	jrc	ra
+60066840:	6751      	move	v0,s1
+60066842:	4a28      	addiu	v0,40
+60066844:	6b2c      	li	v1,44
+60066846:	da61      	sw	v1,4(v0)
+60066848:	da62      	sw	v1,8(v0)
+6006684a:	6474      	restore	32,ra,s0-s1
+6006684c:	e8a0      	jrc	ra
+6006684e:	0000      	addiu	s0,sp,0
+60066850:	95b8      	lw	a1,736(sp)
+60066852:	9fc1      	lw	a2,4(a3)
+60066854:	68bd      	li	s0,189
+60066856:	60a6      	bteqz	600667a4 <__start+0x3ff74>
+60066858:	a094      	lbu	a0,20(s0)
+6006685a:	9fc1      	lw	a2,4(a3)
+
+6006685c <_save_cfg>:
+6006685c:	b505      	lw	a1,60066870 <_save_cfg+0x14>
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \void _save_cfg(void)
+ * \保存配置信息
+ * \param[in]    void  para1
+ * \param[out]   none
+ * \return       void the result
+ * \retval
+ * \retval
+ * \ingroup      uengine_main.c
+ * \note
+ */
+/*******************************************************************************/
+void _save_cfg(void)
+{
+    g_usoud_config_val.dac_sample = g_ain_out_setting.dac_sample;
+6006685e:	6785      	move	a0,a1
+60066860:	4d4c      	addiu	a1,76
+60066862:	9d62      	lw	v1,8(a1)
+60066864:	9d45      	lw	v0,20(a1)
+
+    g_usoud_config_val.adc_sample = g_ain_out_setting.adc_sample;
+60066866:	4c28      	addiu	a0,40
+60066868:	dc61      	sw	v1,4(a0)
+6006686a:	e820      	jr	ra
+6006686c:	dc42      	sw	v0,8(a0)
+6006686e:	0000      	addiu	s0,sp,0
+60066870:	95b8      	lw	a1,736(sp)
+60066872:	9fc1      	lw	a2,4(a3)
+
+60066874 <_set_ainout_param>:
+60066874:	b316      	lw	v1,600668cc <_set_ainout_param+0x58>
+
+    //sys_vm_write(&g_usoud_config_val, VM_AP_USOUND, sizeof(uengine_config_t));
+}
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * 配置音频输入参数
+ * \param[in]    none
+ * \param[out]   none
+ * \return       none
+ * \ingroup      uengine_main.c
+ * \note
+ *******************************************************************************/
+void _set_ainout_param(mmm_pp_ainout_setting_t* param_ptr)
+{
+
+    if (g_usound_cfg == 0)
+60066876:	9b42      	lw	v0,8(v1)
+60066878:	2a14      	bnez	v0,600668a2 <_set_ainout_param+0x2e>
+6006687a:	4242      	addiu	v0,v0,2
+    {
+        param_ptr->input_type = MMM_PP_USOUND_IN;//usb up and down
+6006687c:	6e17      	li	a2,23
+    }
+    else
+    {
+        param_ptr->input_type = MMM_PP_USPEAKER_IN;//usb down only
+    }
+
+    param_ptr->asrc_index = K_OUT1_P2_IN_U1;//asrc index
+6006687e:	dc40      	sw	v0,0(a0)
+60066880:	4b28      	addiu	v1,40
+
+    param_ptr->dac_sample = g_usoud_config_val.dac_sample;//48;//48k
+60066882:	dcc1      	sw	a2,4(a0)
+60066884:	9ba1      	lw	a1,4(v1)
+60066886:	6a01      	li	v0,1
+
+    param_ptr->dac_chanel = 1;//dac 1
+60066888:	42e1      	addiu	a3,v0,1
+
+    param_ptr->asrc_mode_sel = 2;//param table index
+6006688a:	dca2      	sw	a1,8(a0)
+6006688c:	dc43      	sw	v0,12(a0)
+6006688e:	6d03      	li	a1,3
+
+    param_ptr->adc_sample = g_usoud_config_val.adc_sample;//48;//adc sample rate
+
+    param_ptr->adc_insel = AI_SOURCE_ADFMIC;
+60066890:	dce4      	sw	a3,16(a0)
+60066892:	9bc2      	lw	a2,8(v1)
+60066894:	4564      	addiu	v1,a1,4
+
+    param_ptr->ain_gain = 7;
+60066896:	4349      	addiu	v0,v1,-7
+
+    param_ptr->adc_gain = 0;
+60066898:	dcc5      	sw	a2,20(a0)
+6006689a:	dca6      	sw	a1,24(a0)
+6006689c:	dc68      	sw	v1,32(a0)
+6006689e:	e820      	jr	ra
+600668a0:	dc47      	sw	v0,28(a0)
+600668a2:	6a03      	li	v0,3
+600668a4:	6e17      	li	a2,23
+600668a6:	dc40      	sw	v0,0(a0)
+600668a8:	4b28      	addiu	v1,40
+600668aa:	dcc1      	sw	a2,4(a0)
+600668ac:	9ba1      	lw	a1,4(v1)
+600668ae:	6a01      	li	v0,1
+600668b0:	42e1      	addiu	a3,v0,1
+600668b2:	dca2      	sw	a1,8(a0)
+600668b4:	dc43      	sw	v0,12(a0)
+600668b6:	6d03      	li	a1,3
+600668b8:	dce4      	sw	a3,16(a0)
+600668ba:	9bc2      	lw	a2,8(v1)
+600668bc:	4564      	addiu	v1,a1,4
+600668be:	4349      	addiu	v0,v1,-7
+600668c0:	dcc5      	sw	a2,20(a0)
+600668c2:	dca6      	sw	a1,24(a0)
+600668c4:	dc68      	sw	v1,32(a0)
+600668c6:	e820      	jr	ra
+600668c8:	dc47      	sw	v0,28(a0)
+600668ca:	0000      	addiu	s0,sp,0
+600668cc:	95b8      	lw	a1,736(sp)
+600668ce:	9fc1      	lw	a2,4(a3)
+
+600668d0 <rd_itoa>:
+600668d0:	ec11      	zeb	a0
+
+}
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \0x00-0x0f转ASCII码
+ * \param[in]    none
+ * \param[out]   none
+ * \return       none
+ * \ingroup      uengine_main.c
+ * \note
+ *******************************************************************************/
+void rd_itoa(uint8 data, uint8 pos, uint8 *str)
+{
+600668d2:	ed11      	zeb	a1
+600668d4:	3292      	srl	v0,a0,4
+    //uint8 data_low,data_high;
+    uint8 data_cur = 0;
+    
+    if(pos)
+    {
+        data_cur = ((data & 0xf0) >> 4);
+600668d6:	2d02      	bnez	a1,600668dc <rd_itoa+0xc>
+600668d8:	6a0f      	li	v0,15
+    }
+    else
+    {
+        data_cur = (data & 0x0f);
+600668da:	ea8c      	and	v0,a0
+600668dc:	6762      	move	v1,v0
+    }
+    
+    if(data_cur > 9)
+    {
+        data_cur += 55;
+600668de:	5a0a      	sltiu	v0,10
+600668e0:	4b37      	addiu	v1,55
+600668e2:	6001      	bteqz	600668e6 <rd_itoa+0x16>
+600668e4:	4369      	addiu	v1,v1,-7
+    }
+    else
+    {
+        data_cur += 48;
+600668e6:	e820      	jr	ra
+    }
+    *str = data_cur;
+600668e8:	c660      	sb	v1,0(a2)
+	...
+
+600668ec <sn_random>:
+600668ec:	f004 64f8 	save	a0,64,ra,s0-s1
+}
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \生成随机的SN并写VM。如果VM里面有SN，则直接使用VM中记录的SN
+ * \param[in]    none
+ * \param[out]   none
+ * \return       none
+ * \ingroup      uengine_main.c
+ * \note
+ *******************************************************************************/
+
+void sn_random(uint8 *buf)
+{
+600668f0:	b527      	lw	a1,6006698c <sn_random+0xa0>
+    uint8 i = 0;
+    
+    uint32 num1,num2 = 0;
+    
+ 	testval_t usb_sn = {0};
+	
+	sys_vm_read(&usb_sn,VM_API_FLAG,sizeof(testval_t)); 
+600668f2:	6c00      	li	a0,0
+600668f4:	b027      	lw	s0,60066990 <sn_random+0xa4>
+600668f6:	d40a      	sw	a0,40(sp)
+600668f8:	d404      	sw	a0,16(sp)
+600668fa:	d405      	sw	a0,20(sp)
+600668fc:	d406      	sw	a0,24(sp)
+600668fe:	d407      	sw	a0,28(sp)
+60066900:	d408      	sw	a0,32(sp)
+60066902:	d409      	sw	a0,36(sp)
+60066904:	6e18      	li	a2,24
+60066906:	0404      	addiu	a0,sp,16
+60066908:	e840      	jalr	s0
+6006690a:	6f12      	li	a3,18
+6006690c:	677d      	move	v1,sp
+	
+    if(usb_sn.usb_sound_magic == 0x5A5A)
+6006690e:	ab4b      	lhu	v0,22(v1)
+60066910:	f24b 721a 	cmpi	v0,23130
+60066914:	6122      	btnez	6006695a <sn_random+0x6e>
+60066916:	9509      	lw	a1,36(sp)
+    {
+        num1 = usb_sn.usb_sound_low;
+        
+        num2 = usb_sn.usb_sound_high;
+60066918:	9108      	lw	s1,32(sp)
+6006691a:	d50a      	sw	a1,40(sp)
+6006691c:	6800      	li	s0,0
+    }
+    else
+    {
+        num1 = sys_random();
+
+        num2 = sys_random();
+
+        usb_sn.usb_sound_low = num1;
+        
+        usb_sn.usb_sound_high = num2;
+        
+        usb_sn.usb_sound_magic = 0x5A5A;
+        
+        sys_vm_write(&usb_sn,VM_API_FLAG,sizeof(testval_t));
+    }
+
+    for(i=0;i<8;i++)
+6006691e:	9310      	lw	v1,64(sp)
+    {
+        rd_itoa((uint8)(num1>>i),0,&buf[i]);
+60066920:	6791      	move	a0,s1
+60066922:	e886      	srlv	a0,s0
+60066924:	e079      	addu	a2,s0,v1
+60066926:	ec11      	zeb	a0
+60066928:	1820 9a34 	jal	600668d0 <rd_itoa>
+6006692c:	6d00      	li	a1,0
+6006692e:	4041      	addiu	v0,s0,1
+60066930:	6702      	move	s0,v0
+60066932:	e811      	zeb	s0
+60066934:	5808      	sltiu	s0,8
+60066936:	61f3      	btnez	6006691e <sn_random+0x32>
+60066938:	6800      	li	s0,0
+    }
+
+    for(i=0;i<8;i++)
+6006693a:	9510      	lw	a1,64(sp)
+    {
+        rd_itoa((uint8)(num2>>i),0,&buf[i+8]);
+6006693c:	940a      	lw	a0,40(sp)
+6006693e:	e0b9      	addu	a2,s0,a1
+60066940:	e886      	srlv	a0,s0
+60066942:	ec11      	zeb	a0
+60066944:	6d00      	li	a1,0
+60066946:	1820 9a34 	jal	600668d0 <rd_itoa>
+6006694a:	4e08      	addiu	a2,8
+6006694c:	4081      	addiu	a0,s0,1
+6006694e:	6704      	move	s0,a0
+60066950:	e811      	zeb	s0
+60066952:	5808      	sltiu	s0,8
+60066954:	61f2      	btnez	6006693a <sn_random+0x4e>
+60066956:	6478      	restore	64,ra,s0-s1
+60066958:	e8a0      	jrc	ra
+6006695a:	940a      	lw	a0,40(sp)
+6006695c:	6f35      	li	a3,53
+6006695e:	67a4      	move	a1,a0
+60066960:	e840      	jalr	s0
+60066962:	67c4      	move	a2,a0
+60066964:	940a      	lw	a0,40(sp)
+60066966:	6f35      	li	a3,53
+60066968:	67a4      	move	a1,a0
+6006696a:	67c4      	move	a2,a0
+6006696c:	e840      	jalr	s0
+6006696e:	6722      	move	s1,v0
+60066970:	67dd      	move	a2,sp
+60066972:	f24b 6f1a 	li	a3,23130
+60066976:	b506      	lw	a1,6006698c <sn_random+0xa0>
+60066978:	ceeb      	sh	a3,22(a2)
+6006697a:	d20a      	sw	v0,40(sp)
+6006697c:	d108      	sw	s1,32(sp)
+6006697e:	d209      	sw	v0,36(sp)
+60066980:	0404      	addiu	a0,sp,16
+60066982:	6e18      	li	a2,24
+60066984:	e840      	jalr	s0
+60066986:	6f13      	li	a3,19
+60066988:	17c9      	b	6006691c <sn_random+0x30>
+6006698a:	0000      	addiu	s0,sp,0
+6006698c:	0000      	addiu	s0,sp,0
+6006698e:	0019      	addiu	s0,sp,100
+60066990:	6011      	bteqz	600669b4 <_set_usb_info+0x20>
+60066992:	bfc2      	lwu	a2,8(a3)
+
+60066994 <_set_usb_info>:
+60066994:	64f6      	save	48,ra,s0-s1
+    }
+}
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * 获取USB相关的配置信息
+ * \param[in]    none
+ * \param[out]   none
+ * \return       none
+ * \ingroup      uengine_main.c
+ * \note
+ *******************************************************************************/
+void _set_usb_info(void)
+{
+60066996:	b143      	lw	s1,60066aa0 <_set_usb_info+0x10c>
+    uint8 info_str[16];
+    
+    bool sn_default = 0;
+
+    //vid
+    com_get_config_struct(USB_VID, info_str, 6);
+60066998:	6cfb      	li	a0,251
+6006699a:	0504      	addiu	a1,sp,16
+6006699c:	e940      	jalr	s1
+6006699e:	6e06      	li	a2,6
+600669a0:	b041      	lw	s0,60066aa4 <_set_usb_info+0x110>
+
+    ud_set_config(0, info_str, 6);
+600669a2:	6f03      	li	a3,3
+600669a4:	6c00      	li	a0,0
+600669a6:	0504      	addiu	a1,sp,16
+600669a8:	e840      	jalr	s0
+600669aa:	6e06      	li	a2,6
+600669ac:	6cfd      	li	a0,253
+
+    //pid
+    com_get_config_struct(USB_SOUND_PID, info_str, 6);
+600669ae:	0504      	addiu	a1,sp,16
+600669b0:	e940      	jalr	s1
+600669b2:	6e06      	li	a2,6
+600669b4:	6c01      	li	a0,1
+
+    ud_set_config(1, info_str, 6);
+600669b6:	0504      	addiu	a1,sp,16
+600669b8:	6e06      	li	a2,6
+600669ba:	e840      	jalr	s0
+600669bc:	6f03      	li	a3,3
+600669be:	6fff      	li	a3,255
+
+    //vendor
+    com_get_config_struct(INF_USB_VENDOR, info_str, 8);
+600669c0:	4781      	addiu	a0,a3,1
+600669c2:	0504      	addiu	a1,sp,16
+600669c4:	e940      	jalr	s1
+600669c6:	6e08      	li	a2,8
+600669c8:	6f03      	li	a3,3
+
+    ud_set_config(2, info_str, 8);
+600669ca:	6c02      	li	a0,2
+600669cc:	0504      	addiu	a1,sp,16
+600669ce:	e840      	jalr	s0
+600669d0:	6e08      	li	a2,8
+600669d2:	6eff      	li	a2,255
+
+    //product name
+    com_get_config_struct(INF_SOUND_PRODUCT_NAME, info_str, 16);
+600669d4:	4683      	addiu	a0,a2,3
+600669d6:	0504      	addiu	a1,sp,16
+600669d8:	e940      	jalr	s1
+600669da:	6e10      	li	a2,16
+600669dc:	6c03      	li	a0,3
+
+    ud_set_config(3, info_str, 16);
+600669de:	67e4      	move	a3,a0
+600669e0:	0504      	addiu	a1,sp,16
+600669e2:	e840      	jalr	s0
+600669e4:	6e10      	li	a2,16
+600669e6:	6cff      	li	a0,255
+
+    //set volume
+    com_get_config_struct(INF_VOLUME_FLAG, info_str, 1);
+600669e8:	4c09      	addiu	a0,9
+600669ea:	0504      	addiu	a1,sp,16
+600669ec:	e940      	jalr	s1
+600669ee:	6e01      	li	a2,1
+600669f0:	67bd      	move	a1,sp
+
+    g_volume_syn_cfg = info_str[0];
+600669f2:	a570      	lbu	v1,16(a1)
+600669f4:	b42d      	lw	a0,60066aa8 <_set_usb_info+0x114>
+600669f6:	6f03      	li	a3,3
+
+    ud_set_config(4, info_str, 1);
+600669f8:	dc66      	sw	v1,24(a0)
+600669fa:	0504      	addiu	a1,sp,16
+600669fc:	6c04      	li	a0,4
+600669fe:	e840      	jalr	s0
+60066a00:	6e01      	li	a2,1
+60066a02:	6cff      	li	a0,255
+
+    com_get_config_struct(USB_SOUND_BCD_DEVICE, info_str, 6);
+60066a04:	4c0b      	addiu	a0,11
+60066a06:	0504      	addiu	a1,sp,16
+60066a08:	e940      	jalr	s1
+60066a0a:	6e06      	li	a2,6
+60066a0c:	6c05      	li	a0,5
+    
+    ud_set_config(5, info_str, 6);
+60066a0e:	0504      	addiu	a1,sp,16
+60066a10:	6e06      	li	a2,6
+60066a12:	e840      	jalr	s0
+60066a14:	6f03      	li	a3,3
+60066a16:	6cff      	li	a0,255
+    
+    sn_default = com_get_config_default(USB_SN_TYPE);
+60066a18:	b225      	lw	v0,60066aac <_set_usb_info+0x118>
+60066a1a:	ea40      	jalr	v0
+60066a1c:	4c0c      	addiu	a0,12
+60066a1e:	ea11      	zeb	v0
+60066a20:	7201      	cmpi	v0,1
+    if(sn_default == 1)
+60066a22:	612a      	btnez	60066a78 <_set_usb_info+0xe4>
+60066a24:	6cff      	li	a0,255
+    {
+        com_get_config_struct(USB_SOUND_SN, info_str, 16);
+60066a26:	4c0e      	addiu	a0,14
+60066a28:	0504      	addiu	a1,sp,16
+60066a2a:	e940      	jalr	s1
+60066a2c:	6e10      	li	a2,16
+60066a2e:	b01e      	lw	s0,60066aa4 <_set_usb_info+0x110>
+    }
+    else
+    {
+        sn_random(&info_str);
+    }
+    
+    ud_set_config(6, info_str, 16);
+60066a30:	6c06      	li	a0,6
+60066a32:	0504      	addiu	a1,sp,16
+60066a34:	6e10      	li	a2,16
+60066a36:	e840      	jalr	s0
+60066a38:	6f03      	li	a3,3
+60066a3a:	b41e      	lw	a0,60066ab0 <_set_usb_info+0x11c>
+
+    if(1 == g_app_info_state_all.fix_sample_rate_flag)
+60066a3c:	a448      	lbu	v0,8(a0)
+60066a3e:	7201      	cmpi	v0,1
+60066a40:	6028      	bteqz	60066a92 <_set_usb_info+0xfe>
+60066a42:	b21d      	lw	v0,60066ab4 <_set_usb_info+0x120>
+    {
+        ud_set_cmd(FIX_SAMPLE_RATE,NULL);
+    }
+    ud_set_cmd(SET_VOLUME,(g_current_vol * 226) + 0xe3a0);
+60066a44:	9a81      	lw	a0,4(v0)
+60066a46:	368c      	sll	a2,a0,3
+60066a48:	e68f      	subu	v1,a2,a0
+60066a4a:	3770      	sll	a3,v1,4
+60066a4c:	e795      	addu	a1,a3,a0
+60066a4e:	33a4      	sll	v1,a1,1
+60066a50:	f3bc 6e00 	li	a2,58272
+60066a54:	e3d5      	addu	a1,v1,a2
+60066a56:	6f06      	li	a3,6
+60066a58:	6c0c      	li	a0,12
+60066a5a:	e840      	jalr	s0
+60066a5c:	6e00      	li	a2,0
+60066a5e:	6cff      	li	a0,255
+    
+    //set sample type
+    com_get_config_struct(USOUND_SAMPLE_TYPE, info_str, 1);
+60066a60:	b210      	lw	v0,60066aa0 <_set_usb_info+0x10c>
+60066a62:	0504      	addiu	a1,sp,16
+60066a64:	4c0f      	addiu	a0,15
+60066a66:	ea40      	jalr	v0
+60066a68:	6e01      	li	a2,1
+60066a6a:	6c07      	li	a0,7
+   
+    ud_set_config(7, info_str, 1);
+60066a6c:	0504      	addiu	a1,sp,16
+60066a6e:	6e01      	li	a2,1
+60066a70:	e840      	jalr	s0
+60066a72:	6f03      	li	a3,3
+60066a74:	6476      	restore	48,ra,s0-s1
+60066a76:	e8a0      	jrc	ra
+60066a78:	1820 9a3b 	jal	600668ec <sn_random>
+60066a7c:	0404      	addiu	a0,sp,16
+60066a7e:	b00a      	lw	s0,60066aa4 <_set_usb_info+0x110>
+60066a80:	6c06      	li	a0,6
+60066a82:	0504      	addiu	a1,sp,16
+60066a84:	6e10      	li	a2,16
+60066a86:	e840      	jalr	s0
+60066a88:	6f03      	li	a3,3
+60066a8a:	b40a      	lw	a0,60066ab0 <_set_usb_info+0x11c>
+60066a8c:	a448      	lbu	v0,8(a0)
+60066a8e:	7201      	cmpi	v0,1
+60066a90:	61d8      	btnez	60066a42 <_set_usb_info+0xae>
+60066a92:	6d00      	li	a1,0
+60066a94:	6c0b      	li	a0,11
+60066a96:	67c5      	move	a2,a1
+60066a98:	e840      	jalr	s0
+60066a9a:	6f06      	li	a3,6
+60066a9c:	17d2      	b	60066a42 <_set_usb_info+0xae>
+60066a9e:	0000      	addiu	s0,sp,0
+60066aa0:	684d      	li	s0,77
+60066aa2:	60a6      	bteqz	600669f0 <_set_usb_info+0x5c>
+60066aa4:	6015      	bteqz	60066ad0 <_app_init+0x18>
+60066aa6:	bfc2      	lwu	a2,8(a3)
+60066aa8:	95b8      	lw	a1,736(sp)
+60066aaa:	9fc1      	lw	a2,4(a3)
+60066aac:	68bd      	li	s0,189
+60066aae:	60a6      	bteqz	600669fc <_set_usb_info+0x68>
+60066ab0:	a094      	lbu	a0,20(s0)
+60066ab2:	9fc1      	lw	a2,4(a3)
+60066ab4:	9580      	lw	a1,512(sp)
+60066ab6:	9fc1      	lw	a2,4(a3)
+
+60066ab8 <_app_init>:
+60066ab8:	64fa      	save	80,ra,s0-s1
+}
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \int _app_init(void)
+ * \初始化引擎、读取配置信息、初始化文件选择器、中间件
+ * \param[in]    void  para1
+ * \param[out]   none
+ * \return       int the result
+ * \retval           1 sucess
+ * \retval          -1 failed
+ * \ingroup      uengine_main.c
+ * \note
+ */
+/*******************************************************************************/
+int _app_init(void)
+{
+60066aba:	6b00      	li	v1,0
+    int app_init_ret = 0;
+60066abc:	b565      	lw	a1,60066c50 <_app_init+0x198>
+    //bool init_fsel_ret;
+    char *mmm_name =
+    { "mmm_pp.al" };
+    scan_isr_cbk tmp_scan_isr_cbk;
+    
+    private_msg_t cur_msg_val;
+    
+	testval_t us_state = {0};
+	
+	sys_vm_read(&us_state,VM_API_FLAG,sizeof(testval_t));
+60066abe:	b166      	lw	s1,60066c54 <_app_init+0x19c>
+60066ac0:	d30f      	sw	v1,60(sp)
+60066ac2:	d308      	sw	v1,32(sp)
+60066ac4:	d309      	sw	v1,36(sp)
+60066ac6:	d30a      	sw	v1,40(sp)
+60066ac8:	d30b      	sw	v1,44(sp)
+60066aca:	d30c      	sw	v1,48(sp)
+60066acc:	d30d      	sw	v1,52(sp)
+60066ace:	6e18      	li	a2,24
+60066ad0:	6f12      	li	a3,18
+60066ad2:	e940      	jalr	s1
+60066ad4:	0408      	addiu	a0,sp,32
+60066ad6:	1820 9a00 	jal	60066800 <_load_cfg>
+    
+#ifdef WAVES_ASET_TOOLS
+    if (0x07 == g_app_info_state_all.stub_pc_tools_type)
+    {
+        g_support_waves_usound.pc_tools = 0x01;
+    }
+    else if (0xff == g_app_info_state_all.stub_pc_tools_type)
+    {
+        g_support_waves_usound.pc_tools = 0x02;
+    }
+     g_support_waves_usound.w_input =  (uint8) com_get_config_default(SETTING_APP_SUPPORT_WAVES_INPUT_PARAM); 
+#endif 
+  
+    
+    //读取配置信息 (包括vm信息)
+    _load_cfg();
+60066ada:	6500      	nop
+60066adc:	b25f      	lw	v0,60066c58 <_app_init+0x1a0>
+
+    //初始化applib库，后台AP
+    applib_init(APP_ID_UENGINE, APP_TYPE_CONSOLE);
+60066ade:	6c13      	li	a0,19
+60066ae0:	ea40      	jalr	v0
+60066ae2:	6d02      	li	a1,2
+60066ae4:	b05e      	lw	s0,60066c5c <_app_init+0x1a4>
+
+    //初始化 applib 消息模块
+    applib_message_init();
+60066ae6:	e8c0      	jalrc	s0
+60066ae8:	b05e      	lw	s0,60066c5c <_app_init+0x1a4>
+
+    //初始化软定时器
+    init_app_timers(g_uengine_timer_vector, APP_TIMER_COUNT);
+60066aea:	b25f      	lw	v0,60066c64 <_app_init+0x1ac>
+60066aec:	f0a0 4080 	addiu	a0,s0,160
+60066af0:	ea40      	jalr	v0
+60066af2:	6d03      	li	a1,3
+60066af4:	9842      	lw	v0,8(s0)
+    
+    if (g_usound_cfg == 0)
+60066af6:	2265      	beqz	v0,60066bc2 <_app_init+0x10a>
+60066af8:	7201      	cmpi	v0,1
+    {
+        //usound drv
+        sys_drv_install(DRV_GROUP_UD, 0, "usound.drv");
+
+    }
+    else if (g_usound_cfg == 1)
+60066afa:	6037      	bteqz	60066b6a <_app_init+0xb2>
+60066afc:	7202      	cmpi	v0,2
+    {
+        //speaker drv
+        sys_drv_install(DRV_GROUP_UD, 0, "uspeaker.drv");
+    }
+    else if (g_usound_cfg == 2)
+60066afe:	f080 6002 	bteqz	60066c06 <_app_init+0x14e>
+60066b02:	b158      	lw	s1,60066c60 <_app_init+0x1a8>
+    {
+        g_uspeaker_24bit = 1;
+        sys_drv_install(DRV_GROUP_UD, 0, "usound24.drv");
+    }
+    else
+    {
+        ;//for QAC
+    }
+    if(g_uspeaker_24bit == 1)
+60066b04:	a1a0      	lbu	a1,0(s1)
+60066b06:	7501      	cmpi	a1,1
+60066b08:	6039      	bteqz	60066b7c <_app_init+0xc4>
+60066b0a:	b258      	lw	v0,60066c68 <_app_init+0x1b0>
+    {
+        //设置系统频率
+        sys_adjust_clk(104 | (104 << 8), 0);
+        
+        //锁定频率为：MIPS -> 85M, DSP -> 180
+        sys_lock_adjust_freq(104 | (104 << 8)); 
+    }
+    
+    ud_set_cmd(SET_MUTE_FLAG,1);
+60066b0c:	6c0e      	li	a0,14
+60066b0e:	6d01      	li	a1,1
+60066b10:	6e00      	li	a2,0
+60066b12:	ea40      	jalr	v0
+60066b14:	6f06      	li	a3,6
+60066b16:	a100      	lbu	s0,0(s1)
+
+    if(0 == g_uspeaker_24bit)
+60066b18:	2046      	beqz	s0,60066ba6 <_app_init+0xee>
+60066b1a:	a1c1      	lbu	a2,1(s1)
+    {
+        //set param init
+        _set_ainout_param(&g_ain_out_setting);
+
+        //加载中间件驱动
+        sys_load_mmm(mmm_name, TRUE);//待完善
+            
+        //must after usb driver install
+        app_init_ret = uegine_player_open();
+    }
+    else if(g_pa_type == 1)
+60066b1c:	7601      	cmpi	a2,1
+60066b1e:	606c      	bteqz	60066bf8 <_app_init+0x140>
+60066b20:	1820 9a65 	jal	60066994 <_set_usb_info>
+    {
+        ccd_i2s_pa_set_clock(g_usoud_config_val.dac_sample);
+    }
+    else
+    {
+        ;//for qac        
+    }
+
+    _set_usb_info();
+60066b24:	6500      	nop
+60066b26:	b054      	lw	s0,60066c74 <_app_init+0x1bc>
+
+    //disable detect when init
+    DISABLE_USB_DETECT();
+60066b28:	6f40      	li	a3,64
+60066b2a:	98c0      	lw	a2,0(s0)
+60066b2c:	6d00      	li	a1,0
+
+    ud_module_start(&tmp_scan_isr_cbk);
+60066b2e:	eeed      	or	a2,a3
+60066b30:	b24e      	lw	v0,60066c68 <_app_init+0x1b0>
+60066b32:	d8c0      	sw	a2,0(s0)
+60066b34:	040e      	addiu	a0,sp,56
+60066b36:	67c5      	move	a2,a1
+60066b38:	ea40      	jalr	v0
+60066b3a:	6f01      	li	a3,1
+60066b3c:	6d00      	li	a1,0
+    key_register_scan_isr_cbk(tmp_scan_isr_cbk);
+60066b3e:	940e      	lw	a0,56(sp)
+60066b40:	b24e      	lw	v0,60066c78 <_app_init+0x1c0>
+60066b42:	67c5      	move	a2,a1
+60066b44:	ea40      	jalr	v0
+60066b46:	6f05      	li	a3,5
+60066b48:	9880      	lw	a0,0(s0)
+
+    //enable detect after init
+    ENABLE_USB_DETECT();
+60066b4a:	6a41      	li	v0,65
+60066b4c:	ed4b      	neg	a1,v0
+60066b4e:	ecac      	and	a0,a1
+60066b50:	d880      	sw	a0,0(s0)
+60066b52:	677d      	move	v1,sp
+    
+    if((us_state.api_flag & 0x08) != 0)
+60066b54:	f020 a382 	lbu	a0,34(v1)
+60066b58:	6f08      	li	a3,8
+60066b5a:	ef8c      	and	a3,a0
+60066b5c:	2f38      	bnez	a3,60066bce <_app_init+0x116>
+60066b5e:	b441      	lw	a0,60066c60 <_app_init+0x1a8>
+    {
+        g_auto_play_flag = 1;
+        us_state.api_flag &= ~0x08;
+        sys_vm_write(&us_state,VM_API_FLAG,sizeof(testval_t));
+    }
+    
+    //第一次进入立即查询状态，以更新mengine内容
+    g_check_status_flag = TRUE;
+60066b60:	920f      	lw	v0,60(sp)
+
+    return app_init_ret;
+}
+60066b62:	6b01      	li	v1,1
+60066b64:	c463      	sb	v1,3(a0)
+60066b66:	647a      	restore	80,ra,s0-s1
+60066b68:	e8a0      	jrc	ra
+60066b6a:	950f      	lw	a1,60(sp)
+60066b6c:	6c05      	li	a0,5
+60066b6e:	0e2b      	la	a2,60066c18 <_app_init+0x160>
+60066b70:	e940      	jalr	s1
+60066b72:	6f0a      	li	a3,10
+60066b74:	b13b      	lw	s1,60066c60 <_app_init+0x1a8>
+60066b76:	a1a0      	lbu	a1,0(s1)
+60066b78:	7501      	cmpi	a1,1
+60066b7a:	61c7      	btnez	60066b0a <_app_init+0x52>
+60066b7c:	6d00      	li	a1,0
+60066b7e:	b036      	lw	s0,60066c54 <_app_init+0x19c>
+60066b80:	67c5      	move	a2,a1
+60066b82:	f06d 6c08 	li	a0,26728
+60066b86:	e840      	jalr	s0
+60066b88:	6f3a      	li	a3,58
+60066b8a:	6c01      	li	a0,1
+60066b8c:	6d05      	li	a1,5
+60066b8e:	f06d 6e08 	li	a2,26728
+60066b92:	e840      	jalr	s0
+60066b94:	6f36      	li	a3,54
+60066b96:	b235      	lw	v0,60066c68 <_app_init+0x1b0>
+60066b98:	6c0e      	li	a0,14
+60066b9a:	6d01      	li	a1,1
+60066b9c:	6e00      	li	a2,0
+60066b9e:	ea40      	jalr	v0
+60066ba0:	6f06      	li	a3,6
+60066ba2:	a100      	lbu	s0,0(s1)
+60066ba4:	28ba      	bnez	s0,60066b1a <_app_init+0x62>
+60066ba6:	6791      	move	a0,s1
+60066ba8:	1820 9a1d 	jal	60066874 <_set_ainout_param>
+60066bac:	4c4c      	addiu	a0,76
+60066bae:	b22a      	lw	v0,60066c54 <_app_init+0x19c>
+60066bb0:	67d0      	move	a2,s0
+60066bb2:	0c1e      	la	a0,60066c28 <_app_init+0x170>
+60066bb4:	6d01      	li	a1,1
+60066bb6:	ea40      	jalr	v0
+60066bb8:	6f02      	li	a3,2
+60066bba:	b02d      	lw	s0,60066c6c <_app_init+0x1b4>
+60066bbc:	e8c0      	jalrc	s0
+60066bbe:	d20f      	sw	v0,60(sp)
+60066bc0:	17af      	b	60066b20 <_app_init+0x68>
+60066bc2:	950f      	lw	a1,60(sp)
+60066bc4:	6c05      	li	a0,5
+60066bc6:	0e1c      	la	a2,60066c34 <_app_init+0x17c>
+60066bc8:	e940      	jalr	s1
+60066bca:	6f0a      	li	a3,10
+60066bcc:	17d3      	b	60066b74 <_app_init+0xbc>
+60066bce:	6e09      	li	a2,9
+60066bd0:	b724      	lw	a3,60066c60 <_app_init+0x1a8>
+60066bd2:	edcb      	neg	a1,a2
+60066bd4:	677d      	move	v1,sp
+60066bd6:	ed8c      	and	a1,a0
+60066bd8:	6a01      	li	v0,1
+60066bda:	c742      	sb	v0,2(a3)
+60066bdc:	f020 c3a2 	sb	a1,34(v1)
+60066be0:	b21d      	lw	v0,60066c54 <_app_init+0x19c>
+60066be2:	b51c      	lw	a1,60066c50 <_app_init+0x198>
+60066be4:	0408      	addiu	a0,sp,32
+60066be6:	6e18      	li	a2,24
+60066be8:	ea40      	jalr	v0
+60066bea:	6f13      	li	a3,19
+60066bec:	b41d      	lw	a0,60066c60 <_app_init+0x1a8>
+60066bee:	920f      	lw	v0,60(sp)
+60066bf0:	6b01      	li	v1,1
+60066bf2:	c463      	sb	v1,3(a0)
+60066bf4:	647a      	restore	80,ra,s0-s1
+60066bf6:	e8a0      	jrc	ra
+60066bf8:	6d00      	li	a1,0
+60066bfa:	998b      	lw	a0,44(s1)
+60066bfc:	b01d      	lw	s0,60066c70 <_app_init+0x1b8>
+60066bfe:	67c5      	move	a2,a1
+60066c00:	e840      	jalr	s0
+60066c02:	6f04      	li	a3,4
+60066c04:	178d      	b	60066b20 <_app_init+0x68>
+60066c06:	6c01      	li	a0,1
+60066c08:	950f      	lw	a1,60(sp)
+60066c0a:	c080      	sb	a0,0(s0)
+60066c0c:	0e0d      	la	a2,60066c40 <_app_init+0x188>
+60066c0e:	6c05      	li	a0,5
+60066c10:	e940      	jalr	s1
+60066c12:	6f0a      	li	a3,10
+60066c14:	17af      	b	60066b74 <_app_init+0xbc>
+60066c16:	0000      	addiu	s0,sp,0
+60066c18:	7375      	cmpi	v1,117
+60066c1a:	6570      	move	s3,s0
+60066c1c:	6b61      	li	v1,97
+60066c1e:	7265      	cmpi	v0,101
+60066c20:	642e      	restore	112,s0
+60066c22:	7672      	cmpi	a2,114
+60066c24:	0000      	addiu	s0,sp,0
+60066c26:	0000      	addiu	s0,sp,0
+60066c28:	6d6d      	li	a1,109
+60066c2a:	5f6d      	sltiu	a3,109
+60066c2c:	7070      	cmpi	s0,112
+60066c2e:	612e      	btnez	60066c8c <_app_deinit+0x10>
+60066c30:	006c      	addiu	s0,sp,432
+60066c32:	0000      	addiu	s0,sp,0
+60066c34:	7375      	cmpi	v1,117
+60066c36:	756f      	cmpi	a1,111
+60066c38:	646e      	restore	112,ra,s0
+60066c3a:	642e      	restore	112,s0
+60066c3c:	7672      	cmpi	a2,114
+60066c3e:	0000      	addiu	s0,sp,0
+60066c40:	7375      	cmpi	v1,117
+60066c42:	756f      	cmpi	a1,111
+60066c44:	646e      	restore	112,ra,s0
+60066c46:	3432      	srl	a0,s1,4
+60066c48:	642e      	restore	112,s0
+60066c4a:	7672      	cmpi	a2,114
+60066c4c:	0000      	addiu	s0,sp,0
+60066c4e:	0000      	addiu	s0,sp,0
+60066c50:	0000      	addiu	s0,sp,0
+60066c52:	0019      	addiu	s0,sp,100
+60066c54:	6011      	bteqz	60066c78 <_app_init+0x1c0>
+60066c56:	bfc2      	lwu	a2,8(a3)
+60066c58:	6861      	li	s0,97
+60066c5a:	60a2      	bteqz	60066ba0 <_app_init+0xe8>
+60066c5c:	6cc9      	li	a0,201
+60066c5e:	60a2      	bteqz	60066ba4 <_app_init+0xec>
+60066c60:	95b8      	lw	a1,736(sp)
+60066c62:	9fc1      	lw	a2,4(a3)
+60066c64:	6c41      	li	a0,65
+60066c66:	60a2      	bteqz	60066bac <_app_init+0xf4>
+60066c68:	6015      	bteqz	60066c94 <_app_deinit+0x18>
+60066c6a:	bfc2      	lwu	a2,8(a3)
+60066c6c:	6801      	li	s0,1
+60066c6e:	600e      	bteqz	60066c8c <_app_deinit+0x10>
+60066c70:	65cd      	move	t6,a1
+60066c72:	bfc2      	lwu	a2,8(a3)
+60066c74:	aa5c      	lhu	v0,56(v0)
+60066c76:	9fc1      	lw	a2,4(a3)
+60066c78:	6005      	bteqz	60066c84 <_app_deinit+0x8>
+60066c7a:	bfc2      	lwu	a2,8(a3)
+
+60066c7c <_app_deinit>:
+60066c7c:	64f7      	save	56,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \bool _app_deinit(void)
+ * \退出app的功能函数,保存配置信息
+ * \param[in]    void  para1
+ * \param[out]   none
+ * \return       bool the result
+ * \retval           1 sucess
+ * \retval           0 failed
+ * \ingroup      uengine_main.c
+ * \note
+ */
+/*******************************************************************************/
+bool _app_deinit(void)
+{
+60066c7e:	6800      	li	s0,0
+    testval_t us_state = {0};
+60066c80:	b554      	lw	a1,60066dd0 <.LBE2+0x64>
+    
+    sys_vm_read(&us_state,VM_API_FLAG,sizeof(testval_t));
+60066c82:	b155      	lw	s1,60066dd4 <.LBE2+0x68>
+60066c84:	d004      	sw	s0,16(sp)
+60066c86:	d005      	sw	s0,20(sp)
+60066c88:	d006      	sw	s0,24(sp)
+60066c8a:	d007      	sw	s0,28(sp)
+60066c8c:	d008      	sw	s0,32(sp)
+60066c8e:	d009      	sw	s0,36(sp)
+60066c90:	0404      	addiu	a0,sp,16
+60066c92:	6e18      	li	a2,24
+60066c94:	e940      	jalr	s1
+60066c96:	6f12      	li	a3,18
+60066c98:	b350      	lw	v1,60066dd8 <.LBE2+0x6c>
+    
+    if(0 == g_uspeaker_24bit)
+60066c9a:	a340      	lbu	v0,0(v1)
+60066c9c:	2a39      	bnez	v0,60066d10 <_app_deinit+0x94>
+60066c9e:	b050      	lw	s0,60066ddc <.LBE2+0x70>
+    {
+        //must before usb driver unstall
+        uegine_player_close();
+60066ca0:	e8c0      	jalrc	s0
+60066ca2:	b54e      	lw	a1,60066dd8 <.LBE2+0x6c>
+    }
+    else
+    {
+        ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_PAUSE);
+    }
+
+    //if is play then stop
+    if (g_status_data.start_play == 1)
+60066ca4:	f080 9d88 	lw	a0,136(a1)
+60066ca8:	7401      	cmpi	a0,1
+60066caa:	603d      	bteqz	60066d26 <.LBB2>
+60066cac:	b14b      	lw	s1,60066dd8 <.LBE2+0x6c>
+    {
+        uint8 i = 0;
+        ud_set_cmd(SET_HID_OPERS, 0x08);
+        while (i < 5)
+        {
+            ud_hid_deal();
+            i++;
+            sys_os_time_dly(1);
+        }
+        us_state.api_flag |= 0x08;
+        sys_vm_write(&us_state,VM_API_FLAG,sizeof(testval_t));
+    }
+    else if(g_auto_play_flag == 1)
+60066cae:	a1a2      	lbu	a1,2(s1)
+60066cb0:	7501      	cmpi	a1,1
+60066cb2:	6067      	bteqz	60066d82 <.LBE2+0x16>
+60066cb4:	b149      	lw	s1,60066dd8 <.LBE2+0x6c>
+    {
+        us_state.api_flag |= 0x08;
+        sys_vm_write(&us_state,VM_API_FLAG,sizeof(testval_t));
+    }
+    else
+    {
+        ;//for qac
+    }
+    
+    if(g_uspeaker_24bit == 1)
+60066cb6:	a180      	lbu	a0,0(s1)
+60066cb8:	7401      	cmpi	a0,1
+60066cba:	605c      	bteqz	60066d74 <.LBE2+0x8>
+60066cbc:	b04a      	lw	s0,60066de4 <.LBE2+0x78>
+    {
+        sys_unlock_adjust_freq(); 
+    }
+
+    //disable detect when init
+    DISABLE_USB_DETECT();
+60066cbe:	6b40      	li	v1,64
+60066cc0:	9880      	lw	a0,0(s0)
+60066cc2:	b24a      	lw	v0,60066de8 <.LBE2+0x7c>
+    //必须先停止usb 再停止dsp
+    key_register_scan_isr_cbk(NULL);
+60066cc4:	ec6d      	or	a0,v1
+60066cc6:	d880      	sw	a0,0(s0)
+60066cc8:	6c00      	li	a0,0
+60066cca:	67a4      	move	a1,a0
+60066ccc:	67c4      	move	a2,a0
+60066cce:	ea40      	jalr	v0
+60066cd0:	6f05      	li	a3,5
+60066cd2:	6c00      	li	a0,0
+    ud_module_stop();
+60066cd4:	b243      	lw	v0,60066de0 <.LBE2+0x74>
+60066cd6:	67a4      	move	a1,a0
+60066cd8:	67c4      	move	a2,a0
+60066cda:	ea40      	jalr	v0
+60066cdc:	6f02      	li	a3,2
+60066cde:	98a0      	lw	a1,0(s0)
+
+    //enable detect after init
+    ENABLE_USB_DETECT();
+60066ce0:	6f41      	li	a3,65
+60066ce2:	eeeb      	neg	a2,a3
+60066ce4:	edcc      	and	a1,a2
+60066ce6:	d8a0      	sw	a1,0(s0)
+60066ce8:	a1c0      	lbu	a2,0(s1)
+
+    if (0 == g_uspeaker_24bit)
+60066cea:	2658      	beqz	a2,60066d9c <.LBE2+0x30>
+60066cec:	b63b      	lw	a2,60066dd8 <.LBE2+0x6c>
+    {
+    //卸载解码驱动
+        sys_free_mmm(TRUE);
+    }
+    else if(g_pa_type == 1)
+60066cee:	a6a1      	lbu	a1,1(a2)
+60066cf0:	7501      	cmpi	a1,1
+60066cf2:	6067      	bteqz	60066dc2 <.LBE2+0x56>
+60066cf4:	6d00      	li	a1,0
+    {
+        ccd_i2s_pa_set_clock(48);
+        //sys_unlock_adjust_freq();
+    }
+    else
+    {
+        ;//for QAC
+    }
+    
+    sys_drv_uninstall(DRV_GROUP_UD);
+60066cf6:	b238      	lw	v0,60066dd4 <.LBE2+0x68>
+60066cf8:	6c05      	li	a0,5
+60066cfa:	67c5      	move	a2,a1
+60066cfc:	ea40      	jalr	v0
+60066cfe:	6f0b      	li	a3,11
+60066d00:	b23c      	lw	v0,60066df0 <.LBE2+0x84>
+
+    //执行applib库的注销操作
+    applib_quit();
+60066d02:	eac0      	jalrc	v0
+60066d04:	1820 9a17 	jal	6006685c <_save_cfg>
+
+    //save config 写vram
+    _save_cfg();
+60066d08:	6500      	nop
+60066d0a:	6a01      	li	v0,1
+
+    return TRUE;
+}
+60066d0c:	6477      	restore	56,ra,s0-s1
+60066d0e:	e8a0      	jrc	ra
+60066d10:	b234      	lw	v0,60066ddc <.LBE2+0x70>
+60066d12:	6c0a      	li	a0,10
+60066d14:	6d01      	li	a1,1
+60066d16:	67d0      	move	a2,s0
+60066d18:	ea40      	jalr	v0
+60066d1a:	6f06      	li	a3,6
+60066d1c:	b52f      	lw	a1,60066dd8 <.LBE2+0x6c>
+60066d1e:	f080 9d88 	lw	a0,136(a1)
+60066d22:	7401      	cmpi	a0,1
+60066d24:	61c3      	btnez	60066cac <_app_deinit+0x30>
+
+60066d26 <.LBB2>:
+60066d26:	b12f      	lw	s1,60066de0 <.LBE2+0x74>
+60066d28:	6800      	li	s0,0
+60066d2a:	6c01      	li	a0,1
+60066d2c:	6d08      	li	a1,8
+60066d2e:	67d0      	move	a2,s0
+60066d30:	e940      	jalr	s1
+60066d32:	6f06      	li	a3,6
+60066d34:	b128      	lw	s1,60066dd4 <.LBE2+0x68>
+60066d36:	6c00      	li	a0,0
+60066d38:	b22a      	lw	v0,60066de0 <.LBE2+0x74>
+60066d3a:	67a4      	move	a1,a0
+60066d3c:	67c4      	move	a2,a0
+60066d3e:	ea40      	jalr	v0
+60066d40:	6f07      	li	a3,7
+60066d42:	40c1      	addiu	a2,s0,1
+60066d44:	6706      	move	s0,a2
+60066d46:	6d00      	li	a1,0
+60066d48:	e811      	zeb	s0
+60066d4a:	6c01      	li	a0,1
+60066d4c:	67c5      	move	a2,a1
+60066d4e:	e940      	jalr	s1
+60066d50:	6f31      	li	a3,49
+60066d52:	5805      	sltiu	s0,5
+60066d54:	61f0      	btnez	60066d36 <.LBB2+0x10>
+60066d56:	679d      	move	a0,sp
+60066d58:	a412      	lbu	s0,18(a0)
+60066d5a:	6b08      	li	v1,8
+60066d5c:	e86d      	or	s0,v1
+60066d5e:	67fd      	move	a3,sp
+60066d60:	b51c      	lw	a1,60066dd0 <.LBE2+0x64>
+60066d62:	c712      	sb	s0,18(a3)
+60066d64:	0404      	addiu	a0,sp,16
+60066d66:	6e18      	li	a2,24
+60066d68:	e940      	jalr	s1
+60066d6a:	6f13      	li	a3,19
+
+60066d6c <.LBE2>:
+60066d6c:	b11b      	lw	s1,60066dd8 <.LBE2+0x6c>
+60066d6e:	a180      	lbu	a0,0(s1)
+60066d70:	7401      	cmpi	a0,1
+60066d72:	61a4      	btnez	60066cbc <_app_deinit+0x40>
+60066d74:	6c00      	li	a0,0
+60066d76:	b218      	lw	v0,60066dd4 <.LBE2+0x68>
+60066d78:	6d05      	li	a1,5
+60066d7a:	67c4      	move	a2,a0
+60066d7c:	ea40      	jalr	v0
+60066d7e:	6f36      	li	a3,54
+60066d80:	179d      	b	60066cbc <_app_deinit+0x40>
+60066d82:	677d      	move	v1,sp
+60066d84:	a3f2      	lbu	a3,18(v1)
+60066d86:	6808      	li	s0,8
+60066d88:	ef0d      	or	a3,s0
+60066d8a:	67dd      	move	a2,sp
+60066d8c:	b511      	lw	a1,60066dd0 <.LBE2+0x64>
+60066d8e:	b212      	lw	v0,60066dd4 <.LBE2+0x68>
+60066d90:	c6f2      	sb	a3,18(a2)
+60066d92:	0404      	addiu	a0,sp,16
+60066d94:	6e18      	li	a2,24
+60066d96:	ea40      	jalr	v0
+60066d98:	6f13      	li	a3,19
+60066d9a:	178c      	b	60066cb4 <_app_deinit+0x38>
+60066d9c:	b20e      	lw	v0,60066dd4 <.LBE2+0x68>
+60066d9e:	6c01      	li	a0,1
+60066da0:	67a6      	move	a1,a2
+60066da2:	ea40      	jalr	v0
+60066da4:	6f06      	li	a3,6
+60066da6:	6d00      	li	a1,0
+60066da8:	b20b      	lw	v0,60066dd4 <.LBE2+0x68>
+60066daa:	6c05      	li	a0,5
+60066dac:	67c5      	move	a2,a1
+60066dae:	ea40      	jalr	v0
+60066db0:	6f0b      	li	a3,11
+60066db2:	b210      	lw	v0,60066df0 <.LBE2+0x84>
+60066db4:	eac0      	jalrc	v0
+60066db6:	1820 9a17 	jal	6006685c <_save_cfg>
+60066dba:	6500      	nop
+60066dbc:	6a01      	li	v0,1
+60066dbe:	6477      	restore	56,ra,s0-s1
+60066dc0:	e8a0      	jrc	ra
+60066dc2:	6d00      	li	a1,0
+60066dc4:	b20a      	lw	v0,60066dec <.LBE2+0x80>
+60066dc6:	6c30      	li	a0,48
+60066dc8:	67c5      	move	a2,a1
+60066dca:	ea40      	jalr	v0
+60066dcc:	6f04      	li	a3,4
+60066dce:	17eb      	b	60066da6 <.LBE2+0x3a>
+60066dd0:	0000      	addiu	s0,sp,0
+60066dd2:	0019      	addiu	s0,sp,100
+60066dd4:	6011      	bteqz	60066df8 <main+0x4>
+60066dd6:	bfc2      	lwu	a2,8(a3)
+60066dd8:	95b8      	lw	a1,736(sp)
+60066dda:	9fc1      	lw	a2,4(a3)
+60066ddc:	68d1      	li	s0,209
+60066dde:	600e      	bteqz	60066dfc <main+0x8>
+60066de0:	6015      	bteqz	60066e0c <main+0x18>
+60066de2:	bfc2      	lwu	a2,8(a3)
+60066de4:	aa5c      	lhu	v0,56(v0)
+60066de6:	9fc1      	lw	a2,4(a3)
+60066de8:	6005      	bteqz	60066df4 <main>
+60066dea:	bfc2      	lwu	a2,8(a3)
+60066dec:	65cd      	move	t6,a1
+60066dee:	bfc2      	lwu	a2,8(a3)
+60066df0:	6951      	li	s1,81
+60066df2:	60a2      	bteqz	60066d38 <.LBB2+0x12>
+
+60066df4 <main>:
+60066df4:	64f4      	save	32,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \int main(int argc, const char *argv[])
+ * \app入口函数
+ * \param[in]    argc  para1
+ * \param[in]    argc  para2
+ * \param[out]   none
+ * \return       int the result
+ * \retval           1 sucess
+ * \retval           0 failed
+ * \ingroup      mengine_main.c
+ * \note
+ */
+/*******************************************************************************/
+int main(int argc, const char *argv[])
+{
+60066df6:	b04e      	lw	s0,60066f2c <main+0x138>
+
+    app_result_e result;
+    g_current_vol = (uint8) argc;
+
+    g_cur_play_status_p = &g_cur_play_status[0];//应用加载时初始化为0，不用再初始化了
+60066df8:	b24c      	lw	v0,60066f28 <main+0x134>
+60066dfa:	67b0      	move	a1,s0
+60066dfc:	ec11      	zeb	a0
+60066dfe:	4d34      	addiu	a1,52
+60066e00:	b14c      	lw	s1,60066f30 <main+0x13c>
+
+    //创建共享查询，这时必须保证前台来获取状态时是可用的
+    g_cur_play_status_p = sys_share_query_creat(APP_ID_UENGINE, g_cur_play_status_p, sizeof(uengine_status_t));
+60066e02:	da81      	sw	a0,4(v0)
+60066e04:	d8a3      	sw	a1,12(s0)
+60066e06:	6c13      	li	a0,19
+60066e08:	6e0c      	li	a2,12
+60066e0a:	e940      	jalr	s1
+60066e0c:	6f43      	li	a3,67
+60066e0e:	d843      	sw	v0,12(s0)
+60066e10:	2a06      	bnez	v0,60066e1e <main+0x2a>
+
+    if (g_cur_play_status_p == NULL)
+60066e12:	0c23      	la	a0,60066e9c <main+0xa8>
+    {
+        PRINT_ERR("usound share query create fail!\n");
+60066e14:	67a2      	move	a1,v0
+60066e16:	67c2      	move	a2,v0
+60066e18:	e940      	jalr	s1
+60066e1a:	6f4b      	li	a3,75
+60066e1c:	17ff      	b	60066e1c <main+0x28>
+60066e1e:	b444      	lw	a0,60066f2c <main+0x138>
+        while (1)
+        {
+            ;//do noting
+        }
+
+    }
+
+    //创建共享内存
+    //libc_memcpy(g_share_ptr, &(setting_comval->dae_cfg), sizeof(dae_config_t));
+    g_share_ptr = &g_sync_vol_share;
+60066e20:	b044      	lw	s0,60066f30 <main+0x13c>
+
+    if (sys_shm_creat(SHARE_MEM_ID_USOUND, g_share_ptr, sizeof(uengine_sync_volume_t)) == -1)
+60066e22:	67a4      	move	a1,a0
+60066e24:	4d20      	addiu	a1,32
+60066e26:	dca5      	sw	a1,20(a0)
+60066e28:	6e08      	li	a2,8
+60066e2a:	6c04      	li	a0,4
+60066e2c:	e840      	jalr	s0
+60066e2e:	6f47      	li	a3,71
+60066e30:	eb4f      	not	v1,v0
+60066e32:	2b06      	bnez	v1,60066e40 <main+0x4c>
+60066e34:	6d00      	li	a1,0
+    {
+        PRINT_ERR("usound shm create fail!!");
+60066e36:	0c24      	la	a0,60066ec4 <main+0xd0>
+60066e38:	67c5      	move	a2,a1
+60066e3a:	e840      	jalr	s0
+60066e3c:	6f4b      	li	a3,75
+60066e3e:	17ff      	b	60066e3e <main+0x4a>
+60066e40:	6d00      	li	a1,0
+        while (1)
+        {
+            ; //nothing for QAC
+        }
+    }
+
+    //get for dae freqency
+    //更新DAE配置参数到共享内存
+    g_dae_cfg_shm = (dae_config_t *) sys_shm_mount(SHARE_MEM_ID_DAECFG);
+60066e42:	b03c      	lw	s0,60066f30 <main+0x13c>
+60066e44:	67c5      	move	a2,a1
+60066e46:	6c03      	li	a0,3
+60066e48:	e840      	jalr	s0
+60066e4a:	6f49      	li	a3,73
+60066e4c:	b538      	lw	a1,60066f2c <main+0x138>
+60066e4e:	67c2      	move	a2,v0
+60066e50:	dd44      	sw	v0,16(a1)
+60066e52:	2a05      	bnez	v0,60066e5e <main+0x6a>
+    if (g_dae_cfg_shm == NULL)
+60066e54:	0c24      	la	a0,60066ee4 <main+0xf0>
+    {
+        PRINT_ERR("dae_cfg shm not exist!!");
+60066e56:	67a2      	move	a1,v0
+60066e58:	e840      	jalr	s0
+60066e5a:	6f4b      	li	a3,75
+60066e5c:	17ff      	b	60066e5c <main+0x68>
+60066e5e:	1820 9aae 	jal	60066ab8 <_app_init>
+        while (1)
+        {
+            ; //nothing for QAC
+        }
+    }
+
+    //初始化
+    _app_init();
+60066e62:	6500      	nop
+60066e64:	b134      	lw	s1,60066f34 <main+0x140>
+
+    //循环
+    result = uengine_control_block();//app功能处理
+60066e66:	e9c0      	jalrc	s1
+60066e68:	1820 9b1f 	jal	60066c7c <_app_deinit>
+
+    //退出
+    _app_deinit();
+60066e6c:	6722      	move	s1,v0
+60066e6e:	6d00      	li	a1,0
+
+    //销毁共享内存
+    sys_shm_destroy(SHARE_MEM_ID_USOUND);
+60066e70:	b030      	lw	s0,60066f30 <main+0x13c>
+60066e72:	67c5      	move	a2,a1
+60066e74:	6c04      	li	a0,4
+60066e76:	e840      	jalr	s0
+60066e78:	6f48      	li	a3,72
+60066e7a:	6d00      	li	a1,0
+
+    //销毁共享查询
+    if (sys_share_query_destroy(APP_ID_UENGINE) == -1)
+60066e7c:	67c5      	move	a2,a1
+60066e7e:	6c13      	li	a0,19
+60066e80:	e840      	jalr	s0
+60066e82:	6f44      	li	a3,68
+60066e84:	ee4f      	not	a2,v0
+60066e86:	2603      	beqz	a2,60066e8e <main+0x9a>
+60066e88:	6751      	move	v0,s1
+    {
+        PRINT_ERR("usound share query destroy fail!\n");
+        while (1)
+        {
+            ;//do noting
+        }
+    }
+
+    return result;
+}
+60066e8a:	6474      	restore	32,ra,s0-s1
+60066e8c:	e8a0      	jrc	ra
+60066e8e:	6d00      	li	a1,0
+60066e90:	0c1c      	la	a0,60066f00 <main+0x10c>
+60066e92:	67c5      	move	a2,a1
+60066e94:	e840      	jalr	s0
+60066e96:	6f4b      	li	a3,75
+60066e98:	17ff      	b	60066e98 <main+0xa4>
+60066e9a:	0000      	addiu	s0,sp,0
+60066e9c:	453c      	daddiu	s1,a1,-4
+60066e9e:	203e      	beqz	s0,60066f1c <main+0x128>
+60066ea0:	7375      	cmpi	v1,117
+60066ea2:	756f      	cmpi	a1,111
+60066ea4:	646e      	restore	112,ra,s0
+60066ea6:	7320      	cmpi	v1,32
+60066ea8:	6168      	btnez	60066f7a <main+0x186>
+60066eaa:	6572      	move	s3,v0
+60066eac:	7120      	cmpi	s1,32
+60066eae:	6575      	move	s3,a1
+60066eb0:	7972      	sd	v1,144(s1)
+60066eb2:	6320      	addiu	sp,256
+60066eb4:	6572      	move	s3,v0
+60066eb6:	7461      	cmpi	a0,97
+60066eb8:	2065      	beqz	s0,60066f84 <main+0x190>
+60066eba:	6166      	btnez	60066f88 <main+0x194>
+60066ebc:	6c69      	li	a0,105
+60066ebe:	0a21      	la	v0,60066f40 <main+0x14c>
+60066ec0:	0000      	addiu	s0,sp,0
+60066ec2:	0000      	addiu	s0,sp,0
+60066ec4:	453c      	daddiu	s1,a1,-4
+60066ec6:	203e      	beqz	s0,60066f44 <main+0x150>
+60066ec8:	7375      	cmpi	v1,117
+60066eca:	756f      	cmpi	a1,111
+60066ecc:	646e      	restore	112,ra,s0
+60066ece:	7320      	cmpi	v1,32
+60066ed0:	6d68      	li	a1,104
+60066ed2:	6320      	addiu	sp,256
+60066ed4:	6572      	move	s3,v0
+60066ed6:	7461      	cmpi	a0,97
+60066ed8:	2065      	beqz	s0,60066fa4 <main+0x1b0>
+60066eda:	6166      	btnez	60066fa8 <main+0x1b4>
+60066edc:	6c69      	li	a0,105
+60066ede:	2121      	beqz	s1,60066f22 <main+0x12e>
+60066ee0:	0000      	addiu	s0,sp,0
+60066ee2:	0000      	addiu	s0,sp,0
+60066ee4:	453c      	daddiu	s1,a1,-4
+60066ee6:	203e      	beqz	s0,60066f64 <main+0x170>
+60066ee8:	6164      	btnez	60066fb2 <main+0x1be>
+60066eea:	5f65      	sltiu	a3,101
+60066eec:	6663      	0x6663
+60066eee:	2067      	beqz	s0,60066fbe <main+0x1ca>
+60066ef0:	6873      	li	s0,115
+60066ef2:	206d      	beqz	s0,60066fce <main+0x1da>
+60066ef4:	6f6e      	li	a3,110
+60066ef6:	2074      	beqz	s0,60066fe0 <main+0x1ec>
+60066ef8:	7865      	sd	v1,40(s0)
+60066efa:	7369      	cmpi	v1,105
+60066efc:	2174      	beqz	s1,60066fe6 <main+0x1f2>
+60066efe:	0021      	addiu	s0,sp,132
+60066f00:	453c      	daddiu	s1,a1,-4
+60066f02:	203e      	beqz	s0,60066f80 <main+0x18c>
+60066f04:	7375      	cmpi	v1,117
+60066f06:	756f      	cmpi	a1,111
+60066f08:	646e      	restore	112,ra,s0
+60066f0a:	7320      	cmpi	v1,32
+60066f0c:	6168      	btnez	60066fde <main+0x1ea>
+60066f0e:	6572      	move	s3,v0
+60066f10:	7120      	cmpi	s1,32
+60066f12:	6575      	move	s3,a1
+60066f14:	7972      	sd	v1,144(s1)
+60066f16:	6420      	restore	128,s0
+60066f18:	7365      	cmpi	v1,101
+60066f1a:	7274      	cmpi	v0,116
+60066f1c:	796f      	sd	v1,120(s1)
+60066f1e:	6620      	0x6620
+60066f20:	6961      	li	s1,97
+60066f22:	216c      	beqz	s1,60066ffc <main+0x208>
+60066f24:	000a      	addiu	s0,sp,40
+60066f26:	0000      	addiu	s0,sp,0
+60066f28:	9580      	lw	a1,512(sp)
+60066f2a:	9fc1      	lw	a2,4(a3)
+60066f2c:	95b8      	lw	a1,736(sp)
+60066f2e:	9fc1      	lw	a2,4(a3)
+60066f30:	6011      	bteqz	60066f54 <main+0x160>
+60066f32:	bfc2      	lwu	a2,8(a3)
+60066f34:	607d      	bteqz	60067030 <main+0x23c>
+60066f36:	bfc2      	lwu	a2,8(a3)
+Disassembly of section BANK_CONTROL_1_2:
+
+600a6800 <uengine_message_deal>:
+600a6800:	64f4      	save	32,ra,s0-s1
+ * \note
+ */
+/*******************************************************************************/
+app_result_e uengine_message_deal(private_msg_t* cur_msg)
+{
+600a6802:	9c40      	lw	v0,0(a0)
+    app_result_e ret_value = RESULT_NULL;
+
+    //消息
+    switch (cur_msg->msg.type)
+600a6804:	6704      	move	s0,a0
+600a6806:	f401 7201 	cmpi	v0,3073
+600a680a:	6900      	li	s1,0
+600a680c:	602a      	bteqz	600a6862 <uengine_message_deal+0x62>
+600a680e:	f401 5a02 	sltiu	v0,3074
+600a6812:	6011      	bteqz	600a6836 <uengine_message_deal+0x36>
+600a6814:	72f3      	cmpi	v0,243
+600a6816:	603b      	bteqz	600a688e <uengine_message_deal+0x8e>
+600a6818:	5af4      	sltiu	v0,244
+600a681a:	6025      	bteqz	600a6866 <uengine_message_deal+0x66>
+600a681c:	72f1      	cmpi	v0,241
+600a681e:	6039      	bteqz	600a6892 <uengine_message_deal+0x92>
+600a6820:	72f2      	cmpi	v0,242
+600a6822:	6102      	btnez	600a6828 <uengine_message_deal+0x28>
+600a6824:	b228      	lw	v0,600a68c4 <uengine_message_deal+0xc4>
+    {
+
+        case MSG_APP_QUIT: //退出app
+        ret_value = RESULT_APP_QUIT;
+        break;
+
+        /* 设置eq*/
+        //case MSG_UENGINE_SET_EQ_SYNC:
+        case MSG_SET_DAE_CFG_SYNC:
+        if(0 == g_uspeaker_24bit)
+        {
+            uengine_set_eq(cur_msg);
+        }
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        /* 获取信息相关*/
+        case MSG_UENGINE_GET_STATUS_SYNC:
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+        
+        /* 播放暂停*/
+        case MSG_UENGINE_PLAY_PAUSE_SYNC:
+        uengine_play_pause();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        /* 切换下一曲*/
+        case MSG_UENGINE_NEXT_SONG_SYNC:
+        uengine_next_song();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+        
+        /* 切换上一曲*/
+        case MSG_UENGINE_PREV_SONG_SYNC:
+        uengine_prev_song();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+        
+        /* 音量加*/
+        case MSG_UENGINE_VOL_ADD_SYNC:
+        uengine_vol_add();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+        
+        /* 音量减*/
+        case MSG_UENGINE_VOL_SUB_SYNC:
+        uengine_vol_sub();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        //准备进入TTS播报
+        case MSG_TTS_START_SYNC:
+        //准备切换音频输出
+        case MSG_SWITCH_AOUT_START_SYNC:
+        uengine_tts_start();
+600a6826:	eac0      	jalrc	v0
+600a6828:	b221      	lw	v0,600a68a8 <uengine_message_deal+0xa8>
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        //TTS播报完成
+        case MSG_TTS_STOP_SYNC:
+        case MSG_SWITCH_AOUT_STOP_SYNC: //完成切换音频输出
+        uengine_tts_stop();
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        case MSG_UENGINE_VOL_SEND_SYNC:
+        g_current_vol = *((uint8 *)cur_msg->msg.content.addr);
+        uengine_vol_sync((uint8)g_current_vol);
+        uengine_reply_msg(cur_msg, TRUE);
+        break;
+
+        default:
+        uengine_reply_msg(cur_msg, TRUE);
+600a682a:	6790      	move	a0,s0
+600a682c:	ea40      	jalr	v0
+600a682e:	6d01      	li	a1,1
+600a6830:	6751      	move	v0,s1
+        break;
+    }
+
+    return ret_value;
+
+}
+600a6832:	6474      	restore	32,ra,s0-s1
+600a6834:	e8a0      	jrc	ra
+600a6836:	f401 7204 	cmpi	v0,3076
+600a683a:	60f6      	bteqz	600a6828 <uengine_message_deal+0x28>
+600a683c:	f401 5a05 	sltiu	v0,3077
+600a6840:	611e      	btnez	600a687e <uengine_message_deal+0x7e>
+600a6842:	f401 7206 	cmpi	v0,3078
+600a6846:	602a      	bteqz	600a689c <uengine_message_deal+0x9c>
+600a6848:	f401 5a06 	sltiu	v0,3078
+600a684c:	6129      	btnez	600a68a0 <uengine_message_deal+0xa0>
+600a684e:	f401 7207 	cmpi	v0,3079
+600a6852:	61ea      	btnez	600a6828 <uengine_message_deal+0x28>
+600a6854:	9cc1      	lw	a2,4(a0)
+600a6856:	b51e      	lw	a1,600a68cc <uengine_message_deal+0xcc>
+600a6858:	a680      	lbu	a0,0(a2)
+600a685a:	b21e      	lw	v0,600a68d0 <uengine_message_deal+0xd0>
+600a685c:	ea40      	jalr	v0
+600a685e:	dd80      	sw	a0,0(a1)
+600a6860:	17e3      	b	600a6828 <uengine_message_deal+0x28>
+600a6862:	b214      	lw	v0,600a68b0 <uengine_message_deal+0xb0>
+600a6864:	17e0      	b	600a6826 <uengine_message_deal+0x26>
+600a6866:	72f5      	cmpi	v0,245
+600a6868:	6012      	bteqz	600a688e <uengine_message_deal+0x8e>
+600a686a:	5af5      	sltiu	v0,245
+600a686c:	61db      	btnez	600a6824 <uengine_message_deal+0x24>
+600a686e:	72f6      	cmpi	v0,246
+600a6870:	61db      	btnez	600a6828 <uengine_message_deal+0x28>
+600a6872:	b30d      	lw	v1,600a68a4 <uengine_message_deal+0xa4>
+600a6874:	a340      	lbu	v0,0(v1)
+600a6876:	2ad8      	bnez	v0,600a6828 <uengine_message_deal+0x28>
+600a6878:	b20c      	lw	v0,600a68a8 <uengine_message_deal+0xa8>
+600a687a:	eac0      	jalrc	v0
+600a687c:	17d5      	b	600a6828 <uengine_message_deal+0x28>
+600a687e:	f401 7202 	cmpi	v0,3074
+600a6882:	600a      	bteqz	600a6898 <uengine_message_deal+0x98>
+600a6884:	f401 7203 	cmpi	v0,3075
+600a6888:	61cf      	btnez	600a6828 <uengine_message_deal+0x28>
+600a688a:	b20c      	lw	v0,600a68b8 <uengine_message_deal+0xb8>
+600a688c:	17cc      	b	600a6826 <uengine_message_deal+0x26>
+600a688e:	b20f      	lw	v0,600a68c8 <uengine_message_deal+0xc8>
+600a6890:	17ca      	b	600a6826 <uengine_message_deal+0x26>
+600a6892:	69ff      	li	s1,255
+600a6894:	4121      	addiu	s1,s1,1
+600a6896:	17cc      	b	600a6830 <uengine_message_deal+0x30>
+600a6898:	b207      	lw	v0,600a68b4 <uengine_message_deal+0xb4>
+600a689a:	17c5      	b	600a6826 <uengine_message_deal+0x26>
+600a689c:	b209      	lw	v0,600a68c0 <uengine_message_deal+0xc0>
+600a689e:	17c3      	b	600a6826 <uengine_message_deal+0x26>
+600a68a0:	b207      	lw	v0,600a68bc <uengine_message_deal+0xbc>
+600a68a2:	17c1      	b	600a6826 <uengine_message_deal+0x26>
+600a68a4:	95b8      	lw	a1,736(sp)
+600a68a6:	9fc1      	lw	a2,4(a3)
+600a68a8:	6981      	li	s1,129
+600a68aa:	600a      	bteqz	600a68c0 <uengine_message_deal+0xc0>
+600a68ac:	6459      	restore	72,ra,s1
+600a68ae:	bfc2      	lwu	a2,8(a3)
+600a68b0:	69bd      	li	s1,189
+600a68b2:	600a      	bteqz	600a68c8 <uengine_message_deal+0xc8>
+600a68b4:	6a2d      	li	v0,45
+600a68b6:	600a      	bteqz	600a68cc <uengine_message_deal+0xcc>
+600a68b8:	6a69      	li	v0,105
+600a68ba:	600a      	bteqz	600a68d0 <uengine_message_deal+0xd0>
+600a68bc:	6aa5      	li	v0,165
+600a68be:	600a      	bteqz	600a68d4 <uengine_sync_volume>
+600a68c0:	6ad1      	li	v0,209
+600a68c2:	600a      	bteqz	600a68d8 <uengine_sync_volume+0x4>
+600a68c4:	6bf9      	li	v1,249
+600a68c6:	600a      	bteqz	600a68dc <uengine_sync_volume+0x8>
+600a68c8:	6ccd      	li	a0,205
+600a68ca:	600a      	bteqz	600a68e0 <uengine_sync_volume+0xc>
+600a68cc:	9584      	lw	a1,528(sp)
+600a68ce:	9fc1      	lw	a2,4(a3)
+600a68d0:	6afd      	li	v0,253
+600a68d2:	600a      	bteqz	600a68e8 <uengine_sync_volume+0x14>
+
+600a68d4 <uengine_sync_volume>:
+600a68d4:	64f4      	save	32,ra,s0-s1
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_sync_volume(uint32 volume,uint8 mode)
+{
+600a68d6:	ed11      	zeb	a1
+600a68d8:	7501      	cmpi	a1,1
+    app_result_e ret_value = RESULT_NULL;
+
+    uint32 set_vol;
+    if(mode == 1)
+600a68da:	6724      	move	s1,a0
+    {
+        set_vol = volume;
+600a68dc:	600c      	bteqz	600a68f6 <.L3>
+600a68de:	f3bc 6a00 	li	v0,58272
+        goto set_true_vol;
+    }
+
+    //PRINT_INFO_INT("volsync", volume);
+
+    //syn volume
+    if ((volume >= 0xe3a0) && (volume <= 0xfff0))
+600a68e2:	ea4b      	neg	v0
+600a68e4:	e449      	addu	v0,a0,v0
+600a68e6:	f443 5a11 	sltiu	v0,7249
+600a68ea:	6020      	bteqz	600a692c <.L3+0x36>
+600a68ec:	b417      	lw	a0,600a6948 <.L3+0x52>
+    {
+        set_vol = ((volume - 0xe3a0) / 226);
+600a68ee:	3546      	srl	a1,v0,1
+600a68f0:	ed99      	multu	a1,a0
+600a68f2:	eb10      	mfhi	v1
+600a68f4:	3176      	srl	s1,v1,5
+
+600a68f6 <.L3>:
+600a68f6:	5920      	sltiu	s1,32
+    }
+    else if (volume < 0xe3a0)
+    {
+        set_vol = 0;
+    }
+    else
+    {
+        set_vol = VOLUME_VALUE_MAX;
+    }
+set_true_vol:    
+    if (set_vol > VOLUME_VALUE_MAX)
+600a68f8:	6101      	btnez	600a68fc <.L3+0x6>
+600a68fa:	691f      	li	s1,31
+    {
+        set_vol = VOLUME_VALUE_MAX;
+600a68fc:	b014      	lw	s0,600a694c <.L3+0x56>
+    }
+
+    PRINT_INFO_INT("volset", set_vol);
+600a68fe:	67b1      	move	a1,s1
+600a6900:	0c0f      	la	a0,600a693c <.L3+0x46>
+600a6902:	6e02      	li	a2,2
+600a6904:	e840      	jalr	s0
+600a6906:	6f4b      	li	a3,75
+600a6908:	b012      	lw	s0,600a6950 <.L3+0x5a>
+    //send asyn volume
+    g_cur_play_status_p->change_vol_val = set_vol;
+600a690a:	6d00      	li	a1,0
+
+    //更新共享内存
+    g_cur_play_status_p = sys_share_query_update(APP_ID_UENGINE);
+600a690c:	9880      	lw	a0,0(s0)
+600a690e:	b310      	lw	v1,600a694c <.L3+0x56>
+600a6910:	dc21      	sw	s1,4(a0)
+600a6912:	67c5      	move	a2,a1
+600a6914:	6c13      	li	a0,19
+600a6916:	eb40      	jalr	v1
+600a6918:	6f46      	li	a3,70
+600a691a:	d840      	sw	v0,0(s0)
+600a691c:	b20e      	lw	v0,600a6954 <.L3+0x5e>
+
+    g_share_ptr->vol_flag = 1;
+600a691e:	6f01      	li	a3,1
+600a6920:	9a60      	lw	v1,0(v0)
+600a6922:	474f      	addiu	v0,a3,-1
+
+    g_share_ptr->vol_val = set_vol;
+
+    return ret_value;
+
+}
+600a6924:	dbe0      	sw	a3,0(v1)
+600a6926:	db21      	sw	s1,4(v1)
+600a6928:	6474      	restore	32,ra,s0-s1
+600a692a:	e8a0      	jrc	ra
+600a692c:	f39c 6e1f 	li	a2,58271
+600a6930:	ee83      	sltu	a2,a0
+600a6932:	6900      	li	s1,0
+600a6934:	60e3      	bteqz	600a68fc <.L3+0x6>
+600a6936:	491f      	addiu	s1,31
+600a6938:	17e1      	b	600a68fc <.L3+0x6>
+600a693a:	0000      	addiu	s0,sp,0
+600a693c:	493c      	addiu	s1,60
+600a693e:	203e      	beqz	s0,600a69bc <uengine_play_pause>
+600a6940:	6f76      	li	a3,118
+600a6942:	736c      	cmpi	v1,108
+600a6944:	7465      	cmpi	a0,101
+600a6946:	0000      	addiu	s0,sp,0
+600a6948:	de05      	sw	s0,20(a2)
+600a694a:	487e      	addiu	s0,126
+600a694c:	6011      	bteqz	600a6970 <uengine_switch_deal+0x18>
+600a694e:	bfc2      	lwu	a2,8(a3)
+600a6950:	95c4      	lw	a1,784(sp)
+600a6952:	9fc1      	lw	a2,4(a3)
+600a6954:	95cc      	lw	a1,816(sp)
+600a6956:	9fc1      	lw	a2,4(a3)
+
+600a6958 <uengine_switch_deal>:
+600a6958:	64f4      	save	32,ra,s0-s1
+
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_set_volume(private_msg_t* cur_msg,uint32 volume)
+ * \处理音量调节
+ * \param[in]    private_msg_t* cur_msg
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_switch_deal(void)
+{
+600a695a:	b108      	lw	s1,600a6978 <uengine_switch_deal+0x20>
+    app_result_e ret_value = RESULT_NULL;
+
+    
+    //send asyn volume
+    g_cur_play_status_p->switch_flag = 1;
+600a695c:	6800      	li	s0,0
+600a695e:	9960      	lw	v1,0(s1)
+600a6960:	6c01      	li	a0,1
+600a6962:	b207      	lw	v0,600a697c <uengine_switch_deal+0x24>
+
+    //更新共享内存
+    g_cur_play_status_p = sys_share_query_update(APP_ID_UENGINE);
+600a6964:	cb85      	sh	a0,10(v1)
+600a6966:	67b0      	move	a1,s0
+600a6968:	6c13      	li	a0,19
+600a696a:	67d0      	move	a2,s0
+600a696c:	ea40      	jalr	v0
+600a696e:	6f46      	li	a3,70
+600a6970:	d940      	sw	v0,0(s1)
+600a6972:	6750      	move	v0,s0
+   
+    return ret_value;
+
+}
+600a6974:	6474      	restore	32,ra,s0-s1
+600a6976:	e8a0      	jrc	ra
+600a6978:	95c4      	lw	a1,784(sp)
+600a697a:	9fc1      	lw	a2,4(a3)
+600a697c:	6011      	bteqz	600a69a0 <uengine_set_eq+0x20>
+600a697e:	bfc2      	lwu	a2,8(a3)
+
+600a6980 <uengine_set_eq>:
+600a6980:	64c3      	save	24,ra
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_set_eq(private_msg_t* cur_msg)
+ * \处理eq 设置
+ * \param[in]    private_msg_t* cur_msg
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_set_eq(private_msg_t* cur_msg)
+{
+600a6982:	b40b      	lw	a0,600a69ac <uengine_set_eq+0x2c>
+    app_result_e ret_value = RESULT_NULL;
+
+    //private_msg_t* data_ptr = (private_msg_t*) cur_msg;
+
+    adjust_freq_add_value(0, g_dae_cfg_shm->run_freq);
+600a6984:	b20b      	lw	v0,600a69b0 <uengine_set_eq+0x30>
+600a6986:	9c60      	lw	v1,0(a0)
+600a6988:	6e01      	li	a2,1
+600a698a:	a3b4      	lbu	a1,20(v1)
+600a698c:	6c00      	li	a0,0
+600a698e:	ea40      	jalr	v0
+600a6990:	6f03      	li	a3,3
+600a6992:	b209      	lw	v0,600a69b4 <uengine_set_eq+0x34>
+
+    if (g_mmm_pp_handle != NULL)
+600a6994:	9a80      	lw	a0,0(v0)
+600a6996:	2c03      	bnez	a0,600a699e <uengine_set_eq+0x1e>
+600a6998:	6a00      	li	v0,0
+    {
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_SET_EQ, (unsigned int) NULL);
+    }
+
+    return ret_value;
+
+}
+600a699a:	6443      	restore	24,ra
+600a699c:	e8a0      	jrc	ra
+600a699e:	b207      	lw	v0,600a69b8 <uengine_set_eq+0x38>
+600a69a0:	6d14      	li	a1,20
+600a69a2:	ea40      	jalr	v0
+600a69a4:	6e00      	li	a2,0
+600a69a6:	6a00      	li	v0,0
+600a69a8:	6443      	restore	24,ra
+600a69aa:	e8a0      	jrc	ra
+600a69ac:	95c8      	lw	a1,800(sp)
+600a69ae:	9fc1      	lw	a2,4(a3)
+600a69b0:	6005      	bteqz	600a69bc <uengine_play_pause>
+600a69b2:	bfc2      	lwu	a2,8(a3)
+600a69b4:	95d4      	lw	a1,848(sp)
+600a69b6:	9fc1      	lw	a2,4(a3)
+600a69b8:	600d      	bteqz	600a69d4 <uengine_play_pause+0x18>
+600a69ba:	bfc2      	lwu	a2,8(a3)
+
+600a69bc <uengine_play_pause>:
+600a69bc:	64f4      	save	32,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_play_pause(void)
+ * \播放暂停
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_play_pause(void)
+{
+600a69be:	b316      	lw	v1,600a6a14 <uengine_play_pause+0x58>
+
+    if ((g_stop_by_tts == 0) && (g_status_data.start_play == 0))
+600a69c0:	9b40      	lw	v0,0(v1)
+600a69c2:	2a03      	bnez	v0,600a69ca <uengine_play_pause+0xe>
+600a69c4:	b115      	lw	s1,600a6a18 <uengine_play_pause+0x5c>
+600a69c6:	9906      	lw	s0,24(s1)
+600a69c8:	200b      	beqz	s0,600a69e0 <uengine_play_pause+0x24>
+600a69ca:	b217      	lw	v0,600a6a24 <uengine_play_pause+0x68>
+    {
+        //libc_print("no tts enter",0,0);
+
+        uegine_player_close();
+        g_ain_out_setting.dac_sample = (int32) g_status_data.sample_rate;
+
+        g_ain_out_setting.adc_sample = (int32) g_status_data.sample_rate;
+
+        //need set namual stop flag
+        ud_set_cmd(SET_PLAY_FLAG, 1);
+
+        uegine_player_open();
+    }
+
+    //hid report change is ok
+    ud_set_cmd(SET_HID_OPERS, 0x08);
+600a69cc:	6c01      	li	a0,1
+600a69ce:	6d08      	li	a1,8
+600a69d0:	6e00      	li	a2,0
+600a69d2:	ea40      	jalr	v0
+600a69d4:	6f06      	li	a3,6
+600a69d6:	b610      	lw	a2,600a6a14 <uengine_play_pause+0x58>
+
+    //cur status
+    /*if (g_status_data.start_play == 0)
+     {
+     //need clear namual stop flag
+     ud_set_cmd(SET_PLAY_FLAG, 0);
+     }
+     else
+     {
+
+     //need set namual stop flag
+     ud_set_cmd(SET_PLAY_FLAG, 1);
+     }*/
+
+    g_stop_by_tts = 0;
+600a69d8:	6a00      	li	v0,0
+600a69da:	de40      	sw	v0,0(a2)
+600a69dc:	6474      	restore	32,ra,s0-s1
+
+    return RESULT_NULL;
+}
+600a69de:	e8a0      	jrc	ra
+600a69e0:	b30f      	lw	v1,600a6a18 <uengine_play_pause+0x5c>
+600a69e2:	ebc0      	jalrc	v1
+600a69e4:	99a3      	lw	a1,12(s1)
+600a69e6:	b40f      	lw	a0,600a6a20 <uengine_play_pause+0x64>
+600a69e8:	b20f      	lw	v0,600a6a24 <uengine_play_pause+0x68>
+600a69ea:	67d0      	move	a2,s0
+600a69ec:	dca2      	sw	a1,8(a0)
+600a69ee:	dca5      	sw	a1,20(a0)
+600a69f0:	6f06      	li	a3,6
+600a69f2:	6790      	move	a0,s0
+600a69f4:	ea40      	jalr	v0
+600a69f6:	6d01      	li	a1,1
+600a69f8:	b20c      	lw	v0,600a6a28 <uengine_play_pause+0x6c>
+600a69fa:	eac0      	jalrc	v0
+600a69fc:	b20a      	lw	v0,600a6a20 <uengine_play_pause+0x64>
+600a69fe:	6c01      	li	a0,1
+600a6a00:	6d08      	li	a1,8
+600a6a02:	6e00      	li	a2,0
+600a6a04:	ea40      	jalr	v0
+600a6a06:	6f06      	li	a3,6
+600a6a08:	b603      	lw	a2,600a6a14 <uengine_play_pause+0x58>
+600a6a0a:	6a00      	li	v0,0
+600a6a0c:	de40      	sw	v0,0(a2)
+600a6a0e:	6474      	restore	32,ra,s0-s1
+600a6a10:	e8a0      	jrc	ra
+600a6a12:	0000      	addiu	s0,sp,0
+600a6a14:	959c      	lw	a1,624(sp)
+600a6a16:	9fc1      	lw	a2,4(a3)
+600a6a18:	9628      	lw	a2,160(sp)
+600a6a1a:	9fc1      	lw	a2,4(a3)
+600a6a1c:	68d1      	li	s0,209
+600a6a1e:	600e      	bteqz	600a6a3c <uengine_next_song+0x10>
+600a6a20:	9604      	lw	a2,16(sp)
+600a6a22:	9fc1      	lw	a2,4(a3)
+600a6a24:	6015      	bteqz	600a6a50 <uengine_next_song+0x24>
+600a6a26:	bfc2      	lwu	a2,8(a3)
+600a6a28:	6801      	li	s0,1
+600a6a2a:	600e      	bteqz	600a6a48 <uengine_next_song+0x1c>
+
+600a6a2c <uengine_next_song>:
+600a6a2c:	64c3      	save	24,ra
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_next_song(void)
+ * \下一曲
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_next_song(void)
+{
+600a6a2e:	b20b      	lw	v0,600a6a58 <uengine_next_song+0x2c>
+
+    //hid report change is ok
+    ud_set_cmd(SET_HID_OPERS, 0x10);
+600a6a30:	6c01      	li	a0,1
+600a6a32:	6d10      	li	a1,16
+600a6a34:	6e00      	li	a2,0
+600a6a36:	ea40      	jalr	v0
+600a6a38:	6f06      	li	a3,6
+600a6a3a:	b309      	lw	v1,600a6a5c <uengine_next_song+0x30>
+
+    g_stop_by_tts = 0;
+600a6a3c:	6c00      	li	a0,0
+600a6a3e:	db80      	sw	a0,0(v1)
+600a6a40:	b308      	lw	v1,600a6a60 <uengine_next_song+0x34>
+
+    if(g_switch_song_flag != 0xff)
+600a6a42:	a340      	lbu	v0,0(v1)
+600a6a44:	72ff      	cmpi	v0,255
+600a6a46:	6001      	bteqz	600a6a4a <uengine_next_song+0x1e>
+600a6a48:	c380      	sb	a0,0(v1)
+    {
+        g_switch_song_flag = 0;
+600a6a4a:	b507      	lw	a1,600a6a64 <uengine_next_song+0x38>
+    }
+    
+    g_auto_play_flag = 1;
+600a6a4c:	6e01      	li	a2,1
+600a6a4e:	6744      	move	v0,a0
+
+    return RESULT_NULL;
+}
+600a6a50:	c5c0      	sb	a2,0(a1)
+600a6a52:	6443      	restore	24,ra
+600a6a54:	e8a0      	jrc	ra
+600a6a56:	0000      	addiu	s0,sp,0
+600a6a58:	6015      	bteqz	600a6a84 <uengine_prev_song+0x1c>
+600a6a5a:	bfc2      	lwu	a2,8(a3)
+600a6a5c:	959c      	lw	a1,624(sp)
+600a6a5e:	9fc1      	lw	a2,4(a3)
+600a6a60:	95a4      	lw	a1,656(sp)
+600a6a62:	9fc1      	lw	a2,4(a3)
+600a6a64:	95ba      	lw	a1,744(sp)
+600a6a66:	9fc1      	lw	a2,4(a3)
+
+600a6a68 <uengine_prev_song>:
+600a6a68:	64c3      	save	24,ra
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_prev_song(void)
+ * \上一曲
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_prev_song(void)
+{
+600a6a6a:	b20b      	lw	v0,600a6a94 <uengine_prev_song+0x2c>
+    //hid report change is ok
+    ud_set_cmd(SET_HID_OPERS, 0x20);
+600a6a6c:	6c01      	li	a0,1
+600a6a6e:	6d20      	li	a1,32
+600a6a70:	6e00      	li	a2,0
+600a6a72:	ea40      	jalr	v0
+600a6a74:	6f06      	li	a3,6
+600a6a76:	b309      	lw	v1,600a6a98 <uengine_prev_song+0x30>
+
+    g_stop_by_tts = 0;
+600a6a78:	6c00      	li	a0,0
+600a6a7a:	db80      	sw	a0,0(v1)
+600a6a7c:	b308      	lw	v1,600a6a9c <uengine_prev_song+0x34>
+    
+    if(g_switch_song_flag != 0xff)
+600a6a7e:	a340      	lbu	v0,0(v1)
+600a6a80:	72ff      	cmpi	v0,255
+600a6a82:	6001      	bteqz	600a6a86 <uengine_prev_song+0x1e>
+600a6a84:	c380      	sb	a0,0(v1)
+    {    
+        g_switch_song_flag = 0;
+600a6a86:	b507      	lw	a1,600a6aa0 <uengine_prev_song+0x38>
+    }
+    
+    g_auto_play_flag = 1;
+600a6a88:	6e01      	li	a2,1
+600a6a8a:	6744      	move	v0,a0
+
+    return RESULT_NULL;
+}
+600a6a8c:	c5c0      	sb	a2,0(a1)
+600a6a8e:	6443      	restore	24,ra
+600a6a90:	e8a0      	jrc	ra
+600a6a92:	0000      	addiu	s0,sp,0
+600a6a94:	6015      	bteqz	600a6ac0 <uengine_vol_add+0x1c>
+600a6a96:	bfc2      	lwu	a2,8(a3)
+600a6a98:	959c      	lw	a1,624(sp)
+600a6a9a:	9fc1      	lw	a2,4(a3)
+600a6a9c:	95a4      	lw	a1,656(sp)
+600a6a9e:	9fc1      	lw	a2,4(a3)
+600a6aa0:	95ba      	lw	a1,744(sp)
+600a6aa2:	9fc1      	lw	a2,4(a3)
+
+600a6aa4 <uengine_vol_add>:
+600a6aa4:	64e3      	save	24,ra,s0
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_vol_add(void)
+ * \调大音量
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_vol_add(void)
+{
+600a6aa6:	6c01      	li	a0,1
+
+    //hid report change is ok
+    ud_set_cmd(SET_HID_OPERS, 0x01);
+600a6aa8:	b008      	lw	s0,600a6ac8 <uengine_vol_add+0x24>
+600a6aaa:	67a4      	move	a1,a0
+600a6aac:	6e00      	li	a2,0
+600a6aae:	e840      	jalr	s0
+600a6ab0:	6f06      	li	a3,6
+600a6ab2:	6c00      	li	a0,0
+    
+    ud_hid_deal();
+600a6ab4:	67a4      	move	a1,a0
+600a6ab6:	67c4      	move	a2,a0
+600a6ab8:	e840      	jalr	s0
+600a6aba:	6f07      	li	a3,7
+600a6abc:	b304      	lw	v1,600a6acc <uengine_vol_add+0x28>
+
+    g_stop_by_tts = 0;
+600a6abe:	6a00      	li	v0,0
+600a6ac0:	db40      	sw	v0,0(v1)
+600a6ac2:	6463      	restore	24,ra,s0
+
+    return RESULT_NULL;
+}
+600a6ac4:	e8a0      	jrc	ra
+600a6ac6:	0000      	addiu	s0,sp,0
+600a6ac8:	6015      	bteqz	600a6af4 <uengine_vol_sub+0x24>
+600a6aca:	bfc2      	lwu	a2,8(a3)
+600a6acc:	959c      	lw	a1,624(sp)
+600a6ace:	9fc1      	lw	a2,4(a3)
+
+600a6ad0 <uengine_vol_sub>:
+600a6ad0:	64e3      	save	24,ra,s0
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_vol_sub(void)
+ * \调小音量
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_vol_sub(void)
+{
+600a6ad2:	b009      	lw	s0,600a6af4 <uengine_vol_sub+0x24>
+
+    //hid report change is ok
+    ud_set_cmd(SET_HID_OPERS, 0x02);
+600a6ad4:	6c01      	li	a0,1
+600a6ad6:	6d02      	li	a1,2
+600a6ad8:	6e00      	li	a2,0
+600a6ada:	e840      	jalr	s0
+600a6adc:	6f06      	li	a3,6
+600a6ade:	6c00      	li	a0,0
+
+    ud_hid_deal();
+600a6ae0:	67a4      	move	a1,a0
+600a6ae2:	67c4      	move	a2,a0
+600a6ae4:	e840      	jalr	s0
+600a6ae6:	6f07      	li	a3,7
+600a6ae8:	b304      	lw	v1,600a6af8 <uengine_vol_sub+0x28>
+    
+    g_stop_by_tts = 0;
+600a6aea:	6a00      	li	v0,0
+600a6aec:	db40      	sw	v0,0(v1)
+600a6aee:	6463      	restore	24,ra,s0
+
+    return RESULT_NULL;
+}
+600a6af0:	e8a0      	jrc	ra
+600a6af2:	0000      	addiu	s0,sp,0
+600a6af4:	6015      	bteqz	600a6b20 <uengine_vol_sync+0x24>
+600a6af6:	bfc2      	lwu	a2,8(a3)
+600a6af8:	959c      	lw	a1,624(sp)
+600a6afa:	9fc1      	lw	a2,4(a3)
+
+600a6afc <uengine_vol_sync>:
+600a6afc:	64f5      	save	40,ra,s0-s1
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_vol_sub(void)
+ * \音量同步
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_vol_sync(uint8 vol)
+{
+600a6afe:	ec11      	zeb	a0
+600a6b00:	6d00      	li	a1,0
+    int8 vol_sync_cnt = 0;
+600a6b02:	2402      	beqz	a0,600a6b08 <uengine_vol_sync+0xc>
+    uint8 symbol = 0;
+    uint8 i = 0;
+
+    //libc_print("vol__",vol,2);
+    
+    if((vol == 0) || (vol == 31))
+600a6b04:	741f      	cmpi	a0,31
+600a6b06:	6103      	btnez	600a6b0e <uengine_vol_sync+0x12>
+600a6b08:	b237      	lw	v0,600a6be4 <uengine_vol_sync+0xe8>
+    {
+        g_force_equ = 1;
+600a6b0a:	6b01      	li	v1,1
+600a6b0c:	c260      	sb	v1,0(v0)
+600a6b0e:	b237      	lw	v0,600a6be8 <uengine_vol_sync+0xec>
+    }
+    #if 0
+    if(vol == 0)
+    {        
+        for (i = 0;i < 25;i ++)
+        {
+            ud_set_cmd(SET_HID_OPERS, 0x02);
+            
+            ud_hid_deal();
+            
+            ud_set_cmd(SET_HID_OPERS, 0x00);
+            
+            ud_hid_deal();
+        }
+    }
+    else if(vol == 31)
+    {
+        for (i = 0;i < 25;i ++)
+        {
+            ud_set_cmd(SET_HID_OPERS, 0x01);
+            
+            ud_hid_deal();
+            
+            ud_set_cmd(SET_HID_OPERS, 0x00);
+            
+            ud_hid_deal();
+        }
+    }
+    else
+    #endif
+    {
+        vol_sync_cnt = vol - g_cur_play_status_p->change_vol_val;
+600a6b10:	9a20      	lw	s1,0(v0)
+600a6b12:	99e1      	lw	a3,4(s1)
+600a6b14:	e4fb      	subu	a2,a0,a3
+600a6b16:	6786      	move	a0,a2
+600a6b18:	ec91      	seb	a0
+600a6b1a:	5400      	slti	a0,0
+        if(vol_sync_cnt < 0)
+600a6b1c:	615d      	btnez	600a6bd8 <uengine_vol_sync+0xdc>
+600a6b1e:	f7c0 3782 	srl	a3,a0,31
+        {
+            symbol = 1;
+            vol_sync_cnt = 0 - vol_sync_cnt;
+        }
+        //if(vol_sync_cnt >= 15)
+        {
+            vol_sync_cnt = vol_sync_cnt/2;
+600a6b22:	e4f9      	addu	a2,a0,a3
+600a6b24:	32c7      	sra	v0,a2,1
+600a6b26:	d204      	sw	v0,16(sp)
+600a6b28:	2a02      	bnez	v0,600a6b2e <uengine_vol_sync+0x32>
+        }
+        if(vol_sync_cnt == 0)
+600a6b2a:	4281      	addiu	a0,v0,1
+        {
+            vol_sync_cnt = 1;
+600a6b2c:	d404      	sw	a0,16(sp)
+600a6b2e:	2d2a      	bnez	a1,600a6b84 <uengine_vol_sync+0x88>
+        }
+        //libc_print("adjust cnt:",vol_sync_cnt,2);
+        if(symbol == 0)
+600a6b30:	6725      	move	s1,a1
+        {
+            for (i = 0;i < ( vol_sync_cnt);i ++)
+600a6b32:	9504      	lw	a1,16(sp)
+600a6b34:	e9a2      	slt	s1,a1
+600a6b36:	601b      	bteqz	600a6b6e <uengine_vol_sync+0x72>
+600a6b38:	b02d      	lw	s0,600a6bec <uengine_vol_sync+0xf0>
+600a6b3a:	6c01      	li	a0,1
+            {
+                ud_set_cmd(SET_HID_OPERS, 0x01);
+600a6b3c:	67a4      	move	a1,a0
+600a6b3e:	6e00      	li	a2,0
+600a6b40:	e840      	jalr	s0
+600a6b42:	6f06      	li	a3,6
+600a6b44:	6c00      	li	a0,0
+                
+                ud_hid_deal();
+600a6b46:	67a4      	move	a1,a0
+600a6b48:	67c4      	move	a2,a0
+600a6b4a:	e840      	jalr	s0
+600a6b4c:	6f07      	li	a3,7
+600a6b4e:	6d00      	li	a1,0
+                
+                ud_set_cmd(SET_HID_OPERS, 0x00);
+600a6b50:	67c5      	move	a2,a1
+600a6b52:	6c01      	li	a0,1
+600a6b54:	e840      	jalr	s0
+600a6b56:	6f06      	li	a3,6
+600a6b58:	6c00      	li	a0,0
+                
+                ud_hid_deal();
+600a6b5a:	67a4      	move	a1,a0
+600a6b5c:	67c4      	move	a2,a0
+600a6b5e:	e840      	jalr	s0
+600a6b60:	6f07      	li	a3,7
+600a6b62:	4161      	addiu	v1,s1,1
+600a6b64:	6723      	move	s1,v1
+600a6b66:	9204      	lw	v0,16(sp)
+600a6b68:	e911      	zeb	s1
+600a6b6a:	e942      	slt	s1,v0
+600a6b6c:	61e6      	btnez	600a6b3a <uengine_vol_sync+0x3e>
+600a6b6e:	6c00      	li	a0,0
+            }
+        }
+        else
+        {
+            for (i = 0;i < (vol_sync_cnt);i ++)
+            {
+                ud_set_cmd(SET_HID_OPERS, 0x02);
+                
+                ud_hid_deal();
+                
+                ud_set_cmd(SET_HID_OPERS, 0x00);
+                
+                ud_hid_deal();
+            }
+        }
+    }
+    
+    g_vol_sync_timer = sys_get_ab_timer();
+600a6b70:	b221      	lw	v0,600a6bf4 <uengine_vol_sync+0xf8>
+600a6b72:	67a4      	move	a1,a0
+600a6b74:	67c4      	move	a2,a0
+600a6b76:	ea40      	jalr	v0
+600a6b78:	6f1c      	li	a3,28
+600a6b7a:	b51e      	lw	a1,600a6bf0 <uengine_vol_sync+0xf4>
+600a6b7c:	dd40      	sw	v0,0(a1)
+600a6b7e:	6a00      	li	v0,0
+    
+    return RESULT_NULL;
+}
+600a6b80:	6475      	restore	40,ra,s0-s1
+600a6b82:	e8a0      	jrc	ra
+600a6b84:	9604      	lw	a2,16(sp)
+600a6b86:	6900      	li	s1,0
+600a6b88:	e9c2      	slt	s1,a2
+600a6b8a:	60f1      	bteqz	600a6b6e <uengine_vol_sync+0x72>
+600a6b8c:	b018      	lw	s0,600a6bec <uengine_vol_sync+0xf0>
+600a6b8e:	6c01      	li	a0,1
+600a6b90:	6d02      	li	a1,2
+600a6b92:	6e00      	li	a2,0
+600a6b94:	e840      	jalr	s0
+600a6b96:	6f06      	li	a3,6
+600a6b98:	6c00      	li	a0,0
+600a6b9a:	67a4      	move	a1,a0
+600a6b9c:	67c4      	move	a2,a0
+600a6b9e:	e840      	jalr	s0
+600a6ba0:	6f07      	li	a3,7
+600a6ba2:	6d00      	li	a1,0
+600a6ba4:	67c5      	move	a2,a1
+600a6ba6:	6c01      	li	a0,1
+600a6ba8:	e840      	jalr	s0
+600a6baa:	6f06      	li	a3,6
+600a6bac:	6c00      	li	a0,0
+600a6bae:	67a4      	move	a1,a0
+600a6bb0:	67c4      	move	a2,a0
+600a6bb2:	e840      	jalr	s0
+600a6bb4:	6f07      	li	a3,7
+600a6bb6:	4181      	addiu	a0,s1,1
+600a6bb8:	6724      	move	s1,a0
+600a6bba:	9704      	lw	a3,16(sp)
+600a6bbc:	e911      	zeb	s1
+600a6bbe:	e9e2      	slt	s1,a3
+600a6bc0:	61e6      	btnez	600a6b8e <uengine_vol_sync+0x92>
+600a6bc2:	6c00      	li	a0,0
+600a6bc4:	b20c      	lw	v0,600a6bf4 <uengine_vol_sync+0xf8>
+600a6bc6:	67a4      	move	a1,a0
+600a6bc8:	67c4      	move	a2,a0
+600a6bca:	ea40      	jalr	v0
+600a6bcc:	6f1c      	li	a3,28
+600a6bce:	b509      	lw	a1,600a6bf0 <uengine_vol_sync+0xf4>
+600a6bd0:	dd40      	sw	v0,0(a1)
+600a6bd2:	6a00      	li	v0,0
+600a6bd4:	6475      	restore	40,ra,s0-s1
+600a6bd6:	e8a0      	jrc	ra
+600a6bd8:	eb8b      	neg	v1,a0
+600a6bda:	6783      	move	a0,v1
+600a6bdc:	6d01      	li	a1,1
+600a6bde:	ec91      	seb	a0
+600a6be0:	179e      	b	600a6b1e <uengine_vol_sync+0x22>
+600a6be2:	0000      	addiu	s0,sp,0
+600a6be4:	95ac      	lw	a1,688(sp)
+600a6be6:	9fc1      	lw	a2,4(a3)
+600a6be8:	95c4      	lw	a1,784(sp)
+600a6bea:	9fc1      	lw	a2,4(a3)
+600a6bec:	6015      	bteqz	600a6c18 <uengine_tts_start+0x20>
+600a6bee:	bfc2      	lwu	a2,8(a3)
+600a6bf0:	95a8      	lw	a1,672(sp)
+600a6bf2:	9fc1      	lw	a2,4(a3)
+600a6bf4:	6011      	bteqz	600a6c18 <uengine_tts_start+0x20>
+600a6bf6:	bfc2      	lwu	a2,8(a3)
+
+600a6bf8 <uengine_tts_start>:
+600a6bf8:	64f4      	save	32,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_tts_start(void)
+ * \开始tts,需要做好互斥
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_tts_start(void)
+{
+600a6bfa:	6d00      	li	a1,0
+
+    ud_get_status(&g_status_data);
+600a6bfc:	b42b      	lw	a0,600a6ca8 <.LBE2+0x2e>
+600a6bfe:	b02c      	lw	s0,600a6cac <.LBE2+0x32>
+600a6c00:	67c5      	move	a2,a1
+600a6c02:	e840      	jalr	s0
+600a6c04:	67e5      	move	a3,a1
+600a6c06:	b32b      	lw	v1,600a6cb0 <.LBE2+0x36>
+    if(1 == g_uspeaker_24bit)
+600a6c08:	a340      	lbu	v0,0(v1)
+600a6c0a:	7201      	cmpi	v0,1
+600a6c0c:	6109      	btnez	600a6c20 <uengine_tts_start+0x28>
+600a6c0e:	b52a      	lw	a1,600a6cb4 <.LBE2+0x3a>
+	{
+	    if(g_pa_type == 1)
+600a6c10:	a580      	lbu	a0,0(a1)
+600a6c12:	7401      	cmpi	a0,1
+600a6c14:	603c      	bteqz	600a6c8e <.LBE2+0x14>
+600a6c16:	6c0a      	li	a0,10
+	    {
+    	    ccd_i2s_pa_set_clock(44);
+    	}
+
+    	ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_TTS_START);
+600a6c18:	6d03      	li	a1,3
+600a6c1a:	6e00      	li	a2,0
+600a6c1c:	e840      	jalr	s0
+600a6c1e:	6f06      	li	a3,6
+600a6c20:	b123      	lw	s1,600a6cac <.LBE2+0x32>
+	}
+
+    ud_set_cmd(SET_TTS_FLAG,1);
+600a6c22:	6e00      	li	a2,0
+600a6c24:	6f06      	li	a3,6
+600a6c26:	6c09      	li	a0,9
+600a6c28:	e940      	jalr	s1
+600a6c2a:	6d01      	li	a1,1
+600a6c2c:	b224      	lw	v0,600a6cbc <.LBE2+0x42>
+
+    //stop mmm player
+    uegine_player_close();
+600a6c2e:	eac0      	jalrc	v0
+600a6c30:	b71e      	lw	a3,600a6ca4 <.LBE2+0x2a>
+
+    //if play stop usound play
+    if (g_status_data.start_play == 1)
+600a6c32:	9fc6      	lw	a2,24(a3)
+600a6c34:	7601      	cmpi	a2,1
+600a6c36:	600a      	bteqz	600a6c4c <.LBB2>
+600a6c38:	b623      	lw	a2,600a6cc4 <.LBE2+0x4a>
+    {
+        uint8 i = 0;
+        ud_set_cmd(SET_HID_OPERS, 0x08);
+        //make sure pc receive the stop cmd
+        while (i < 4)
+        {
+            ud_hid_deal();
+            i++;
+            sys_os_time_dly(1);
+        }
+    }
+
+    g_stop_by_tts = 1;
+600a6c3a:	b424      	lw	a0,600a6cc8 <.LBE2+0x4e>
+    
+    g_switch_song_flag = 0xff;
+600a6c3c:	6f01      	li	a3,1
+600a6c3e:	6d01      	li	a1,1
+600a6c40:	edab      	neg	a1
+600a6c42:	6a00      	li	v0,0
+    
+    return RESULT_NULL;
+}
+600a6c44:	dee0      	sw	a3,0(a2)
+600a6c46:	c4a0      	sb	a1,0(a0)
+600a6c48:	6474      	restore	32,ra,s0-s1
+600a6c4a:	e8a0      	jrc	ra
+
+600a6c4c <.LBB2>:
+600a6c4c:	6800      	li	s0,0
+600a6c4e:	6c01      	li	a0,1
+600a6c50:	6d08      	li	a1,8
+600a6c52:	67d0      	move	a2,s0
+600a6c54:	e940      	jalr	s1
+600a6c56:	6f06      	li	a3,6
+600a6c58:	6c00      	li	a0,0
+600a6c5a:	b215      	lw	v0,600a6cac <.LBE2+0x32>
+600a6c5c:	67a4      	move	a1,a0
+600a6c5e:	67c4      	move	a2,a0
+600a6c60:	ea40      	jalr	v0
+600a6c62:	6f07      	li	a3,7
+600a6c64:	4061      	addiu	v1,s0,1
+600a6c66:	6703      	move	s0,v1
+600a6c68:	6d00      	li	a1,0
+600a6c6a:	b216      	lw	v0,600a6cc0 <.LBE2+0x46>
+600a6c6c:	e811      	zeb	s0
+600a6c6e:	6c01      	li	a0,1
+600a6c70:	67c5      	move	a2,a1
+600a6c72:	ea40      	jalr	v0
+600a6c74:	6f31      	li	a3,49
+600a6c76:	5804      	sltiu	s0,4
+600a6c78:	61ef      	btnez	600a6c58 <.LBB2+0xc>
+
+600a6c7a <.LBE2>:
+600a6c7a:	b613      	lw	a2,600a6cc4 <.LBE2+0x4a>
+600a6c7c:	b413      	lw	a0,600a6cc8 <.LBE2+0x4e>
+600a6c7e:	6f01      	li	a3,1
+600a6c80:	6d01      	li	a1,1
+600a6c82:	edab      	neg	a1
+600a6c84:	6a00      	li	v0,0
+600a6c86:	dee0      	sw	a3,0(a2)
+600a6c88:	c4a0      	sb	a1,0(a0)
+600a6c8a:	6474      	restore	32,ra,s0-s1
+600a6c8c:	e8a0      	jrc	ra
+600a6c8e:	6d00      	li	a1,0
+600a6c90:	b10a      	lw	s1,600a6cb8 <.LBE2+0x3e>
+600a6c92:	67c5      	move	a2,a1
+600a6c94:	6c2c      	li	a0,44
+600a6c96:	e940      	jalr	s1
+600a6c98:	6f04      	li	a3,4
+600a6c9a:	6c0a      	li	a0,10
+600a6c9c:	6d03      	li	a1,3
+600a6c9e:	6e00      	li	a2,0
+600a6ca0:	e840      	jalr	s0
+600a6ca2:	6f06      	li	a3,6
+600a6ca4:	17bd      	b	600a6c20 <uengine_tts_start+0x28>
+600a6ca6:	0000      	addiu	s0,sp,0
+600a6ca8:	9628      	lw	a2,160(sp)
+600a6caa:	9fc1      	lw	a2,4(a3)
+600a6cac:	6015      	bteqz	600a6cd8 <uengine_tts_stop+0xc>
+600a6cae:	bfc2      	lwu	a2,8(a3)
+600a6cb0:	95b8      	lw	a1,736(sp)
+600a6cb2:	9fc1      	lw	a2,4(a3)
+600a6cb4:	95b9      	lw	a1,740(sp)
+600a6cb6:	9fc1      	lw	a2,4(a3)
+600a6cb8:	65cd      	move	t6,a1
+600a6cba:	bfc2      	lwu	a2,8(a3)
+600a6cbc:	68d1      	li	s0,209
+600a6cbe:	600e      	bteqz	600a6cdc <uengine_tts_stop+0x10>
+600a6cc0:	6011      	bteqz	600a6ce4 <uengine_tts_stop+0x18>
+600a6cc2:	bfc2      	lwu	a2,8(a3)
+600a6cc4:	959c      	lw	a1,624(sp)
+600a6cc6:	9fc1      	lw	a2,4(a3)
+600a6cc8:	95a4      	lw	a1,656(sp)
+600a6cca:	9fc1      	lw	a2,4(a3)
+
+600a6ccc <uengine_tts_stop>:
+600a6ccc:	64e3      	save	24,ra,s0
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \app_result_e uengine_tts_stop(void)
+ * \tts结束,继续运行
+ * \param[in]
+ * \param[out]   none
+ * \return       int the result
+ * \retval       RESULT_IGNOR 忽略
+ * \retval       RESULT_APP_QUIT 退出app
+ * \note         uengine_event_deal.c
+ */
+/*******************************************************************************/
+app_result_e uengine_tts_stop(void)
+{
+600a6cce:	b522      	lw	a1,600a6d54 <uengine_tts_stop+0x88>
+
+    g_ain_out_setting.dac_sample = (int32) g_status_data.sample_rate;
+
+    g_ain_out_setting.adc_sample = (int32) g_status_data.sample_rate;
+    
+	if(1 == g_uspeaker_24bit)
+600a6cd0:	b620      	lw	a2,600a6d50 <uengine_tts_stop+0x84>
+600a6cd2:	a540      	lbu	v0,0(a1)
+600a6cd4:	b31e      	lw	v1,600a6d4c <uengine_tts_stop+0x80>
+600a6cd6:	7201      	cmpi	v0,1
+600a6cd8:	9e83      	lw	a0,12(a2)
+600a6cda:	6112      	btnez	600a6d00 <uengine_tts_stop+0x34>
+600a6cdc:	b71f      	lw	a3,600a6d58 <uengine_tts_stop+0x8c>
+	{
+        g_ain_out_setting.dac_sample = (int32) g_status_data.sample_rate;
+                
+        g_ain_out_setting.adc_sample = (int32) g_status_data.sample_rate;
+        
+	    if(g_pa_type == 1)
+600a6cde:	db82      	sw	a0,8(v1)
+600a6ce0:	db85      	sw	a0,20(v1)
+600a6ce2:	a760      	lbu	v1,0(a3)
+600a6ce4:	7301      	cmpi	v1,1
+600a6ce6:	6021      	bteqz	600a6d2a <uengine_tts_stop+0x5e>
+600a6ce8:	b01e      	lw	s0,600a6d60 <uengine_tts_stop+0x94>
+	    {
+    	    ccd_i2s_pa_set_clock(g_status_data.sample_rate);
+    	}
+
+    	ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_SAMPLE_RATE);
+600a6cea:	6c0a      	li	a0,10
+600a6cec:	6d02      	li	a1,2
+600a6cee:	6e00      	li	a2,0
+600a6cf0:	e840      	jalr	s0
+600a6cf2:	6f06      	li	a3,6
+600a6cf4:	6c0a      	li	a0,10
+
+    	ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_TTS_STOP);
+600a6cf6:	6d04      	li	a1,4
+600a6cf8:	6e00      	li	a2,0
+600a6cfa:	e840      	jalr	s0
+600a6cfc:	6f06      	li	a3,6
+600a6cfe:	1002      	b	600a6d04 <uengine_tts_stop+0x38>
+600a6d00:	db85      	sw	a0,20(v1)
+600a6d02:	db82      	sw	a0,8(v1)
+600a6d04:	6d00      	li	a1,0
+	}
+    ud_set_cmd(SET_TTS_FLAG,0);
+600a6d06:	b017      	lw	s0,600a6d60 <uengine_tts_stop+0x94>
+600a6d08:	67c5      	move	a2,a1
+600a6d0a:	6c09      	li	a0,9
+600a6d0c:	e840      	jalr	s0
+600a6d0e:	6f06      	li	a3,6
+600a6d10:	6c00      	li	a0,0
+
+    //manual stop flag
+    ud_set_cmd(SET_PLAY_FLAG, 1);
+600a6d12:	67c4      	move	a2,a0
+600a6d14:	6d01      	li	a1,1
+600a6d16:	e840      	jalr	s0
+600a6d18:	6f06      	li	a3,6
+600a6d1a:	b213      	lw	v0,600a6d64 <uengine_tts_stop+0x98>
+    //hid report change is ok
+    uegine_player_open();
+600a6d1c:	eac0      	jalrc	v0
+600a6d1e:	b413      	lw	a0,600a6d68 <uengine_tts_stop+0x9c>
+
+    g_switch_song_flag = 0;
+600a6d20:	6a00      	li	v0,0
+600a6d22:	c440      	sb	v0,0(a0)
+600a6d24:	6a00      	li	v0,0
+    
+    return RESULT_NULL;
+}
+600a6d26:	6463      	restore	24,ra,s0
+600a6d28:	e8a0      	jrc	ra
+600a6d2a:	6d00      	li	a1,0
+600a6d2c:	b00c      	lw	s0,600a6d5c <uengine_tts_stop+0x90>
+600a6d2e:	67c5      	move	a2,a1
+600a6d30:	e840      	jalr	s0
+600a6d32:	6f04      	li	a3,4
+600a6d34:	b00b      	lw	s0,600a6d60 <uengine_tts_stop+0x94>
+600a6d36:	6c0a      	li	a0,10
+600a6d38:	6d02      	li	a1,2
+600a6d3a:	6e00      	li	a2,0
+600a6d3c:	e840      	jalr	s0
+600a6d3e:	6f06      	li	a3,6
+600a6d40:	6c0a      	li	a0,10
+600a6d42:	6d04      	li	a1,4
+600a6d44:	6e00      	li	a2,0
+600a6d46:	e840      	jalr	s0
+600a6d48:	6f06      	li	a3,6
+600a6d4a:	17dc      	b	600a6d04 <uengine_tts_stop+0x38>
+600a6d4c:	9604      	lw	a2,16(sp)
+600a6d4e:	9fc1      	lw	a2,4(a3)
+600a6d50:	9628      	lw	a2,160(sp)
+600a6d52:	9fc1      	lw	a2,4(a3)
+600a6d54:	95b8      	lw	a1,736(sp)
+600a6d56:	9fc1      	lw	a2,4(a3)
+600a6d58:	95b9      	lw	a1,740(sp)
+600a6d5a:	9fc1      	lw	a2,4(a3)
+600a6d5c:	65cd      	move	t6,a1
+600a6d5e:	bfc2      	lwu	a2,8(a3)
+600a6d60:	6015      	bteqz	600a6d8c <uengine_tts_stop+0xc0>
+600a6d62:	bfc2      	lwu	a2,8(a3)
+600a6d64:	6801      	li	s0,1
+600a6d66:	600e      	bteqz	600a6d84 <uengine_tts_stop+0xb8>
+600a6d68:	95a4      	lw	a1,656(sp)
+600a6d6a:	9fc1      	lw	a2,4(a3)
+Disassembly of section BANK_CONTROL_1_3:
+
+600e6800 <uegine_player_open>:
+600e6800:	64f5      	save	40,ra,s0-s1
+ * \note
+ */
+/*******************************************************************************/
+int32 uegine_player_open(void)
+{
+600e6802:	b32c      	lw	v1,600e68b0 <uegine_player_open+0xb0>
+    int open_ret = 0;
+    if(0 == g_uspeaker_24bit)
+600e6804:	6900      	li	s1,0
+600e6806:	a340      	lbu	v0,0(v1)
+600e6808:	2a39      	bnez	v0,600e687c <uegine_player_open+0x7c>
+600e680a:	b52b      	lw	a1,600e68b4 <uegine_player_open+0xb4>
+    {
+        //bool init_fsel_ret;
+        //char *mmm_name =
+        //{ "mmm_pp.al" };
+
+        //加载中间件驱动
+        //sys_load_mmm(mmm_name, TRUE);//待完善
+
+        if (g_mmm_pp_handle != NULL)
+600e680c:	6519      	move	t8,s1
+        {
+            return 0;
+600e680e:	9d80      	lw	a0,0(a1)
+600e6810:	d404      	sw	a0,16(sp)
+600e6812:	2403      	beqz	a0,600e681a <uegine_player_open+0x1a>
+600e6814:	6758      	move	v0,t8
+        }
+
+        adjust_freq_set_level(AP_BACK_HIGH_PRIO, FREQ_LEVEL10, FREQ_LEVEL10);
+
+        adjust_freq_add_value(0, g_dae_cfg_shm->run_freq);
+
+        //初始化中间件库
+        open_ret = mmm_pp_cmd(&g_mmm_pp_handle, MMM_PP_OPEN, (unsigned int) NULL);
+
+        if(1 == g_app_info_state_all.fix_sample_rate_flag)
+        {
+            mmm_pp_cmd(&g_mmm_pp_handle, MMM_PP_FIX_SAMPLE_RATE, (unsigned int) NULL);
+        }
+
+        if (open_ret != -1)
+        {
+            open_ret = mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_AINOUT_OPEN, (unsigned int) &g_ain_out_setting);
+        }
+
+		//输出声道处理选择
+		//#define OUTPUT_CHANNEL_NORMAL      0 //正常，中间件会初始化为正常
+		//#define OUTPUT_CHANNEL_L_R_SWITCH  1 //左右声道互换 L = R0, R = L0
+		//#define OUTPUT_CHANNEL_L_R_MERGE   2 //左右声道合并后输出到左声道和右声道 L = R = (L0 + R0) / 2
+		//#define OUTPUT_CHANNEL_L_R_ALL_L   3 //左右声道都输出左声道 L = R = L0
+		//#define OUTPUT_CHANNEL_L_R_ALL_R   4 //左右声道都输出右声道 L = R = R0
+		//mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_SET_OUTPUT_CHANNEL, (unsigned int) OUTPUT_CHANNEL_NORMAL);
+
+#ifdef WAVES_ASET_TOOLS
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_PLAY, (unsigned int) &g_support_waves_usound);
+#else
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_PLAY, (unsigned int) NULL);
+#endif
+
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_GET_ENERGY_INFO, (unsigned int) &(g_app_info_state_all.p_energy_value));
+
+        g_app_info_state_all.energy_available_flag = TRUE;
+
+        //start get data timer
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_START_SEND, (unsigned int) NULL);
+
+    	//ud_set_cmd(SET_ADJUST_TIMER, 1);
+    }
+    else
+    {
+        ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_SAMPLE_RATE);
+        ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_PLAY);
+    }
+    return open_ret;
+}
+600e6816:	6475      	restore	40,ra,s0-s1
+600e6818:	e8a0      	jrc	ra
+600e681a:	6c03      	li	a0,3
+600e681c:	b027      	lw	s0,600e68b8 <uegine_player_open+0xb8>
+600e681e:	67d1      	move	a2,s1
+600e6820:	f201 6d0a 	li	a1,2570
+600e6824:	e840      	jalr	s0
+600e6826:	67e4      	move	a3,a0
+600e6828:	b325      	lw	v1,600e68bc <uegine_player_open+0xbc>
+600e682a:	6791      	move	a0,s1
+600e682c:	9b40      	lw	v0,0(v1)
+600e682e:	6f03      	li	a3,3
+600e6830:	a2b4      	lbu	a1,20(v0)
+600e6832:	e840      	jalr	s0
+600e6834:	6e01      	li	a2,1
+600e6836:	b420      	lw	a0,600e68b4 <uegine_player_open+0xb4>
+600e6838:	b022      	lw	s0,600e68c0 <uegine_player_open+0xc0>
+600e683a:	67d1      	move	a2,s1
+600e683c:	e840      	jalr	s0
+600e683e:	67b1      	move	a1,s1
+600e6840:	b721      	lw	a3,600e68c4 <uegine_player_open+0xc4>
+600e6842:	6722      	move	s1,v0
+600e6844:	a7c8      	lbu	a2,8(a3)
+600e6846:	7601      	cmpi	a2,1
+600e6848:	6026      	bteqz	600e6896 <uegine_player_open+0x96>
+600e684a:	ec2f      	not	a0,s1
+600e684c:	2c29      	bnez	a0,600e68a0 <uegine_player_open+0xa0>
+600e684e:	b31a      	lw	v1,600e68b4 <uegine_player_open+0xb4>
+600e6850:	9604      	lw	a2,16(sp)
+600e6852:	9b80      	lw	a0,0(v1)
+600e6854:	e840      	jalr	s0
+600e6856:	6d0b      	li	a1,11
+600e6858:	b217      	lw	v0,600e68b4 <uegine_player_open+0xb4>
+600e685a:	b61b      	lw	a2,600e68c4 <uegine_player_open+0xc4>
+600e685c:	9a80      	lw	a0,0(v0)
+600e685e:	6d16      	li	a1,22
+600e6860:	e840      	jalr	s0
+600e6862:	4e0c      	addiu	a2,12
+600e6864:	b618      	lw	a2,600e68c4 <uegine_player_open+0xc4>
+600e6866:	b514      	lw	a1,600e68b4 <uegine_player_open+0xb4>
+600e6868:	6f01      	li	a3,1
+600e686a:	c6ea      	sb	a3,10(a2)
+600e686c:	9d80      	lw	a0,0(a1)
+600e686e:	9604      	lw	a2,16(sp)
+600e6870:	e840      	jalr	s0
+600e6872:	6d11      	li	a1,17
+600e6874:	6519      	move	t8,s1
+600e6876:	6758      	move	v0,t8
+600e6878:	6475      	restore	40,ra,s0-s1
+600e687a:	e8a0      	jrc	ra
+600e687c:	b014      	lw	s0,600e68c8 <uegine_player_open+0xc8>
+600e687e:	6c0a      	li	a0,10
+600e6880:	6d02      	li	a1,2
+600e6882:	67d1      	move	a2,s1
+600e6884:	e840      	jalr	s0
+600e6886:	6f06      	li	a3,6
+600e6888:	6c0a      	li	a0,10
+600e688a:	67b1      	move	a1,s1
+600e688c:	67d1      	move	a2,s1
+600e688e:	e840      	jalr	s0
+600e6890:	6f06      	li	a3,6
+600e6892:	6519      	move	t8,s1
+600e6894:	17f0      	b	600e6876 <uegine_player_open+0x76>
+600e6896:	b408      	lw	a0,600e68b4 <uegine_player_open+0xb4>
+600e6898:	9604      	lw	a2,16(sp)
+600e689a:	e840      	jalr	s0
+600e689c:	6d18      	li	a1,24
+600e689e:	17d5      	b	600e684a <uegine_player_open+0x4a>
+600e68a0:	b105      	lw	s1,600e68b4 <uegine_player_open+0xb4>
+600e68a2:	b60a      	lw	a2,600e68c8 <uegine_player_open+0xc8>
+600e68a4:	9980      	lw	a0,0(s1)
+600e68a6:	e840      	jalr	s0
+600e68a8:	6d02      	li	a1,2
+600e68aa:	6722      	move	s1,v0
+600e68ac:	17d0      	b	600e684e <uegine_player_open+0x4e>
+600e68ae:	0000      	addiu	s0,sp,0
+600e68b0:	95b8      	lw	a1,736(sp)
+600e68b2:	9fc1      	lw	a2,4(a3)
+600e68b4:	95d4      	lw	a1,848(sp)
+600e68b6:	9fc1      	lw	a2,4(a3)
+600e68b8:	6005      	bteqz	600e68c4 <uegine_player_open+0xc4>
+600e68ba:	bfc2      	lwu	a2,8(a3)
+600e68bc:	95c8      	lw	a1,800(sp)
+600e68be:	9fc1      	lw	a2,4(a3)
+600e68c0:	600d      	bteqz	600e68dc <uegine_player_close+0xc>
+600e68c2:	bfc2      	lwu	a2,8(a3)
+600e68c4:	a094      	lbu	a0,20(s0)
+600e68c6:	9fc1      	lw	a2,4(a3)
+600e68c8:	9604      	lw	a2,16(sp)
+600e68ca:	9fc1      	lw	a2,4(a3)
+600e68cc:	6015      	bteqz	600e68f8 <uegine_player_close+0x28>
+600e68ce:	bfc2      	lwu	a2,8(a3)
+
+600e68d0 <uegine_player_close>:
+600e68d0:	64f4      	save	32,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \void uegine_player_close(void)
+ * \关闭中间件
+ * \param[in]    void
+ * \param[out]   none
+ * \return       none
+ * \retval       none
+ * \ingroup      uengine_control.c
+ * \note
+ */
+/*******************************************************************************/
+
+void uegine_player_close(void)
+{
+600e68d2:	b21f      	lw	v0,600e694c <uegine_player_close+0x7c>
+    if(0 == g_uspeaker_24bit)
+600e68d4:	a220      	lbu	s1,0(v0)
+600e68d6:	292a      	bnez	s1,600e692c <uegine_player_close+0x5c>
+600e68d8:	b31e      	lw	v1,600e6950 <uegine_player_close+0x80>
+    {
+        uint32 fade_out_use = 0;
+
+        //ud_set_cmd(SET_ADJUST_TIMER, 0);
+
+        if (g_mmm_pp_handle == NULL)
+600e68da:	9b80      	lw	a0,0(v1)
+600e68dc:	2425      	beqz	a0,600e6928 <uegine_player_close+0x58>
+600e68de:	b61f      	lw	a2,600e6958 <uegine_player_close+0x88>
+        {
+            return;
+        }
+
+        g_app_info_state_all.energy_available_flag = FALSE;
+
+        if (g_status_data.start_play == 0)
+600e68e0:	b71d      	lw	a3,600e6954 <uegine_player_close+0x84>
+600e68e2:	9ea6      	lw	a1,24(a2)
+600e68e4:	c72a      	sb	s1,10(a3)
+600e68e6:	252a      	beqz	a1,600e693c <uegine_player_close+0x6c>
+600e68e8:	b01d      	lw	s0,600e695c <uegine_player_close+0x8c>
+        {
+            mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_FADE_OUT_TIME, (unsigned int) fade_out_use);
+        }
+#ifdef WAVES_ASET_TOOLS
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_STOP, (unsigned int) &g_support_waves_usound);
+#else
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_STOP, (unsigned int) NULL);
+600e68ea:	6d0c      	li	a1,12
+600e68ec:	e840      	jalr	s0
+600e68ee:	67d1      	move	a2,s1
+600e68f0:	b618      	lw	a2,600e6950 <uegine_player_close+0x80>
+#endif
+        //stop get data timer
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_STOP_SEND, (unsigned int) NULL);
+600e68f2:	6d12      	li	a1,18
+600e68f4:	9e80      	lw	a0,0(a2)
+600e68f6:	e840      	jalr	s0
+600e68f8:	67d1      	move	a2,s1
+600e68fa:	b516      	lw	a1,600e6950 <uegine_player_close+0x80>
+
+        //关闭声音设备
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_AINOUT_CLOSE, (unsigned int) NULL);
+600e68fc:	67d1      	move	a2,s1
+600e68fe:	9d80      	lw	a0,0(a1)
+600e6900:	e840      	jalr	s0
+600e6902:	6d03      	li	a1,3
+600e6904:	b313      	lw	v1,600e6950 <uegine_player_close+0x80>
+
+        //关闭中间件设备
+        mmm_pp_cmd(g_mmm_pp_handle, MMM_PP_CLOSE, (unsigned int) NULL);
+600e6906:	6d01      	li	a1,1
+600e6908:	9b80      	lw	a0,0(v1)
+600e690a:	e840      	jalr	s0
+600e690c:	67d1      	move	a2,s1
+600e690e:	b411      	lw	a0,600e6950 <uegine_player_close+0x80>
+
+        g_mmm_pp_handle = NULL;
+600e6910:	b014      	lw	s0,600e6960 <uegine_player_close+0x90>
+
+        adjust_freq_add_value(0, 0);
+600e6912:	dc20      	sw	s1,0(a0)
+600e6914:	67b1      	move	a1,s1
+600e6916:	6791      	move	a0,s1
+600e6918:	6e01      	li	a2,1
+600e691a:	e840      	jalr	s0
+600e691c:	6f03      	li	a3,3
+600e691e:	6c03      	li	a0,3
+
+        adjust_freq_set_level(AP_BACK_HIGH_PRIO, FREQ_NULL, FREQ_NULL);
+600e6920:	67b1      	move	a1,s1
+600e6922:	67d1      	move	a2,s1
+600e6924:	e840      	jalr	s0
+600e6926:	67e4      	move	a3,a0
+600e6928:	6474      	restore	32,ra,s0-s1
+
+        //卸载解码驱动
+        //sys_free_mmm(TRUE);
+    }
+    else
+    { 
+        ud_set_cmd(SET_USPEAKER_24BIT,USPEAKER24_PAUSE);
+    }
+}
+600e692a:	e8a0      	jrc	ra
+600e692c:	b20e      	lw	v0,600e6960 <uegine_player_close+0x90>
+600e692e:	6c0a      	li	a0,10
+600e6930:	6d01      	li	a1,1
+600e6932:	6e00      	li	a2,0
+600e6934:	ea40      	jalr	v0
+600e6936:	6f06      	li	a3,6
+600e6938:	6474      	restore	32,ra,s0-s1
+600e693a:	e8a0      	jrc	ra
+600e693c:	b208      	lw	v0,600e6958 <uegine_player_close+0x88>
+600e693e:	6d05      	li	a1,5
+600e6940:	ea40      	jalr	v0
+600e6942:	67d1      	move	a2,s1
+600e6944:	b003      	lw	s0,600e6950 <uegine_player_close+0x80>
+600e6946:	9880      	lw	a0,0(s0)
+600e6948:	17cf      	b	600e68e8 <uegine_player_close+0x18>
+600e694a:	0000      	addiu	s0,sp,0
+600e694c:	95b8      	lw	a1,736(sp)
+600e694e:	9fc1      	lw	a2,4(a3)
+600e6950:	95d4      	lw	a1,848(sp)
+600e6952:	9fc1      	lw	a2,4(a3)
+600e6954:	a094      	lbu	a0,20(s0)
+600e6956:	9fc1      	lw	a2,4(a3)
+600e6958:	9628      	lw	a2,160(sp)
+600e695a:	9fc1      	lw	a2,4(a3)
+600e695c:	600d      	bteqz	600e6978 <uegine_check_status+0xc>
+600e695e:	bfc2      	lwu	a2,8(a3)
+600e6960:	6005      	bteqz	600e696c <uegine_check_status>
+600e6962:	bfc2      	lwu	a2,8(a3)
+600e6964:	6015      	bteqz	600e6990 <uegine_check_status+0x24>
+600e6966:	bfc2      	lwu	a2,8(a3)
+
+600e6968 <uengine_status_deal>:
+600e6968:	e8a0      	jrc	ra
+	...
+
+600e696c <uegine_check_status>:
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \void uengine_status_deal(void)
+ * \引擎状态处理,处理当前音乐播放状态
+ * \param[in]    void  para1
+ * \param[out]   none
+ * \return       void the result
+ * \retval       none
+ * \ingroup      uengine_control.c
+ * \note
+ */
+/*******************************************************************************/
+void uengine_status_deal(void)
+{
+    ;//do nothing
+}
+600e696c:	b202      	lw	v0,600e6974 <uegine_check_status+0x8>
+/******************************************************************************/
+/*!
+ * \par  Description:
+ * \void uegine_check_status(void)
+ * \检测引擎状态定时器函数，设置标志位
+ * \param[in]    void
+ * \param[out]   none
+ * \return       none
+ * \retval       none
+ * \ingroup      uengine_control.c
+ * \note
+ */
+/*******************************************************************************/
+void uegine_check_status(void)
+{
+    g_check_status_flag = TRUE;
+600e696e:	6b01      	li	v1,1
+600e6970:	e820      	jr	ra
+600e6972:	c260      	sb	v1,0(v0)
+600e6974:	95bb      	lw	a1,748(sp)
+600e6976:	9fc1      	lw	a2,4(a3)
+Disassembly of section BANK_CONTROL_1_40:
+
+60a26800 <get_engine_type_by_appid>:
+60a26800:	b609      	lw	a2,60a26824 <get_engine_type_by_appid+0x24>
+};
+
+//判断是否引擎
+engine_type_e get_engine_type_by_appid(uint8 app_id)
+{
+60a26802:	ec11      	zeb	a0
+60a26804:	6d00      	li	a1,0
+    uint8 i;
+
+    for (i = 0; i < (sizeof(applib_app2eg_type) / sizeof(app2engine_type_t)); i++)
+60a26806:	37a4      	sll	a3,a1,1
+    {
+        if (applib_app2eg_type[i].engine_app_id == app_id)
+60a26808:	e7cd      	addu	v1,a3,a2
+60a2680a:	a340      	lbu	v0,0(v1)
+60a2680c:	ea8e      	xor	v0,a0
+60a2680e:	2a02      	bnez	v0,60a26814 <get_engine_type_by_appid+0x14>
+60a26810:	e820      	jr	ra
+        {
+            return applib_app2eg_type[i].engine_type;
+60a26812:	a341      	lbu	v0,1(v1)
+60a26814:	4561      	addiu	v1,a1,1
+60a26816:	67a3      	move	a1,v1
+60a26818:	ed11      	zeb	a1
+60a2681a:	5d06      	sltiu	a1,6
+60a2681c:	61f4      	btnez	60a26806 <get_engine_type_by_appid+0x6>
+60a2681e:	e820      	jr	ra
+        }
+    }
+
+    return ENGINE_NULL;
+}
+60a26820:	6a00      	li	v0,0
+60a26822:	0000      	addiu	s0,sp,0
+60a26824:	6854      	li	s0,84
+60a26826:	60a2      	bteqz	60a2676c <uegine_check_status+0x93fe00>
+
+60a26828 <get_engine_appid_by_type>:
+60a26828:	ec11      	zeb	a0
+
+//获取引擎对应 app id
+uint8 get_engine_appid_by_type(engine_type_e engine_type)
+{
+60a2682a:	6a18      	li	v0,24
+    uint8 i;
+
+    if (engine_type == ENGINE_NULL)
+    {
+        return APP_ID_MAX;
+60a2682c:	2c03      	bnez	a0,60a26834 <get_engine_appid_by_type+0xc>
+60a2682e:	100f      	b	60a2684e <get_engine_appid_by_type+0x26>
+60a26830:	e820      	jr	ra
+    }
+
+    for (i = 0; i < (sizeof(applib_app2eg_type) / sizeof(app2engine_type_t)); i++)
+    {
+        if (applib_app2eg_type[i].engine_type == engine_type)
+        {
+            return applib_app2eg_type[i].engine_app_id;
+60a26832:	a340      	lbu	v0,0(v1)
+60a26834:	b607      	lw	a2,60a26850 <get_engine_appid_by_type+0x28>
+60a26836:	6d00      	li	a1,0
+60a26838:	37a4      	sll	a3,a1,1
+60a2683a:	e7cd      	addu	v1,a3,a2
+60a2683c:	a341      	lbu	v0,1(v1)
+60a2683e:	ea8e      	xor	v0,a0
+60a26840:	22f7      	beqz	v0,60a26830 <get_engine_appid_by_type+0x8>
+60a26842:	4561      	addiu	v1,a1,1
+60a26844:	67a3      	move	a1,v1
+60a26846:	ed11      	zeb	a1
+60a26848:	5d06      	sltiu	a1,6
+60a2684a:	61f6      	btnez	60a26838 <get_engine_appid_by_type+0x10>
+60a2684c:	6a18      	li	v0,24
+        }
+    }
+
+    return APP_ID_MAX;
+60a2684e:	e8a0      	jrc	ra
+}
+60a26850:	6854      	li	s0,84
+60a26852:	60a2      	bteqz	60a26798 <uegine_check_status+0x93fe2c>
+
+60a26854 <applib_app2eg_type>:
+60a26854:	010e 0212 030f 0410 0511 0613               ............
+
+60a26860 <applib_init>:
+60a26860:	64f5      	save	40,ra,s0-s1
+ * \note
+ * \li  在应用 main 函数入口处调用，在此之前，不许调用其他 applib 接口。
+ *******************************************************************************/
+bool applib_init(uint8 app_id, app_type_e type)
+{
+60a26862:	ec11      	zeb	a0
+60a26864:	6705      	move	s0,a1
+60a26866:	5c18      	sltiu	a0,24
+    app_info_t *cur_app_info;
+
+    if (app_id >= APP_ID_MAX)
+60a26868:	d404      	sw	a0,16(sp)
+60a2686a:	e811      	zeb	s0
+60a2686c:	6a00      	li	v0,0
+    {
+        return FALSE;
+60a2686e:	6056      	bteqz	60a2691c <applib_init+0xbc>
+60a26870:	6b01      	li	v1,1
+    }
+
+    //调节频率
+    if (type == APP_TYPE_GUI)
+60a26872:	eb0e      	xor	v1,s0
+60a26874:	5b01      	sltiu	v1,1
+60a26876:	6758      	move	v0,t8
+60a26878:	d205      	sw	v0,20(sp)
+60a2687a:	220a      	beqz	v0,60a26890 <applib_init+0x30>
+60a2687c:	b12d      	lw	s1,60a26930 <applib_init+0xd0>
+    {
+        adjust_freq_set_level(AP_FRONT_LOW_PRIO, FREQ_LEVEL7, FREQ_NULL);
+60a2687e:	6c0a      	li	a0,10
+60a26880:	6d07      	li	a1,7
+60a26882:	6e00      	li	a2,0
+60a26884:	e940      	jalr	s1
+60a26886:	6f03      	li	a3,3
+60a26888:	b42b      	lw	a0,60a26934 <applib_init+0xd4>
+        g_app_info_state_all.ui_status = UI_STATUS_IDLE;
+60a2688a:	6d00      	li	a1,0
+60a2688c:	c4a3      	sb	a1,3(a0)
+60a2688e:	1008      	b	60a268a0 <applib_init+0x40>
+60a26890:	7002      	cmpi	s0,2
+    }
+    else if (type == APP_TYPE_CONSOLE)
+60a26892:	6106      	btnez	60a268a0 <applib_init+0x40>
+60a26894:	b227      	lw	v0,60a26930 <applib_init+0xd0>
+    {
+        adjust_freq_set_level(AP_BACK_LOW_PRIO, FREQ_LEVEL2, FREQ_NULL);
+60a26896:	6c06      	li	a0,6
+60a26898:	6d02      	li	a1,2
+60a2689a:	6e00      	li	a2,0
+60a2689c:	ea40      	jalr	v0
+60a2689e:	6f03      	li	a3,3
+60a268a0:	b426      	lw	a0,60a26938 <applib_init+0xd8>
+    }
+    else
+    {
+        //nothing
+    }
+
+    //获取 app_info 结构体指针
+    cur_app_info = &g_app_info_vector[type];
+60a268a2:	3308      	sll	v1,s0,2
+60a268a4:	e385      	addu	s1,v1,a0
+60a268a6:	b226      	lw	v0,60a2693c <applib_init+0xdc>
+
+    //上锁，禁止任务调度
+    sys_os_sched_lock();
+60a268a8:	6c00      	li	a0,0
+60a268aa:	67a4      	move	a1,a0
+60a268ac:	67c4      	move	a2,a0
+60a268ae:	ea40      	jalr	v0
+60a268b0:	6f33      	li	a3,51
+60a268b2:	b224      	lw	v0,60a26940 <applib_init+0xe0>
+
+    //初始化应用信息
+    libc_memset(cur_app_info, 0x0, sizeof(app_info_t));
+60a268b4:	6e04      	li	a2,4
+60a268b6:	6f01      	li	a3,1
+60a268b8:	6791      	move	a0,s1
+60a268ba:	ea40      	jalr	v0
+60a268bc:	6d00      	li	a1,0
+60a268be:	6a01      	li	v0,1
+    cur_app_info->used = 1; //标志已被分配使用
+60a268c0:	c140      	sb	v0,0(s1)
+60a268c2:	67fd      	move	a3,sp
+    cur_app_info->app_id = app_id;
+60a268c4:	a7d0      	lbu	a2,16(a3)
+60a268c6:	c102      	sb	s0,2(s1)
+    cur_app_info->app_type = (uint8) type;
+60a268c8:	c1c1      	sb	a2,1(s1)
+60a268ca:	2802      	bnez	s0,60a268d0 <applib_init+0x70>
+    //cur_app_info->soft_watchdog_timeout_expires = 0;
+    if (type == APP_TYPE_PMNG)
+60a268cc:	c103      	sb	s0,3(s1)
+    {
+        cur_app_info->mq_id = (uint8) MQ_ID_MNG;
+60a268ce:	1012      	b	60a268f4 <applib_init+0x94>
+60a268d0:	7003      	cmpi	s0,3
+    }
+    else if (type == APP_TYPE_BTSTACK)
+60a268d2:	6103      	btnez	60a268da <applib_init+0x7a>
+60a268d4:	6803      	li	s0,3
+    {
+        cur_app_info->mq_id = (uint8) MQ_ID_BT;
+60a268d6:	c103      	sb	s0,3(s1)
+60a268d8:	100d      	b	60a268f4 <applib_init+0x94>
+60a268da:	9505      	lw	a1,20(sp)
+    }
+    else if (type == APP_TYPE_GUI)
+60a268dc:	b016      	lw	s0,60a26934 <applib_init+0xd4>
+60a268de:	2504      	beqz	a1,60a268e8 <applib_init+0x88>
+60a268e0:	6e00      	li	a2,0
+    {
+        cur_app_info->mq_id = (uint8) MQ_ID_DESK;
+        g_app_info_state_all.app_state = APP_STATE_NO_PLAY; //前台AP注册，初始化为 NO_PLAY 状态
+60a268e2:	c143      	sb	v0,3(s1)
+60a268e4:	c0c2      	sb	a2,2(s0)
+60a268e6:	1006      	b	60a268f4 <applib_init+0x94>
+60a268e8:	6f02      	li	a3,2
+    }
+    else
+    {
+        //message queue
+        cur_app_info->mq_id = (uint8) MQ_ID_EGN;
+60a268ea:	c1e3      	sb	a3,3(s1)
+60a268ec:	b216      	lw	v0,60a26944 <applib_init+0xe4>
+
+        g_app_info_state_all.engine_type = get_engine_type_by_appid(app_id);
+60a268ee:	ea40      	jalr	v0
+60a268f0:	9404      	lw	a0,16(sp)
+60a268f2:	c040      	sb	v0,0(s0)
+60a268f4:	6c00      	li	a0,0
+    }
+
+    //解锁，允许任务调度
+    sys_os_sched_unlock();
+60a268f6:	b012      	lw	s0,60a2693c <applib_init+0xdc>
+60a268f8:	67a4      	move	a1,a0
+60a268fa:	67c4      	move	a2,a0
+60a268fc:	e840      	jalr	s0
+60a268fe:	6f34      	li	a3,52
+60a26900:	b412      	lw	a0,60a26948 <applib_init+0xe8>
+
+    g_this_app_info = cur_app_info;
+60a26902:	b210      	lw	v0,60a26940 <applib_init+0xe0>
+
+    //初始化线程互斥信号量
+    libc_sem_init(&thread_mutex, 1);
+60a26904:	dc20      	sw	s1,0(a0)
+60a26906:	b412      	lw	a0,60a2694c <applib_init+0xec>
+60a26908:	6d01      	li	a1,1
+60a2690a:	6e00      	li	a2,0
+60a2690c:	ea40      	jalr	v0
+60a2690e:	6f12      	li	a3,18
+60a26910:	9504      	lw	a1,16(sp)
+
+    PRINT_INFO_INT("app init:", app_id);
+60a26912:	0c04      	la	a0,60a26920 <applib_init+0xc0>
+60a26914:	6e02      	li	a2,2
+60a26916:	e840      	jalr	s0
+60a26918:	6f4b      	li	a3,75
+60a2691a:	6a01      	li	v0,1
+
+    return TRUE;
+60a2691c:	6475      	restore	40,ra,s0-s1
+}
+60a2691e:	e8a0      	jrc	ra
+60a26920:	493c      	addiu	s1,60
+60a26922:	203e      	beqz	s0,60a269a0 <.LBE2+0x14>
+60a26924:	7061      	cmpi	s0,97
+60a26926:	2070      	beqz	s0,60a26a08 <.LBE2+0x7c>
+60a26928:	6e69      	li	a2,105
+60a2692a:	7469      	cmpi	a0,105
+60a2692c:	003a      	addiu	s0,sp,232
+60a2692e:	0000      	addiu	s0,sp,0
+60a26930:	6005      	bteqz	60a2693c <applib_init+0xdc>
+60a26932:	bfc2      	lwu	a2,8(a3)
+60a26934:	a094      	lbu	a0,20(s0)
+60a26936:	9fc1      	lw	a2,4(a3)
+60a26938:	a080      	lbu	a0,0(s0)
+60a2693a:	9fc1      	lw	a2,4(a3)
+60a2693c:	6011      	bteqz	60a26960 <applib_quit+0x10>
+60a2693e:	bfc2      	lwu	a2,8(a3)
+60a26940:	6009      	bteqz	60a26954 <applib_quit+0x4>
+60a26942:	bfc2      	lwu	a2,8(a3)
+60a26944:	6801      	li	s0,1
+60a26946:	60a2      	bteqz	60a2688c <applib_init+0x2c>
+60a26948:	9698      	lw	a2,608(sp)
+60a2694a:	9fc1      	lw	a2,4(a3)
+60a2694c:	969c      	lw	a2,624(sp)
+60a2694e:	9fc1      	lw	a2,4(a3)
+
+60a26950 <applib_quit>:
+60a26950:	64f5      	save	40,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ *    应用在 applib 模块上的注销处理。
+ * \param[in]    none
+ * \param[out]   none
+ * \return       bool
+ * \retval           TRUE 表示注销成功。
+ * \retval           FALSE 表示注销失败。
+ * \ingroup      app_manager
+ * \par          exmaple code
+ * \code
+ 例子1：应用进行 applib 模块注销
+ applib_quit();
+ * \endcode
+ * \note
+ * \li  在应用 main 函数退出处调用，在此之后，不许调用其他 applib 接口。
+ *******************************************************************************/
+bool applib_quit(void)
+{
+60a26952:	b02f      	lw	s0,60a26a0c <.LBE2+0x80>
+    app_info_t cur_app_info;
+
+    PRINT_INFO_INT("app quit:", g_this_app_info->app_id);
+60a26954:	b12f      	lw	s1,60a26a10 <.LBE2+0x84>
+60a26956:	9860      	lw	v1,0(s0)
+60a26958:	0c29      	la	a0,60a269fc <.LBE2+0x70>
+60a2695a:	a3a1      	lbu	a1,1(v1)
+60a2695c:	6e02      	li	a2,2
+60a2695e:	e940      	jalr	s1
+60a26960:	6f4b      	li	a3,75
+60a26962:	6d00      	li	a1,0
+
+    //销毁线程互斥信号量
+    libc_sem_destroy(&thread_mutex);
+60a26964:	b42c      	lw	a0,60a26a14 <.LBE2+0x88>
+60a26966:	b12d      	lw	s1,60a26a18 <.LBE2+0x8c>
+60a26968:	67c5      	move	a2,a1
+60a2696a:	e940      	jalr	s1
+60a2696c:	6f13      	li	a3,19
+60a2696e:	98a0      	lw	a1,0(s0)
+
+    if (g_this_app_info->app_type == APP_TYPE_CONSOLE)
+60a26970:	a542      	lbu	v0,2(a1)
+60a26972:	7202      	cmpi	v0,2
+60a26974:	6104      	btnez	60a2697e <applib_quit+0x2e>
+60a26976:	b42a      	lw	a0,60a26a1c <.LBE2+0x90>
+    {
+        //修改后台引擎类型为 NONE
+        g_app_info_state_all.engine_type = ENGINE_NULL;
+60a26978:	6e00      	li	a2,0
+60a2697a:	c4c0      	sb	a2,0(a0)
+60a2697c:	c4c1      	sb	a2,1(a0)
+        g_app_info_state_all.engine_state = ENGINE_STATE_NULL;
+60a2697e:	0404      	addiu	a0,sp,16
+    }
+
+    //修改 app_info 结构体为未被使用
+    libc_memcpy(&cur_app_info, g_this_app_info, sizeof(app_info_t));
+60a26980:	6f00      	li	a3,0
+60a26982:	e940      	jalr	s1
+60a26984:	6e04      	li	a2,4
+60a26986:	67fd      	move	a3,sp
+    cur_app_info.used = 0;
+60a26988:	6a18      	li	v0,24
+
+60a2698a <.LBB2>:
+    cur_app_info.app_id = APP_ID_MAX;
+60a2698a:	98a0      	lw	a1,0(s0)
+
+60a2698c <.LBE2>:
+    //cur_app_info.soft_watchdog_timeout_expires = 0;
+    __app_running_set_app_info(g_this_app_info->app_id, &cur_app_info);
+
+    //调节频率
+    if (g_this_app_info->app_type == APP_TYPE_GUI)
+    {
+        adjust_freq_set_level(AP_FRONT_LOW_PRIO, FREQ_NULL, FREQ_NULL);
+    }
+    else if (g_this_app_info->app_type == APP_TYPE_CONSOLE)
+    {
+        adjust_freq_set_level(AP_BACK_LOW_PRIO, FREQ_NULL, FREQ_NULL);
+    }
+    else
+    {
+        //nothing
+    }
+
+    return TRUE;
+}
+
+/*! \endcond */
+
+/*! \cond */
+
+//根据应用ID设置应用信息
+static bool __app_running_set_app_info(uint8 app_id, const app_info_t *app_info)
+{
+60a2698c:	c751      	sb	v0,17(a3)
+60a2698e:	a581      	lbu	a0,1(a1)
+60a26990:	6b00      	li	v1,0
+60a26992:	5c18      	sltiu	a0,24
+    app_info_t *app;
+    uint8 i;
+
+    if (app_id >= APP_ID_MAX)
+60a26994:	c770      	sb	v1,16(a3)
+60a26996:	6020      	bteqz	60a269d8 <.LBE2+0x4c>
+60a26998:	b522      	lw	a1,60a26a20 <.LBE2+0x94>
+60a2699a:	6b00      	li	v1,0
+    {
+        return FALSE;
+    }
+
+    //搜索 app_id 对应 app_info_t
+    app = NULL;
+    for (i = 0; i < MAX_APP_COUNT; i++)
+60a2699c:	3668      	sll	a2,v1,2
+    {
+        app = &g_app_info_vector[i];
+60a2699e:	e6a5      	addu	s1,a2,a1
+60a269a0:	a100      	lbu	s0,0(s1)
+        if ((app->used == 1) && (app->app_id == app_id))
+60a269a2:	7001      	cmpi	s0,1
+60a269a4:	6103      	btnez	60a269ac <.LBE2+0x20>
+60a269a6:	a1e1      	lbu	a3,1(s1)
+60a269a8:	ef8e      	xor	a3,a0
+60a269aa:	2705      	beqz	a3,60a269b6 <.LBE2+0x2a>
+60a269ac:	4341      	addiu	v0,v1,1
+60a269ae:	6762      	move	v1,v0
+60a269b0:	eb11      	zeb	v1
+60a269b2:	5b04      	sltiu	v1,4
+60a269b4:	61f3      	btnez	60a2699c <.LBE2+0x10>
+60a269b6:	6c00      	li	a0,0
+        {
+            break;
+        }
+    }
+
+    if (NULL == app)
+    {
+        return FALSE;
+    }
+
+    sys_os_sched_lock();
+60a269b8:	b016      	lw	s0,60a26a10 <.LBE2+0x84>
+60a269ba:	67a4      	move	a1,a0
+60a269bc:	67c4      	move	a2,a0
+60a269be:	e840      	jalr	s0
+60a269c0:	6f33      	li	a3,51
+60a269c2:	b216      	lw	v0,60a26a18 <.LBE2+0x8c>
+    libc_memcpy(app, app_info, sizeof(app_info_t));
+60a269c4:	6791      	move	a0,s1
+60a269c6:	0504      	addiu	a1,sp,16
+60a269c8:	6e04      	li	a2,4
+60a269ca:	ea40      	jalr	v0
+60a269cc:	6f00      	li	a3,0
+60a269ce:	6c00      	li	a0,0
+    sys_os_sched_unlock();
+60a269d0:	67a4      	move	a1,a0
+60a269d2:	67c4      	move	a2,a0
+60a269d4:	e840      	jalr	s0
+60a269d6:	6f34      	li	a3,52
+60a269d8:	b50d      	lw	a1,60a26a0c <.LBE2+0x80>
+60a269da:	9d80      	lw	a0,0(a1)
+60a269dc:	a442      	lbu	v0,2(a0)
+60a269de:	6c0a      	li	a0,10
+60a269e0:	7201      	cmpi	v0,1
+60a269e2:	6003      	bteqz	60a269ea <.LBE2+0x5e>
+60a269e4:	7202      	cmpi	v0,2
+60a269e6:	6106      	btnez	60a269f4 <.LBE2+0x68>
+60a269e8:	6c06      	li	a0,6
+60a269ea:	6d00      	li	a1,0
+60a269ec:	b20e      	lw	v0,60a26a24 <.LBE2+0x98>
+60a269ee:	67c5      	move	a2,a1
+60a269f0:	ea40      	jalr	v0
+60a269f2:	6f03      	li	a3,3
+60a269f4:	6a01      	li	v0,1
+60a269f6:	6475      	restore	40,ra,s0-s1
+60a269f8:	e8a0      	jrc	ra
+60a269fa:	0000      	addiu	s0,sp,0
+60a269fc:	493c      	addiu	s1,60
+60a269fe:	203e      	beqz	s0,60a26a7c <__set_timer+0x54>
+60a26a00:	7061      	cmpi	s0,97
+60a26a02:	2070      	beqz	s0,60a26ae4 <__set_timer+0xbc>
+60a26a04:	7571      	cmpi	a1,113
+60a26a06:	7469      	cmpi	a0,105
+60a26a08:	003a      	addiu	s0,sp,232
+60a26a0a:	0000      	addiu	s0,sp,0
+60a26a0c:	9698      	lw	a2,608(sp)
+60a26a0e:	9fc1      	lw	a2,4(a3)
+60a26a10:	6011      	bteqz	60a26a34 <__set_timer+0xc>
+60a26a12:	bfc2      	lwu	a2,8(a3)
+60a26a14:	969c      	lw	a2,624(sp)
+60a26a16:	9fc1      	lw	a2,4(a3)
+60a26a18:	6009      	bteqz	60a26a2c <__set_timer+0x4>
+60a26a1a:	bfc2      	lwu	a2,8(a3)
+60a26a1c:	a094      	lbu	a0,20(s0)
+60a26a1e:	9fc1      	lw	a2,4(a3)
+60a26a20:	a080      	lbu	a0,0(s0)
+60a26a22:	9fc1      	lw	a2,4(a3)
+60a26a24:	6005      	bteqz	60a26a30 <__set_timer+0x8>
+60a26a26:	bfc2      	lwu	a2,8(a3)
+
+60a26a28 <__set_timer>:
+60a26a28:	64f7      	save	56,ra,s0-s1
+/*! \cond */
+
+//创建应用级定时器
+static inline int8 __set_timer(timer_attrb_e attrb, timer_type_e type, uint8 tag, uint16 timeout, timer_proc func_proc)
+{
+60a26a2a:	ec11      	zeb	a0
+60a26a2c:	d404      	sw	a0,16(sp)
+60a26a2e:	9312      	lw	v1,72(sp)
+    app_timer_t *tm;
+    int8 timer_id = -1;
+    int8 i;
+
+    //服务例程不能为NULL
+    if (!func_proc)
+60a26a30:	6c01      	li	a0,1
+60a26a32:	ea8b      	neg	v0,a0
+60a26a34:	ed11      	zeb	a1
+60a26a36:	d505      	sw	a1,20(sp)
+60a26a38:	d606      	sw	a2,24(sp)
+60a26a3a:	d707      	sw	a3,28(sp)
+60a26a3c:	d208      	sw	v0,32(sp)
+60a26a3e:	651a      	move	t8,v0
+    {
+        return -1;
+60a26a40:	2346      	beqz	v1,60a26ace <__set_timer+0xa6>
+60a26a42:	2f28      	bnez	a3,60a26a94 <__set_timer+0x6c>
+    }
+
+    //定时周期不能为0
+    if (0 == timeout)
+60a26a44:	1044      	b	60a26ace <__set_timer+0xa6>
+60a26a46:	67fd      	move	a3,sp
+    {
+        return -1;
+    }
+
+    //检索符合条件的可用软定时器
+    for (i = 0; i < g_app_timer_count; i++)
+    {
+        if (g_app_timer_vector[i].state == TIMER_STATE_NOUSED)
+        {
+            timer_id = i;
+            tm = &g_app_timer_vector[timer_id];
+
+            //初始化软定时器
+            tm->timeout = timeout;
+60a26a48:	af8e      	lhu	a0,28(a3)
+60a26a4a:	b22c      	lw	v0,60a26af8 <__set_timer+0xd0>
+            tm->timeout_expires = sys_get_ab_timer() + timeout;
+60a26a4c:	67a6      	move	a1,a2
+60a26a4e:	d308      	sw	v1,32(sp)
+60a26a50:	c882      	sh	a0,4(s0)
+60a26a52:	6f1c      	li	a3,28
+60a26a54:	ea40      	jalr	v0
+60a26a56:	6786      	move	a0,a2
+60a26a58:	9307      	lw	v1,28(sp)
+60a26a5a:	9712      	lw	a3,72(sp)
+            tm->func_proc = func_proc;
+60a26a5c:	e275      	addu	a1,v0,v1
+60a26a5e:	d8e3      	sw	a3,12(s0)
+60a26a60:	6a04      	li	v0,4
+            tm->state = TIMER_STATE_RUNNING;
+60a26a62:	a0e0      	lbu	a3,0(s0)
+60a26a64:	9604      	lw	a2,16(sp)
+            tm->attrb = attrb;
+60a26a66:	ec4b      	neg	a0,v0
+60a26a68:	ef8c      	and	a3,a0
+60a26a6a:	d8a2      	sw	a1,8(s0)
+60a26a6c:	6c01      	li	a0,1
+60a26a6e:	6d0d      	li	a1,13
+60a26a70:	ebab      	neg	v1,a1
+60a26a72:	ef8d      	or	a3,a0
+60a26a74:	e9cc      	and	s1,a2
+60a26a76:	9605      	lw	a2,20(sp)
+            tm->type = type;
+60a26a78:	3228      	sll	v0,s1,2
+60a26a7a:	ef6c      	and	a3,v1
+60a26a7c:	6d11      	li	a1,17
+60a26a7e:	ef4d      	or	a3,v0
+60a26a80:	eccc      	and	a0,a2
+60a26a82:	ebab      	neg	v1,a1
+60a26a84:	3290      	sll	v0,a0,4
+60a26a86:	ef6c      	and	a3,v1
+60a26a88:	ef4d      	or	a3,v0
+60a26a8a:	c0e0      	sb	a3,0(s0)
+60a26a8c:	67dd      	move	a2,sp
+            tm->tag = tag;
+60a26a8e:	a6b8      	lbu	a1,24(a2)
+60a26a90:	c0a1      	sb	a1,1(s0)
+60a26a92:	1012      	b	60a26ab8 <__set_timer+0x90>
+            break;
+60a26a94:	b617      	lw	a2,60a26af0 <__set_timer+0xc8>
+60a26a96:	6b00      	li	v1,0
+60a26a98:	a680      	lbu	a0,0(a2)
+60a26a9a:	240e      	beqz	a0,60a26ab8 <__set_timer+0x90>
+60a26a9c:	b516      	lw	a1,60a26af4 <__set_timer+0xcc>
+60a26a9e:	6903      	li	s1,3
+60a26aa0:	9d00      	lw	s0,0(a1)
+60a26aa2:	a0c0      	lbu	a2,0(s0)
+60a26aa4:	ee2c      	and	a2,s1
+60a26aa6:	26cf      	beqz	a2,60a26a46 <__set_timer+0x1e>
+60a26aa8:	43e1      	addiu	a3,v1,1
+60a26aaa:	6767      	move	v1,a3
+60a26aac:	6744      	move	v0,a0
+60a26aae:	eb91      	seb	v1
+60a26ab0:	ea11      	zeb	v0
+60a26ab2:	eb42      	slt	v1,v0
+60a26ab4:	4810      	addiu	s0,16
+60a26ab6:	61f5      	btnez	60a26aa2 <__set_timer+0x7a>
+60a26ab8:	9308      	lw	v1,32(sp)
+        }
+    }
+
+    if (timer_id == -1)
+60a26aba:	ec6f      	not	a0,v1
+60a26abc:	651b      	move	t8,v1
+    {
+        PRINT_ERR("set app timer fail!!");
+        while (1)
+        {
+            ; //nothing
+        }
+    }
+
+    return timer_id;
+60a26abe:	2c07      	bnez	a0,60a26ace <__set_timer+0xa6>
+60a26ac0:	6d00      	li	a1,0
+60a26ac2:	b00e      	lw	s0,60a26af8 <__set_timer+0xd0>
+60a26ac4:	0c04      	la	a0,60a26ad4 <__set_timer+0xac>
+60a26ac6:	67c5      	move	a2,a1
+60a26ac8:	e840      	jalr	s0
+60a26aca:	6f4b      	li	a3,75
+60a26acc:	17ff      	b	60a26acc <__set_timer+0xa4>
+60a26ace:	6758      	move	v0,t8
+}
+60a26ad0:	6477      	restore	56,ra,s0-s1
+60a26ad2:	e8a0      	jrc	ra
+60a26ad4:	453c      	daddiu	s1,a1,-4
+60a26ad6:	203e      	beqz	s0,60a26b54 <modify_app_timer+0x20>
+60a26ad8:	6573      	move	s3,v1
+60a26ada:	2074      	beqz	s0,60a26bc4 <restart_app_timer+0xc>
+60a26adc:	7061      	cmpi	s0,97
+60a26ade:	2070      	beqz	s0,60a26bc0 <restart_app_timer+0x8>
+60a26ae0:	6974      	li	s1,116
+60a26ae2:	656d      	move	t3,a1
+60a26ae4:	2072      	beqz	s0,60a26bca <restart_app_timer+0x12>
+60a26ae6:	6166      	btnez	60a26bb4 <stop_app_timer+0x34>
+60a26ae8:	6c69      	li	a0,105
+60a26aea:	2121      	beqz	s1,60a26b2e <set_single_shot_app_timer+0x16>
+60a26aec:	0000      	addiu	s0,sp,0
+60a26aee:	0000      	addiu	s0,sp,0
+60a26af0:	96a0      	lw	a2,640(sp)
+60a26af2:	9fc1      	lw	a2,4(a3)
+60a26af4:	9690      	lw	a2,576(sp)
+60a26af6:	9fc1      	lw	a2,4(a3)
+60a26af8:	6011      	bteqz	60a26b1c <set_single_shot_app_timer+0x4>
+60a26afa:	bfc2      	lwu	a2,8(a3)
+
+60a26afc <set_app_timer>:
+60a26afc:	64c4      	save	32,ra
+60a26afe:	3282      	srl	v0,a0,8
+60a26b00:	d604      	sw	a2,16(sp)
+60a26b02:	67e5      	move	a3,a1
+60a26b04:	67c2      	move	a2,v0
+60a26b06:	ef31      	zeh	a3
+60a26b08:	ec11      	zeb	a0
+60a26b0a:	6d00      	li	a1,0
+60a26b0c:	1901 9a8a 	jal	60a26a28 <__set_timer>
+60a26b10:	ee11      	zeb	a2
+60a26b12:	6444      	restore	32,ra
+60a26b14:	e8a0      	jrc	ra
+	...
+
+60a26b18 <set_single_shot_app_timer>:
+60a26b18:	64c4      	save	32,ra
+60a26b1a:	3282      	srl	v0,a0,8
+60a26b1c:	d604      	sw	a2,16(sp)
+60a26b1e:	67e5      	move	a3,a1
+60a26b20:	67c2      	move	a2,v0
+60a26b22:	ef31      	zeh	a3
+60a26b24:	ec11      	zeb	a0
+60a26b26:	6d01      	li	a1,1
+60a26b28:	1901 9a8a 	jal	60a26a28 <__set_timer>
+60a26b2c:	ee11      	zeb	a2
+60a26b2e:	6444      	restore	32,ra
+60a26b30:	e8a0      	jrc	ra
+	...
+
+60a26b34 <modify_app_timer>:
+60a26b34:	64f4      	save	32,ra,s0-s1
+60a26b36:	ec91      	seb	a0
+60a26b38:	6705      	move	s0,a1
+60a26b3a:	ea8f      	not	v0,a0
+60a26b3c:	e831      	zeh	s0
+60a26b3e:	2206      	beqz	v0,60a26b4c <modify_app_timer+0x18>
+60a26b40:	b60d      	lw	a2,60a26b74 <modify_app_timer+0x40>
+60a26b42:	67a4      	move	a1,a0
+60a26b44:	a660      	lbu	v1,0(a2)
+60a26b46:	ed11      	zeb	a1
+60a26b48:	ed63      	sltu	a1,v1
+60a26b4a:	6102      	btnez	60a26b50 <modify_app_timer+0x1c>
+60a26b4c:	6a00      	li	v0,0
+60a26b4e:	1010      	b	60a26b70 <modify_app_timer+0x3c>
+60a26b50:	b10a      	lw	s1,60a26b78 <modify_app_timer+0x44>
+60a26b52:	3790      	sll	a3,a0,4
+60a26b54:	9980      	lw	a0,0(s1)
+60a26b56:	6750      	move	v0,s0
+60a26b58:	e4e5      	addu	s1,a0,a3
+60a26b5a:	200a      	beqz	s0,60a26b70 <modify_app_timer+0x3c>
+60a26b5c:	6c00      	li	a0,0
+60a26b5e:	b208      	lw	v0,60a26b7c <modify_app_timer+0x48>
+60a26b60:	c902      	sh	s0,4(s1)
+60a26b62:	67a4      	move	a1,a0
+60a26b64:	67c4      	move	a2,a0
+60a26b66:	ea40      	jalr	v0
+60a26b68:	6f1c      	li	a3,28
+60a26b6a:	e209      	addu	v0,s0
+60a26b6c:	d942      	sw	v0,8(s1)
+60a26b6e:	6a01      	li	v0,1
+60a26b70:	6474      	restore	32,ra,s0-s1
+60a26b72:	e8a0      	jrc	ra
+60a26b74:	96a0      	lw	a2,640(sp)
+60a26b76:	9fc1      	lw	a2,4(a3)
+60a26b78:	9690      	lw	a2,576(sp)
+60a26b7a:	9fc1      	lw	a2,4(a3)
+60a26b7c:	6011      	bteqz	60a26ba0 <stop_app_timer+0x20>
+60a26b7e:	bfc2      	lwu	a2,8(a3)
+
+60a26b80 <stop_app_timer>:
+60a26b80:	ec91      	seb	a0
+60a26b82:	ea8f      	not	v0,a0
+60a26b84:	2206      	beqz	v0,60a26b92 <stop_app_timer+0x12>
+60a26b86:	b60b      	lw	a2,60a26bb0 <stop_app_timer+0x30>
+60a26b88:	67a4      	move	a1,a0
+60a26b8a:	a660      	lbu	v1,0(a2)
+60a26b8c:	ed11      	zeb	a1
+60a26b8e:	ed63      	sltu	a1,v1
+60a26b90:	6102      	btnez	60a26b96 <stop_app_timer+0x16>
+60a26b92:	e820      	jr	ra
+60a26b94:	6a00      	li	v0,0
+60a26b96:	3790      	sll	a3,a0,4
+60a26b98:	b407      	lw	a0,60a26bb4 <stop_app_timer+0x34>
+60a26b9a:	6d04      	li	a1,4
+60a26b9c:	9cc0      	lw	a2,0(a0)
+60a26b9e:	ebab      	neg	v1,a1
+60a26ba0:	e6f1      	addu	a0,a2,a3
+60a26ba2:	a4e0      	lbu	a3,0(a0)
+60a26ba4:	4346      	addiu	v0,v1,6
+60a26ba6:	ef6c      	and	a3,v1
+60a26ba8:	ef4d      	or	a3,v0
+60a26baa:	6a01      	li	v0,1
+60a26bac:	e820      	jr	ra
+60a26bae:	c4e0      	sb	a3,0(a0)
+60a26bb0:	96a0      	lw	a2,640(sp)
+60a26bb2:	9fc1      	lw	a2,4(a3)
+60a26bb4:	9690      	lw	a2,576(sp)
+60a26bb6:	9fc1      	lw	a2,4(a3)
+
+60a26bb8 <restart_app_timer>:
+60a26bb8:	64f4      	save	32,ra,s0-s1
+60a26bba:	ec91      	seb	a0
+60a26bbc:	ea8f      	not	v0,a0
+60a26bbe:	2206      	beqz	v0,60a26bcc <restart_app_timer+0x14>
+60a26bc0:	b610      	lw	a2,60a26c00 <restart_app_timer+0x48>
+60a26bc2:	67a4      	move	a1,a0
+60a26bc4:	a660      	lbu	v1,0(a2)
+60a26bc6:	ed11      	zeb	a1
+60a26bc8:	ed63      	sltu	a1,v1
+60a26bca:	6102      	btnez	60a26bd0 <restart_app_timer+0x18>
+60a26bcc:	6a00      	li	v0,0
+60a26bce:	1015      	b	60a26bfa <restart_app_timer+0x42>
+60a26bd0:	3690      	sll	a2,a0,4
+60a26bd2:	b40d      	lw	a0,60a26c04 <restart_app_timer+0x4c>
+60a26bd4:	6b04      	li	v1,4
+60a26bd6:	9c00      	lw	s0,0(a0)
+60a26bd8:	e96b      	neg	s1,v1
+60a26bda:	e0c1      	addu	s0,a2
+60a26bdc:	a0a0      	lbu	a1,0(s0)
+60a26bde:	6c00      	li	a0,0
+60a26be0:	ed2c      	and	a1,s1
+60a26be2:	6901      	li	s1,1
+60a26be4:	ed2d      	or	a1,s1
+60a26be6:	b209      	lw	v0,60a26c08 <restart_app_timer+0x50>
+60a26be8:	c0a0      	sb	a1,0(s0)
+60a26bea:	67c4      	move	a2,a0
+60a26bec:	67a4      	move	a1,a0
+60a26bee:	ea40      	jalr	v0
+60a26bf0:	6f1c      	li	a3,28
+60a26bf2:	a8e2      	lhu	a3,4(s0)
+60a26bf4:	e2f1      	addu	a0,v0,a3
+60a26bf6:	d882      	sw	a0,8(s0)
+60a26bf8:	6751      	move	v0,s1
+60a26bfa:	6474      	restore	32,ra,s0-s1
+60a26bfc:	e8a0      	jrc	ra
+60a26bfe:	0000      	addiu	s0,sp,0
+60a26c00:	96a0      	lw	a2,640(sp)
+60a26c02:	9fc1      	lw	a2,4(a3)
+60a26c04:	9690      	lw	a2,576(sp)
+60a26c06:	9fc1      	lw	a2,4(a3)
+60a26c08:	6011      	bteqz	60a26c2c <kill_app_timer+0x20>
+60a26c0a:	bfc2      	lwu	a2,8(a3)
+
+60a26c0c <kill_app_timer>:
+60a26c0c:	ec91      	seb	a0
+60a26c0e:	ea8f      	not	v0,a0
+60a26c10:	2206      	beqz	v0,60a26c1e <kill_app_timer+0x12>
+60a26c12:	b60a      	lw	a2,60a26c38 <kill_app_timer+0x2c>
+60a26c14:	67a4      	move	a1,a0
+60a26c16:	a660      	lbu	v1,0(a2)
+60a26c18:	ed11      	zeb	a1
+60a26c1a:	ed63      	sltu	a1,v1
+60a26c1c:	6102      	btnez	60a26c22 <kill_app_timer+0x16>
+60a26c1e:	e820      	jr	ra
+60a26c20:	6a00      	li	v0,0
+60a26c22:	b707      	lw	a3,60a26c3c <kill_app_timer+0x30>
+60a26c24:	3690      	sll	a2,a0,4
+60a26c26:	9f60      	lw	v1,0(a3)
+60a26c28:	6d04      	li	a1,4
+60a26c2a:	e3dd      	addu	a3,v1,a2
+60a26c2c:	a740      	lbu	v0,0(a3)
+60a26c2e:	ecab      	neg	a0,a1
+60a26c30:	ea8c      	and	v0,a0
+60a26c32:	c740      	sb	v0,0(a3)
+60a26c34:	e820      	jr	ra
+60a26c36:	6a01      	li	v0,1
+60a26c38:	96a0      	lw	a2,640(sp)
+60a26c3a:	9fc1      	lw	a2,4(a3)
+60a26c3c:	9690      	lw	a2,576(sp)
+60a26c3e:	9fc1      	lw	a2,4(a3)
+
+60a26c40 <init_app_timers>:
+60a26c40:	ed11      	zeb	a1
+60a26c42:	6745      	move	v0,a1
+60a26c44:	2518      	beqz	a1,60a26c76 <init_app_timers+0x36>
+60a26c46:	b70d      	lw	a3,60a26c78 <init_app_timers+0x38>
+60a26c48:	b60d      	lw	a2,60a26c7c <init_app_timers+0x3c>
+60a26c4a:	df80      	sw	a0,0(a3)
+60a26c4c:	c6a0      	sb	a1,0(a2)
+60a26c4e:	6c00      	li	a0,0
+60a26c50:	250e      	beqz	a1,60a26c6e <init_app_timers+0x2e>
+60a26c52:	6d04      	li	a1,4
+60a26c54:	edab      	neg	a1
+60a26c56:	9f60      	lw	v1,0(a3)
+60a26c58:	3290      	sll	v0,a0,4
+60a26c5a:	e34d      	addu	v1,v0
+60a26c5c:	a340      	lbu	v0,0(v1)
+60a26c5e:	eaac      	and	v0,a1
+60a26c60:	c340      	sb	v0,0(v1)
+60a26c62:	4461      	addiu	v1,a0,1
+60a26c64:	6783      	move	a0,v1
+60a26c66:	a640      	lbu	v0,0(a2)
+60a26c68:	ec11      	zeb	a0
+60a26c6a:	ec43      	sltu	a0,v0
+60a26c6c:	61f4      	btnez	60a26c56 <init_app_timers+0x16>
+60a26c6e:	b405      	lw	a0,60a26c80 <init_app_timers+0x40>
+60a26c70:	6e00      	li	a2,0
+60a26c72:	c4c0      	sb	a2,0(a0)
+60a26c74:	6a01      	li	v0,1
+60a26c76:	e8a0      	jrc	ra
+60a26c78:	9690      	lw	a2,576(sp)
+60a26c7a:	9fc1      	lw	a2,4(a3)
+60a26c7c:	96a0      	lw	a2,640(sp)
+60a26c7e:	9fc1      	lw	a2,4(a3)
+60a26c80:	9695      	lw	a2,596(sp)
+60a26c82:	9fc1      	lw	a2,4(a3)
+
+60a26c84 <standby_restart_all_app_timer>:
+60a26c84:	f004 64f5 	save	a0,40,ra,s0-s1
+60a26c88:	ed11      	zeb	a1
+60a26c8a:	d504      	sw	a1,16(sp)
+60a26c8c:	6900      	li	s1,0
+60a26c8e:	2517      	beqz	a1,60a26cbe <standby_restart_all_app_timer+0x3a>
+60a26c90:	950a      	lw	a1,40(sp)
+60a26c92:	3430      	sll	a0,s1,4
+60a26c94:	e581      	addu	s0,a1,a0
+60a26c96:	a040      	lbu	v0,0(s0)
+60a26c98:	6b03      	li	v1,3
+60a26c9a:	ea6c      	and	v0,v1
+60a26c9c:	7201      	cmpi	v0,1
+60a26c9e:	6109      	btnez	60a26cb2 <standby_restart_all_app_timer+0x2e>
+60a26ca0:	6c00      	li	a0,0
+60a26ca2:	b209      	lw	v0,60a26cc4 <standby_restart_all_app_timer+0x40>
+60a26ca4:	67c4      	move	a2,a0
+60a26ca6:	6f1c      	li	a3,28
+60a26ca8:	ea40      	jalr	v0
+60a26caa:	67a4      	move	a1,a0
+60a26cac:	a8e2      	lhu	a3,4(s0)
+60a26cae:	e2f9      	addu	a2,v0,a3
+60a26cb0:	d8c2      	sw	a2,8(s0)
+60a26cb2:	4181      	addiu	a0,s1,1
+60a26cb4:	6724      	move	s1,a0
+60a26cb6:	9304      	lw	v1,16(sp)
+60a26cb8:	e911      	zeb	s1
+60a26cba:	e963      	sltu	s1,v1
+60a26cbc:	61e9      	btnez	60a26c90 <standby_restart_all_app_timer+0xc>
+60a26cbe:	6475      	restore	40,ra,s0-s1
+60a26cc0:	e8a0      	jrc	ra
+60a26cc2:	0000      	addiu	s0,sp,0
+60a26cc4:	6011      	bteqz	60a26ce8 <applib_message_init+0x20>
+60a26cc6:	bfc2      	lwu	a2,8(a3)
+
+60a26cc8 <applib_message_init>:
+60a26cc8:	64c3      	save	24,ra
+ * \endcode
+ * \note
+ *******************************************************************************/
+bool applib_message_init(void)
+{
+60a26cca:	b406      	lw	a0,60a26ce0 <applib_message_init+0x18>
+    //清空 应用消息队列
+    sys_mq_flush(g_this_app_info->mq_id);
+60a26ccc:	6d00      	li	a1,0
+60a26cce:	9c60      	lw	v1,0(a0)
+60a26cd0:	b205      	lw	v0,60a26ce4 <applib_message_init+0x1c>
+60a26cd2:	a383      	lbu	a0,3(v1)
+60a26cd4:	67c5      	move	a2,a1
+60a26cd6:	ea40      	jalr	v0
+60a26cd8:	6f1a      	li	a3,26
+60a26cda:	6a01      	li	v0,1
+
+    return TRUE;
+}
+60a26cdc:	6443      	restore	24,ra
+60a26cde:	e8a0      	jrc	ra
+60a26ce0:	9698      	lw	a2,608(sp)
+60a26ce2:	9fc1      	lw	a2,4(a3)
+60a26ce4:	6011      	bteqz	60a26d08 <applib_message_init+0x40>
+60a26ce6:	bfc2      	lwu	a2,8(a3)
+Disassembly of section BANK_CONTROL_1_41:
+
+60a66800 <com_open_config_file>:
+60a66800:	64e5      	save	40,ra,s0
+ * \li  该接口只在 manager ap的 globe_data_init 中调用一次，也就是说在系统启动时
+ *      进行一次打开初始化，之后任何地方读取应用配置项时都无须打开。
+ *******************************************************************************/
+bool com_open_config_file(const char* config_file)
+{
+60a66802:	6d00      	li	a1,0
+    uint8 head[16];
+
+    config_fp = sys_sd_fopen(config_file);
+60a66804:	b011      	lw	s0,60a66848 <com_open_config_file+0x48>
+60a66806:	67c5      	move	a2,a1
+60a66808:	e840      	jalr	s0
+60a6680a:	6f0d      	li	a3,13
+60a6680c:	6782      	move	a0,v0
+60a6680e:	b20e      	lw	v0,60a66844 <com_open_config_file+0x44>
+60a66810:	6764      	move	v1,a0
+    if (config_fp == NULL)
+    {
+        return FALSE;
+60a66812:	da80      	sw	a0,0(v0)
+60a66814:	2413      	beqz	a0,60a6683c <com_open_config_file+0x3c>
+60a66816:	0504      	addiu	a1,sp,16
+    }
+
+    if (sys_sd_fread(config_fp, head, 16) == -1)
+60a66818:	6e10      	li	a2,16
+60a6681a:	e840      	jalr	s0
+60a6681c:	6f11      	li	a3,17
+60a6681e:	ec4f      	not	a0,v0
+60a66820:	6b00      	li	v1,0
+    {
+        return FALSE;
+60a66822:	240c      	beqz	a0,60a6683c <com_open_config_file+0x3c>
+60a66824:	677d      	move	v1,sp
+    }
+
+    if ((head[0] != 'c') || (head[1] != 'f') || (head[2] != 'g'))
+60a66826:	a3b0      	lbu	a1,16(v1)
+60a66828:	7563      	cmpi	a1,99
+60a6682a:	6107      	btnez	60a6683a <com_open_config_file+0x3a>
+60a6682c:	a3d1      	lbu	a2,17(v1)
+60a6682e:	7666      	cmpi	a2,102
+60a66830:	6104      	btnez	60a6683a <com_open_config_file+0x3a>
+60a66832:	a3f2      	lbu	a3,18(v1)
+60a66834:	6b01      	li	v1,1
+    {
+        return FALSE;
+    }
+
+    return TRUE;
+60a66836:	7767      	cmpi	a3,103
+60a66838:	6001      	bteqz	60a6683c <com_open_config_file+0x3c>
+60a6683a:	6b00      	li	v1,0
+60a6683c:	6743      	move	v0,v1
+}
+60a6683e:	6465      	restore	40,ra,s0
+60a66840:	e8a0      	jrc	ra
+60a66842:	0000      	addiu	s0,sp,0
+60a66844:	a090      	lbu	a0,16(s0)
+60a66846:	9fc1      	lw	a2,4(a3)
+60a66848:	6011      	bteqz	60a6686c <com_get_config_struct+0x20>
+60a6684a:	bfc2      	lwu	a2,8(a3)
+
+60a6684c <com_get_config_struct>:
+60a6684c:	f008 64f6 	save	a0-a1,48,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ *    关闭应用配置脚本文件。
+ * \param[in]    none
+ * \param[out]   none
+ * \return       bool
+ * \retval           TRUE 关闭应用配置脚本成功。
+ * \retval           FALSE 关闭应用配置脚本失败。
+ * \ingroup      common_func
+ * \note
+ *******************************************************************************/
+#if 0
+bool com_close_config_file(void)
+{
+    if (sys_sd_fclose(config_fp) == -1)
+    {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+#endif
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ *    读取应用配置项。
+ * \param[in]    config_id 配置参数ID
+ * \param[in]    buf_len 参数输出缓冲区大小
+ * \param[out]   buf 参数输出缓冲区
+ * \return       bool
+ * \retval           TRUE 读取配置项成功。
+ * \retval           FALSE 读取配置项失败。
+ * \ingroup      common_func
+ * \ingroup      common_func
+ * \par          exmaple code
+ * \code
+ 例子1：获取背光亮度时间参数结构体
+ if(com_get_config_struct(CONFIG_ID_LIGHT_TIME, config_buf, CONFIG_BUF_LEN) == TRUE)
+ {
+ config_nonlinear_t *config_param;
+
+ config_param = (config_nonlinear_t *)config_buf;
+ 然后就可以对 config_param 按 config_nonlinear_t 结构进行访问
+ }
+ else
+ {
+ 没有找到该应用配置项
+ }
+ * \endcode
+ * \note
+ * \li  取可变长的 config_string_t 和 config_nonlinear_t，必须先根据使用场合申请最大
+ *      的config参数的 uint8 缓冲区并读取数据，读取成功后把该缓冲区强制转换为
+ *      config_string_t 或 config_nonlinear_t 类型指针，然后就可以按照 config_string_t
+ *      和 config_nonlinear_t类型进行访问。
+ *******************************************************************************/
+bool com_get_config_struct(uint16 config_id, uint8 *buf, uint16 buf_len)
+{
+60a66850:	67a4      	move	a1,a0
+60a66852:	ed31      	zeh	a1
+60a66854:	b118      	lw	s1,60a668b4 <com_get_config_struct+0x68>
+    config_index_t temp_index;
+
+    //读取配置项索引结构体
+    if (sys_sd_fseek(config_fp, SEEK_SET, 16 + config_id * sizeof(config_index_t)) == -1)
+60a66856:	33ac      	sll	v1,a1,3
+60a66858:	ee31      	zeh	a2
+60a6685a:	d606      	sw	a2,24(sp)
+60a6685c:	9980      	lw	a0,0(s1)
+60a6685e:	67c3      	move	a2,v1
+60a66860:	b016      	lw	s0,60a668b8 <com_get_config_struct+0x6c>
+60a66862:	6d00      	li	a1,0
+60a66864:	4e10      	addiu	a2,16
+60a66866:	e840      	jalr	s0
+60a66868:	6f0f      	li	a3,15
+60a6686a:	ea4f      	not	v0
+60a6686c:	6b00      	li	v1,0
+    {
+        return FALSE;
+60a6686e:	221f      	beqz	v0,60a668ae <com_get_config_struct+0x62>
+60a66870:	9980      	lw	a0,0(s1)
+    }
+    if (sys_sd_fread(config_fp, &temp_index, sizeof(config_index_t)) == -1)
+60a66872:	0504      	addiu	a1,sp,16
+60a66874:	6e08      	li	a2,8
+60a66876:	e840      	jalr	s0
+60a66878:	6f11      	li	a3,17
+60a6687a:	ec4f      	not	a0,v0
+60a6687c:	6b00      	li	v1,0
+    {
+        return FALSE;
+60a6687e:	2417      	beqz	a0,60a668ae <com_get_config_struct+0x62>
+60a66880:	9604      	lw	a2,16(sp)
+    }
+
+    //读取配置项内容
+    if (sys_sd_fseek(config_fp, SEEK_SET, temp_index.offset) == -1)
+60a66882:	9980      	lw	a0,0(s1)
+60a66884:	67a3      	move	a1,v1
+60a66886:	e840      	jalr	s0
+60a66888:	6f0f      	li	a3,15
+60a6688a:	ee4f      	not	a2,v0
+60a6688c:	6b00      	li	v1,0
+    {
+        return FALSE;
+60a6688e:	260f      	beqz	a2,60a668ae <com_get_config_struct+0x62>
+60a66890:	9605      	lw	a2,20(sp)
+    }
+    if (temp_index.length > buf_len)
+60a66892:	9206      	lw	v0,24(sp)
+60a66894:	9980      	lw	a0,0(s1)
+60a66896:	eac3      	sltu	v0,a2
+60a66898:	6003      	bteqz	60a668a0 <com_get_config_struct+0x54>
+60a6689a:	950d      	lw	a1,52(sp)
+    {
+        if (sys_sd_fread(config_fp, buf, buf_len) == -1)
+60a6689c:	67c2      	move	a2,v0
+60a6689e:	1001      	b	60a668a2 <com_get_config_struct+0x56>
+60a668a0:	950d      	lw	a1,52(sp)
+        {
+            return FALSE;
+        }
+    }
+    else
+    {
+        if (sys_sd_fread(config_fp, buf, temp_index.length) == -1)
+60a668a2:	e840      	jalr	s0
+60a668a4:	6f11      	li	a3,17
+60a668a6:	ef4f      	not	a3,v0
+60a668a8:	6b00      	li	v1,0
+        {
+            return FALSE;
+60a668aa:	2701      	beqz	a3,60a668ae <com_get_config_struct+0x62>
+60a668ac:	6b01      	li	v1,1
+        }
+    }
+
+    return TRUE;
+60a668ae:	6743      	move	v0,v1
+}
+60a668b0:	6476      	restore	48,ra,s0-s1
+60a668b2:	e8a0      	jrc	ra
+60a668b4:	a090      	lbu	a0,16(s0)
+60a668b6:	9fc1      	lw	a2,4(a3)
+60a668b8:	6011      	bteqz	60a668dc <com_get_config_default+0x20>
+60a668ba:	bfc2      	lwu	a2,8(a3)
+
+60a668bc <com_get_config_default>:
+60a668bc:	64f6      	save	48,ra,s0-s1
+
+/******************************************************************************/
+/*!
+ * \par  Description:
+ *    读取应用配置项默认值。
+ * \param[in]    config_id 配置参数ID
+ * \param[out]   none
+ * \return       uint16
+ * \retval           返回读取到的应用配置项默认值。
+ * \ingroup      common_func
+ * \ingroup      common_func
+ * \par          exmaple code
+ * \code
+ 例子1：获取背光亮度时间默认值
+ light_time = com_get_config_default(CONFIG_ID_LIGHT_TIME);
+ * \endcode
+ * \note
+ * \li  仅用于数值型参数，并由用户保证 config_id 正确，若找不到配置项则返回0。
+ *******************************************************************************/
+uint16 com_get_config_default(uint16 config_id)
+{
+60a668be:	67c4      	move	a2,a0
+60a668c0:	b115      	lw	s1,60a66914 <com_get_config_default+0x58>
+    config_index_t temp_index;
+    uint16 default_value;
+
+    //读取配置项索引结构体
+    if (sys_sd_fseek(config_fp, SEEK_SET, 16 + config_id * sizeof(config_index_t)) == -1)
+60a668c2:	ee31      	zeh	a2
+60a668c4:	36cc      	sll	a2,3
+60a668c6:	9980      	lw	a0,0(s1)
+60a668c8:	b014      	lw	s0,60a66918 <com_get_config_default+0x5c>
+60a668ca:	6d00      	li	a1,0
+60a668cc:	4e10      	addiu	a2,16
+60a668ce:	e840      	jalr	s0
+60a668d0:	6f0f      	li	a3,15
+60a668d2:	ea4f      	not	v0
+60a668d4:	6b00      	li	v1,0
+    {
+        return 0;
+60a668d6:	221a      	beqz	v0,60a6690c <com_get_config_default+0x50>
+60a668d8:	9980      	lw	a0,0(s1)
+    }
+    if (sys_sd_fread(config_fp, &temp_index, sizeof(config_index_t)) == -1)
+60a668da:	0504      	addiu	a1,sp,16
+60a668dc:	6e08      	li	a2,8
+60a668de:	e840      	jalr	s0
+60a668e0:	6f11      	li	a3,17
+60a668e2:	ec4f      	not	a0,v0
+60a668e4:	6b00      	li	v1,0
+    {
+        return 0;
+60a668e6:	2412      	beqz	a0,60a6690c <com_get_config_default+0x50>
+60a668e8:	9980      	lw	a0,0(s1)
+    }
+
+    //读取配置项内容
+    if (sys_sd_fseek(config_fp, SEEK_SET, temp_index.offset) == -1)
+60a668ea:	9604      	lw	a2,16(sp)
+60a668ec:	67a3      	move	a1,v1
+60a668ee:	e840      	jalr	s0
+60a668f0:	6f0f      	li	a3,15
+60a668f2:	ed4f      	not	a1,v0
+60a668f4:	6b00      	li	v1,0
+    {
+        return 0;
+60a668f6:	250a      	beqz	a1,60a6690c <com_get_config_default+0x50>
+60a668f8:	9980      	lw	a0,0(s1)
+    }
+    if (sys_sd_fread(config_fp, &default_value, sizeof(uint16)) == -1)
+60a668fa:	6f11      	li	a3,17
+60a668fc:	0506      	addiu	a1,sp,24
+60a668fe:	e840      	jalr	s0
+60a66900:	6e02      	li	a2,2
+60a66902:	ef4f      	not	a3,v0
+60a66904:	6b00      	li	v1,0
+    {
+        return 0;
+60a66906:	2702      	beqz	a3,60a6690c <com_get_config_default+0x50>
+60a66908:	675d      	move	v0,sp
+    }
+
+    return default_value;
+60a6690a:	aa6c      	lhu	v1,24(v0)
+60a6690c:	6743      	move	v0,v1
+}
+60a6690e:	6476      	restore	48,ra,s0-s1
+60a66910:	e8a0      	jrc	ra
+60a66912:	0000      	addiu	s0,sp,0
+60a66914:	a090      	lbu	a0,16(s0)
+60a66916:	9fc1      	lw	a2,4(a3)
+60a66918:	6011      	bteqz	60a6693c <com_get_config_default+0x80>
+60a6691a:	bfc2      	lwu	a2,8(a3)
