@@ -34,13 +34,13 @@ Firmware occupies 2035 sectors, still has 13 sectors free.
 *************************Build UPGRADE.HEX*****************************
 File make end
 *************************Build ATF*****************************
-/cygdrive/d/actions/stdsdk/code/us282a_v17mp/case/ap_test/ATT
-make[1]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_v17mp/case/ap_test/ATT'
+/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_v17mp/case/ap_test/ATT
+make[1]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_v17mp/case/ap_test/ATT'
 rm -f ./ap_autotest_bertest.o ap_autotest_bertest_sub.o ap_autotest_btstack_test.o ap_autotest_btstack_test_dev.o ap_autotest_channel_test.o ap_autotest_channel_test_SNR.o ap_autotest_channel_test_SNR_data.o ap_autotest_channel_test_log_file.o ap_autotest_common.o ap_autotest_fsm.o ap_autotest_gpio.o ap_autotest_gpio_sub.o ap_autotest_lradc_test.o ap_autotest_main.o ap_autotest_misc_test.o ap_autotest_modify_bt_attr.o ap_autotest_mptest.o ap_autotest_mptest_sub.o ap_autotest_music_test.o ap_autotest_printk.o ap_autotest_read_args.o ap_autotest_read_param.o ap_autotest_record_file.o ap_autotest_start_deal.o common_func.o common_func_rcode.o ap_upgrade_bank.o ap_upgrade_fw_check.o ap_upgrade_rcode.o decrypt.o   
 rm -f ./acttest.exe acttest.lst acttest.map acttest.ap acttest.info
 rm -rf ./obj
-make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_v17mp/case/ap_test/ATT'
-make[1]: Entering directory `/cygdrive/d/actions/stdsdk/code/us282a_v17mp/case/ap_test/ATT'
+make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_v17mp/case/ap_test/ATT'
+make[1]: Entering directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_v17mp/case/ap_test/ATT'
 mkdir -p ./obj
 sde-gcc -g -c -G0 -Wall -Wundef -Wno-unknown-pragmas -I./../../../psp_rel/include/ucos -I./../../../psp_rel/include -I./../../inc  -I./../../ap_test/inc -I./ -I./common -I./ap_upgrade  -msoft-float -fsigned-char -fshort-enums -mtune=m4k -mips16e -nostdinc -nostdlib -fno-builtin -EL   -O2 -o	./obj/ap_autotest_bertest.o ap_autotest_bertest.c
 ap_autotest_bertest.c: In function `_ber_test_read_hci_data':
@@ -369,5 +369,5 @@ sde-readelf -a acttest.exe > acttest.info
 create file: config.txt len:26 succeed
 create file: actionstest.fw succeed
 date +%T
-10:37:11
-make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/code/us282a_v17mp/case/ap_test/ATT'
+14:14:49
+make[1]: Leaving directory `/cygdrive/d/actions/stdsdk/up_2823b_code/us282a_v17mp/case/ap_test/ATT'

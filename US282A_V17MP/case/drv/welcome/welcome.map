@@ -377,14 +377,14 @@ OUTPUT(welcome.exe elf32-tradlittlemips)
  .debug_aranges
                 0x0000000000000048       0x20 welcome_ejtag.o
 
-.debug_str      0x0000000000000000      0x305
+.debug_str      0x0000000000000000      0x30e
  .debug_str     0x0000000000000000       0x26 ./../../drv/rom_TWI_lib/rom_TWI.o
- .debug_str     0x0000000000000026      0x2b0 welcome.o
-                                        0x2f3 (size before relaxing)
- .debug_str     0x00000000000002d6       0x1e welcome_ejtag.o
-                                        0x117 (size before relaxing)
- .debug_str     0x00000000000002f4       0x11 welcome_i2c_tk.o
-                                        0x10a (size before relaxing)
+ .debug_str     0x0000000000000026      0x2b9 welcome.o
+                                        0x2fc (size before relaxing)
+ .debug_str     0x00000000000002df       0x1e welcome_ejtag.o
+                                        0x120 (size before relaxing)
+ .debug_str     0x00000000000002fd       0x11 welcome_i2c_tk.o
+                                        0x113 (size before relaxing)
 
 .comment        0x0000000000000000       0xac
  .comment       0x0000000000000000       0x2b ./../../drv/rom_TWI_lib/rom_TWI.o

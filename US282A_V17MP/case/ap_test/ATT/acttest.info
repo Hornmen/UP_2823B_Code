@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0xbfc38831
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          192448 (bytes into file)
+  Start of section headers:          192456 (bytes into file)
   Flags:                             0x70001001, noreorder, o32, mips32r2
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -56,11 +56,11 @@ Section Headers:
   [32] .debug_frame      MIPS_DWARF      00000000 026ccc 001f74 00      0   0  4
   [33] .debug_pubnames   MIPS_DWARF      00000000 028c40 001ba3 00      0   0  1
   [34] .debug_aranges    MIPS_DWARF      00000000 02a7e3 0004e0 00      0   0  1
-  [35] .debug_str        MIPS_DWARF      00000000 02acc3 003f77 01  MS  0   0  1
-  [36] .debug_ranges     MIPS_DWARF      00000000 02ec3a 000158 00      0   0  1
-  [37] .shstrtab         STRTAB          00000000 02ed92 00022c 00      0   0  1
-  [38] .symtab           SYMTAB          00000000 02f600 004230 10     39 433  4
-  [39] .strtab           STRTAB          00000000 033830 0036c8 00      0   0  1
+  [35] .debug_str        MIPS_DWARF      00000000 02acc3 003f80 01  MS  0   0  1
+  [36] .debug_ranges     MIPS_DWARF      00000000 02ec43 000158 00      0   0  1
+  [37] .shstrtab         STRTAB          00000000 02ed9b 00022c 00      0   0  1
+  [38] .symtab           SYMTAB          00000000 02f608 004230 10     39 433  4
+  [39] .strtab           STRTAB          00000000 033838 0036c8 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)

@@ -1371,87 +1371,87 @@ OUTPUT(acttest.exe elf32-tradlittlemips)
  .debug_aranges
                 0x00000000000004c0       0x20 ./obj/ap_autotest_gpio_sub.o
 
-.debug_str      0x0000000000000000     0x3f77
- .debug_str     0x0000000000000000      0x546 ./obj/ap_autotest_main.o
-                                        0x61c (size before relaxing)
- .debug_str     0x0000000000000546       0x8e ./obj/common_func_rcode.o
-                                        0x227 (size before relaxing)
- .debug_str     0x00000000000005d4      0x471 ./obj/ap_autotest_btstack_test.o
-                                        0x755 (size before relaxing)
- .debug_str     0x0000000000000a45      0x64c ./obj/ap_autotest_mptest.o
-                                        0x7fe (size before relaxing)
- .debug_str     0x0000000000001091      0x396 ./obj/ap_autotest_bertest.o
-                                        0x6c6 (size before relaxing)
- .debug_str     0x0000000000001427       0x8b ./obj/common_func.o
-                                        0x1ff (size before relaxing)
- .debug_str     0x00000000000014b2      0x18e ./obj/ap_autotest_btstack_test_dev.o
-                                        0x453 (size before relaxing)
- .debug_str     0x0000000000001640      0x169 ./obj/ap_autotest_start_deal.o
-                                        0x42b (size before relaxing)
- .debug_str     0x00000000000017a9       0xda ./obj/ap_autotest_gpio.o
-                                        0x1f2 (size before relaxing)
- .debug_str     0x0000000000001883       0xc1 ./obj/ap_autotest_music_test.o
-                                        0x466 (size before relaxing)
- .debug_str     0x0000000000001944      0x112 ./obj/ap_autotest_record_file.o
-                                        0x3c2 (size before relaxing)
- .debug_str     0x0000000000001a56      0x550 ./obj/ap_autotest_read_args.o
-                                        0x96b (size before relaxing)
- .debug_str     0x0000000000001fa6      0x1b5 ./obj/ap_autotest_modify_bt_attr.o
-                                        0x7a5 (size before relaxing)
- .debug_str     0x000000000000215b      0x2d7 ./obj/ap_autotest_mptest_sub.o
-                                        0xa48 (size before relaxing)
- .debug_str     0x0000000000002432      0x275 ./obj/ap_autotest_channel_test.o
-                                        0x74a (size before relaxing)
- .debug_str     0x00000000000026a7       0x9d ./obj/ap_autotest_read_param.o
-                                        0x3cd (size before relaxing)
- .debug_str     0x0000000000002744       0x8c ./obj/ap_autotest_lradc_test.o
-                                        0x469 (size before relaxing)
- .debug_str     0x00000000000027d0       0x91 ./obj/ap_autotest_misc_test.o
-                                        0x4c9 (size before relaxing)
- .debug_str     0x0000000000002861       0xdc ./obj/ap_autotest_bertest_sub.o
-                                        0x97a (size before relaxing)
- .debug_str     0x000000000000293d      0x198 ./obj/ap_autotest_channel_test_SNR.o
-                                        0x3e2 (size before relaxing)
- .debug_str     0x0000000000002ad5       0x24 ./obj/ap_autotest_channel_test_log_file.o
-                                        0x11d (size before relaxing)
- .debug_str     0x0000000000002af9       0x24 ./obj/ap_autotest_channel_test_SNR_data.o
-                                        0x146 (size before relaxing)
- .debug_str     0x0000000000002b1d      0x204 ./ap_upgrade/fw_decrypt/ABC_03.o
+.debug_str      0x0000000000000000     0x3f80
+ .debug_str     0x0000000000000000      0x54f ./obj/ap_autotest_main.o
+                                        0x625 (size before relaxing)
+ .debug_str     0x000000000000054f       0x8e ./obj/common_func_rcode.o
+                                        0x230 (size before relaxing)
+ .debug_str     0x00000000000005dd      0x471 ./obj/ap_autotest_btstack_test.o
+                                        0x75e (size before relaxing)
+ .debug_str     0x0000000000000a4e      0x64c ./obj/ap_autotest_mptest.o
+                                        0x807 (size before relaxing)
+ .debug_str     0x000000000000109a      0x396 ./obj/ap_autotest_bertest.o
+                                        0x6cf (size before relaxing)
+ .debug_str     0x0000000000001430       0x8b ./obj/common_func.o
+                                        0x208 (size before relaxing)
+ .debug_str     0x00000000000014bb      0x18e ./obj/ap_autotest_btstack_test_dev.o
+                                        0x45c (size before relaxing)
+ .debug_str     0x0000000000001649      0x169 ./obj/ap_autotest_start_deal.o
+                                        0x434 (size before relaxing)
+ .debug_str     0x00000000000017b2       0xda ./obj/ap_autotest_gpio.o
+                                        0x1fb (size before relaxing)
+ .debug_str     0x000000000000188c       0xc1 ./obj/ap_autotest_music_test.o
+                                        0x46f (size before relaxing)
+ .debug_str     0x000000000000194d      0x112 ./obj/ap_autotest_record_file.o
+                                        0x3cb (size before relaxing)
+ .debug_str     0x0000000000001a5f      0x550 ./obj/ap_autotest_read_args.o
+                                        0x974 (size before relaxing)
+ .debug_str     0x0000000000001faf      0x1b5 ./obj/ap_autotest_modify_bt_attr.o
+                                        0x7ae (size before relaxing)
+ .debug_str     0x0000000000002164      0x2d7 ./obj/ap_autotest_mptest_sub.o
+                                        0xa51 (size before relaxing)
+ .debug_str     0x000000000000243b      0x275 ./obj/ap_autotest_channel_test.o
+                                        0x753 (size before relaxing)
+ .debug_str     0x00000000000026b0       0x9d ./obj/ap_autotest_read_param.o
+                                        0x3d6 (size before relaxing)
+ .debug_str     0x000000000000274d       0x8c ./obj/ap_autotest_lradc_test.o
+                                        0x472 (size before relaxing)
+ .debug_str     0x00000000000027d9       0x91 ./obj/ap_autotest_misc_test.o
+                                        0x4d2 (size before relaxing)
+ .debug_str     0x000000000000286a       0xdc ./obj/ap_autotest_bertest_sub.o
+                                        0x983 (size before relaxing)
+ .debug_str     0x0000000000002946      0x198 ./obj/ap_autotest_channel_test_SNR.o
+                                        0x3eb (size before relaxing)
+ .debug_str     0x0000000000002ade       0x24 ./obj/ap_autotest_channel_test_log_file.o
+                                        0x126 (size before relaxing)
+ .debug_str     0x0000000000002b02       0x24 ./obj/ap_autotest_channel_test_SNR_data.o
+                                        0x14f (size before relaxing)
+ .debug_str     0x0000000000002b26      0x204 ./ap_upgrade/fw_decrypt/ABC_03.o
                                         0x2fa (size before relaxing)
- .debug_str     0x0000000000002d21       0x3f ./ap_upgrade/fw_decrypt/ABC_05.o
+ .debug_str     0x0000000000002d2a       0x3f ./ap_upgrade/fw_decrypt/ABC_05.o
                                         0x140 (size before relaxing)
- .debug_str     0x0000000000002d60       0x2c ./ap_upgrade/fw_decrypt/ABC_06.o
+ .debug_str     0x0000000000002d69       0x2c ./ap_upgrade/fw_decrypt/ABC_06.o
                                          0xb9 (size before relaxing)
- .debug_str     0x0000000000002d8c       0x96 ./ap_upgrade/fw_decrypt/ABC_08.o
+ .debug_str     0x0000000000002d95       0x96 ./ap_upgrade/fw_decrypt/ABC_08.o
                                         0x13c (size before relaxing)
- .debug_str     0x0000000000002e22      0x20a ./ap_upgrade/fw_decrypt/ABC_13.o
+ .debug_str     0x0000000000002e2b      0x20a ./ap_upgrade/fw_decrypt/ABC_13.o
                                         0x331 (size before relaxing)
- .debug_str     0x000000000000302c       0x1f ./ap_upgrade/fw_decrypt/ABC_23.o
+ .debug_str     0x0000000000003035       0x1f ./ap_upgrade/fw_decrypt/ABC_23.o
                                         0x12c (size before relaxing)
- .debug_str     0x000000000000304b       0x51 ./ap_upgrade/fw_decrypt/ABC_29.o
+ .debug_str     0x0000000000003054       0x51 ./ap_upgrade/fw_decrypt/ABC_29.o
                                          0xf0 (size before relaxing)
- .debug_str     0x000000000000309c       0xc7 ./ap_upgrade/fw_decrypt/ABC_33.o
+ .debug_str     0x00000000000030a5       0xc7 ./ap_upgrade/fw_decrypt/ABC_33.o
                                         0x309 (size before relaxing)
- .debug_str     0x0000000000003163      0x47e ./ap_upgrade/fw_decrypt/ABC_39.o
+ .debug_str     0x000000000000316c      0x47e ./ap_upgrade/fw_decrypt/ABC_39.o
                                         0x891 (size before relaxing)
- .debug_str     0x00000000000035e1       0x20 ./ap_upgrade/fw_decrypt/ABC_N2.o
+ .debug_str     0x00000000000035ea       0x20 ./ap_upgrade/fw_decrypt/ABC_N2.o
                                          0xab (size before relaxing)
- .debug_str     0x0000000000003601      0x38a ./obj/ap_upgrade_rcode.o
-                                        0x572 (size before relaxing)
- .debug_str     0x000000000000398b       0xbd ./obj/decrypt.o
-                                        0x38f (size before relaxing)
- .debug_str     0x0000000000003a48      0x24b ./obj/ap_upgrade_bank.o
-                                        0x841 (size before relaxing)
- .debug_str     0x0000000000003c93       0x45 ./obj/ap_upgrade_fw_check.o
-                                        0x1ff (size before relaxing)
- .debug_str     0x0000000000003cd8       0x92 ./obj/ap_autotest_common.o
-                                        0x26f (size before relaxing)
- .debug_str     0x0000000000003d6a       0xfd ./obj/ap_autotest_fsm.o
-                                        0x47e (size before relaxing)
- .debug_str     0x0000000000003e67       0x6e ./obj/ap_autotest_printk.o
-                                        0x1fe (size before relaxing)
- .debug_str     0x0000000000003ed5       0xa2 ./obj/ap_autotest_gpio_sub.o
-                                        0x477 (size before relaxing)
+ .debug_str     0x000000000000360a      0x38a ./obj/ap_upgrade_rcode.o
+                                        0x57b (size before relaxing)
+ .debug_str     0x0000000000003994       0xbd ./obj/decrypt.o
+                                        0x398 (size before relaxing)
+ .debug_str     0x0000000000003a51      0x24b ./obj/ap_upgrade_bank.o
+                                        0x84a (size before relaxing)
+ .debug_str     0x0000000000003c9c       0x45 ./obj/ap_upgrade_fw_check.o
+                                        0x208 (size before relaxing)
+ .debug_str     0x0000000000003ce1       0x92 ./obj/ap_autotest_common.o
+                                        0x278 (size before relaxing)
+ .debug_str     0x0000000000003d73       0xfd ./obj/ap_autotest_fsm.o
+                                        0x487 (size before relaxing)
+ .debug_str     0x0000000000003e70       0x6e ./obj/ap_autotest_printk.o
+                                        0x207 (size before relaxing)
+ .debug_str     0x0000000000003ede       0xa2 ./obj/ap_autotest_gpio_sub.o
+                                        0x480 (size before relaxing)
 
 .debug_ranges   0x0000000000000000      0x158
  .debug_ranges  0x0000000000000000       0x18 ./obj/ap_autotest_btstack_test.o

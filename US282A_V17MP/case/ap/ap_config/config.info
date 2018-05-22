@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x40020231
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          790180 (bytes into file)
+  Start of section headers:          790848 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -84,17 +84,17 @@ Section Headers:
   [60] .pdr              PROGBITS        00000000 0256e0 004200 00      0   0  4
   [61] .mdebug.abi32     PROGBITS        00000000 0298e0 000000 00      0   0  1
   [62] .debug_abbrev     MIPS_DWARF      00000000 0298e0 00a604 00      0   0  1
-  [63] .debug_info       MIPS_DWARF      00000000 033ee4 06c730 00      0   0  1
-  [64] .debug_line       MIPS_DWARF      00000000 0a0614 009c2f 00      0   0  1
-  [65] .debug_frame      MIPS_DWARF      00000000 0aa244 003f2c 00      0   0  4
-  [66] .debug_pubnames   MIPS_DWARF      00000000 0ae170 004596 00      0   0  1
-  [67] .debug_aranges    MIPS_DWARF      00000000 0b2706 000df0 00      0   0  1
-  [68] .debug_str        MIPS_DWARF      00000000 0b34f6 00c296 00      0   0  1
-  [69] .comment          PROGBITS        00000000 0bf78c 0010cc 00      0   0  1
-  [70] .debug_ranges     MIPS_DWARF      00000000 0c0858 000298 00      0   0  1
-  [71] .shstrtab         STRTAB          00000000 0c0af0 0003b1 00      0   0  1
-  [72] .symtab           SYMTAB          00000000 0c1a34 009080 10     73 1350  4
-  [73] .strtab           STRTAB          00000000 0caab4 005fdb 00      0   0  1
+  [63] .debug_info       MIPS_DWARF      00000000 033ee4 06c95d 00      0   0  1
+  [64] .debug_line       MIPS_DWARF      00000000 0a0841 009c32 00      0   0  1
+  [65] .debug_frame      MIPS_DWARF      00000000 0aa474 003f2c 00      0   0  4
+  [66] .debug_pubnames   MIPS_DWARF      00000000 0ae3a0 004596 00      0   0  1
+  [67] .debug_aranges    MIPS_DWARF      00000000 0b2936 000df0 00      0   0  1
+  [68] .debug_str        MIPS_DWARF      00000000 0b3726 00c302 00      0   0  1
+  [69] .comment          PROGBITS        00000000 0bfa28 0010cc 00      0   0  1
+  [70] .debug_ranges     MIPS_DWARF      00000000 0c0af4 000298 00      0   0  1
+  [71] .shstrtab         STRTAB          00000000 0c0d8c 0003b1 00      0   0  1
+  [72] .symtab           SYMTAB          00000000 0c1cd0 009080 10     73 1350  4
+  [73] .strtab           STRTAB          00000000 0cad50 005fdb 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -306,8 +306,8 @@ Symbol table '.symtab' contains 2312 entries:
     81: 00000000     0 FILE    LOCAL  DEFAULT  ABS message_key_rcode.c
     82: bfc1dad8     0 NOTYPE  LOCAL  DEFAULT    1 .LFB72
     83: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_view_loop.c
-    84: 48765d18     0 NOTYPE  LOCAL  DEFAULT   37 .LFB72
-    85: 48765d24     0 NOTYPE  LOCAL  DEFAULT   37 .L2
+    84: 48765d20     0 NOTYPE  LOCAL  DEFAULT   37 .LFB72
+    85: 48765d2c     0 NOTYPE  LOCAL  DEFAULT   37 .L2
     86: 487a5e28     0 NOTYPE  LOCAL  DEFAULT   38 .LFB73
     87: 487a5e50     0 NOTYPE  LOCAL  DEFAULT   38 .L16
     88: bfc1db7c     0 NOTYPE  LOCAL  DEFAULT    1 .LFB74
@@ -669,14 +669,14 @@ Symbol table '.symtab' contains 2312 entries:
    444: 484e5854     0 NOTYPE  LOCAL  DEFAULT   27 .LBE2
    445: 484e5870     0 NOTYPE  LOCAL  DEFAULT   27 .LFB73
    446: 484e58e0     0 NOTYPE  LOCAL  DEFAULT   27 .LFB74
-   447: 484e5910     0 NOTYPE  LOCAL  DEFAULT   27 .LFB75
-   448: 484e599e     0 NOTYPE  LOCAL  DEFAULT   27 .L42
-   449: 484e5b38     0 NOTYPE  LOCAL  DEFAULT   27 .LBB3
-   450: 484e5b6a     0 NOTYPE  LOCAL  DEFAULT   27 .LBE3
-   451: 484e5ba8     0 NOTYPE  LOCAL  DEFAULT   27 .LBB4
-   452: 484e5bdc     0 NOTYPE  LOCAL  DEFAULT   27 .LBE4
-   453: 484e5c94     0 NOTYPE  LOCAL  DEFAULT   27 .LFB76
-   454: 484e5cb2     0 NOTYPE  LOCAL  DEFAULT   27 .L112
+   447: 484e590c     0 NOTYPE  LOCAL  DEFAULT   27 .LFB75
+   448: 484e599a     0 NOTYPE  LOCAL  DEFAULT   27 .L42
+   449: 484e5b34     0 NOTYPE  LOCAL  DEFAULT   27 .LBB3
+   450: 484e5b66     0 NOTYPE  LOCAL  DEFAULT   27 .LBE3
+   451: 484e5ba4     0 NOTYPE  LOCAL  DEFAULT   27 .LBB4
+   452: 484e5bd8     0 NOTYPE  LOCAL  DEFAULT   27 .LBE4
+   453: 484e5c90     0 NOTYPE  LOCAL  DEFAULT   27 .LFB76
+   454: 484e5cae     0 NOTYPE  LOCAL  DEFAULT   27 .L112
    455: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_tts.c
    456: 483a5800     0 NOTYPE  LOCAL  DEFAULT   22 .LFB72
    457: 483a5824     0 NOTYPE  LOCAL  DEFAULT   22 .LBB2
@@ -1034,13 +1034,13 @@ Symbol table '.symtab' contains 2312 entries:
    809: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_math_exp_fixed.c
    810: 484a5de8     0 NOTYPE  LOCAL  DEFAULT   26 .LFB72
    811: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_key_hook.c
-   812: 484e5e40     0 NOTYPE  LOCAL  DEFAULT   27 .LFB72
-   813: 484e5ed2     0 NOTYPE  LOCAL  DEFAULT   27 .L15
-   814: 484e5f24     0 NOTYPE  LOCAL  DEFAULT   27 .LBB2
-   815: 484e5f26     0 NOTYPE  LOCAL  DEFAULT   27 .LBE2
-   816: 484e5fa0     0 NOTYPE  LOCAL  DEFAULT   27 .LFB73
-   817: 484e5fb4     0 NOTYPE  LOCAL  DEFAULT   27 .LFB74
-   818: 484e5fc8     0 NOTYPE  LOCAL  DEFAULT   27 .LFB75
+   812: 484e5e3c     0 NOTYPE  LOCAL  DEFAULT   27 .LFB72
+   813: 484e5ece     0 NOTYPE  LOCAL  DEFAULT   27 .L15
+   814: 484e5f20     0 NOTYPE  LOCAL  DEFAULT   27 .LBB2
+   815: 484e5f22     0 NOTYPE  LOCAL  DEFAULT   27 .LBE2
+   816: 484e5f9c     0 NOTYPE  LOCAL  DEFAULT   27 .LFB73
+   817: 484e5fb0     0 NOTYPE  LOCAL  DEFAULT   27 .LFB74
+   818: 484e5fc4     0 NOTYPE  LOCAL  DEFAULT   27 .LFB75
    819: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_aset_new_func.c
    820: 48525800     0 NOTYPE  LOCAL  DEFAULT   28 .LFB72
    821: 485258b4     0 NOTYPE  LOCAL  DEFAULT   28 .LFB73
@@ -1152,16 +1152,16 @@ Symbol table '.symtab' contains 2312 entries:
    927: 48765a60     0 NOTYPE  LOCAL  DEFAULT   37 .LFB80
    928: 48765ab8     0 NOTYPE  LOCAL  DEFAULT   37 .LFB81
    929: 48765ac8     0 NOTYPE  LOCAL  DEFAULT   37 .LBB4
-   930: 48765ae6     0 NOTYPE  LOCAL  DEFAULT   37 .LBE4
-   931: 48765afc     0 NOTYPE  LOCAL  DEFAULT   37 .LFB82
-   932: 48765b18     0 NOTYPE  LOCAL  DEFAULT   37 .LFB83
-   933: 48765b34     0 NOTYPE  LOCAL  DEFAULT   37 .LFB84
-   934: 48765b70     0 NOTYPE  LOCAL  DEFAULT   37 .LFB85
-   935: 48765ba4     0 NOTYPE  LOCAL  DEFAULT   37 .LFB86
-   936: 48765ba8     0 NOTYPE  LOCAL  DEFAULT   37 .LFB87
-   937: 48765bac     0 NOTYPE  LOCAL  DEFAULT   37 .LFB88
-   938: 48765bb6     0 NOTYPE  LOCAL  DEFAULT   37 .LBB5
-   939: 48765bbc     0 NOTYPE  LOCAL  DEFAULT   37 .LBE5
+   930: 48765aea     0 NOTYPE  LOCAL  DEFAULT   37 .LBE4
+   931: 48765b04     0 NOTYPE  LOCAL  DEFAULT   37 .LFB82
+   932: 48765b20     0 NOTYPE  LOCAL  DEFAULT   37 .LFB83
+   933: 48765b3c     0 NOTYPE  LOCAL  DEFAULT   37 .LFB84
+   934: 48765b78     0 NOTYPE  LOCAL  DEFAULT   37 .LFB85
+   935: 48765bac     0 NOTYPE  LOCAL  DEFAULT   37 .LFB86
+   936: 48765bb0     0 NOTYPE  LOCAL  DEFAULT   37 .LFB87
+   937: 48765bb4     0 NOTYPE  LOCAL  DEFAULT   37 .LFB88
+   938: 48765bbe     0 NOTYPE  LOCAL  DEFAULT   37 .LBB5
+   939: 48765bc4     0 NOTYPE  LOCAL  DEFAULT   37 .LBE5
    940: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_speaker_control.c
    941: 485e5a0c     0 NOTYPE  LOCAL  DEFAULT   31 .LFB72
    942: 485e5a7c     0 NOTYPE  LOCAL  DEFAULT   31 .LFB73
@@ -1323,10 +1323,10 @@ Symbol table '.symtab' contains 2312 entries:
   1098: 48725c22     0 NOTYPE  LOCAL  DEFAULT   36 .LBB14
   1099: 48725c34     0 NOTYPE  LOCAL  DEFAULT   36 .LBE14
   1100: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_view_key_event.c
-  1101: 48765bc8    24 FUNC    LOCAL  DEFAULT   37 is_key_val_match
-  1102: 48765bc8     0 NOTYPE  LOCAL  DEFAULT   37 .LFB72
-  1103: 48765be0     0 NOTYPE  LOCAL  DEFAULT   37 .LFB73
-  1104: 48765ca0     0 NOTYPE  LOCAL  DEFAULT   37 .LFB74
+  1101: 48765bd0    24 FUNC    LOCAL  DEFAULT   37 is_key_val_match
+  1102: 48765bd0     0 NOTYPE  LOCAL  DEFAULT   37 .LFB72
+  1103: 48765be8     0 NOTYPE  LOCAL  DEFAULT   37 .LFB73
+  1104: 48765ca8     0 NOTYPE  LOCAL  DEFAULT   37 .LFB74
   1105: 00000000     0 FILE    LOCAL  DEFAULT  ABS common_sys_deal.c
   1106: 487a5928     0 NOTYPE  LOCAL  DEFAULT   38 .LFB72
   1107: 487a5948     0 NOTYPE  LOCAL  DEFAULT   38 .LFB73
@@ -1740,9 +1740,9 @@ Symbol table '.symtab' contains 2312 entries:
   1515: 9fc1a0e0    14 OBJECT  GLOBAL DEFAULT   16 g_sys_counter
   1516: 482a5ad0   396 FUNC    GLOBAL DEFAULT   18 connect_remain_profile
   1517: 48525af4    54 FUNC    GLOBAL DEFAULT   28 aset_read_multibank_drc_d
-  1518: 48765b34    46 FUNC    GLOBAL DEFAULT   37 com_key_deal_FT_test
+  1518: 48765b3c    46 FUNC    GLOBAL DEFAULT   37 com_key_deal_FT_test
   1519: 9fc19a3b     1 OBJECT  GLOBAL DEFAULT    2 g_config_standby_exit
-  1520: 48765ab8    52 FUNC    GLOBAL DEFAULT   37 com_key_deal_force_unlink
+  1520: 48765ab8    56 FUNC    GLOBAL DEFAULT   37 com_key_deal_force_unlink
   1521: 9fc19a39     1 OBJECT  GLOBAL DEFAULT    2 linein_in_flag
   1522: bfc1d91c     4 FUNC    GLOBAL DEFAULT    1 base_op_entry
   1523: 485a5d64    26 FUNC    GLOBAL DEFAULT   30 com_start_key_tone
@@ -1798,7 +1798,7 @@ Symbol table '.symtab' contains 2312 entries:
   1573: 40220658    64 FUNC    GLOBAL DEFAULT   12 config_init_data_time
   1574: 489a5808     2 FUNC    GLOBAL DEFAULT   46 com_set_eq_view
   1575: 48625d68    98 FUNC    GLOBAL DEFAULT   32 connect_remain_profile_ba
-  1576: 484e5fc8    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_itself
+  1576: 484e5fc4    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_itself
   1577: 0000fb00     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BTCALL_EXT_RCODE_ADD
   1578: 9fc1a1c6     1 OBJECT  GLOBAL DEFAULT   16 g_dialog_desc_id
   1579: 00000010     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_CARD_GLOBAL_DATA_SIZ
@@ -1874,7 +1874,7 @@ Symbol table '.symtab' contains 2312 entries:
   1649: bfc10e5c    98 FUNC    GLOBAL DEFAULT   14 discrete_led_twinkle
   1650: 00000077     0 NOTYPE  GLOBAL DEFAULT  ABS AP_BANK_BTENGINE_EXTEND_3
   1651: 48825af4    30 FUNC    GLOBAL DEFAULT   40 com_set_active_dev
-  1652: 484e5e40   280 FUNC    GLOBAL DEFAULT   27 com_gui_msg_hook
+  1652: 484e5e3c   280 FUNC    GLOBAL DEFAULT   27 com_gui_msg_hook
   1653: 00021e00     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BT_EXT4_BANK_ADDR
   1654: 48625e5c    70 FUNC    GLOBAL DEFAULT   32 com_btmanager_force_unlin
   1655: 486a5a1c    42 FUNC    GLOBAL DEFAULT   34 calendar_key_deal_sub
@@ -1899,7 +1899,7 @@ Symbol table '.symtab' contains 2312 entries:
   1674: 489a5e10   266 FUNC    GLOBAL DEFAULT   46 com_inner_load_mdrc_param
   1675: 48be5a48   116 FUNC    GLOBAL DEFAULT   55 com_set_sound_volume
   1676: 48765800    16 OBJECT  GLOBAL DEFAULT   37 clock_ke_maplist
-  1677: 484e5c94   236 FUNC    GLOBAL DEFAULT   27 com_filter_keymsg_in_queu
+  1677: 484e5c90   236 FUNC    GLOBAL DEFAULT   27 com_filter_keymsg_in_queu
   1678: 00000c00     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_UHOST_UD_RCODE_SIZE
   1679: 00019500     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_CARD_DATA_ADDR
   1680: 9fc1a094    28 OBJECT  GLOBAL DEFAULT   15 g_app_info_state_all
@@ -1932,7 +1932,7 @@ Symbol table '.symtab' contains 2312 entries:
   1707: 9fc1a0f0     5 OBJECT  GLOBAL DEFAULT   16 g_buffer_gui_msg
   1708: 487a5e28    98 FUNC    GLOBAL DEFAULT   38 com_view_loop_sys
   1709: 48565dec    42 FUNC    GLOBAL DEFAULT   29 aset_write_surr_data
-  1710: 48765ba4     4 FUNC    GLOBAL DEFAULT   37 com_hid_send_key
+  1710: 48765bac     4 FUNC    GLOBAL DEFAULT   37 com_hid_send_key
   1711: 00027e00     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BTPLAY_MMM_RCODE2_AD
   1712: 0001ac80     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_OS_HEAP_ADDR
   1713: 00000800     0 NOTYPE  GLOBAL DEFAULT  ABS BANK_CONTROL_SIZE
@@ -1955,7 +1955,7 @@ Symbol table '.symtab' contains 2312 entries:
   1730: 48a65800    42 FUNC    GLOBAL DEFAULT   49 ota_restart_to_upgrade
   1731: 48465ca4    42 OBJECT  GLOBAL DEFAULT   25 button_result
   1732: 48765950    26 FUNC    GLOBAL DEFAULT   37 com_key_deal_volume_add
-  1733: 484e5fb4    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_up
+  1733: 484e5fb0    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_up
   1734: 482a58c0   410 FUNC    GLOBAL DEFAULT   18 sys_counter_handle
   1735: 488659fc    60 FUNC    GLOBAL DEFAULT   41 com_btmanager_hfp_call_re
   1736: 48825b98    28 FUNC    GLOBAL DEFAULT   40 com_set_ble_discoverable
@@ -1984,7 +1984,7 @@ Symbol table '.symtab' contains 2312 entries:
   1759: 48be5af8    28 FUNC    GLOBAL DEFAULT   55 com_reset_sound_volume
   1760: 9fc19cc4     1 OBJECT  GLOBAL DEFAULT    2 LED_FLASH_UP
   1761: bfc107d4   140 FUNC    GLOBAL DEFAULT   14 com_btmanager_battery_han
-  1762: 484e5910   828 FUNC    GLOBAL DEFAULT   27 com_phy_key_fsm
+  1762: 484e590c   828 FUNC    GLOBAL DEFAULT   27 com_phy_key_fsm
   1763: 400e04b8   106 FUNC    GLOBAL DEFAULT    7 config_idle_mode_loop
   1764: 482e5a64   282 FUNC    GLOBAL DEFAULT   19 send_sync_msg
   1765: 9fc1a0c0    24 OBJECT  GLOBAL DEFAULT   16 g_app_info_state
@@ -2019,7 +2019,7 @@ Symbol table '.symtab' contains 2312 entries:
   1794: 9fc1a0f8    16 OBJECT  GLOBAL DEFAULT   16 g_buffer_app_msg
   1795: 48725a10   582 FUNC    GLOBAL DEFAULT   36 time_alarm_record_list_op
   1796: 485a5fc8    26 FUNC    GLOBAL DEFAULT   30 com_app_deal_play_prev_ne
-  1797: 48765b70    34 FUNC    GLOBAL DEFAULT   37 com_key_deal_siri
+  1797: 48765b78    34 FUNC    GLOBAL DEFAULT   37 com_key_deal_siri
   1798: 486e5b08    44 FUNC    GLOBAL DEFAULT   35 alarm_key_deal_add
   1799: 485e5a7c    86 FUNC    GLOBAL DEFAULT   31 SPEAKER_CONTROL_DISABLE
   1800: 483a5c00    84 FUNC    GLOBAL DEFAULT   22 com_tts_state_play_deal
@@ -2098,7 +2098,7 @@ Symbol table '.symtab' contains 2312 entries:
   1873: 48865920    70 FUNC    GLOBAL DEFAULT   41 com_btmanager_tws_send
   1874: 487658c8    54 FUNC    GLOBAL DEFAULT   37 com_key_deal_switch_app
   1875: 484a5de8   256 FUNC    GLOBAL DEFAULT   26 com_math_exp_fixed
-  1876: 48765ca0   110 FUNC    GLOBAL DEFAULT   37 com_view_key_check_dck
+  1876: 48765ca8   110 FUNC    GLOBAL DEFAULT   37 com_view_key_check_dck
   1877: 486e5b94    12 FUNC    GLOBAL DEFAULT   35 alarm_handle
   1878: 487a5d08    36 FUNC    GLOBAL DEFAULT   38 com_sys_deal_btstack_hd_e
   1879: 0001d900     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_TEXT_ADDR
@@ -2111,9 +2111,9 @@ Symbol table '.symtab' contains 2312 entries:
   1886: 0000f000     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_ASRC_BUF_1_ADDR
   1887: 402a0200    60 FUNC    GLOBAL DEFAULT   13 config_wait_pa_ok
   1888: 489658d0   368 FUNC    GLOBAL DEFAULT   45 common_load_att_code
-  1889: 484e5dec    84 OBJECT  GLOBAL DEFAULT   27 IrcKeyValueTab
+  1889: 484e5de8    84 OBJECT  GLOBAL DEFAULT   27 IrcKeyValueTab
   1890: 48465db0     4 OBJECT  GLOBAL DEFAULT   25 g_ring_floder_type
-  1891: 48765ba8     4 FUNC    GLOBAL DEFAULT   37 com_hid_disconnect
+  1891: 48765bb0     4 FUNC    GLOBAL DEFAULT   37 com_hid_disconnect
   1892: 48b25940    44 FUNC    GLOBAL DEFAULT   52 com_get_bt_device_info
   1893: 488e5c40    48 FUNC    GLOBAL DEFAULT   43 sys_timer_init
   1894: 0003d000     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_PCMRAM_1_ADDR
@@ -2150,7 +2150,7 @@ Symbol table '.symtab' contains 2312 entries:
   1925: 48365dbc    44 FUNC    GLOBAL DEFAULT   21 com_update_volume_limit
   1926: 0000c000     0 NOTYPE  GLOBAL DEFAULT  ABS SROM_FS_ADDR
   1927: 485a5bb8     6 FUNC    GLOBAL DEFAULT   30 keytone_set_dac_sample
-  1928: 48765d18    92 FUNC    GLOBAL DEFAULT   37 com_view_loop_key
+  1928: 48765d20    92 FUNC    GLOBAL DEFAULT   37 com_view_loop_key
   1929: 00009000     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BANK_A_ADDR
   1930: 48be5b1c    48 FUNC    GLOBAL DEFAULT   55 com_switch_volume_mode
   1931: 48665a98    50 FUNC    GLOBAL DEFAULT   33 time_alarm_set_alarm_dele
@@ -2172,7 +2172,7 @@ Symbol table '.symtab' contains 2312 entries:
   1947: 40160794   322 FUNC    GLOBAL DEFAULT    9 enter_standby_S3S4
   1948: 9fc19cc0     1 OBJECT  GLOBAL DEFAULT    2 key_hold_flag
   1949: 48625dd4    80 FUNC    GLOBAL DEFAULT   32 auto_connect_profile
-  1950: 484e5d98    84 OBJECT  GLOBAL DEFAULT   27 IrcKeyMsgTab
+  1950: 484e5d94    84 OBJECT  GLOBAL DEFAULT   27 IrcKeyMsgTab
   1951: 48665d04    12 FUNC    GLOBAL DEFAULT   33 alarm_alarm_snooze
   1952: 9fc1a212     1 OBJECT  GLOBAL DEFAULT   16 g_rcp_cmd_id
   1953: 00019580     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_AP_BACK_DATA_ADDR
@@ -2198,7 +2198,7 @@ Symbol table '.symtab' contains 2312 entries:
   1973: 48925cfc    38 FUNC    GLOBAL DEFAULT   44 aset_read_SignalD_data
   1974: 00000800     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_AP_BANK_MANAGER_SIZE
   1975: 487a59f0   100 FUNC    GLOBAL DEFAULT   38 com_sys_deal_lowpower
-  1976: 48765b18    18 FUNC    GLOBAL DEFAULT   37 com_key_deal_BQB_test
+  1976: 48765b20    18 FUNC    GLOBAL DEFAULT   37 com_key_deal_BQB_test
   1977: 48825b1c    60 FUNC    GLOBAL DEFAULT   40 check_a2dp_status_ok
   1978: 0000000f     0 NOTYPE  GLOBAL DEFAULT  ABS DRV_GROUP_SYS
   1979: 48a65838    74 FUNC    GLOBAL DEFAULT   49 ota_restart_to_clean_data
@@ -2278,7 +2278,7 @@ Symbol table '.symtab' contains 2312 entries:
   2053: 488a584c   140 FUNC    GLOBAL DEFAULT   42 sample_sound_data
   2054: 00000600     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BT_EXT4_BANK_SIZE
   2055: 487a59a4     4 FUNC    GLOBAL DEFAULT   38 com_sys_deal_linein_out
-  2056: 48765bac    22 FUNC    GLOBAL DEFAULT   37 com_key_deal_force_ble_un
+  2056: 48765bb4    22 FUNC    GLOBAL DEFAULT   37 com_key_deal_force_ble_un
   2057: 00000400     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_AP_FRONT_BASAL_RCODE
   2058: 00000120     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_DSP_IRQ_TABLE_SIZE
   2059: 00000050     0 NOTYPE  GLOBAL DEFAULT  ABS AP_BANK_FRONT_BASAL
@@ -2304,8 +2304,8 @@ Symbol table '.symtab' contains 2312 entries:
   2079: 48a658cc    54 FUNC    GLOBAL DEFAULT   49 ota_send_complete
   2080: 9fc19980     4 OBJECT  GLOBAL DEFAULT    2 g_this_gui_msg_hook
   2081: 00000009     0 NOTYPE  GLOBAL DEFAULT  ABS DRV_GROUP_CCD
-  2082: 48765afc    18 FUNC    GLOBAL DEFAULT   37 com_key_deal_call_last
-  2083: 48765be0   162 FUNC    GLOBAL DEFAULT   37 com_view_key_event
+  2082: 48765b04    18 FUNC    GLOBAL DEFAULT   37 com_key_deal_call_last
+  2083: 48765be8   162 FUNC    GLOBAL DEFAULT   37 com_view_key_event
   2084: 00026800     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_AP_BANK_BACK_CONTROL
   2085: 48825cb4    40 FUNC    GLOBAL DEFAULT   40 start_battery_report_upda
   2086: 0002e000     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_AP_BANK_BACK_AL_4_AD
@@ -2321,7 +2321,7 @@ Symbol table '.symtab' contains 2312 entries:
   2096: 400e0260    42 FUNC    GLOBAL DEFAULT    7 _display_charging
   2097: 488a59f8   124 FUNC    GLOBAL DEFAULT   42 com_btmanager_gen_random_
   2098: 00000200     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_FM_ENG_RDATA_SIZE
-  2099: 484e5fa0    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_hold
+  2099: 484e5f9c    10 FUNC    GLOBAL DEFAULT   27 com_filter_key_hold
   2100: 9fc1a21e     2 OBJECT  GLOBAL DEFAULT   16 g_rcp_long_index
   2101: 00009400     0 NOTYPE  GLOBAL DEFAULT  ABS SRAM_BANK_B_ADDR
   2102: 48525ac0    38 FUNC    GLOBAL DEFAULT   28 aset_read_mdrc2_data
@@ -2499,7 +2499,7 @@ Symbol table '.symtab' contains 2312 entries:
   2274: 48565940   198 FUNC    GLOBAL DEFAULT   29 aset_reconnect_deal
   2275: 9fc1a1cc     4 OBJECT  GLOBAL DEFAULT   16 g_app_rcp_cmd_cb_tbl
   2276: 00040000     0 NOTYPE  GLOBAL DEFAULT  ABS AP_BANK_SPACE
-  2277: 484e58e0    38 FUNC    GLOBAL DEFAULT   27 com_flush_rtc_reg
+  2277: 484e58e0    36 FUNC    GLOBAL DEFAULT   27 com_flush_rtc_reg
   2278: 00000006     0 NOTYPE  GLOBAL DEFAULT  ABS DRV_GROUP_LCD
   2279: bfc10a84   180 FUNC    GLOBAL DEFAULT   14 com_rcp_dispatch
   2280: 487a5ad0     6 FUNC    GLOBAL DEFAULT   38 com_sys_deal_idle_mode

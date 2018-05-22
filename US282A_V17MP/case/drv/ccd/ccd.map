@@ -408,12 +408,12 @@ OUTPUT(ccd.exe elf32-tradlittlemips)
  .debug_abbrev  0x0000000000000221       0x7c ccd_op_entry.o
  .debug_abbrev  0x000000000000029d      0x149 ./../../drv//rom_TWI_lib/rom_TWI.o
 
-.debug_info     0x0000000000000000     0x1382
- .debug_info    0x0000000000000000      0x18f STA339BWS.o
- .debug_info    0x000000000000018f      0x259 ccd_banka0_init.o
- .debug_info    0x00000000000003e8      0x52d ccd_bankb0_pa_deal.o
- .debug_info    0x0000000000000915      0x19f ccd_op_entry.o
- .debug_info    0x0000000000000ab4      0x8ce ./../../drv//rom_TWI_lib/rom_TWI.o
+.debug_info     0x0000000000000000     0x13a6
+ .debug_info    0x0000000000000000      0x198 STA339BWS.o
+ .debug_info    0x0000000000000198      0x262 ccd_banka0_init.o
+ .debug_info    0x00000000000003fa      0x536 ccd_bankb0_pa_deal.o
+ .debug_info    0x0000000000000930      0x1a8 ccd_op_entry.o
+ .debug_info    0x0000000000000ad8      0x8ce ./../../drv//rom_TWI_lib/rom_TWI.o
 
 .debug_line     0x0000000000000000      0x369
  .debug_line    0x0000000000000000       0x87 STA339BWS.o

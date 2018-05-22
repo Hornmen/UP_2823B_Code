@@ -12,7 +12,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          5684 (bytes into file)
+  Start of section headers:          5696 (bytes into file)
   Flags:                             0x50001000, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -32,15 +32,15 @@ Section Headers:
   [ 6] .mdebug.abi32     PROGBITS        00000000 00004c 000000 00      0   0  1
   [ 7] .debug_abbrev     MIPS_DWARF      00000000 00004c 00017b 00      0   0  1
   [ 8] .debug_info       MIPS_DWARF      00000000 0001c7 000979 00      0   0  1
-  [ 9] .rel.debug_info   REL             00000000 001b08 0005e8 08     16   8  4
+  [ 9] .rel.debug_info   REL             00000000 001b14 0005e8 08     16   8  4
   [10] .debug_line       MIPS_DWARF      00000000 000b40 0000d9 00      0   0  1
   [11] .debug_pubnames   MIPS_DWARF      00000000 000c19 0000c0 00      0   0  1
-  [12] .rel.debug_pubnam REL             00000000 0020f0 000008 08     16  11  4
-  [13] .debug_str        MIPS_DWARF      00000000 000cd9 000896 01  MS  0   0  1
-  [14] .comment          PROGBITS        00000000 00156f 00002b 00      0   0  1
-  [15] .shstrtab         STRTAB          00000000 00159a 00009a 00      0   0  1
-  [16] .symtab           SYMTAB          00000000 001904 000160 10     17  14  4
-  [17] .strtab           STRTAB          00000000 001a64 0000a1 00      0   0  1
+  [12] .rel.debug_pubnam REL             00000000 0020fc 000008 08     16  11  4
+  [13] .debug_str        MIPS_DWARF      00000000 000cd9 00089f 01  MS  0   0  1
+  [14] .comment          PROGBITS        00000000 001578 00002b 00      0   0  1
+  [15] .shstrtab         STRTAB          00000000 0015a3 00009a 00      0   0  1
+  [16] .symtab           SYMTAB          00000000 001910 000160 10     17  14  4
+  [17] .strtab           STRTAB          00000000 001a70 0000a1 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -59,7 +59,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          3564 (bytes into file)
+  Start of section headers:          3572 (bytes into file)
   Flags:                             0x50001000, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -79,18 +79,18 @@ Section Headers:
   [ 6] .mdebug.abi32     PROGBITS        00000000 00004c 000000 00      0   0  1
   [ 7] .debug_abbrev     MIPS_DWARF      00000000 00004c 0000df 00      0   0  1
   [ 8] .debug_info       MIPS_DWARF      00000000 00012b 000518 00      0   0  1
-  [ 9] .rel.debug_info   REL             00000000 001310 000310 08     19   8  4
+  [ 9] .rel.debug_info   REL             00000000 001318 000310 08     19   8  4
   [10] .debug_line       MIPS_DWARF      00000000 000643 0000c3 00      0   0  1
   [11] .applib_globe_dat PROGBITS        00000000 000708 000010 00  WA  0   0  4
   [12] .applib_globe_dat PROGBITS        00000000 000718 000004 00  WA  0   0  4
   [13] .applib_globe_dat PROGBITS        00000000 00071c 000024 00  WA  0   0  4
   [14] .debug_pubnames   MIPS_DWARF      00000000 000740 000084 00      0   0  1
-  [15] .rel.debug_pubnam REL             00000000 001620 000008 08     19  14  4
-  [16] .debug_str        MIPS_DWARF      00000000 0007c4 0004f7 01  MS  0   0  1
-  [17] .comment          PROGBITS        00000000 000cbb 00002b 00      0   0  1
-  [18] .shstrtab         STRTAB          00000000 000ce6 000104 00      0   0  1
-  [19] .symtab           SYMTAB          00000000 001134 000160 10     20  17  4
-  [20] .strtab           STRTAB          00000000 001294 00007a 00      0   0  1
+  [15] .rel.debug_pubnam REL             00000000 001628 000008 08     19  14  4
+  [16] .debug_str        MIPS_DWARF      00000000 0007c4 000500 01  MS  0   0  1
+  [17] .comment          PROGBITS        00000000 000cc4 00002b 00      0   0  1
+  [18] .shstrtab         STRTAB          00000000 000cef 000104 00      0   0  1
+  [19] .symtab           SYMTAB          00000000 00113c 000160 10     20  17  4
+  [20] .strtab           STRTAB          00000000 00129c 00007a 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -109,7 +109,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          10408 (bytes into file)
+  Start of section headers:          10416 (bytes into file)
   Flags:                             0x50001000, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -129,18 +129,18 @@ Section Headers:
   [ 6] .mdebug.abi32     PROGBITS        00000000 00004c 000000 00      0   0  1
   [ 7] .debug_abbrev     MIPS_DWARF      00000000 00004c 00016a 00      0   0  1
   [ 8] .debug_info       MIPS_DWARF      00000000 0001b6 001009 00      0   0  1
-  [ 9] .rel.debug_info   REL             00000000 002f1c 000ab8 08     19   8  4
+  [ 9] .rel.debug_info   REL             00000000 002f24 000ab8 08     19   8  4
   [10] .debug_line       MIPS_DWARF      00000000 0011bf 00013f 00      0   0  1
   [11] .gl_com_data      PROGBITS        00000000 001300 000068 00  WA  0   0  4
   [12] .gl_rcp_buffer    PROGBITS        00000000 001368 000008 00  WA  0   0  4
   [13] .g_app_info_state PROGBITS        00000000 001370 000018 00  WA  0   0  4
   [14] .debug_pubnames   MIPS_DWARF      00000000 001388 00015e 00      0   0  1
-  [15] .rel.debug_pubnam REL             00000000 0039d4 000008 08     19  14  4
-  [16] .debug_str        MIPS_DWARF      00000000 0014e6 0012cc 01  MS  0   0  1
-  [17] .comment          PROGBITS        00000000 0027b2 00002b 00      0   0  1
-  [18] .shstrtab         STRTAB          00000000 0027dd 0000c8 00      0   0  1
-  [19] .symtab           SYMTAB          00000000 002bf0 000200 10     20  17  4
-  [20] .strtab           STRTAB          00000000 002df0 000129 00      0   0  1
+  [15] .rel.debug_pubnam REL             00000000 0039dc 000008 08     19  14  4
+  [16] .debug_str        MIPS_DWARF      00000000 0014e6 0012d5 01  MS  0   0  1
+  [17] .comment          PROGBITS        00000000 0027bb 00002b 00      0   0  1
+  [18] .shstrtab         STRTAB          00000000 0027e6 0000c8 00      0   0  1
+  [19] .symtab           SYMTAB          00000000 002bf8 000200 10     20  17  4
+  [20] .strtab           STRTAB          00000000 002df8 000129 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -159,7 +159,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x0
   Start of program headers:          0 (bytes into file)
-  Start of section headers:          26020 (bytes into file)
+  Start of section headers:          26028 (bytes into file)
   Flags:                             0x50001000, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           0 (bytes)
@@ -179,15 +179,15 @@ Section Headers:
   [ 6] .mdebug.abi32     PROGBITS        00000000 00004c 000000 00      0   0  1
   [ 7] .debug_abbrev     MIPS_DWARF      00000000 00004c 000164 00      0   0  1
   [ 8] .debug_info       MIPS_DWARF      00000000 0001b0 0023ae 00      0   0  1
-  [ 9] .rel.debug_info   REL             00000000 006cf8 001a00 08     16   8  4
+  [ 9] .rel.debug_info   REL             00000000 006d00 001a00 08     16   8  4
   [10] .debug_line       MIPS_DWARF      00000000 00255e 00015d 00      0   0  1
   [11] .debug_pubnames   MIPS_DWARF      00000000 0026bb 00026e 00      0   0  1
-  [12] .rel.debug_pubnam REL             00000000 0086f8 000008 08     16  11  4
-  [13] .debug_str        MIPS_DWARF      00000000 002929 003bb3 01  MS  0   0  1
-  [14] .comment          PROGBITS        00000000 0064dc 00002b 00      0   0  1
-  [15] .shstrtab         STRTAB          00000000 006507 00009a 00      0   0  1
-  [16] .symtab           SYMTAB          00000000 006874 000270 10     17  14  4
-  [17] .strtab           STRTAB          00000000 006ae4 000214 00      0   0  1
+  [12] .rel.debug_pubnam REL             00000000 008700 000008 08     16  11  4
+  [13] .debug_str        MIPS_DWARF      00000000 002929 003bbc 01  MS  0   0  1
+  [14] .comment          PROGBITS        00000000 0064e5 00002b 00      0   0  1
+  [15] .shstrtab         STRTAB          00000000 006510 00009a 00      0   0  1
+  [16] .symtab           SYMTAB          00000000 00687c 000270 10     17  14  4
+  [17] .strtab           STRTAB          00000000 006aec 000214 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)

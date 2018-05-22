@@ -168,7 +168,7 @@ void com_flush_rtc_reg(void)
         ;//nothing for QAC
     }
 
-    for (i = 0; i < 256 * 4; i++)
+    for (i = 0; i < 256; i++)
     {
         act_writel((act_readl(WD_CTL) | 0x01), WD_CTL);
     }

@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x60026831
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          103324 (bytes into file)
+  Start of section headers:          103360 (bytes into file)
   Flags:                             0x50001001, noreorder, o32, mips32
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -44,14 +44,14 @@ Section Headers:
   [20] .debug_info       MIPS_DWARF      00000000 005acb 00d25e 00      0   0  1
   [21] .debug_line       MIPS_DWARF      00000000 012d29 001c56 00      0   0  1
   [22] .debug_pubnames   MIPS_DWARF      00000000 01497f 000c30 00      0   0  1
-  [23] .debug_str        MIPS_DWARF      00000000 0155af 002a15 01  MS  0   0  1
-  [24] .comment          PROGBITS        00000000 017fc4 000408 00      0   0  1
-  [25] .debug_frame      MIPS_DWARF      00000000 0183cc 000b88 00      0   0  4
-  [26] .debug_aranges    MIPS_DWARF      00000000 018f54 0002a8 00      0   0  1
-  [27] .debug_ranges     MIPS_DWARF      00000000 0191fc 000018 00      0   0  1
-  [28] .shstrtab         STRTAB          00000000 019214 000185 00      0   0  1
-  [29] .symtab           SYMTAB          00000000 019874 0025c0 10     30 181  4
-  [30] .strtab           STRTAB          00000000 01be34 002758 00      0   0  1
+  [23] .debug_str        MIPS_DWARF      00000000 0155af 002a39 01  MS  0   0  1
+  [24] .comment          PROGBITS        00000000 017fe8 000408 00      0   0  1
+  [25] .debug_frame      MIPS_DWARF      00000000 0183f0 000b88 00      0   0  4
+  [26] .debug_aranges    MIPS_DWARF      00000000 018f78 0002a8 00      0   0  1
+  [27] .debug_ranges     MIPS_DWARF      00000000 019220 000018 00      0   0  1
+  [28] .shstrtab         STRTAB          00000000 019238 000185 00      0   0  1
+  [29] .symtab           SYMTAB          00000000 019898 0025c0 10     30 181  4
+  [30] .strtab           STRTAB          00000000 01be58 002758 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)

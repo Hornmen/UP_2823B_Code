@@ -604,45 +604,45 @@ OUTPUT(manager.exe elf32-tradlittlemips)
  .debug_pubnames
                 0x00000000000006b2       0x3f ./obj/manager_msg_handle.o
 
-.debug_str      0x0000000000000000     0x1da5
- .debug_str     0x0000000000000000      0x4a1 ./../../lib/applib_globe_data.o
-                                        0x4f7 (size before relaxing)
- .debug_str     0x00000000000004a1      0xe4c ./../../lib/applib_globe_data_com.o
-                                       0x12cc (size before relaxing)
- .debug_str     0x00000000000012ed       0x70 ./obj/manager_msg_loop.o
-                                        0xb67 (size before relaxing)
- .debug_str     0x000000000000135d      0x20f ./obj/manager_main.o
-                                        0x688 (size before relaxing)
- .debug_str     0x000000000000156c       0x36 ./obj/manager_get_name.o
-                                        0x4ae (size before relaxing)
- .debug_str     0x00000000000015a2       0x32 ./obj/manager_mem_manager.o
-                                        0x47c (size before relaxing)
- .debug_str     0x00000000000015d4       0xdb ./../../lib/common_config.o
-                                        0x532 (size before relaxing)
- .debug_str     0x00000000000016af       0xfc ./obj/manager_applib_funs.o
-                                        0x5f0 (size before relaxing)
- .debug_str     0x00000000000017ab       0xe5 ./../../lib/app_engine_config.o
-                                        0x51b (size before relaxing)
- .debug_str     0x0000000000001890       0xbf ./../../lib/common_speaker_control.o
-                                        0x4bb (size before relaxing)
- .debug_str     0x000000000000194f       0xbe ./obj/manager_globe_data_init.o
-                                        0x782 (size before relaxing)
- .debug_str     0x0000000000001a0d       0x75 ./obj/manager_stub_deal.o
+.debug_str      0x0000000000000000     0x1dc9
+ .debug_str     0x0000000000000000      0x4aa ./../../lib/applib_globe_data.o
+                                        0x500 (size before relaxing)
+ .debug_str     0x00000000000004aa      0xe4c ./../../lib/applib_globe_data_com.o
+                                       0x12d5 (size before relaxing)
+ .debug_str     0x00000000000012f6       0x79 ./obj/manager_msg_loop.o
+                                        0xb70 (size before relaxing)
+ .debug_str     0x000000000000136f      0x20f ./obj/manager_main.o
+                                        0x691 (size before relaxing)
+ .debug_str     0x000000000000157e       0x36 ./obj/manager_get_name.o
                                         0x4b7 (size before relaxing)
- .debug_str     0x0000000000001a82       0xa8 ./obj/manager_config_hosc_freq.o
-                                        0x502 (size before relaxing)
- .debug_str     0x0000000000001b2a       0x33 ./obj/manager_key_drv_install.o
-                                        0x466 (size before relaxing)
- .debug_str     0x0000000000001b5d       0xb3 ./obj/manager_FT_test.o
-                                        0x4fd (size before relaxing)
- .debug_str     0x0000000000001c10       0x7d ./obj/manager_sub_thread.o
-                                        0x4d6 (size before relaxing)
- .debug_str     0x0000000000001c8d       0x71 ./obj/manager_msg_handle2.o
-                                        0x5da (size before relaxing)
- .debug_str     0x0000000000001cfe       0x2c ./obj/manager_msg_handle3.o
-                                        0x4b3 (size before relaxing)
- .debug_str     0x0000000000001d2a       0x7b ./obj/manager_msg_handle.o
-                                        0x799 (size before relaxing)
+ .debug_str     0x00000000000015b4       0x32 ./obj/manager_mem_manager.o
+                                        0x485 (size before relaxing)
+ .debug_str     0x00000000000015e6       0xe4 ./../../lib/common_config.o
+                                        0x53b (size before relaxing)
+ .debug_str     0x00000000000016ca       0xfc ./obj/manager_applib_funs.o
+                                        0x5f9 (size before relaxing)
+ .debug_str     0x00000000000017c6       0xe5 ./../../lib/app_engine_config.o
+                                        0x524 (size before relaxing)
+ .debug_str     0x00000000000018ab       0xc8 ./../../lib/common_speaker_control.o
+                                        0x4c4 (size before relaxing)
+ .debug_str     0x0000000000001973       0xbe ./obj/manager_globe_data_init.o
+                                        0x78b (size before relaxing)
+ .debug_str     0x0000000000001a31       0x75 ./obj/manager_stub_deal.o
+                                        0x4c0 (size before relaxing)
+ .debug_str     0x0000000000001aa6       0xa8 ./obj/manager_config_hosc_freq.o
+                                        0x50b (size before relaxing)
+ .debug_str     0x0000000000001b4e       0x33 ./obj/manager_key_drv_install.o
+                                        0x46f (size before relaxing)
+ .debug_str     0x0000000000001b81       0xb3 ./obj/manager_FT_test.o
+                                        0x506 (size before relaxing)
+ .debug_str     0x0000000000001c34       0x7d ./obj/manager_sub_thread.o
+                                        0x4df (size before relaxing)
+ .debug_str     0x0000000000001cb1       0x71 ./obj/manager_msg_handle2.o
+                                        0x5e3 (size before relaxing)
+ .debug_str     0x0000000000001d22       0x2c ./obj/manager_msg_handle3.o
+                                        0x4bc (size before relaxing)
+ .debug_str     0x0000000000001d4e       0x7b ./obj/manager_msg_handle.o
+                                        0x7a2 (size before relaxing)
 
 .comment        0x0000000000000000      0x35c
  .comment       0x0000000000000000       0x2b ./../../lib/applib_globe_data.o

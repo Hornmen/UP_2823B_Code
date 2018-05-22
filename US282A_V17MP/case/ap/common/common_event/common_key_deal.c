@@ -448,6 +448,7 @@ app_result_e com_key_deal_force_unlink_10s(void)
 
     if((g_bt_stack_cur_info.dev_role==0)&&(g_bt_stack_cur_info.conn_status==CONN_STATUS_WAIT_PAIR))
    	{
+			g_bt_auto_connect_ctrl.need_auto_connect = 0x0;
 		 #ifdef ENABLE_TRUE_WIRELESS_STEREO    
     	if (g_app_info_vector[APP_TYPE_BTSTACK].used != 0)
    	    {
